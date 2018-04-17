@@ -23,9 +23,11 @@ public class Json extends Object{
     }
     //==========================================================================
 
+    //Variable privadas
     private JSONParser parser;
     private JSONObject obj;
     private JSONArray array;
+    //===========================================================================
 
     //CONSTRUCTORES
     public Json(){
@@ -234,6 +236,7 @@ public class Json extends Object{
         return  ob;
     }
 
+    //todo poner nuevo objeto dentro de Array
     //FALTA LA ADICION DE CODIGO ESTE METODO AÑADIRA UN JSON DENTRO DE UN JSONARRAY ASI
     //[{"hours":"2018-03-01 13:28:00","costo":36,"liters":25,"id":1,"namea":"maquina1","gasid": "1"}]
     //Donde idgas fue añadido dentro del JSON original
@@ -459,12 +462,12 @@ public class Json extends Object{
     //METODOS PRIVADOS
     //==============================================================
 
-    //Versión 0.0.2 ->
-    //AGREGAR JSONSELECT    _/ Completo
-    //AGREGAR JSONJOIN
-    //AGREGAR METODOS PARA EL ARRAR DONDE SOLO HAY OBJ <- Debo ser mas especifico
-    //METODO PARA ORDENAR EL JSON
-    //TIPEAR EL BSON "HACER EN OTRA CLACE"
-    //METODOS PARA CONVERTIR SQL EN JSON Y BISEVERSA
-    //HasMap a JSON
+    /*todo Versión 0.0.2
+    Versión 0.0.2 ->
+    -AGREGAR JSONSELECT    _/ Completo
+    -AGREGAR JSONJOIN
+    -METODO PARA ORDENAR EL JSON
+    -TIPEAR EL BSON "HACER EN OTRA CLACE"
+    -METODOS PARA CONVERTIR SQL EN JSON Y BISEVERSA
+    -HasMap a JSON*/
 }
