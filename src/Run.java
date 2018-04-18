@@ -20,7 +20,8 @@ public class Run {
         Map map = new HashMap<Object,Object>();
         map.put("tres","asi es uno mas");
         map.put("cuatros","asi es uno mas");
-        Console.red(json.putObjectInJSONArray("array",map));
+        map.put("numeros",123);
+        json.putObjectInJSONArray("array",map,1);
         Console.blue(json);
     }
 }
