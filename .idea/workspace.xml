@@ -6,10 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63df2180-f8fd-4a79-af03-d5fedfe3ff4e" name="Default" comment="I add a Json class and Path class&#10;the Json class i'ts for use the JSONS &#10;and Path class i'ts for use a easy paths">
+    <list default="true" id="63df2180-f8fd-4a79-af03-d5fedfe3ff4e" name="Default" comment="I do todo list pending">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/Run.java" afterPath="$PROJECT_DIR$/src/Run.java" />
-      <change beforePath="$PROJECT_DIR$/src/org/javabrain/util/data/JSON.java" afterPath="$PROJECT_DIR$/src/org/javabrain/util/data/JSON.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,9 +24,8 @@
         <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/data/Json.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="151">
-              <caret line="242" column="86" lean-forward="false" selection-start-line="242" selection-start-column="86" selection-end-line="242" selection-end-column="86" />
+              <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="method#Json#0;class#Json#0" expanded="false" />
                 <element signature="method#Json#1;class#Json#0" expanded="false" />
                 <element signature="method#Json#2;class#Json#0" expanded="false" />
@@ -40,18 +38,23 @@
                 <element signature="method#replace#0;class#Json#0" expanded="false" />
                 <element signature="method#replaceJSONArray#0;class#Json#0" expanded="false" />
                 <element signature="method#putJSONInJSONArray#0;class#Json#0" expanded="false" />
+                <element signature="method#putObjectInJSONArray#0;class#Json#0" expanded="false" />
                 <element signature="method#getKey#0;class#Json#0" expanded="false" />
+                <element signature="method#existKey#0;class#Json#0" expanded="false" />
                 <element signature="method#getKeys#0;class#Json#0" expanded="false" />
                 <element signature="method#toJSONString#0;class#Json#0" expanded="false" />
                 <element signature="method#toString#0;class#Json#0" expanded="false" />
                 <element signature="method#putJSON#0;class#Json#0" expanded="false" />
-                <element signature="method#putJSONArray#0;class#Json#0" expanded="false" />
                 <element signature="method#values#0;class#Json#0" expanded="false" />
                 <element signature="method#write#0;class#Json#0" expanded="false" />
                 <element signature="method#read#0;class#Json#0" expanded="false" />
                 <element signature="method#read#1;class#Json#0" expanded="false" />
                 <element signature="method#exclude#0;class#Json#0" expanded="false" />
                 <element signature="method#select#0;class#Json#0" expanded="false" />
+                <element signature="e#13275#13276#0" expanded="true" />
+                <element signature="e#13302#13303#0" expanded="true" />
+                <element signature="e#13334#13335#0" expanded="true" />
+                <element signature="e#13361#13362#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -60,8 +63,8 @@
       <file leaf-file-name="Run.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Run.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="15" column="44" lean-forward="false" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+            <state relative-caret-position="330">
+              <caret line="23" column="30" lean-forward="false" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -143,8 +146,36 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Java-Brain" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Java-Brain" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Java-Brain" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Java-Brain" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Java-Brain" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Java-Brain" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Java-Brain" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Java-Brain" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -180,29 +211,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="AndroidView" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Java-Brain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Java-Brain" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Java-Brain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Java-Brain" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Java-Brain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Java-Brain" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -352,7 +362,8 @@
       <workItem from="1523978333185" duration="2414000" />
       <workItem from="1523983060835" duration="9752000" />
       <workItem from="1524024938332" duration="3205000" />
-      <workItem from="1524028193605" duration="951000" />
+      <workItem from="1524028193605" duration="1108000" />
+      <workItem from="1524060896118" duration="7193000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1523978399232</created>
@@ -389,11 +400,18 @@
       <option name="project" value="LOCAL" />
       <updated>1524005625002</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Preview code to Json">
+      <created>1524029195841</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1524029195841</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16322000" />
+    <option name="totallyTimeSpent" value="23672000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -424,6 +442,7 @@
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14275256" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -435,7 +454,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -451,7 +469,8 @@
     <MESSAGE value="First build to create .jar" />
     <MESSAGE value="I add resources to beanInfo for swing components" />
     <MESSAGE value="I add a Json class and Path class&#10;the Json class i'ts for use the JSONS &#10;and Path class i'ts for use a easy paths" />
-    <option name="LAST_COMMIT_MESSAGE" value="I add a Json class and Path class&#10;the Json class i'ts for use the JSONS &#10;and Path class i'ts for use a easy paths" />
+    <MESSAGE value="Preview code to Json" />
+    <option name="LAST_COMMIT_MESSAGE" value="Preview code to Json" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -465,7 +484,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="method#Json#0;class#Json#0" expanded="false" />
             <element signature="method#Json#1;class#Json#0" expanded="false" />
             <element signature="method#Json#2;class#Json#0" expanded="false" />
@@ -478,18 +496,71 @@
             <element signature="method#replace#0;class#Json#0" expanded="false" />
             <element signature="method#replaceJSONArray#0;class#Json#0" expanded="false" />
             <element signature="method#putJSONInJSONArray#0;class#Json#0" expanded="false" />
+            <element signature="method#putObjectInJSONArray#0;class#Json#0" expanded="false" />
             <element signature="method#getKey#0;class#Json#0" expanded="false" />
+            <element signature="method#existKey#0;class#Json#0" expanded="false" />
             <element signature="method#getKeys#0;class#Json#0" expanded="false" />
             <element signature="method#toJSONString#0;class#Json#0" expanded="false" />
             <element signature="method#toString#0;class#Json#0" expanded="false" />
             <element signature="method#putJSON#0;class#Json#0" expanded="false" />
-            <element signature="method#putJSONArray#0;class#Json#0" expanded="false" />
             <element signature="method#values#0;class#Json#0" expanded="false" />
             <element signature="method#write#0;class#Json#0" expanded="false" />
             <element signature="method#read#0;class#Json#0" expanded="false" />
             <element signature="method#read#1;class#Json#0" expanded="false" />
             <element signature="method#exclude#0;class#Json#0" expanded="false" />
             <element signature="method#select#0;class#Json#0" expanded="false" />
+            <element signature="e#13275#13276#0" expanded="true" />
+            <element signature="e#13302#13303#0" expanded="true" />
+            <element signature="e#13334#13335#0" expanded="true" />
+            <element signature="e#13361#13362#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Run.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="15" column="44" lean-forward="false" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/data/Json.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="method#Json#0;class#Json#0" expanded="false" />
+            <element signature="method#Json#1;class#Json#0" expanded="false" />
+            <element signature="method#Json#2;class#Json#0" expanded="false" />
+            <element signature="method#getJSONArray#0;class#Json#0" expanded="false" />
+            <element signature="method#getJSONArray#2;class#Json#0" expanded="false" />
+            <element signature="method#getArray#0;class#Json#0" expanded="false" />
+            <element signature="method#getList#0;class#Json#0" expanded="false" />
+            <element signature="method#setJSON#0;class#Json#0" expanded="false" />
+            <element signature="method#size#0;class#Json#0" expanded="false" />
+            <element signature="method#replace#0;class#Json#0" expanded="false" />
+            <element signature="method#replaceJSONArray#0;class#Json#0" expanded="false" />
+            <element signature="method#putJSONInJSONArray#0;class#Json#0" expanded="false" />
+            <element signature="method#putObjectInJSONArray#0;class#Json#0" expanded="false" />
+            <element signature="method#getKey#0;class#Json#0" expanded="false" />
+            <element signature="method#existKey#0;class#Json#0" expanded="false" />
+            <element signature="method#getKeys#0;class#Json#0" expanded="false" />
+            <element signature="method#toJSONString#0;class#Json#0" expanded="false" />
+            <element signature="method#toString#0;class#Json#0" expanded="false" />
+            <element signature="method#putJSON#0;class#Json#0" expanded="false" />
+            <element signature="method#values#0;class#Json#0" expanded="false" />
+            <element signature="method#write#0;class#Json#0" expanded="false" />
+            <element signature="method#read#0;class#Json#0" expanded="false" />
+            <element signature="method#read#1;class#Json#0" expanded="false" />
+            <element signature="method#exclude#0;class#Json#0" expanded="false" />
+            <element signature="method#select#0;class#Json#0" expanded="false" />
+            <element signature="e#13275#13276#0" expanded="true" />
+            <element signature="e#13302#13303#0" expanded="true" />
+            <element signature="e#13334#13335#0" expanded="true" />
+            <element signature="e#13361#13362#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -519,7 +590,6 @@
         <state relative-caret-position="14130">
           <caret line="471" column="20" lean-forward="false" selection-start-line="471" selection-start-column="20" selection-end-line="471" selection-end-column="20" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="method#Json#0;class#Json#0" expanded="false" />
             <element signature="method#Json#1;class#Json#0" expanded="false" />
             <element signature="method#Json#2;class#Json#0" expanded="false" />
@@ -532,18 +602,23 @@
             <element signature="method#replace#0;class#Json#0" expanded="false" />
             <element signature="method#replaceJSONArray#0;class#Json#0" expanded="false" />
             <element signature="method#putJSONInJSONArray#0;class#Json#0" expanded="false" />
+            <element signature="method#putObjectInJSONArray#0;class#Json#0" expanded="false" />
             <element signature="method#getKey#0;class#Json#0" expanded="false" />
+            <element signature="method#existKey#0;class#Json#0" expanded="false" />
             <element signature="method#getKeys#0;class#Json#0" expanded="false" />
             <element signature="method#toJSONString#0;class#Json#0" expanded="false" />
             <element signature="method#toString#0;class#Json#0" expanded="false" />
             <element signature="method#putJSON#0;class#Json#0" expanded="false" />
-            <element signature="method#putJSONArray#0;class#Json#0" expanded="false" />
             <element signature="method#values#0;class#Json#0" expanded="false" />
             <element signature="method#write#0;class#Json#0" expanded="false" />
             <element signature="method#read#0;class#Json#0" expanded="false" />
             <element signature="method#read#1;class#Json#0" expanded="false" />
             <element signature="method#exclude#0;class#Json#0" expanded="false" />
             <element signature="method#select#0;class#Json#0" expanded="false" />
+            <element signature="e#13275#13276#0" expanded="true" />
+            <element signature="e#13302#13303#0" expanded="true" />
+            <element signature="e#13334#13335#0" expanded="true" />
+            <element signature="e#13361#13362#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -617,14 +692,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="284">
           <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Run.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="15" column="44" lean-forward="false" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+        <state relative-caret-position="330">
+          <caret line="23" column="30" lean-forward="false" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -634,9 +708,8 @@
     <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/data/Json.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="151">
-          <caret line="242" column="86" lean-forward="false" selection-start-line="242" selection-start-column="86" selection-end-line="242" selection-end-column="86" />
+          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="method#Json#0;class#Json#0" expanded="false" />
             <element signature="method#Json#1;class#Json#0" expanded="false" />
             <element signature="method#Json#2;class#Json#0" expanded="false" />
@@ -649,18 +722,23 @@
             <element signature="method#replace#0;class#Json#0" expanded="false" />
             <element signature="method#replaceJSONArray#0;class#Json#0" expanded="false" />
             <element signature="method#putJSONInJSONArray#0;class#Json#0" expanded="false" />
+            <element signature="method#putObjectInJSONArray#0;class#Json#0" expanded="false" />
             <element signature="method#getKey#0;class#Json#0" expanded="false" />
+            <element signature="method#existKey#0;class#Json#0" expanded="false" />
             <element signature="method#getKeys#0;class#Json#0" expanded="false" />
             <element signature="method#toJSONString#0;class#Json#0" expanded="false" />
             <element signature="method#toString#0;class#Json#0" expanded="false" />
             <element signature="method#putJSON#0;class#Json#0" expanded="false" />
-            <element signature="method#putJSONArray#0;class#Json#0" expanded="false" />
             <element signature="method#values#0;class#Json#0" expanded="false" />
             <element signature="method#write#0;class#Json#0" expanded="false" />
             <element signature="method#read#0;class#Json#0" expanded="false" />
             <element signature="method#read#1;class#Json#0" expanded="false" />
             <element signature="method#exclude#0;class#Json#0" expanded="false" />
             <element signature="method#select#0;class#Json#0" expanded="false" />
+            <element signature="e#13275#13276#0" expanded="true" />
+            <element signature="e#13302#13303#0" expanded="true" />
+            <element signature="e#13334#13335#0" expanded="true" />
+            <element signature="e#13361#13362#0" expanded="true" />
           </folding>
         </state>
       </provider>

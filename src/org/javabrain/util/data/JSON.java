@@ -158,7 +158,6 @@ public class Json extends Object{
     public Timestamp getTimestamp(Object key){
         return Timestamp.valueOf(obj.get(key).toString());
     }
-
     //===============================================================
 
     //METODOS SET
@@ -236,28 +235,17 @@ public class Json extends Object{
         return new Json(obj);
     }
 
-    //todo poner nuevo objeto dentro de Array
-    //FALTA LA ADICION DE CODIGO ESTE METODO AÑADIRA UN JSON DENTRO DE UN JSONARRAY ASI
-    //[{"hours":"2018-03-01 13:28:00","costo":36,"liters":25,"id":1,"namea":"maquina1","gasid": "1"}]
-    //Donde idgas fue añadido dentro del JSON original
     public Object putObjectInJSONArray(Object key,Map<Object,Object> objects,int index){
-        String data = obj.get(key).toString().substring(1,obj.get(key).toString().length()-1);
-        Iterator it = objects.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry e = (Map.Entry)it.next();
-            data += "\""+e.getKey()+"\":\"" + e.getValue()+"\",";
-        }
-        data = data.replace("}","");
-        data = data.substring(0,data.length()-1);
-        data = "["+data+"}]";
-        System.out.println(data);
+
         try {
-            obj.replace(key,(JSONArray) parser.parse(data));
+            JSONObject object = (JSONObject) parser.parse(getJSONArray(key,index).toString());
+            array = (JSONArray) parser.parse(getJSONArray(key).toString());
+            object.putAll(objects);
+            array.set(index,object);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
-        return new Json(obj);
+        return new Json(replace(key,array));
     }
 
     public String getKey(int index) {
@@ -471,12 +459,21 @@ public class Json extends Object{
         out = "["+out.substring(0,out.length()-2)+"]";
         return new Json(out);
     }
-
-
     //===============================================================
 
     //METODOS PRIVADOS
     //==============================================================
+
+    //Todo metodos TO en versión 0.0.3
+    //METODOS TO
+    public Map<Object,Object> toMap(){
+        return null;
+    }
+
+    public ArrayList toList(){
+        return null;
+    }
+    //===============================================================
 
     /*todo Versión 0.0.2
     Versión 0.0.2 ->
@@ -485,5 +482,5 @@ public class Json extends Object{
     -METODO PARA ORDENAR EL JSON
     -TIPEAR EL BSON "HACER EN OTRA CLACE"
     -METODOS PARA CONVERTIR SQL EN JSON Y BISEVERSA
-    -HasMap a JSON*/
+    -HasMap a JSON y biseversa*/
 }
