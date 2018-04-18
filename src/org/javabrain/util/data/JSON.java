@@ -177,6 +177,7 @@ public class Json extends Object{
 
     //===============================================================
 
+    //todo revisar el por que regresan unos metodo object
     //METODOS DE ACCION
 
     public void remove(Object key){
@@ -192,12 +193,12 @@ public class Json extends Object{
         return obj.size();
     }
 
-    public Object replace(Object key, Object value){
-        return obj.replace(key,value);
+    public Json replace(Object key, Object value){
+        obj.replace(key,value);
+        return new Json(obj);
     }
 
-    public Object replaceJSONArray(Object key, Map<Object,Object> objects){
-        Object ob = null;
+    public Json replaceJSONArray(Object key, Map<Object,Object> objects){
         String data = "";
         Iterator it = objects.entrySet().iterator();
         while (it.hasNext()) {
@@ -207,16 +208,15 @@ public class Json extends Object{
         data = "["+data.substring(0,data.length()-1)+"]";
 
         try {
-            ob = obj.replace(key,(JSONArray) parser.parse(data));
+            obj.replace(key,(JSONArray) parser.parse(data));
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        return  ob;
+        return  new Json(obj);
     }
 
-    public Object putInJSONArray(Object key,Map<Object,Object> objects){
-        Object ob = null;
+    public Json putJSONInJSONArray(Object key,Map<Object,Object> objects){
         String data = obj.get(key).toString().substring(1,obj.get(key).toString().length()-1);
         Iterator it = objects.entrySet().iterator();
         while (it.hasNext()) {
@@ -228,20 +228,36 @@ public class Json extends Object{
         data = data.substring(0,data.length()-1);
         data = "["+data+"]";
         try {
-            ob = obj.replace(key,(JSONArray) parser.parse(data));
+            obj.replace(key,(JSONArray) parser.parse(data));
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        return  ob;
+        return new Json(obj);
     }
 
     //todo poner nuevo objeto dentro de Array
     //FALTA LA ADICION DE CODIGO ESTE METODO AÑADIRA UN JSON DENTRO DE UN JSONARRAY ASI
     //[{"hours":"2018-03-01 13:28:00","costo":36,"liters":25,"id":1,"namea":"maquina1","gasid": "1"}]
     //Donde idgas fue añadido dentro del JSON original
-    public Object putObjectInJSONArray(){
-        return null;
+    public Object putObjectInJSONArray(Object key,Map<Object,Object> objects,int index){
+        String data = obj.get(key).toString().substring(1,obj.get(key).toString().length()-1);
+        Iterator it = objects.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry e = (Map.Entry)it.next();
+            data += "\""+e.getKey()+"\":\"" + e.getValue()+"\",";
+        }
+        data = data.replace("}","");
+        data = data.substring(0,data.length()-1);
+        data = "["+data+"}]";
+        System.out.println(data);
+        try {
+            obj.replace(key,(JSONArray) parser.parse(data));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return new Json(obj);
     }
 
     public String getKey(int index) {
@@ -290,12 +306,12 @@ public class Json extends Object{
         return obj.toJSONString();
     }
 
-    public Object putJSON(Object key, Object value){
-        return obj.put(key,value);
+    public Json putJSON(Object key, Object value){
+        obj.put(key,value);
+        return new Json(obj);
     }
 
-    public Object putJSONArray(Object key, Map<Object,Object> objects){
-        Object ob = null;
+    public Json putJSONArray(Object key, Map<Object,Object> objects){
         String data = "";
         Iterator it = objects.entrySet().iterator();
         while (it.hasNext()) {
@@ -305,12 +321,12 @@ public class Json extends Object{
         data = "["+data.substring(0,data.length()-1)+"]";
 
         try {
-            ob = obj.put(key,(JSONArray) parser.parse(data));
+            obj.put(key,(JSONArray) parser.parse(data));
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-         return  ob;
+         return new Json(obj);
     }
 
     public ArrayList<Json> values(){
