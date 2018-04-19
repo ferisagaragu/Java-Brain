@@ -1,0 +1,36 @@
+{
+  "classname":"",
+  "description":"",
+  "version":"",
+  "author":[
+    {
+      "name":"Fernando García Aguirre",
+      "contactname":"ferisagaragu@gmail.com"
+    }
+  ],
+  //Datos para documentar
+  "variable":[
+    {
+      "name":"",
+      "type":"",
+      "encapsulation":[
+        {"type":""}
+      ]
+    }
+  ],
+  "constructor":[
+    {
+      "name":"",
+      "parameter":[{"type":"","name":""}],
+      "description":""
+    }
+  ],
+  "method":
+  [
+    {
+      "name":"",
+      "parameter":[{"type":"","name":""}],
+      "description":""
+    }
+  ]
+}
