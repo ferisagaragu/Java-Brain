@@ -396,16 +396,17 @@ public class Json extends Object{
         }
     }
 
-    public ArrayList<Json> exclude(int index){
+    //todo este es para excluir de un JSONArray pero falta para excluir un elemento
+    public Json exclude(int index){
         int i = 0;
-        ArrayList<Json> al = new ArrayList<>();
+        String out = "";
         for (Json json : values()) {
             if(i != index){
-                al.add(json);
+                out += json.toString();
             }
             i++;
         }
-        return al;
+        return new Json("["+out+"]");
     }
 
     public Json select(String[] keys){
@@ -459,6 +460,74 @@ public class Json extends Object{
         out = "["+out.substring(0,out.length()-2)+"]";
         return new Json(out);
     }
+
+    //todo este metodo es inperfecto
+    public Json join(Json arrayJoin,String idJSON,String idJSON2,String match){
+
+        JSONArray  nArray = new JSONArray();
+
+        try {
+            for (Object obj1 : array) {
+
+                JSONObject js1 = (JSONObject) parser.parse(obj1.toString());
+
+                for (Object obj2 : arrayJoin.values()) {
+
+                    JSONObject js2 = (JSONObject) parser.parse(obj2.toString());
+
+                    if (js1.get(idJSON).toString().toLowerCase().equals(match.toLowerCase()) &&
+                            js2.get(idJSON2).toString().toLowerCase().equals(match.toLowerCase())) {
+                        nArray.add((JSONObject) parser.parse(js1.toString().replace("}", js2.toString().replace("{", ",").replace("\"id\"", "\"idjoin\""))));
+                    }
+
+                }
+
+            }
+        }catch (Exception e){}
+
+        return  new Json(nArray);
+    }
+
+    public Json orderBy(Object key){
+
+        JSONParser parser = new JSONParser();
+        JSONArray jsonArr = null;
+        JSONArray sortedJsonArray = null;
+        try {
+            jsonArr = (JSONArray) parser.parse(array.toJSONString());
+            sortedJsonArray = new JSONArray();
+
+            List<JSONObject> jsonValues = new ArrayList<JSONObject>();
+            for (int i = 0; i < jsonArr.size(); i++) {
+                jsonValues.add((JSONObject) parser.parse(jsonArr.get(i).toString()));
+            }
+            Collections.sort( jsonValues, new Comparator<JSONObject>() {
+                private static final String KEY_NAME = "ID";
+
+                @Override
+                public int compare(JSONObject a, JSONObject b) {
+                    String valA = new String();
+                    String valB = new String();
+
+                    try {
+                        valA = (String) a.get(KEY_NAME);
+                        valB = (String) b.get(KEY_NAME);
+                    }
+                    catch (Exception e) {}
+
+                    return valA.compareTo(valB);
+                }
+            });
+
+            for (int i = 0; i < jsonArr.size(); i++) {
+                sortedJsonArray.add(jsonValues.get(i));
+            }
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return new Json(sortedJsonArray);}
     //===============================================================
 
     //METODOS PRIVADOS
