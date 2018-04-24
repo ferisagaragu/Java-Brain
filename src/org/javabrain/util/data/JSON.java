@@ -16,7 +16,7 @@ import java.util.*;
  */
 public class Json extends Object{
 
-    //STATICS
+    //STATICS 2
     private static Json ourInstance = new Json();
     public static Json getInstance() {
         return ourInstance;
@@ -29,7 +29,7 @@ public class Json extends Object{
     private JSONArray array;
     //===========================================================================
 
-    //CONSTRUCTORES
+    //CONSTRUCTORES 3
     public Json(){
         parser = new JSONParser();
         try {
@@ -78,7 +78,7 @@ public class Json extends Object{
 
     //================================================================
 
-    //METODOS GET
+    //METODOS GET 16
 
     public String getString(Object key){
         return obj.get(key).toString();
@@ -112,24 +112,6 @@ public class Json extends Object{
         return new Json(obj.get(key));
     }
 
-    public Json getJSONArray(Object key, int index){
-        JSONArray array = null;
-
-        try{array = (JSONArray) parser.parse(obj.get(key).toString());}catch (Exception e){}
-
-        return new Json(array.get(index));
-    }
-
-    public Json getJSONArray(int index){
-        return new Json(array.get(index));
-    }
-
-    public Json getJSONArray(Object key){
-        JSONArray array = null;
-        try{array = (JSONArray) parser.parse(obj.get(key).toString());}catch (Exception e){}
-        return new Json(array);
-    }
-
     public Object[] getArray(Object key){
         Object[] dat = null;
         if(getString(key).charAt(0) == '['){
@@ -158,9 +140,46 @@ public class Json extends Object{
     public Timestamp getTimestamp(Object key){
         return Timestamp.valueOf(obj.get(key).toString());
     }
+
+    public Collection getKeys(){
+        Collection collection = new ArrayList();
+        for (Object sets:obj.keySet()) {
+            collection.add(sets);
+        }
+        return collection;
+    }
+
+    public String getKey(int index) {
+        int i = 0;
+        for (Object sets:obj.keySet()) {
+            if(i == index){
+                return sets.toString();
+            }
+            i++;
+        }
+        return null;
+    }
+
+    public Json getJSONArray(Object key, int index){
+        JSONArray array = null;
+
+        try{array = (JSONArray) parser.parse(obj.get(key).toString());}catch (Exception e){}
+
+        return new Json(array.get(index));
+    }
+
+    public Json getJSONArray(int index){
+        return new Json(array.get(index));
+    }
+
+    public Json getJSONArray(Object key){
+        JSONArray array = null;
+        try{array = (JSONArray) parser.parse(obj.get(key).toString());}catch (Exception e){}
+        return new Json(array);
+    }
     //===============================================================
 
-    //METODOS SET
+    //METODOS SET 1
 
     public void setJSON(Object json) {
         if(json.toString().charAt(0) == '['){
@@ -177,7 +196,7 @@ public class Json extends Object{
     //===============================================================
 
     //todo revisar el por que regresan unos metodo object
-    //METODOS DE ACCION
+    //METODOS DE ACCION 19
 
     public void remove(Object key){
         obj.remove(key);
@@ -248,17 +267,6 @@ public class Json extends Object{
         return new Json(replace(key,array));
     }
 
-    public String getKey(int index) {
-        int i = 0;
-        for (Object sets:obj.keySet()) {
-            if(i == index){
-                return sets.toString();
-            }
-            i++;
-        }
-        return null;
-    }
-
     public boolean existKey(Object key) {
         for (Object sets:getKeys()) {
             if (sets.toString().equals(key.toString())){
@@ -266,32 +274,6 @@ public class Json extends Object{
             }
         }
         return false;
-    }
-
-    public Collection getKeys(){
-        Collection collection = new ArrayList();
-        for (Object sets:obj.keySet()) {
-            collection.add(sets);
-        }
-        return collection;
-    }
-
-    public String toJSONString(){
-
-        if(obj == null){
-            return array.toJSONString();
-        }
-
-        return obj.toJSONString();
-    }
-
-    public String toString(){
-
-        if(obj == null){
-            return array.toJSONString();
-        }
-
-        return obj.toJSONString();
     }
 
     public Json putJSON(Object key, Object value){
@@ -541,6 +523,24 @@ public class Json extends Object{
 
     public ArrayList toList(){
         return null;
+    }
+
+    public String toJSONString(){
+
+        if(obj == null){
+            return array.toJSONString();
+        }
+
+        return obj.toJSONString();
+    }
+
+    public String toString(){
+
+        if(obj == null){
+            return array.toJSONString();
+        }
+
+        return obj.toJSONString();
     }
     //===============================================================
 
