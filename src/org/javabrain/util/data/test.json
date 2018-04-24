@@ -1,7 +1,8 @@
 {
   "item1":"hola amigo",
   "item2":"hola amiga",
-  "item3":"escuchame a mi!!",
+  "item3":"10.04.2010 1:12:13 PM",
+  "item4":1,
   "array":[
              {"item1array1":"soy el item 1","item2array1":"soy el item2"},
              {"item1array2":"soy el item 1","item2array2":"soy el item2"},
