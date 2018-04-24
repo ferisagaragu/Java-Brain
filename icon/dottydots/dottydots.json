@@ -1,0 +1,16 @@
+{
+  "url":"https://raw.githubusercontent.com/ferisagaragu/Java-Brain/master/icon",
+  "alphabet":{
+    "1ts":"/dottydots/alphabet/1st.png",
+    "question_mark":"/dottydots/alphabet/question_mark.png"
+  },
+  "animals":{
+    "aquarium":"/dottydots/animals/aquarium.png",
+    "dog_house":"/dottydots/animals/dog_house.png",
+    "dog":"/dottydots/animals/dog.png",
+    "farm_house":"/dottydots/animals/farm_house.png"
+  },
+  "arrows":{
+    "arrow":"/dottydots/arrows/arrow.png"
+  }
+}
