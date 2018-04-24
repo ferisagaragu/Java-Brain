@@ -7,7 +7,10 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.*;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /***
@@ -176,6 +179,35 @@ public class Json extends Object{
         JSONArray array = null;
         try{array = (JSONArray) parser.parse(obj.get(key).toString());}catch (Exception e){}
         return new Json(array);
+    }
+
+    public BigDecimal getBigDecimal(Object key){
+        return BigDecimal.valueOf(Double.parseDouble(obj.get(key).toString()));
+    }
+
+    public Byte getByte(Object key){
+        return Byte.parseByte(obj.get(key).toString());
+    }
+
+    public Long getLong(Object key){
+        return Long.parseLong(obj.get(key).toString());
+    }
+
+    public String getDate(Object key, String format) {
+        SimpleDateFormat formatter = new SimpleDateFormat(format);
+        try {
+            Date date = formatter.parse(obj.get(key).toString());
+            String sdate = formatter.format(date);
+            return sdate;
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public String getDecimal(Object key, String format){
+        DecimalFormat format1 = new DecimalFormat(format);
+        return format1.format(obj.get(key));
     }
     //===============================================================
 
