@@ -307,7 +307,6 @@ public class Json extends Object{
 
     public Json replaceJSONArray(Object key,Json json){
         try {
-            System.out.println(json);
             if('[' == json.toJSONString().charAt(0)) {
                 obj.replace(key, (JSONArray) parser.parse(json.toJSONString()));
             }
@@ -657,7 +656,6 @@ public class Json extends Object{
     //METODOS TO
     public Map<Object,Object> toMap(){
         Map<Object,Object> map = new LinkedHashMap<>();
-        System.out.println(array);
         for (Object key:getKeys()){
             map.put(key,obj.get(key));
         }

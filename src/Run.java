@@ -14,13 +14,9 @@ public class Run {
         json1.put("marrufo","alexa");
         json1.put("alexa","no manches");
 
-
-
-        //json1.putJSONArray("arra2",json1);
-
-        out.putJSONArray("array2", json1);
-        Console.red(out.toMap());
-        Console.red(json.putJSONInJSONArray("array",out)); //esta bien por que este no es el elemento al que se debe llamar si no al putObjectInJSONArray
+        Console.red(json.putJSONInJSONArray("array",json1)); //esta bien por que este no es el elemento al que se debe llamar si no al putObjectInJSONArray
+        // mal -> {"item2":"hola amiga","item1":"hola amigo","array":[{"item1array1":"soy el item 1","item2array1":"soy el item2"},{"item1array2":"soy el item 1","item2array2":"soy el item2"},{"item2array3":"soy el item2","item1array3":"soy el item 1"},{"marrufo":"alexa"},{"alexa":"no manches"}],"item4":1,"item3":"10.04.2010 1:12:13 PM"}
+        // bien por que no son Jsons separados es uno solo -> {"item2":"hola amiga","item1":"hola amigo","array":[{"item1array1":"soy el item 1","item2array1":"soy el item2"},{"item1array2":"soy el item 1","item2array2":"soy el item2"},{"item2array3":"soy el item2","item1array3":"soy el item 1"},{"marrufo":"alexa","alexa":"no manches"}],"item4":1,"item3":"10.04.2010 1:12:13 PM"}
     }
 
     /*todo Classes por añadir
