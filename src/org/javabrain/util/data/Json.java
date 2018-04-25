@@ -305,6 +305,19 @@ public class Json extends Object{
         return  new Json(obj);
     }
 
+    public Json replaceJSONArray(Object key,Json json){
+        try {
+            System.out.println(json);
+            if('[' == json.toJSONString().charAt(0)) {
+                obj.replace(key, (JSONArray) parser.parse(json.toJSONString()));
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return  new Json(obj);
+    }
+
     public Json putJSONInJSONArray(Object key,Map<Object,Object> objects){
         String data = obj.get(key).toString().substring(1,obj.get(key).toString().length()-1);
         Iterator it = objects.entrySet().iterator();
@@ -325,7 +338,27 @@ public class Json extends Object{
         return new Json(obj);
     }
 
-    public Object putObjectInJSONArray(Object key,Map<Object,Object> objects,int index){
+    public Json putJSONInJSONArray(Object key,Json json){
+        String data = obj.get(key).toString().substring(1,obj.get(key).toString().length()-1);
+        Iterator it = json.toMap().entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry e = (Map.Entry)it.next();
+            data += "{\""+e.getKey()+"\":\"" + e.getValue()+"\"},";
+        }
+        data = data.replace(",","");
+        data = data.replace("}","},");
+        data = data.substring(0,data.length()-1);
+        data = "["+data+"]";
+        try {
+            obj.replace(key,(JSONArray) parser.parse(data));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return new Json(obj);
+    }
+
+    public Json putObjectInJSONArray(Object key,Map<Object,Object> objects,int index){
 
         try {
             JSONObject object = (JSONObject) parser.parse(getJSONArray(key,index).toString());
@@ -337,6 +370,8 @@ public class Json extends Object{
         }
         return new Json(replace(key,array));
     }
+
+    //Falta Json
 
     public boolean existKey(Object key) {
         for (Object sets:getKeys()) {
@@ -379,6 +414,26 @@ public class Json extends Object{
         }
 
          return new Json(obj);
+    }
+
+    public Json putJSONArray(Object key,Json json){
+        try {
+            obj.put(key,(JSONArray) parser.parse("["+json.toJSONString()+"]"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return new Json(obj);
+    }
+
+    public Json putJSONArray(Json json){
+        try {
+            array = (JSONArray) parser.parse("["+json.toJSONString()+"]");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return new Json(array);
     }
 
     public ArrayList<Json> values(){
@@ -601,7 +656,13 @@ public class Json extends Object{
     //Todo metodos TO en versión 0.0.3
     //METODOS TO
     public Map<Object,Object> toMap(){
-        return null;
+        Map<Object,Object> map = new LinkedHashMap<>();
+        System.out.println(array);
+        for (Object key:getKeys()){
+            map.put(key,obj.get(key));
+        }
+
+        return map;
     }
 
     public ArrayList toList(){
@@ -610,7 +671,7 @@ public class Json extends Object{
 
     public String toJSONString(){
 
-        if(obj == null){
+        if(obj == null || obj.toString().equals("{}")){
             return array.toJSONString();
         }
 
@@ -619,7 +680,7 @@ public class Json extends Object{
 
     public String toString(){
 
-        if(obj == null){
+        if(obj == null || obj.toString().equals("{}")){
             return array.toJSONString();
         }
 
