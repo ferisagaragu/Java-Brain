@@ -109,6 +109,20 @@ public class Path {
         return pth.getPath(path+"."+extention);
     }
 
+    public static File getExternal(String path, String extention,String prefix){
+
+        if(!prefix.isEmpty()){
+            path = path.replace(".","\\");
+
+            if((path.charAt(0) != '/')){
+                path = prefix+"\\"+path;
+            }
+        }else{
+            path = path.replace(".","/");
+        }
+
+        return new File(path+"."+extention);
+    }
 }
 
 class Pth{

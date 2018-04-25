@@ -76,42 +76,73 @@ public class Json extends Object{
         }
     }
 
+    public Json(File json) {
+        parser = new JSONParser();
+        String out = "";
+        try {
+            BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(json), "utf-8"));
+            String sCadena = "";
+
+            while ((sCadena = in.readLine())!=null) {
+                out += sCadena;
+            }
+
+        }catch (Exception e){}
+        if(out.toString().charAt(0) == '['){
+            try {
+                array = (org.json.simple.JSONArray) parser.parse(out);
+            } catch (ParseException e) {}
+        }else {
+            try {
+                obj = (org.json.simple.JSONObject) parser.parse(out);
+            } catch (ParseException e) {}
+        }
+    }
     //================================================================
 
-    //METODOS GET 16
+    //-METODOS GET
 
+    //MJSONG-0001
     public String getString(Object key){
         return obj.get(key).toString();
     }
 
+    //MJSONG-0002
     public int getInteger(Object key){
         return Integer.parseInt(obj.get(key).toString());
     }
 
+    //MJSONG-0003
     public float getFloat(Object key){
         return Float.parseFloat(obj.get(key).toString());
     }
 
+    //MJSONG-0004
     public boolean getBoolean(Object key){
         return Boolean.parseBoolean(obj.get(key).toString());
     }
 
+    //MJSONG-0005
     public char getCharacter(Object key){
         return obj.get(key).toString().charAt(0);
     }
 
+    //MJSONG-0006
     public double getDouble(Object key){
         return Double.parseDouble(obj.get(key).toString());
     }
 
+    //MJSONG-0007
     public Object getObject(Object key){
         return obj.get(key);
     }
 
+    //MJSONG-0008
     public Json getJSON(Object key){
         return new Json(obj.get(key));
     }
 
+    //MJSONG-0009
     public Object[] getArray(Object key){
         Object[] dat = null;
         if(getString(key).charAt(0) == '['){
@@ -128,6 +159,7 @@ public class Json extends Object{
         return dat;
     }
 
+    //MJSONG-0010
     public ArrayList<Object> getList(Object key){
         ArrayList<Object> list = new ArrayList<>();
 
@@ -137,10 +169,12 @@ public class Json extends Object{
         return list;
     }
 
+    //MJSONG-0011
     public Timestamp getTimestamp(Object key){
         return Timestamp.valueOf(obj.get(key).toString());
     }
 
+    //MJSONG-0012
     public Collection getKeys(){
         Collection collection = new ArrayList();
         for (Object sets:obj.keySet()) {
@@ -149,6 +183,7 @@ public class Json extends Object{
         return collection;
     }
 
+    //MJSONG-0013
     public String getKey(int index) {
         int i = 0;
         for (Object sets:obj.keySet()) {
@@ -160,6 +195,7 @@ public class Json extends Object{
         return null;
     }
 
+    //MJSONG-0014
     public Json getJSONArray(Object key, int index){
         JSONArray array = null;
 
@@ -168,10 +204,12 @@ public class Json extends Object{
         return new Json(array.get(index));
     }
 
+    //MJSONG-0015
     public Json getJSONArray(int index){
         return new Json(array.get(index));
     }
 
+    //MJSONG-0016
     public Json getJSONArray(Object key){
         JSONArray array = null;
         try{array = (JSONArray) parser.parse(obj.get(key).toString());}catch (Exception e){}
@@ -181,6 +219,7 @@ public class Json extends Object{
 
     //METODOS SET 1
 
+    //MJSONS-0001
     public void setJSON(Object json) {
         if(json.toString().charAt(0) == '['){
             try {
@@ -276,9 +315,20 @@ public class Json extends Object{
         return false;
     }
 
-    public Json putJSON(Object key, Object value){
+    public Json put(Object key, Object value){
         obj.put(key,value);
         return new Json(obj);
+    }
+
+    public Json putJSON(Map<Object,Object> map){
+        obj.putAll(map);
+        return  new Json(obj);
+    }
+
+    //Todo falta hacer el metodo to hasmap para que se pueda usar este
+    public Json putJSON(Json json){
+        //obj.putAll();
+        return  new Json(obj);
     }
 
     public Json putJSONArray(Object key, Map<Object,Object> objects){
@@ -510,6 +560,7 @@ public class Json extends Object{
         }
 
         return new Json(sortedJsonArray);}
+
     //===============================================================
 
     //METODOS PRIVADOS
