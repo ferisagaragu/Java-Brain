@@ -645,7 +645,12 @@ public class Json extends Object{
             e.printStackTrace();
         }
 
-        return new Json(sortedJsonArray);}
+        return new Json(sortedJsonArray);
+    }
+
+    public void val(Object key,String varName,Object value){
+        obj.replace(key,obj.get(key).toString().replace("{"+varName+"}",value.toString()));
+    }
 
     //===============================================================
 
