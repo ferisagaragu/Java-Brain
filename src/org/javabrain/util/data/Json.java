@@ -3,6 +3,7 @@ package org.javabrain.util.data;
 import org.javabrain.util.resource.Path;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
@@ -30,6 +31,10 @@ public class Json extends Object{
     private JSONParser parser;
     private JSONObject obj;
     private JSONArray array;
+    //===========================================================================
+
+    //Constantes privadas
+    private final String TAB = "\t";
     //===========================================================================
 
     //CONSTRUCTORES 3
@@ -620,7 +625,7 @@ public class Json extends Object{
                 jsonValues.add((JSONObject) parser.parse(jsonArr.get(i).toString()));
             }
             Collections.sort( jsonValues, new Comparator<JSONObject>() {
-                private static final String KEY_NAME = "ID";
+                private final String KEY_NAME = key.toString();
 
                 @Override
                 public int compare(JSONObject a, JSONObject b) {
@@ -648,13 +653,75 @@ public class Json extends Object{
         return new Json(sortedJsonArray);
     }
 
-    public void val(Object key,String varName,Object value){
-        obj.replace(key,obj.get(key).toString().replace("{"+varName+"}",value.toString()));
+    public void val(String var, Object value){
+        try{
+            if(isJSONObject()){
+                String out = obj.toString().replace("{"+var+"}",value.toString());
+                obj = (JSONObject) parser.parse(out);
+            }else{
+                String out2 = array.toString().replace("{"+var+"}",value.toString());
+                array = (JSONArray) parser.parse(out2);
+            }
+        }catch (Exception e){}
+
     }
 
     //===============================================================
 
     //METODOS PRIVADOS
+
+    private String formatJSONString(String str) {
+        StringBuilder r = new StringBuilder();
+        formatJSON(JSONValue.parse(str), r, "");
+        return r.toString();
+    }
+
+    private void formatJSON(Object obj, StringBuilder r,String indent) {
+        if (obj == null) {
+            r.append("null");
+        } else if (obj instanceof Map) {
+            @SuppressWarnings("unchecked")
+            Map map = (Map) obj;
+            Object[] keys = map.keySet().toArray();
+            Arrays.sort(keys);
+            r.append("{\n");
+            String indentTab = indent + TAB;
+            for (int i = 0; i < keys.length; i++) {
+                if (i > 0) {
+                    r.append(",\n");
+                }
+                r.append(indentTab);
+                r.append(JSONValue.toJSONString(keys[i]));
+                r.append(": ");
+                formatJSON(map.get(keys[i]), r, indentTab);
+            }
+            if (keys.length > 0) {
+                r.append("\n");
+            }
+            r.append(indent);
+            r.append("}");
+        } else if (obj instanceof List) {
+            @SuppressWarnings("unchecked")
+            Iterator it = ((List) obj).iterator();
+            r.append("[\n");
+            if (it.hasNext()) {
+                String indentTab = indent + TAB;
+                r.append(indentTab);
+                formatJSON(it.next(), r, indentTab);
+                while (it.hasNext()) {
+                    r.append(",\n");
+                    r.append(indentTab);
+                    formatJSON(it.next(), r, indentTab);
+                }
+                r.append("\n");
+            }
+            r.append(indent);
+            r.append("]");
+        } else {
+            r.append(JSONValue.toJSONString(obj));
+        }
+    }
+
     //==============================================================
 
     //Todo metodos TO en versión 0.0.3
@@ -675,10 +742,10 @@ public class Json extends Object{
     public String toJSONString(){
 
         if(obj == null || obj.toString().equals("{}")){
-            return array.toJSONString();
+            return formatJSONString(array.toString());
         }
 
-        return obj.toJSONString();
+        return formatJSONString(obj.toString());
     }
 
     public String toString(){
@@ -708,7 +775,6 @@ public class Json extends Object{
     }
 
     //===============================================================
-
 
     /*todo Versión 0.0.2
     Versión 0.0.2 ->
