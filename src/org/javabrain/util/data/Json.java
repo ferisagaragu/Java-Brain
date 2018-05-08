@@ -691,6 +691,25 @@ public class Json extends Object{
     }
     //===============================================================
 
+    //METODOS IS
+
+    public boolean isJSONArray(){
+        if (obj == null){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isJSONObject(){
+        if (array == null){
+            return true;
+        }
+        return false;
+    }
+
+    //===============================================================
+
+
     /*todo Versión 0.0.2
     Versión 0.0.2 ->
     -AGREGAR JSONSELECT    _/ Completo
