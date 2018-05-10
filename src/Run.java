@@ -24,7 +24,7 @@ public class Run {
         /*json.val("nameYou","Frida");*/
 
         Console.red(json.getJSONArray(0).getString("item1"));
-        json.val("other","<3 Roge man");
+        json.val("other","<3");
        Console.code(json);
         Console.red(json.getJSONArray(0).getString("item1"));
     }
