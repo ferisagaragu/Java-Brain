@@ -188,8 +188,6 @@ public class Console {
                 }
 
                 break;
-
-
         }
 
     }
