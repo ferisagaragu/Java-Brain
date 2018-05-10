@@ -50,13 +50,93 @@ public class Json extends Object{
         if(json.toString().charAt(0) == '['){
             try {
                 array = (org.json.simple.JSONArray) parser.parse(json.toString());
+                return;
             } catch (ParseException e) {}
         }else {
             try {
                 obj = (org.json.simple.JSONObject) parser.parse(json.toString());
+                return;
             } catch (ParseException e) {}
         }
+        
+        if (new File(json.toString()).isFile()) {
+            System.out.println(" Es un archivo externo");
+            File fil = new File(json.toString());
+            String out = "";
+            try {
+                BufferedReader in2 = new BufferedReader(new InputStreamReader(new FileInputStream(fil), "utf-8"));
+                String sCadena = "";
 
+                while ((sCadena = in2.readLine()) != null) {
+                    out += sCadena;
+                }
+
+            } catch (Exception e) {
+            }
+            if (out.toString().charAt(0) == '[') {
+                try {
+                    array = (org.json.simple.JSONArray) parser.parse(out);
+                } catch (ParseException e) {
+                }
+            } else {
+                try {
+                    obj = (org.json.simple.JSONObject) parser.parse(out);
+                } catch (ParseException e) {
+                }
+            }
+            return;
+        }
+        
+        if (json.toString().charAt(0) == '/') {
+  
+            String out = "";
+            try {
+                BufferedReader in = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(json.toString()), "utf-8"));
+                String sCadena = "";
+
+                while ((sCadena = in.readLine())!=null) {
+                    out += sCadena;
+                }
+
+            }catch (Exception e){}
+
+            if(out.charAt(0) == '['){
+                try {
+                    array = (org.json.simple.JSONArray) parser.parse(out);
+                } catch (ParseException e) {}
+            }else {
+                try {
+                    obj = (org.json.simple.JSONObject) parser.parse(out);
+                } catch (ParseException e) {}
+            }
+            return;
+        } else {
+            String path = json.toString();
+            String fileName = json.toString().split("\\{")[1].replace("}", "");
+            path = path.replace("{" + fileName + "}", "").replace(".", "/");
+
+            String out = "";
+            try {
+                BufferedReader in = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/" + path + fileName), "utf-8"));
+                String sCadena = "";
+
+                while ((sCadena = in.readLine())!=null) {
+                    out += sCadena;
+                }
+
+            }catch (Exception e){}
+
+            if(out.charAt(0) == '['){
+                try {
+                    array = (org.json.simple.JSONArray) parser.parse(out);
+                } catch (ParseException e) {}
+            }else {
+                try {
+                    obj = (org.json.simple.JSONObject) parser.parse(out);
+                } catch (ParseException e) {}
+            }
+            return;
+        }
     }
 
     public Json(InputStream inputStream) {
