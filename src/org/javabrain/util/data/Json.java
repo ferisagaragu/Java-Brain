@@ -138,54 +138,6 @@ public class Json extends Object{
             return;
         }
     }
-
-    public Json(InputStream inputStream) {
-        parser = new JSONParser();
-
-        String out = "";
-        try {
-            BufferedReader in = new BufferedReader(new InputStreamReader(inputStream, "utf-8"));
-            String sCadena = "";
-
-            while ((sCadena = in.readLine())!=null) {
-                out += sCadena;
-            }
-
-        }catch (Exception e){}
-
-        if(out.toString().charAt(0) == '['){
-            try {
-                array = (org.json.simple.JSONArray) parser.parse(out);
-            } catch (ParseException e) {}
-        }else {
-            try {
-                obj = (org.json.simple.JSONObject) parser.parse(out);
-            } catch (ParseException e) {}
-        }
-    }
-
-    public Json(File json) {
-        parser = new JSONParser();
-        String out = "";
-        try {
-            BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(json), "utf-8"));
-            String sCadena = "";
-
-            while ((sCadena = in.readLine())!=null) {
-                out += sCadena;
-            }
-
-        }catch (Exception e){}
-        if(out.toString().charAt(0) == '['){
-            try {
-                array = (org.json.simple.JSONArray) parser.parse(out);
-            } catch (ParseException e) {}
-        }else {
-            try {
-                obj = (org.json.simple.JSONObject) parser.parse(out);
-            } catch (ParseException e) {}
-        }
-    }
     //================================================================
 
     //-METODOS GET
