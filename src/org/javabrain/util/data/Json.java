@@ -31,13 +31,14 @@ public class Json extends Object{
     private JSONParser parser;
     private JSONObject obj;
     private JSONArray array;
+    private Object destructurinOunt = null;
     //===========================================================================
 
     //Constantes privadas
     private final String TAB = "\t";
     //===========================================================================
 
-    //CONSTRUCTORES 3
+    //CONSTRUCTORES
     public Json(){
         parser = new JSONParser();
         try {
@@ -73,7 +74,7 @@ public class Json extends Object{
 
             } catch (Exception e) {
             }
-            if (out.toString().charAt(0) == '[') {
+            if (out.charAt(0) == '[') {
                 try {
                     array = (org.json.simple.JSONArray) parser.parse(out);
                 } catch (ParseException e) {
@@ -754,6 +755,36 @@ public class Json extends Object{
         }
     }
 
+    private Object getDestructurin(Json json,Object comparador){
+        
+        if(json.isJSONObject()){
+            for(Object key:json.getKeys()){
+                if(key.toString().equals(comparador.toString())){
+                    destructurinOunt = json.getString(key);
+                    return json.getString(key);
+                }
+
+                try{
+                   if(json.getJSON(key).isJSONObject()){
+                       getDestructurin(json.getJSON(key),comparador);
+                    }
+                }catch(Exception e){}
+
+                try{
+                   if(json.getJSON(key).isJSONArray()){
+                       getDestructurin(json.getJSON(key),comparador);
+                    }
+                }catch(Exception e){}
+            }
+        }else{
+            
+            for(Json jsons:json.values()){
+                getDestructurin(jsons, comparador);
+            }
+        }
+        
+        return null;
+    }
     //==============================================================
 
     //Todo metodos TO en versión 0.0.3
@@ -808,9 +839,15 @@ public class Json extends Object{
 
     //===============================================================
 
+    //METODOS COMPLEJOS "DESTRUCTURIN"
+    public Object get(Object key){
+        getDestructurin(this,key);
+        return destructurinOunt;
+    }
+    //===============================================================
+    
     /*todo Versión 0.0.2
     Versión 0.0.2 ->
-    -AGREGAR JSONSELECT    _/ Completo
     -AGREGAR JSONJOIN
     -METODO PARA ORDENAR EL JSON
     -TIPEAR EL BSON "HACER EN OTRA CLACE"
