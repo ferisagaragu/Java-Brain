@@ -9,6 +9,7 @@ import org.json.simple.parser.ParseException;
 
 import java.io.*;
 import java.math.BigDecimal;
+import java.net.URL;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -32,6 +33,7 @@ public class Json extends Object{
     private JSONObject obj;
     private JSONArray array;
     private Object destructurinOunt = null;
+    private Map jsons;
     //===========================================================================
 
     //Constantes privadas
@@ -45,7 +47,8 @@ public class Json extends Object{
             obj = (org.json.simple.JSONObject) parser.parse("{}");
         } catch (ParseException e) {}
     }
-
+    
+    //Meter un ayudador para que encuentre de si por que si el Json
     public Json(Object json) {
         parser = new JSONParser();
         if(json.toString().charAt(0) == '['){
@@ -60,84 +63,100 @@ public class Json extends Object{
             } catch (ParseException e) {}
         }
         
-        if (new File(json.toString()).isFile()) {
-            System.out.println(" Es un archivo externo");
-            File fil = new File(json.toString());
-            String out = "";
-            try {
-                BufferedReader in2 = new BufferedReader(new InputStreamReader(new FileInputStream(fil), "utf-8"));
-                String sCadena = "";
-
-                while ((sCadena = in2.readLine()) != null) {
-                    out += sCadena;
-                }
-
-            } catch (Exception e) {
-            }
-            if (out.charAt(0) == '[') {
+        if(!(json.toString().charAt(0) == '[')){
+            if (new File(json.toString()).isFile()) {
+                File fil = new File(json.toString());
+                String out = "";
                 try {
-                    array = (org.json.simple.JSONArray) parser.parse(out);
-                } catch (ParseException e) {
+                    BufferedReader in2 = new BufferedReader(new InputStreamReader(new FileInputStream(fil), "utf-8"));
+                    String sCadena = "";
+
+                    while ((sCadena = in2.readLine()) != null) {
+                        out += sCadena;
+                    }
+
+                } catch (Exception e) {
                 }
+                if (out.charAt(0) == '[') {
+                    try {
+                        array = (org.json.simple.JSONArray) parser.parse(out);
+                    } catch (ParseException e) {
+                    }
+                } else {
+                    try {
+                        obj = (org.json.simple.JSONObject) parser.parse(out);
+                    } catch (ParseException e) {
+                    }
+                }
+                return;
+            }
+
+            if (json.toString().charAt(0) == '/') {
+
+                String out = "";
+                try {
+                    BufferedReader in = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(json.toString()), "utf-8"));
+                    String sCadena = "";
+
+                    while ((sCadena = in.readLine())!=null) {
+                        out += sCadena;
+                    }
+
+                }catch (Exception e){}
+
+                if(out.charAt(0) == '['){
+                    try {
+                        array = (org.json.simple.JSONArray) parser.parse(out);
+                    } catch (ParseException e) {}
+                }else {
+                    try {
+                        obj = (org.json.simple.JSONObject) parser.parse(out);
+                    } catch (ParseException e) {}
+                }
+                return;
             } else {
+                String path = json.toString();
+                String fileName = json.toString().split("\\{")[1].replace("}", "");
+                path = path.replace("{" + fileName + "}", "").replace(".", "/");
+
+                String out = "";
                 try {
-                    obj = (org.json.simple.JSONObject) parser.parse(out);
-                } catch (ParseException e) {
+                    BufferedReader in = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/" + path + fileName), "utf-8"));
+                    String sCadena = "";
+
+                    while ((sCadena = in.readLine())!=null) {
+                        out += sCadena;
+                    }
+
+                }catch (Exception e){}
+
+                if(out.charAt(0) == '['){
+                    try {
+                        array = (org.json.simple.JSONArray) parser.parse(out);
+                    } catch (ParseException e) {}
+                }else {
+                    try {
+                        obj = (org.json.simple.JSONObject) parser.parse(out);
+                    } catch (ParseException e) {}
                 }
+                return;
             }
-            return;
-        }
-        
-        if (json.toString().charAt(0) == '/') {
-  
-            String out = "";
-            try {
-                BufferedReader in = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(json.toString()), "utf-8"));
-                String sCadena = "";
-
-                while ((sCadena = in.readLine())!=null) {
-                    out += sCadena;
-                }
-
-            }catch (Exception e){}
-
-            if(out.charAt(0) == '['){
-                try {
-                    array = (org.json.simple.JSONArray) parser.parse(out);
-                } catch (ParseException e) {}
-            }else {
-                try {
-                    obj = (org.json.simple.JSONObject) parser.parse(out);
-                } catch (ParseException e) {}
+        }else{
+            String path = json.toString().replace("[", "").replace("]", "");
+            if(path.charAt(0) == '/' || path.charAt(0) == '.'){
+                path = path.replace(".", "/");
+                path = path.substring(1, path.length());
+            }else{
+                path = path.replace(".", "/");
             }
-            return;
-        } else {
-            String path = json.toString();
-            String fileName = json.toString().split("\\{")[1].replace("}", "");
-            path = path.replace("{" + fileName + "}", "").replace(".", "/");
-
-            String out = "";
-            try {
-                BufferedReader in = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/" + path + fileName), "utf-8"));
-                String sCadena = "";
-
-                while ((sCadena = in.readLine())!=null) {
-                    out += sCadena;
-                }
-
-            }catch (Exception e){}
-
-            if(out.charAt(0) == '['){
-                try {
-                    array = (org.json.simple.JSONArray) parser.parse(out);
-                } catch (ParseException e) {}
-            }else {
-                try {
-                    obj = (org.json.simple.JSONObject) parser.parse(out);
-                } catch (ParseException e) {}
+            System.out.println(path);
+            File fil = new File(path);
+            
+            for (Object files : fil.list()) {
+                System.out.println(files);
             }
-            return;
-        }
+            
+        }  
     }
     //================================================================
 

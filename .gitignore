@@ -2,3 +2,6 @@
 out/
 
 \.idea/workspace\.xml
+
+build/classes/Run\.class
+/dist/
