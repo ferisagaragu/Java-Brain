@@ -1,3 +1,4 @@
+import java.io.File;
 import org.javabrain.util.alert.Console;
 import org.javabrain.util.data.Json;
 
@@ -6,10 +7,9 @@ public class Run {
 
     public static void main(String[] args) {
 
-        System.out.println("test");
-        Json json = new Json("[DB.nueva]");
+        Json json = new Json("C:\\Users\\QualtopGroup\\Desktop\\test.json");
 
-        Console.black(json.use("acciones"));
+        Console.black(json);
 
     }
 
