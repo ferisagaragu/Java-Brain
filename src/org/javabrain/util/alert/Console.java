@@ -20,66 +20,98 @@ public class Console {
     //Funciones pra imprimir en pantalla
 
     public static void red(Object message){
-        System.out.println("\033[31m"+message+"\033[30m");
+        System.out.println("\033[31m"+message.toString().replace("<3","❤").replace(":)","☺")
+                    .replace(":(","☹").replace("<-","←")
+                    .replace("->","→")+"\033[30m");
     }
     
     public static void green(Object message){
-        System.out.println("\033[32m"+message+"\033[30m");
+        System.out.println("\033[32m"+message.toString().replace("<3","❤").replace(":)","☺")
+                    .replace(":(","☹").replace("<-","←")
+                    .replace("->","→")+"\033[30m");
     }
     
     public static void yellow(Object message){
-        System.out.println("\033[33m"+message+"\033[30m");
+        System.out.println("\033[33m"+message.toString().replace("<3","❤").replace(":)","☺")
+                    .replace(":(","☹").replace("<-","←")
+                    .replace("->","→")+"\033[30m");
     }
     
     public static void blue(Object message){
-        System.out.println("\033[34m"+message+"\033[30m");
+        System.out.println("\033[34m"+message.toString().replace("<3","❤").replace(":)","☺")
+                    .replace(":(","☹").replace("<-","←")
+                    .replace("->","→")+"\033[30m");
     }
 
     public static void magenta(Object message){
-        System.out.println("\033[35m"+message+"\033[30m");
+        System.out.println("\033[35m"+message.toString().replace("<3","❤").replace(":)","☺")
+                    .replace(":(","☹").replace("<-","←")
+                    .replace("->","→")+"\033[30m");
     }
     
     public static void cyan(Object message){
-        System.out.println("\033[36m"+message+"\033[30m");
+        System.out.println("\033[36m"+message.toString().replace("<3","❤").replace(":)","☺")
+                    .replace(":(","☹").replace("<-","←")
+                    .replace("->","→")+"\033[30m");
     }
 
     public static void white(Object message){
-        System.out.println("\033[37m"+message+"\033[30m");
+        System.out.println("\033[37m"+message.toString().replace("<3","❤").replace(":)","☺")
+                    .replace(":(","☹").replace("<-","←")
+                    .replace("->","→")+"\033[30m");
     }
 
-    public static void black(Object messge){System.out.println(messge);}
+    public static void black(Object messge){System.out.println(messge.toString().replace("<3","❤").replace(":)","☺")
+                    .replace(":(","☹").replace("<-","←")
+                    .replace("->","→"));}
 
 
 
     public static void redOnLine(Object message){
-        System.out.print("\033[31m"+message+"\033[30m");
+        System.out.print("\033[31m"+message.toString().replace("<3","❤").replace(":)","☺")
+                    .replace(":(","☹").replace("<-","←")
+                    .replace("->","→")+"\033[30m");
     }
 
     public static void greenOnLine(Object message){
-        System.out.print("\033[32m"+message+"\033[30m");
+        System.out.print("\033[32m"+message.toString().replace("<3","❤").replace(":)","☺")
+                    .replace(":(","☹").replace("<-","←")
+                    .replace("->","→")+"\033[30m");
     }
 
     public static void yellowOnLine(Object message){
-        System.out.print("\033[33m"+message+"\033[30m");
+        System.out.print("\033[33m"+message.toString().replace("<3","❤").replace(":)","☺")
+                    .replace(":(","☹").replace("<-","←")
+                    .replace("->","→")+"\033[30m");
     }
 
     public static void blueOnLine(Object message){
-        System.out.print("\033[34m"+message+"\033[30m");
+        System.out.print("\033[34m"+message.toString().replace("<3","❤").replace(":)","☺")
+                    .replace(":(","☹").replace("<-","←")
+                    .replace("->","→")+"\033[30m");
     }
 
     public static void magentaOnLine(Object message){
-        System.out.print("\033[35m"+message+"\033[30m");
+        System.out.print("\033[35m"+message.toString().replace("<3","❤").replace(":)","☺")
+                    .replace(":(","☹").replace("<-","←")
+                    .replace("->","→")+"\033[30m");
     }
 
     public static void cyanOnLine(Object message){
-        System.out.print("\033[36m"+message+"\033[30m");
+        System.out.print("\033[36m"+message.toString().replace("<3","❤").replace(":)","☺")
+                    .replace(":(","☹").replace("<-","←")
+                    .replace("->","→")+"\033[30m");
     }
 
     public static void whiteOnLine(Object message){
-        System.out.print("\033[37m"+message+"\033[30m");
+        System.out.print("\033[37m"+message.toString().replace("<3","❤").replace(":)","☺")
+                    .replace(":(","☹").replace("<-","←")
+                    .replace("->","→")+"\033[30m");
     }
 
-    public static void blackOnLine(Object messge){System.out.print(messge);}
+    public static void blackOnLine(Object messge){System.out.print(messge.toString().replace("<3","❤").replace(":)","☺")
+                    .replace(":(","☹").replace("<-","←")
+                    .replace("->","→"));}
 
     public static void colorOnLine(Object message){
         if(count == 8){count = 0;}
@@ -107,7 +139,7 @@ public class Console {
             Json json = new Json(message);
             message = json.toJSONString().replace("<3","❤").replace(":)","☺")
                     .replace(":(","☹").replace("<-","←")
-                    .replace("->","→");;
+                    .replace("->","→");
             type = 0;
         }catch (Exception e){}
 
@@ -188,8 +220,6 @@ public class Console {
                 }
 
                 break;
-
-
         }
 
     }
