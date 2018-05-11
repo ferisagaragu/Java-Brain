@@ -9,7 +9,6 @@ import org.json.simple.parser.ParseException;
 
 import java.io.*;
 import java.math.BigDecimal;
-import java.net.URL;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -33,7 +32,7 @@ public class Json extends Object{
     private JSONObject obj;
     private JSONArray array;
     private Object destructurinOunt = null;
-    private Map jsons;
+    private Map<Object,String> jsons;
     //===========================================================================
 
     //Constantes privadas
@@ -149,13 +148,12 @@ public class Json extends Object{
             }else{
                 path = path.replace(".", "/");
             }
-            System.out.println(path);
+            
+            jsons = new HashMap();
             File fil = new File(path);
-            
             for (Object files : fil.list()) {
-                System.out.println(files);
+                jsons.put(files.toString().replace(".json",""),path+"/"+files);
             }
-            
         }  
     }
     //================================================================
@@ -717,7 +715,10 @@ public class Json extends Object{
         }catch (Exception e){}
 
     }
-
+    
+    public Json use(Object jsonFile){
+        return new Json(jsons.get(jsonFile));
+    }
     //===============================================================
 
     //METODOS PRIVADOS
