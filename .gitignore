@@ -3,11 +3,8 @@ Java-Brain.iml
 build.xml
 manifest.mf
 
-out/
 dist/
 out/
 build/
 nbproject/
 .idea/
-
-
