@@ -47,8 +47,23 @@ public class Json extends Object{
         } catch (ParseException e) {}
     }
     
-    //Meter un ayudador para que encuentre de si por que si el Json
+    /*
+    FUNCIONAN - EXTERNOS
+    Json json = new Json(new File("C:\\Users\\QualtopGroup\\Desktop\\test.json"));
+    Json json = new Json("C:\\Users\\QualtopGroup\\Desktop\\test.json");
+    
+    Json json = new Json("[DB.nueva]");
+    Console.black(json.use("acciones"));
+    Falta el Json json = new Json("[C:\\Users\\QualtopGroup\\Desktop\\]");
+    
+    FUNCIONAN - INTERNOS
+    Json json = new Json("org.javabrain.test.{test.json}");
+    Json json = new Json("org/javabrain/test/test.json");
+    Json json = new Json("/org/javabrain/test/test.json");
+    */
     public Json(Object json) {
+        
+        //Carga un Json apartir de un String
         parser = new JSONParser();
         if(json.toString().charAt(0) == '['){
             try {
@@ -62,6 +77,7 @@ public class Json extends Object{
             } catch (ParseException e) {}
         }
         
+        //Crea el json con rutas
         if(!(json.toString().charAt(0) == '[')){
             if (new File(json.toString()).isFile()) {
                 File fil = new File(json.toString());
@@ -114,9 +130,14 @@ public class Json extends Object{
                 }
                 return;
             } else {
-                String path = json.toString();
-                String fileName = json.toString().split("\\{")[1].replace("}", "");
-                path = path.replace("{" + fileName + "}", "").replace(".", "/");
+                String path = "",fileName = "";
+                try{
+                    path = json.toString();
+                    fileName = json.toString().split("\\{")[1].replace("}", "");
+                    path = path.replace("{" + fileName + "}", "").replace(".", "/");  
+                }catch(Exception e){
+                    path = json.toString();
+                }
 
                 String out = "";
                 try {
@@ -834,10 +855,10 @@ public class Json extends Object{
     public String toString(){
 
         if(obj == null || obj.toString().equals("{}")){
-            return array.toJSONString();
+            try{return array.toJSONString();}catch(Exception e){return "{}";}
         }
 
-        return obj.toJSONString();
+        try{return obj.toJSONString();}catch(Exception e){return "{}";}
     }
     //===============================================================
 
