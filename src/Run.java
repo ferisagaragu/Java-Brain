@@ -7,7 +7,7 @@ public class Run {
 
     public static void main(String[] args) {
 
-        Json json = new Json("C:\\Users\\QualtopGroup\\Desktop\\test.json");
+        Json json = new Json("org.javabrain.test.{test.json}");
 
         Console.black(json);
 
