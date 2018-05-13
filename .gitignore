@@ -1,4 +1,7 @@
 *.class
+Java-Brain.iml
+build.xml
+manifest.mf
 
 out/
 dist/
