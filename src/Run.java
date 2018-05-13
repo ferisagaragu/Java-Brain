@@ -1,4 +1,3 @@
-import java.io.File;
 import org.javabrain.util.alert.Console;
 import org.javabrain.util.data.Json;
 
@@ -9,7 +8,7 @@ public class Run {
 
         Json json = new Json("org.javabrain.test.{test.json}");
 
-        Console.black(json);
+        Console.code(json);
 
     }
 
