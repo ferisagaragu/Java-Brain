@@ -5,6 +5,6 @@ out/
 
 build/classes/Run\.class
 /dist/
-build/classes/org/javabrain/util/data/Json\$1\.class
+*.rs
 
-*.class
+build/classes/org/javabrain/util/resource/Path\.class
