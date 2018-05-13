@@ -6,5 +6,6 @@ manifest.mf
 out/
 dist/
 out/
+build/
 nbproject/
 .idea/
