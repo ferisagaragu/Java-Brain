@@ -5,3 +5,6 @@ out/
 
 build/classes/Run\.class
 /dist/
+*.rs
+
+build/classes/org/javabrain/util/resource/Path\.class
