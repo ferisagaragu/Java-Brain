@@ -1,8 +1,10 @@
 *.class
+Java-Brain.iml
+build.xml
+manifest.mf
 
 out/
 dist/
 out/
-test/
 nbproject/
 .idea/
