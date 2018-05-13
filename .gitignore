@@ -1,10 +1,8 @@
+*.class
 
 out/
-
-\.idea/workspace\.xml
-
-build/classes/Run\.class
-/dist/
-*.rs
-
-build/classes/org/javabrain/util/resource/Path\.class
+dist/
+out/
+test/
+nbproject/
+.idea/
