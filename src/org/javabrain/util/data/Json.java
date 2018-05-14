@@ -55,6 +55,10 @@ public class Json extends Object{
     Json json = new Json("[DB.nueva]");
     Console.black(json.use("acciones"));
     Falta el Json json = new Json("[C:\\Users\\QualtopGroup\\Desktop\\]");
+    Falta sql a Json json = new Json("select * from example" o statemen);
+    Falta iniciar con hasmap
+    Falta iniciar apartir de un arraylist o arra en los cuales el json se formara de item1: valor item2: valor
+    Falta iniciar json con petition solo get Json json = new Json("http://www.javabrain.com/example-data");
     
     FUNCIONAN - INTERNOS
     Json json = new Json("org.javabrain.test.{test.json}");
@@ -329,15 +333,119 @@ public class Json extends Object{
 
     //MJSONS-0001
     public void setJSON(Object json) {
+        //Carga un Json apartir de un String
+        parser = new JSONParser();
         if(json.toString().charAt(0) == '['){
             try {
                 array = (org.json.simple.JSONArray) parser.parse(json.toString());
+                return;
             } catch (ParseException e) {}
         }else {
             try {
                 obj = (org.json.simple.JSONObject) parser.parse(json.toString());
+                return;
             } catch (ParseException e) {}
         }
+        
+        //Crea el json con rutas
+        if(!(json.toString().charAt(0) == '[')){
+            if (new File(json.toString()).isFile()) {
+                File fil = new File(json.toString());
+                String out = "";
+                try {
+                    BufferedReader in2 = new BufferedReader(new InputStreamReader(new FileInputStream(fil), "utf-8"));
+                    String sCadena = "";
+
+                    while ((sCadena = in2.readLine()) != null) {
+                        out += sCadena;
+                    }
+
+                } catch (Exception e) {
+                }
+                if (out.charAt(0) == '[') {
+                    try {
+                        array = (org.json.simple.JSONArray) parser.parse(out);
+                    } catch (ParseException e) {
+                    }
+                } else {
+                    try {
+                        obj = (org.json.simple.JSONObject) parser.parse(out);
+                    } catch (ParseException e) {
+                    }
+                }
+                return;
+            }
+
+            if (json.toString().charAt(0) == '/') {
+
+                String out = "";
+                try {
+                    BufferedReader in = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(json.toString()), "utf-8"));
+                    String sCadena = "";
+
+                    while ((sCadena = in.readLine())!=null) {
+                        out += sCadena;
+                    }
+
+                }catch (Exception e){}
+
+                if(out.charAt(0) == '['){
+                    try {
+                        array = (org.json.simple.JSONArray) parser.parse(out);
+                    } catch (ParseException e) {}
+                }else {
+                    try {
+                        obj = (org.json.simple.JSONObject) parser.parse(out);
+                    } catch (ParseException e) {}
+                }
+                return;
+            } else {
+                String path = "",fileName = "";
+                try{
+                    path = json.toString();
+                    fileName = json.toString().split("\\{")[1].replace("}", "");
+                    path = path.replace("{" + fileName + "}", "").replace(".", "/");  
+                }catch(Exception e){
+                    path = json.toString();
+                }
+
+                String out = "";
+                try {
+                    BufferedReader in = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/" + path + fileName), "utf-8"));
+                    String sCadena = "";
+
+                    while ((sCadena = in.readLine())!=null) {
+                        out += sCadena;
+                    }
+
+                }catch (Exception e){}
+
+                if(out.charAt(0) == '['){
+                    try {
+                        array = (org.json.simple.JSONArray) parser.parse(out);
+                    } catch (ParseException e) {}
+                }else {
+                    try {
+                        obj = (org.json.simple.JSONObject) parser.parse(out);
+                    } catch (ParseException e) {}
+                }
+                return;
+            }
+        }else{
+            String path = json.toString().replace("[", "").replace("]", "");
+            if(path.charAt(0) == '/' || path.charAt(0) == '.'){
+                path = path.replace(".", "/");
+                path = path.substring(1, path.length());
+            }else{
+                path = path.replace(".", "/");
+            }
+            
+            jsons = new HashMap();
+            File fil = new File(path);
+            for (Object files : fil.list()) {
+                jsons.put(files.toString().replace(".json",""),path+"/"+files);
+            }
+        }  
     }
 
     //===============================================================
