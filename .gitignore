@@ -4,7 +4,7 @@ build.xml
 manifest.mf
 
 dist/
-out/
 build/
+out/
 nbproject/
 .idea/
