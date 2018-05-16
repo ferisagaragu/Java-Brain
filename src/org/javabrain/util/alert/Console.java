@@ -3,11 +3,13 @@ package org.javabrain.util.alert;
 import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Component;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,7 +21,6 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeCellRenderer;
 import javax.swing.tree.TreePath;
-import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 import org.javabrain.util.data.Json;
 
 /**
@@ -256,9 +257,11 @@ public class Console {
             json2 = new Json(message);
             type = 0;
         }catch (Exception e){}
-
+        //Caragar elementos internos en una clase estatica
+        ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+        Image img = new ImageIcon(classLoader.getResource("res/component/json.png")).getImage();
         switch (type) {
-            case 0: new SwingTree(json2,json); break;
+            case 0: new SwingTree(json2,json,img); break;
         }
         breakLine();
     }
@@ -276,18 +279,18 @@ public class Console {
     //=======================================================================
 }
 
+//Clase para cargar todo con respecto a Json
+//Falta cambiar los scrolls por unos mas nuevos y el boton
 class SwingTree extends JFrame {
-  private JTextField textField = new JTextField();
   private JScrollPane scrollPane = new JScrollPane();
   private JTree tree;
   private Renderer renderer = new Renderer();
 
-  public SwingTree(Json json,Json real) {
+  public SwingTree(Json json,Json real,Image img) {
     DefaultMutableTreeNode root = renderJson("Root",json,"#2196F3");
     tree = new JTree(root);
     getContentPane().setLayout(new BorderLayout());
     tree.setCellRenderer(renderer);
-    tree.addTreeSelectionListener(new TreeHandler());
     scrollPane.getViewport().add(tree);
     Button button = new Button("Copy");
     getContentPane().add("Center", scrollPane);
@@ -305,7 +308,7 @@ class SwingTree extends JFrame {
             cb.setContents(ss, ss);
         }
     });
-    //setIconImage(new ImageIcon(SwingTree.class.getResource("json.png")).getImage());
+    setIconImage(img);
   }
   
   private DefaultMutableTreeNode renderJson(String pre,Json json,String color){
@@ -399,23 +402,42 @@ class SwingTree extends JFrame {
               + "</html>";
   }
   
-class TreeHandler implements TreeSelectionListener {
-    public void valueChanged(TreeSelectionEvent e) {
-      TreePath path = e.getPath();
-      String text = path.getPathComponent(path.getPathCount() - 1).toString();
-      if (path.getPathCount() > 3) {
-        text += ": ";
-        text += Integer.toString((int) (Math.random() * 50)) + " Wins ";
-        text += Integer.toString((int) (Math.random() * 50)) + " Losses";
-      }
-      textField.setText(text);
-    }
-  }
-}
 class Renderer extends JLabel implements TreeCellRenderer {
   public Component getTreeCellRendererComponent(JTree tree, Object value, boolean selected,
       boolean expanded, boolean leaf, int row, boolean hasFocus) {
     setText(value.toString() + "                   ");
     return this;
+  }
+}
+//==============================================================================
+
+//Clase para cargar todo con respecto a clases Java
+
+class JavaViewer extends JFrame{
+    
+    /*public JavaViewer(String code,Image img) {
+    DefaultMutableTreeNode root = renderJson("Root",json,"#2196F3");
+    tree = new JTree(root);
+    getContentPane().setLayout(new BorderLayout());
+    tree.setCellRenderer(renderer);
+    tree.addTreeSelectionListener(new TreeHandler());
+    scrollPane.getViewport().add(tree);
+    Button button = new Button("Copy");
+    getContentPane().add("Center", scrollPane);
+    getContentPane().add(BorderLayout.SOUTH,button);
+    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    setSize(500, 500);
+    setVisible(true);
+    setLocationRelativeTo(null);
+    setTitle("JSON Viwer");
+    button.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Clipboard cb = Toolkit.getDefaultToolkit().getSystemClipboard();
+            StringSelection ss = new StringSelection(real.toJSONString());
+            cb.setContents(ss, ss);
+        }
+    });
+    setIconImage(img);*/
   }
 }

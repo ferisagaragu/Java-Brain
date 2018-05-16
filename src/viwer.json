@@ -1,4 +1,4 @@
-{
+[{
     "name": "Fernando",
     "apellido":"Garcia Aguirre y soy -> :)",
     "otro mas pana":"",
@@ -14,4 +14,5 @@
                 {"otro mas 14":[{"otro mas 14":[1,2,3,45]}]}
             ]
     }
-}
+}]
+
