@@ -1,16 +1,17 @@
 {
     "name": "Fernando",
     "apellido":"Garcia Aguirre y soy -> :)",
-    "otro mas pana":"ottro wee",
+    "otro mas pana":"",
     "array":{"nuevo":123},
     "nuevamente":{
-        "item1":2,
+        "item1":2.21,
         "item2":234234,
         "#":[
                 {"otro mas":"nuevamente"},
-                {"otro mas":"nuevamente"},
-                {"otro mas":"nuevamente"},
-                {"otro mas":[1,2,3,45]}
+                {"otro mas 12":"nuevamente"},
+                {"otro mas 13":"nuevamente"},
+                {"otro mas 14":[1,2,3,45]},
+                {"otro mas 14":[{"otro mas 14":[1,2,3,45]}]}
             ]
     }
 }

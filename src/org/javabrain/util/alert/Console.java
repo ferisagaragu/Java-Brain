@@ -1,7 +1,13 @@
 package org.javabrain.util.alert;
 
 import java.awt.BorderLayout;
+import java.awt.Button;
 import java.awt.Component;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,6 +19,7 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeCellRenderer;
 import javax.swing.tree.TreePath;
+import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 import org.javabrain.util.data.Json;
 
 /**
@@ -239,9 +246,10 @@ public class Console {
     
     public static void viewer(Object message){
         Json json2 = null;
+        Json json = null;
         int type = -1;
         try{
-            Json json = new Json(message);
+            json = new Json(message);
             message = json.toJSONString().replace("<3","❤").replace(":)","☺")
                     .replace(":(","☹").replace("<-","←")
                     .replace("->","→");
@@ -250,7 +258,7 @@ public class Console {
         }catch (Exception e){}
 
         switch (type) {
-            case 0: new SwingTree(json2); break;
+            case 0: new SwingTree(json2,json); break;
         }
         breakLine();
     }
@@ -274,33 +282,43 @@ class SwingTree extends JFrame {
   private JTree tree;
   private Renderer renderer = new Renderer();
 
-  public SwingTree(Json json) {
-    DefaultMutableTreeNode root = renderJson("",json,"");
+  public SwingTree(Json json,Json real) {
+    DefaultMutableTreeNode root = renderJson("Root",json,"#2196F3");
     tree = new JTree(root);
     getContentPane().setLayout(new BorderLayout());
     tree.setCellRenderer(renderer);
     tree.addTreeSelectionListener(new TreeHandler());
     scrollPane.getViewport().add(tree);
+    Button button = new Button("Copy");
     getContentPane().add("Center", scrollPane);
+    getContentPane().add(BorderLayout.SOUTH,button);
     setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     setSize(500, 500);
     setVisible(true);
     setLocationRelativeTo(null);
     setTitle("JSON Viwer");
+    button.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Clipboard cb = Toolkit.getDefaultToolkit().getSystemClipboard();
+            StringSelection ss = new StringSelection(real.toJSONString());
+            cb.setContents(ss, ss);
+        }
+    });
     //setIconImage(new ImageIcon(SwingTree.class.getResource("json.png")).getImage());
   }
-
+  
   private DefaultMutableTreeNode renderJson(String pre,Json json,String color){
       
     DefaultMutableTreeNode root = null;
       
+    int a = 1;
     if(json.isJSONArray()){
-        root = new DefaultMutableTreeNode(html(pre,"Array",color));
-        int a = 0;
+        root = new DefaultMutableTreeNode(html(pre,"Array","#2196F3"));
+
         for(Json js:json.values()){
             if(js.isJSONObject()){
-                System.out.println(js.getKey(a));
-                root.add(renderJson(js.getKey(a),js,""));
+                root.add(renderJson("item "+a,js,color));
             }
             a++;
         }
@@ -312,13 +330,47 @@ class SwingTree extends JFrame {
                 Json obj = json.getJSON(key);
                 
                 if(obj.isJSONArray()){
-                    root.add(renderJson("",obj,"")); 
+                    root.add(renderJson(key.toString(),obj,color)); 
                 }else{
                     root.add(renderJson(key.toString(),obj,"#2196F3"));
                 }
                 
             }catch(Exception e){
-                root.add(new DefaultMutableTreeNode(element(key.toString(),json.getString(key),"#EF5350")));
+                String result = json.getString(key);
+                int type= 0;
+                
+                if(result.isEmpty()){
+                    type = 1;
+                }
+                
+                try{
+                    Integer.parseInt(result);
+                    type = 2;
+                }catch(Exception ex){}
+                
+                try{
+                    if(result.charAt(0) == '['){
+                       type = 3;
+                    }
+                }catch(Exception ex){}
+                
+                if(result.contains("http")){
+                    type = 4;
+                }
+                
+                if(result.contains(";base64,")){
+                    type = 5;
+                }
+                
+                switch(type){
+                    case 1: root.add(new DefaultMutableTreeNode(element(key.toString(),"emply","#9E9E9E"))); break;
+                    case 2: root.add(new DefaultMutableTreeNode(element(key.toString(),result,"#EC407A"))); break;
+                    case 3: root.add(new DefaultMutableTreeNode(element(key.toString(),result,"#26A69A"))); break;
+                    case 4: root.add(new DefaultMutableTreeNode(element(key.toString(),result,"#90CAF9"))); break;
+                    case 5: root.add(new DefaultMutableTreeNode(element(key.toString(),"base64 ﬦ","#FF9800"))); break;
+                    default:
+                       root.add(new DefaultMutableTreeNode(element(key.toString(),"\""+result+"\"","#EF5350"))); 
+                }
             }
         }
     }
