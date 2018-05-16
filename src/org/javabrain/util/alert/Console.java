@@ -2,6 +2,7 @@ package org.javabrain.util.alert;
 
 import java.awt.BorderLayout;
 import java.awt.Button;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -262,6 +263,7 @@ public class Console {
         Image img = new ImageIcon(classLoader.getResource("res/component/json.png")).getImage();
         switch (type) {
             case 0: new SwingTree(json2,json,img); break;
+                default: new JavaViewer(message.toString(),img);
         }
         breakLine();
     }
@@ -409,35 +411,96 @@ class Renderer extends JLabel implements TreeCellRenderer {
     return this;
   }
 }
+}
 //==============================================================================
 
 //Clase para cargar todo con respecto a clases Java
-
 class JavaViewer extends JFrame{
     
-    /*public JavaViewer(String code,Image img) {
-    DefaultMutableTreeNode root = renderJson("Root",json,"#2196F3");
-    tree = new JTree(root);
-    getContentPane().setLayout(new BorderLayout());
-    tree.setCellRenderer(renderer);
-    tree.addTreeSelectionListener(new TreeHandler());
-    scrollPane.getViewport().add(tree);
-    Button button = new Button("Copy");
-    getContentPane().add("Center", scrollPane);
-    getContentPane().add(BorderLayout.SOUTH,button);
-    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    setSize(500, 500);
-    setVisible(true);
-    setLocationRelativeTo(null);
-    setTitle("JSON Viwer");
-    button.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            Clipboard cb = Toolkit.getDefaultToolkit().getSystemClipboard();
-            StringSelection ss = new StringSelection(real.toJSONString());
-            cb.setContents(ss, ss);
-        }
-    });
-    setIconImage(img);*/
-  }
+    private JScrollPane scrollPane = new JScrollPane();
+    
+    public JavaViewer(String code,Image img) {
+        JLabel label = new JLabel(renderCode(code));
+        label.setVerticalAlignment(JLabel.TOP);
+        scrollPane.getViewport().add(label);
+        scrollPane.getViewport().setBackground(Color.white);
+        getContentPane().add("Center", scrollPane);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setSize(500, 500);
+        setVisible(true);
+        setLocationRelativeTo(null);
+        setTitle("JSON Java");
+        setIconImage(img);
+    }
+    
+    private String renderCode(String code){
+        
+        code = code.replace("0","°!0")
+                   .replace("1","°!1")
+                   .replace("2","°!2")
+                   .replace("3","°!3")
+                   .replace("4","°!4")
+                   .replace("5","°!5")
+                   .replace("6","°!6")
+                   .replace("7","°!7")
+                   .replace("8","°!8")
+                   .replace("9","°!9")
+                   .replace("/","°!/");
+        
+        
+        code = code.replace("°!/","<font color=\"#9C27B0\">/</font>")
+                   .replace("=","<font color=\"#2196F3\">=</font>")
+                   .replace("public","<font color=\"#16abc6\">public</font>")
+                   .replace("import","<font color=\"#16abc6\">import</font>")
+                   .replace("package","<font color=\"#16abc6\">package</font>")
+                   .replace("static","<font color=\"#16abc6\">static</font>")
+                   .replace("class","<font color=\"#16abc6\">class</font>")
+                   .replace("void","<font color=\"#16abc6\">void</font>")
+                   .replace("super","<font color=\"#16abc6\">super</font>")
+                   .replace("private","<font color=\"#16abc6\">private</font>")
+                   .replace("extends","<font color=\"#16abc6\">extends</font>")
+                   .replace("implements","<font color=\"#16abc6\">implements</font>")
+                   .replace("new","<font color=\"#16abc6\">new</font>")
+                   .replace("try","<font color=\"#16abc6\">try</font>")
+                   .replace("catch","<font color=\"#16abc6\">catch</font>")
+                   .replace("throw","<font color=\"#16abc6\">throw</font>")
+                   .replace("while","<font color=\"#16abc6\">while</font>")
+                   .replace("for","<font color=\"#16abc6\">for</font>")
+                   .replace("if","<font color=\"#16abc6\">if</font>")
+                   .replace("else","<font color=\"#16abc6\">else</font>")
+                   .replace("case","<font color=\"#16abc6\">case</font>")
+                   .replace("continue","<font color=\"#16abc6\">continue</font>")
+                   .replace("default","<font color=\"#16abc6\">default</font>")
+                   .replace("this","<font color=\"#16abc6\">this</font>")
+                   .replace("return","<font color=\"#16abc6\">return</font>")
+                   .replace("@Override","<font color=\"#fdb657\">@Override</font>")
+                   .replace("°!0","<font color=\"#fdb657\">0</font>")
+                   .replace("°!1","<font color=\"#fdb657\">1</font>")
+                   .replace("°!2","<font color=\"#fdb657\">2</font>")
+                   .replace("°!3","<font color=\"#fdb657\">3</font>")
+                   .replace("°!4","<font color=\"#fdb657\">4</font>")
+                   .replace("°!5","<font color=\"#fdb657\">5</font>")
+                   .replace("°!6","<font color=\"#fdb657\">6</font>")
+                   .replace("°!7","<font color=\"#fdb657\">7</font>")
+                   .replace("°!8","<font color=\"#fdb657\">8</font>")
+                   .replace("°!9","<font color=\"#fdb657\">9</font>")
+                   .replace("@author","<font color=\"#fdb657\">@author</font>")
+                   .replace("@version","<font color=\"#fdb657\">@version</font>")
+                   .replace("{","<font color=\"#EC407A\">{</font>")
+                   .replace("}","<font color=\"#EC407A\">}</font>")
+                   .replace("Json","<font color=\"#E53935\">Json</font>")
+                   .replace("!","<font color=\"#2196F3\">!</font>")
+                   .replace("|","<font color=\"#2196F3\">|</font>")
+                   .replace("&","<font color=\"#2196F3\">&</font>")
+                   .replace("+","<font color=\"#9C27B0\">+</font>")
+                   .replace("-","<font color=\"#9C27B0\">-</font>")
+                   .replace("*","<font color=\"#9C27B0\">*</font>")
+                   .replace("%","<font color=\"#9C27B0\">%</font>")
+                   .replace("\n","<br>")
+                   .replace("    ","&nbsp;&nbsp&nbsp;&nbsp;");
+        
+        
+        
+        return "<html>"+code+"</html>";
+    }
 }
