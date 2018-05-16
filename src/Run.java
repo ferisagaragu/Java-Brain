@@ -6,10 +6,9 @@ public class Run {
 
     public static void main(String[] args) {
 
-        Json json = new Json("org.javabrain.test.{test.json}");
+        Json json = new Json("{viwer.json}");
 
-        Console.code(json);
-
+        Console.viewer(json);
     }
 
     /*todo Classes por añadir

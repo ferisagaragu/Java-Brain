@@ -1,0 +1,16 @@
+{
+    "name": "Fernando",
+    "apellido":"Garcia Aguirre y soy -> :)",
+    "otro mas pana":"ottro wee",
+    "array":{"nuevo":123},
+    "nuevamente":{
+        "item1":2,
+        "item2":234234,
+        "#":[
+                {"otro mas":"nuevamente"},
+                {"otro mas":"nuevamente"},
+                {"otro mas":"nuevamente"},
+                {"otro mas":[1,2,3,45]}
+            ]
+    }
+}

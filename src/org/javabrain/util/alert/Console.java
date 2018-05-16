@@ -1,5 +1,18 @@
 package org.javabrain.util.alert;
 
+import java.awt.BorderLayout;
+import java.awt.Component;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.JTree;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.TreeCellRenderer;
+import javax.swing.tree.TreePath;
 import org.javabrain.util.data.Json;
 
 /**
@@ -223,7 +236,25 @@ public class Console {
         }
         breakLine();
     }
+    
+    public static void viewer(Object message){
+        Json json2 = null;
+        int type = -1;
+        try{
+            Json json = new Json(message);
+            message = json.toJSONString().replace("<3","❤").replace(":)","☺")
+                    .replace(":(","☹").replace("<-","←")
+                    .replace("->","→");
+            json2 = new Json(message);
+            type = 0;
+        }catch (Exception e){}
 
+        switch (type) {
+            case 0: new SwingTree(json2); break;
+        }
+        breakLine();
+    }
+    
     //=======================================================================
 
     //Funciones para imprecion sin entrada
@@ -235,4 +266,104 @@ public class Console {
         System.out.print("\n");
     }
     //=======================================================================
+}
+
+class SwingTree extends JFrame {
+  private JTextField textField = new JTextField();
+  private JScrollPane scrollPane = new JScrollPane();
+  private JTree tree;
+  private Renderer renderer = new Renderer();
+
+  public SwingTree(Json json) {
+    DefaultMutableTreeNode root = renderJson("",json,"");
+    tree = new JTree(root);
+    getContentPane().setLayout(new BorderLayout());
+    tree.setCellRenderer(renderer);
+    tree.addTreeSelectionListener(new TreeHandler());
+    scrollPane.getViewport().add(tree);
+    getContentPane().add("Center", scrollPane);
+    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    setSize(500, 500);
+    setVisible(true);
+    setLocationRelativeTo(null);
+    setTitle("JSON Viwer");
+    //setIconImage(new ImageIcon(SwingTree.class.getResource("json.png")).getImage());
+  }
+
+  private DefaultMutableTreeNode renderJson(String pre,Json json,String color){
+      
+    DefaultMutableTreeNode root = null;
+      
+    if(json.isJSONArray()){
+        root = new DefaultMutableTreeNode(html(pre,"Array",color));
+        int a = 0;
+        for(Json js:json.values()){
+            if(js.isJSONObject()){
+                System.out.println(js.getKey(a));
+                root.add(renderJson(js.getKey(a),js,""));
+            }
+            a++;
+        }
+        
+    }else{
+        root = new DefaultMutableTreeNode(html(pre,"Object",color));
+        for(Object key:json.getKeys()){
+            try{
+                Json obj = json.getJSON(key);
+                
+                if(obj.isJSONArray()){
+                    root.add(renderJson("",obj,"")); 
+                }else{
+                    root.add(renderJson(key.toString(),obj,"#2196F3"));
+                }
+                
+            }catch(Exception e){
+                root.add(new DefaultMutableTreeNode(element(key.toString(),json.getString(key),"#EF5350")));
+            }
+        }
+    }
+
+    return root;
+  }
+  
+  private String html(String pre,String text,String color){
+      return "<html>" +
+                "<font color=\"#BA68C8\">&nbsp;&nbsp;"+
+                    pre+":"+
+                "</font>"+
+                "<font color=\""+color+"\">&nbsp;&nbsp;"+
+                    text+
+                "</font></html>";
+  }
+  
+  private String element(String key,String obj,String css){
+      return "<html>" +
+                "<font color=\"#BA68C8\">&nbsp;&nbsp;"+
+                    key+":"+
+                "</font>"+
+                "<font color=\""+css+"\">&nbsp;"+
+                    obj+
+                "</font>"
+              + "</html>";
+  }
+  
+class TreeHandler implements TreeSelectionListener {
+    public void valueChanged(TreeSelectionEvent e) {
+      TreePath path = e.getPath();
+      String text = path.getPathComponent(path.getPathCount() - 1).toString();
+      if (path.getPathCount() > 3) {
+        text += ": ";
+        text += Integer.toString((int) (Math.random() * 50)) + " Wins ";
+        text += Integer.toString((int) (Math.random() * 50)) + " Losses";
+      }
+      textField.setText(text);
+    }
+  }
+}
+class Renderer extends JLabel implements TreeCellRenderer {
+  public Component getTreeCellRendererComponent(JTree tree, Object value, boolean selected,
+      boolean expanded, boolean leaf, int row, boolean hasFocus) {
+    setText(value.toString() + "                   ");
+    return this;
+  }
 }
