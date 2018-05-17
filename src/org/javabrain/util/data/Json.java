@@ -59,6 +59,8 @@ public class Json extends Object{
     Falta iniciar con hasmap
     Falta iniciar apartir de un arraylist o arra en los cuales el json se formara de item1: valor item2: valor
     Falta iniciar json con petition solo get Json json = new Json("http://www.javabrain.com/example-data");
+    Falta iniciar json con inputString
+    Falta iniciar json encriptado
     
     FUNCIONAN - INTERNOS
     Json json = new Json("org.javabrain.test.{test.json}");
