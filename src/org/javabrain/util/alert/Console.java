@@ -1,18 +1,23 @@
 package org.javabrain.util.alert;
 
 import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 import javax.swing.JTree;
-import javax.swing.event.TreeSelectionEvent;
-import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeCellRenderer;
-import javax.swing.tree.TreePath;
 import org.javabrain.util.data.Json;
 
 /**
@@ -239,18 +244,22 @@ public class Console {
     
     public static void viewer(Object message){
         Json json2 = null;
+        Json json = null;
         int type = -1;
         try{
-            Json json = new Json(message);
+            json = new Json(message);
             message = json.toJSONString().replace("<3","❤").replace(":)","☺")
                     .replace(":(","☹").replace("<-","←")
                     .replace("->","→");
             json2 = new Json(message);
             type = 0;
         }catch (Exception e){}
-
+        //Caragar elementos internos en una clase estatica
+        ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+        Image img = new ImageIcon(classLoader.getResource("res/component/json.png")).getImage();
         switch (type) {
-            case 0: new SwingTree(json2); break;
+            case 0: new SwingTree(json2,json,img); break;
+            default: new JavaViewer(message.toString(),img);
         }
         breakLine();
     }
@@ -268,39 +277,49 @@ public class Console {
     //=======================================================================
 }
 
+//Clase para cargar todo con respecto a Json
+//Falta cambiar los scrolls por unos mas nuevos y el boton
 class SwingTree extends JFrame {
-  private JTextField textField = new JTextField();
   private JScrollPane scrollPane = new JScrollPane();
   private JTree tree;
   private Renderer renderer = new Renderer();
 
-  public SwingTree(Json json) {
-    DefaultMutableTreeNode root = renderJson("",json,"");
+  public SwingTree(Json json,Json real,Image img) {
+    DefaultMutableTreeNode root = renderJson("Root",json,"#2196F3");
     tree = new JTree(root);
     getContentPane().setLayout(new BorderLayout());
     tree.setCellRenderer(renderer);
-    tree.addTreeSelectionListener(new TreeHandler());
     scrollPane.getViewport().add(tree);
+    Button button = new Button("Copy");
     getContentPane().add("Center", scrollPane);
+    getContentPane().add(BorderLayout.SOUTH,button);
     setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     setSize(500, 500);
     setVisible(true);
     setLocationRelativeTo(null);
-    setTitle("JSON Viwer");
-    //setIconImage(new ImageIcon(SwingTree.class.getResource("json.png")).getImage());
+    setTitle("JSON Viewer");
+    button.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Clipboard cb = Toolkit.getDefaultToolkit().getSystemClipboard();
+            StringSelection ss = new StringSelection(real.toJSONString());
+            cb.setContents(ss, ss);
+        }
+    });
+    setIconImage(img);
   }
-
+  
   private DefaultMutableTreeNode renderJson(String pre,Json json,String color){
       
     DefaultMutableTreeNode root = null;
       
+    int a = 1;
     if(json.isJSONArray()){
-        root = new DefaultMutableTreeNode(html(pre,"Array",color));
-        int a = 0;
+        root = new DefaultMutableTreeNode(html(pre,"Array","#2196F3"));
+
         for(Json js:json.values()){
             if(js.isJSONObject()){
-                System.out.println(js.getKey(a));
-                root.add(renderJson(js.getKey(a),js,""));
+                root.add(renderJson("item "+a,js,color));
             }
             a++;
         }
@@ -312,13 +331,47 @@ class SwingTree extends JFrame {
                 Json obj = json.getJSON(key);
                 
                 if(obj.isJSONArray()){
-                    root.add(renderJson("",obj,"")); 
+                    root.add(renderJson(key.toString(),obj,color)); 
                 }else{
                     root.add(renderJson(key.toString(),obj,"#2196F3"));
                 }
                 
             }catch(Exception e){
-                root.add(new DefaultMutableTreeNode(element(key.toString(),json.getString(key),"#EF5350")));
+                String result = json.getString(key);
+                int type= 0;
+                
+                if(result.isEmpty()){
+                    type = 1;
+                }
+                
+                try{
+                    Integer.parseInt(result);
+                    type = 2;
+                }catch(Exception ex){}
+                
+                try{
+                    if(result.charAt(0) == '['){
+                       type = 3;
+                    }
+                }catch(Exception ex){}
+                
+                if(result.contains("http")){
+                    type = 4;
+                }
+                
+                if(result.contains(";base64,")){
+                    type = 5;
+                }
+                
+                switch(type){
+                    case 1: root.add(new DefaultMutableTreeNode(element(key.toString(),"emply","#9E9E9E"))); break;
+                    case 2: root.add(new DefaultMutableTreeNode(element(key.toString(),result,"#EC407A"))); break;
+                    case 3: root.add(new DefaultMutableTreeNode(element(key.toString(),result,"#26A69A"))); break;
+                    case 4: root.add(new DefaultMutableTreeNode(element(key.toString(),result,"#90CAF9"))); break;
+                    case 5: root.add(new DefaultMutableTreeNode(element(key.toString(),"base64 ﬦ","#FF9800"))); break;
+                    default:
+                       root.add(new DefaultMutableTreeNode(element(key.toString(),"\""+result+"\"","#EF5350"))); 
+                }
             }
         }
     }
@@ -347,23 +400,103 @@ class SwingTree extends JFrame {
               + "</html>";
   }
   
-class TreeHandler implements TreeSelectionListener {
-    public void valueChanged(TreeSelectionEvent e) {
-      TreePath path = e.getPath();
-      String text = path.getPathComponent(path.getPathCount() - 1).toString();
-      if (path.getPathCount() > 3) {
-        text += ": ";
-        text += Integer.toString((int) (Math.random() * 50)) + " Wins ";
-        text += Integer.toString((int) (Math.random() * 50)) + " Losses";
-      }
-      textField.setText(text);
-    }
-  }
-}
 class Renderer extends JLabel implements TreeCellRenderer {
   public Component getTreeCellRendererComponent(JTree tree, Object value, boolean selected,
       boolean expanded, boolean leaf, int row, boolean hasFocus) {
     setText(value.toString() + "                   ");
     return this;
   }
+}
+}
+//==============================================================================
+
+//Clase para cargar todo con respecto a clases Java
+class JavaViewer extends JFrame{
+    
+    private JScrollPane scrollPane = new JScrollPane();
+    
+    public JavaViewer(String code,Image img) {
+        JLabel label = new JLabel(renderCode(code));
+        label.setVerticalAlignment(JLabel.TOP);
+        scrollPane.getViewport().add(label);
+        scrollPane.getViewport().setBackground(Color.white);
+        getContentPane().add("Center", scrollPane);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setSize(500, 500);
+        setVisible(true);
+        setLocationRelativeTo(null);
+        setTitle("Java Viewer");
+        setIconImage(img);
+    }
+    
+    private String renderCode(String code){
+        
+        code = code.replace("0","°!0")
+                   .replace("1","°!1")
+                   .replace("2","°!2")
+                   .replace("3","°!3")
+                   .replace("4","°!4")
+                   .replace("5","°!5")
+                   .replace("6","°!6")
+                   .replace("7","°!7")
+                   .replace("8","°!8")
+                   .replace("9","°!9")
+                   .replace("/","°!/");
+        
+        
+        code = code.replace("°!/","<font color=\"#9C27B0\">/</font>")
+                   .replace("=","<font color=\"#2196F3\">=</font>")
+                   .replace("public","<font color=\"#16abc6\">public</font>")
+                   .replace("import","<font color=\"#16abc6\">import</font>")
+                   .replace("package","<font color=\"#16abc6\">package</font>")
+                   .replace("static","<font color=\"#16abc6\">static</font>")
+                   .replace("class","<font color=\"#16abc6\">class</font>")
+                   .replace("void","<font color=\"#16abc6\">void</font>")
+                   .replace("super","<font color=\"#16abc6\">super</font>")
+                   .replace("private","<font color=\"#16abc6\">private</font>")
+                   .replace("extends","<font color=\"#16abc6\">extends</font>")
+                   .replace("implements","<font color=\"#16abc6\">implements</font>")
+                   .replace("new","<font color=\"#16abc6\">new</font>")
+                   .replace("try","<font color=\"#16abc6\">try</font>")
+                   .replace("catch","<font color=\"#16abc6\">catch</font>")
+                   .replace("throw","<font color=\"#16abc6\">throw</font>")
+                   .replace("while","<font color=\"#16abc6\">while</font>")
+                   .replace("for","<font color=\"#16abc6\">for</font>")
+                   .replace("if","<font color=\"#16abc6\">if</font>")
+                   .replace("else","<font color=\"#16abc6\">else</font>")
+                   .replace("case","<font color=\"#16abc6\">case</font>")
+                   .replace("continue","<font color=\"#16abc6\">continue</font>")
+                   .replace("default","<font color=\"#16abc6\">default</font>")
+                   .replace("this","<font color=\"#16abc6\">this</font>")
+                   .replace("return","<font color=\"#16abc6\">return</font>")
+                   .replace("@Override","<font color=\"#fdb657\">@Override</font>")
+                   .replace("°!0","<font color=\"#fdb657\">0</font>")
+                   .replace("°!1","<font color=\"#fdb657\">1</font>")
+                   .replace("°!2","<font color=\"#fdb657\">2</font>")
+                   .replace("°!3","<font color=\"#fdb657\">3</font>")
+                   .replace("°!4","<font color=\"#fdb657\">4</font>")
+                   .replace("°!5","<font color=\"#fdb657\">5</font>")
+                   .replace("°!6","<font color=\"#fdb657\">6</font>")
+                   .replace("°!7","<font color=\"#fdb657\">7</font>")
+                   .replace("°!8","<font color=\"#fdb657\">8</font>")
+                   .replace("°!9","<font color=\"#fdb657\">9</font>")
+                   .replace("@author","<font color=\"#fdb657\">@author</font>")
+                   .replace("@version","<font color=\"#fdb657\">@version</font>")
+                   .replace("{","<font color=\"#EC407A\">{</font>")
+                   .replace("}","<font color=\"#EC407A\">}</font>")
+                   .replace("Json","<font color=\"#E53935\">Json</font>")
+                   .replace("!","<font color=\"#2196F3\">!</font>")
+                   .replace("|","<font color=\"#2196F3\">|</font>")
+                   .replace("&","<font color=\"#2196F3\">&</font>")
+                   .replace("+","<font color=\"#9C27B0\">+</font>")
+                   .replace("-","<font color=\"#9C27B0\">-</font>")
+                   .replace("*","<font color=\"#9C27B0\">*</font>")
+                   .replace("%","<font color=\"#9C27B0\">%</font>")
+                   .replace("\n","<br>")
+                   .replace("    ","&nbsp;&nbsp&nbsp;&nbsp;");
+        
+        
+        
+        return "<html>"+code+"</html>";
+    }
 }
