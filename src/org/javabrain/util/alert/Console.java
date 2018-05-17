@@ -15,13 +15,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 import javax.swing.JTree;
-import javax.swing.event.TreeSelectionEvent;
-import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeCellRenderer;
-import javax.swing.tree.TreePath;
 import org.javabrain.util.data.Json;
 
 /**
@@ -263,7 +259,7 @@ public class Console {
         Image img = new ImageIcon(classLoader.getResource("res/component/json.png")).getImage();
         switch (type) {
             case 0: new SwingTree(json2,json,img); break;
-                default: new JavaViewer(message.toString(),img);
+            default: new JavaViewer(message.toString(),img);
         }
         breakLine();
     }
@@ -301,7 +297,7 @@ class SwingTree extends JFrame {
     setSize(500, 500);
     setVisible(true);
     setLocationRelativeTo(null);
-    setTitle("JSON Viwer");
+    setTitle("JSON Viewer");
     button.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -429,7 +425,7 @@ class JavaViewer extends JFrame{
         setSize(500, 500);
         setVisible(true);
         setLocationRelativeTo(null);
-        setTitle("JSON Java");
+        setTitle("Java Viewer");
         setIconImage(img);
     }
     

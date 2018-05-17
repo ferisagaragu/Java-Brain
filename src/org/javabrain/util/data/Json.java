@@ -85,8 +85,8 @@ public class Json extends Object{
         
         //Crea el json con rutas
         if(!(json.toString().charAt(0) == '[')){
-            if (new File(json.toString()).isFile()) {
-                File fil = new File(json.toString());
+            if (new java.io.File(json.toString()).isFile()) {
+                java.io.File fil = new java.io.File(json.toString());
                 String out = "";
                 try {
                     BufferedReader in2 = new BufferedReader(new InputStreamReader(new FileInputStream(fil), "utf-8"));
@@ -177,7 +177,7 @@ public class Json extends Object{
             }
             
             jsons = new HashMap();
-            File fil = new File(path);
+            java.io.File fil = new java.io.File(path);
             for (Object files : fil.list()) {
                 jsons.put(files.toString().replace(".json",""),path+"/"+files);
             }
@@ -351,8 +351,8 @@ public class Json extends Object{
         
         //Crea el json con rutas
         if(!(json.toString().charAt(0) == '[')){
-            if (new File(json.toString()).isFile()) {
-                File fil = new File(json.toString());
+            if (new java.io.File(json.toString()).isFile()) {
+                java.io.File fil = new java.io.File(json.toString());
                 String out = "";
                 try {
                     BufferedReader in2 = new BufferedReader(new InputStreamReader(new FileInputStream(fil), "utf-8"));
@@ -443,7 +443,7 @@ public class Json extends Object{
             }
             
             jsons = new HashMap();
-            File fil = new File(path);
+            java.io.File fil = new java.io.File(path);
             for (Object files : fil.list()) {
                 jsons.put(files.toString().replace(".json",""),path+"/"+files);
             }
