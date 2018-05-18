@@ -6,7 +6,7 @@ public class Run {
 
     public static void main(String[] args) {
         
-        String a  = ""+Valuta.mnxToUsd(400);
+        String a  = ""+Valuta.mnxToUsdType(400);
         Console.black(a);
     }
 

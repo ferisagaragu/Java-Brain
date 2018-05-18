@@ -17,16 +17,16 @@ public class Valuta {
 
     private static Scraping s = Scraping.getInstance();
     
-    //
+    
     public static final float USDBUY = s.map.get("usd-buy");
     public static final float USDSELL = s.map.get("usd");
-    //
+    
     public static final float EURBUY = s.map.get("eur-buy");
     public static final float EURSELL = s.map.get("eur");
-    //
+    
     public static final float GBPBUY = s.map.get("gbp-buy");
     public static final float GBPSELL = s.map.get("gbp");
-    //
+    
     public static final float JPYBUY = s.map.get("jpy-buy");
     public static final float JPYSELL = s.map.get("jpy");
     
@@ -38,6 +38,8 @@ public class Valuta {
     
     public static final float CADBUY = s.map.get("cad-buy");
     public static final float CADSELL = s.map.get("cad");
+    
+    //Compra
     
     // <editor-fold defaultstate="collapsed" desc="Pesos"> 
     public static String mnxToUsdType(float mnx) {
@@ -436,7 +438,243 @@ public class Valuta {
     }
     // </editor-fold>
     
+    // <editor-fold defaultstate="collapsed" desc="Yuan"> 
+    public static String cnyToMnxType(float cny) {
+        DecimalFormat df = new DecimalFormat("#.00 MNX");
+        float a = cny * CNYSELL;
+        return df.format(a);
+    }
+
+    public static float cnyToMnx(float cny) {
+        DecimalFormat df = new DecimalFormat("#.00");
+        return Float.parseFloat(df.format(cny * CNYSELL));
+    }
+
+    public static String cnyToUsdType(float cny) {
+        DecimalFormat df = new DecimalFormat("#.00 USD");
+        float a = (cny * CNYSELL) / USDSELL;
+        return df.format(a);
+    }
+
+    public static float cnyToUsd(float cny) {
+        DecimalFormat df = new DecimalFormat("#.00");
+        return Float.parseFloat(df.format((cny * CNYSELL) / USDSELL));
+    }
+
+    public static String cnyToEurType(float cny) {
+        DecimalFormat df = new DecimalFormat("#.00 EUR");
+        float a = (cny * CNYSELL) / EURSELL;
+        return df.format(a);
+    }
+
+    public static float cnyToEur(float cny) {
+        DecimalFormat df = new DecimalFormat("#.00");
+        return Float.parseFloat(df.format((cny * CNYSELL) / EURSELL));
+    }
+
+    public static String cnyToGbpType(float cny) {
+        DecimalFormat df = new DecimalFormat("#.00 GBP");
+        float a = (cny * CNYSELL) / GBPSELL;
+        return df.format(a);
+    }
+
+    public static float cnyToGbp(float cny) {
+        DecimalFormat df = new DecimalFormat("#.00");
+        return Float.parseFloat(df.format((cny * CNYSELL) / GBPSELL));
+    }
+
+    public static String cnyToJpyType(float cny) {
+        DecimalFormat df = new DecimalFormat("#.00 JPY");
+        float a = (cny * CNYSELL) / JPYSELL;
+        return df.format(a);
+    }
+
+    public static float cnyToJpy(float cny) {
+        DecimalFormat df = new DecimalFormat("#.00");
+        return Float.parseFloat(df.format((cny * CNYSELL) / JPYSELL));
+    }
+
+    public static String cnyToBrlType(float cny) {
+        DecimalFormat df = new DecimalFormat("#.00 BRL");
+        float a = (cny * CNYSELL) / BRLSELL;
+        return df.format(a);
+    }
+
+    public static float cnyToBrl(float cny) {
+        DecimalFormat df = new DecimalFormat("#.00");
+        return Float.parseFloat(df.format((cny * CNYSELL) / BRLSELL));
+    }
+
+    public static String cnyToCadType(float cny) {
+        DecimalFormat df = new DecimalFormat("#.00 CAD");
+        float a = (cny * CNYSELL) / CADSELL;
+        return df.format(a);
+    }
+
+    public static float cnyToCad(float cny) {
+        DecimalFormat df = new DecimalFormat("#.00");
+        return Float.parseFloat(df.format((cny * CNYSELL) / CADSELL));
+    }
+    //</editor-fold>
     
+    // <editor-fold defaultstate="collapsed" desc="Real brasileño"> 
+    public static String brlToMnxType(float brl) {
+        DecimalFormat df = new DecimalFormat("#.00 MNX");
+        float a = brl * BRLSELL;
+        return df.format(a);
+    }
+
+    public static float brlToMnx(float brl) {
+        DecimalFormat df = new DecimalFormat("#.00");
+        return Float.parseFloat(df.format(brl * BRLSELL));
+    }
+
+    public static String brlToUsdType(float brl) {
+        DecimalFormat df = new DecimalFormat("#.00 USD");
+        float a = (brl * BRLSELL) / USDSELL;
+        return df.format(a);
+    }
+
+    public static float brlToUsd(float brl) {
+        DecimalFormat df = new DecimalFormat("#.00");
+        return Float.parseFloat(df.format((brl * BRLSELL) / USDSELL));
+    }
+
+    public static String brlToEurType(float brl) {
+        DecimalFormat df = new DecimalFormat("#.00 EUR");
+        float a = (brl * BRLSELL) / EURSELL;
+        return df.format(a);
+    }
+
+    public static float brlToEur(float brl) {
+        DecimalFormat df = new DecimalFormat("#.00");
+        return Float.parseFloat(df.format((brl * BRLSELL) / EURSELL));
+    }
+
+    public static String brlToGbpType(float brl) {
+        DecimalFormat df = new DecimalFormat("#.00 GBP");
+        float a = (brl * BRLSELL) / GBPSELL;
+        return df.format(a);
+    }
+
+    public static float brlToGbp(float brl) {
+        DecimalFormat df = new DecimalFormat("#.00");
+        return Float.parseFloat(df.format((brl * BRLSELL) / GBPSELL));
+    }
+
+    public static String brlToJpyType(float brl) {
+        DecimalFormat df = new DecimalFormat("#.00 JPY");
+        float a = (brl * BRLSELL) / JPYSELL;
+        return df.format(a);
+    }
+
+    public static float brlToJpy(float brl) {
+        DecimalFormat df = new DecimalFormat("#.00");
+        return Float.parseFloat(df.format((brl * BRLSELL) / JPYSELL));
+    }
+
+    public static String brlToCnyType(float brl) {
+        DecimalFormat df = new DecimalFormat("#.00 CNY");
+        float a = (brl * BRLSELL) / CNYSELL;
+        return df.format(a);
+    }
+
+    public static float brlToCny(float brl) {
+        DecimalFormat df = new DecimalFormat("#.00");
+        return Float.parseFloat(df.format((brl * BRLSELL) / CNYSELL));
+    }
+
+    public static String brlToCadType(float brl) {
+        DecimalFormat df = new DecimalFormat("#.00 CAD");
+        float a = (brl * BRLSELL) / CADSELL;
+        return df.format(a);
+    }
+
+    public static float brlToCad(float brl) {
+        DecimalFormat df = new DecimalFormat("#.00");
+        return Float.parseFloat(df.format((brl * BRLSELL) / CADSELL));
+    }
+    //</editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="Dolar Canadiense"> 
+    public static String cadToMnxType(float cad) {
+        DecimalFormat df = new DecimalFormat("#.00 MNX");
+        float a = cad * CADSELL;
+        return df.format(a);
+    }
+
+    public static float cadToMnx(float cad) {
+        DecimalFormat df = new DecimalFormat("#.00");
+        return Float.parseFloat(df.format(cad * CADSELL));
+    }
+
+    public static String cadToUsdType(float cad) {
+        DecimalFormat df = new DecimalFormat("#.00 USD");
+        float a = (cad * CADSELL) / USDSELL;
+        return df.format(a);
+    }
+
+    public static float cadToUsd(float cad) {
+        DecimalFormat df = new DecimalFormat("#.00");
+        return Float.parseFloat(df.format((cad * CADSELL) / USDSELL));
+    }
+
+    public static String cadToEurType(float cad) {
+        DecimalFormat df = new DecimalFormat("#.00 EUR");
+        float a = (cad * CADSELL) / EURSELL;
+        return df.format(a);
+    }
+
+    public static float cadToEur(float cad) {
+        DecimalFormat df = new DecimalFormat("#.00");
+        return Float.parseFloat(df.format((cad * CADSELL) / EURSELL));
+    }
+
+    public static String cadToGbpType(float cad) {
+        DecimalFormat df = new DecimalFormat("#.00 GBP");
+        float a = (cad * CADSELL) / GBPSELL;
+        return df.format(a);
+    }
+
+    public static float cadToGbp(float cad) {
+        DecimalFormat df = new DecimalFormat("#.00");
+        return Float.parseFloat(df.format((cad * CADSELL) / GBPSELL));
+    }
+
+    public static String cadToJpyType(float cad) {
+        DecimalFormat df = new DecimalFormat("#.00 JPY");
+        float a = (cad * CADSELL) / JPYSELL;
+        return df.format(a);
+    }
+
+    public static float cadToJpy(float cad) {
+        DecimalFormat df = new DecimalFormat("#.00");
+        return Float.parseFloat(df.format((cad * CADSELL) / JPYSELL));
+    }
+
+    public static String cadToCnyType(float cad) {
+        DecimalFormat df = new DecimalFormat("#.00 CNY");
+        float a = (cad * CADSELL) / CNYSELL;
+        return df.format(a);
+    }
+
+    public static float cadToCny(float cad) {
+        DecimalFormat df = new DecimalFormat("#.00");
+        return Float.parseFloat(df.format((cad * CADSELL) / CNYSELL));
+    }
+
+    public static String cadToBrlType(float cad) {
+        DecimalFormat df = new DecimalFormat("#.00 BRL");
+        float a = (cad * CADSELL) / CADSELL;
+        return df.format(a);
+    }
+
+    public static float cadToBrl(float cad) {
+        DecimalFormat df = new DecimalFormat("#.00");
+        return Float.parseFloat(df.format((cad * CADSELL) / CADSELL));
+    }
+    //</editor-fold>
+
 }
 
 // <editor-fold defaultstate="collapsed" desc="Clase Scraping"> 
