@@ -27,8 +27,6 @@ import org.javabrain.util.data.Json;
 public class Console {
 
     //Variables publicas
-    public static final int JSON = 0;
-
     //======================================================================
 
     //Variables privadas

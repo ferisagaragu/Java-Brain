@@ -1,137 +1,71 @@
 package org.javabrain.util.resource;
 
-import org.javabrain.util.data.Json;
-
-import javax.swing.*;
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.net.URL;
 
-/***
+
+/**
  * @author Fernando García
  * @version 0.0.1
  */
 public class Path {
+    
+    
+    public static InputStream get(String brainPath){
 
-    private static Pth pth = new Pth();
-
-    public static String PROYECT = System.getProperty("user.dir")+"\\";
-
-    public static ImageIcon getRes(String resName){
-
-        String out = "";
-
-        try {
-            BufferedReader in = new BufferedReader(new InputStreamReader(pth.getPath("/config/neuron.json"), "utf-8"));
-            String sCadena = "";
-
-            while ((sCadena = in.readLine())!=null) {
-                out += sCadena;
+        ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+        
+        try{
+            
+            if(brainPath.contains("\\")){
+                return (InputStream) new FileInputStream(brainPath);
             }
-
-            Json json = new Json(out);
-            json.setJSON(json.getObject("path"));
-            out = json.getString("res").replace(".","/");
-
-            if(out.charAt(0) != '/'){
-                out = "/"+out;
+            
+            //Validacion de cadenas internas con ->.{} 
+            if(brainPath.contains("{")){
+               String[] sub = brainPath.split("\\{");
+               String firsPath = sub[0].replace(".","/");
+               String endPath = sub[1].replace("{","").replace("}","");
+               brainPath = firsPath + endPath;
             }
-            if (out.charAt(out.length()-1) != '/'){
-                out = out+"/";
+            
+            //Validacion de cadenas internas con -> / 
+            switch(brainPath.charAt(0)){
+                case '/': return classLoader.getResourceAsStream(brainPath.substring(1,brainPath.length()));
+                default: return classLoader.getResourceAsStream(brainPath);
             }
-
-        }catch (Exception e){}
-
-        return new ImageIcon(pth.getPathRes(out+resName));
+            
+        }catch(Exception e){}
+        
+        return null;
     }
-
-    public static InputStream getFile(String fileName){
-
-        String out = "";
-
-        try {
-            BufferedReader in = new BufferedReader(new InputStreamReader(pth.getPath("/config/neuron.json"), "utf-8"));
-            String sCadena = "";
-
-            while ((sCadena = in.readLine())!=null) {
-                out += sCadena;
+    
+    public static URL getRes(String brainPath){
+        ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+        
+        try{
+            
+            if(brainPath.contains("\\")){
+                return new java.io.File(brainPath).toURL();
             }
-
-            Json json = new Json(out);
-            json.setJSON(json.getObject("path"));
-            out = json.getString("file").replace(".","/");
-
-            if(out.charAt(0) != '/'){
-                out = "/"+out;
+            
+            //Validacion de cadenas internas con ->.{} 
+            if(brainPath.contains("{")){
+               String[] sub = brainPath.split("\\{");
+               String firsPath = sub[0].replace(".","/");
+               String endPath = sub[1].replace("{","").replace("}","");
+               brainPath = firsPath + endPath;
             }
-            if (out.charAt(out.length()-1) != '/'){
-                out = out+"/";
+            
+            //Validacion de cadenas internas con -> / 
+            switch(brainPath.charAt(0)){
+                case '/': return classLoader.getResource(brainPath.substring(1,brainPath.length()));
+                default: return classLoader.getResource(brainPath);
             }
-
-        }catch (Exception e){}
-
-        return pth.getPath(out+fileName);
-    }
-
-    public static InputStream getJson(String fileName){
-
-        String out = "";
-
-        try {
-            BufferedReader in = new BufferedReader(new InputStreamReader(pth.getPath("/config/neuron.json"), "utf-8"));
-            String sCadena = "";
-
-            while ((sCadena = in.readLine())!=null) {
-                out += sCadena;
-            }
-
-            Json json = new Json(out);
-            json.setJSON(json.getObject("path"));
-            out = json.getString("json").replace(".","/");
-
-            if(out.charAt(0) != '/'){
-                out = "/"+out;
-            }
-            if (out.charAt(out.length()-1) != '/'){
-                out = out+"/";
-            }
-
-        }catch (Exception e){}
-
-        return pth.getPath(out+fileName);
-    }
-
-    public static InputStream get(String path,String extention){
-        path = path.replace(".","/");
-
-        if(path.charAt(0) != '/'){
-            path = "/"+path;
-        }
-        return pth.getPath(path+"."+extention);
-    }
-
-    public static File getExternal(String path, String extention,String prefix){
-
-        if(!prefix.isEmpty()){
-            path = path.replace(".","\\");
-
-            if((path.charAt(0) != '/')){
-                path = prefix+"\\"+path;
-            }
-        }else{
-            path = path.replace(".","/");
-        }
-
-        return new File(path+"."+extention);
-    }
-}
-
-class Pth{
-
-    public InputStream getPath(String path){
-        return getClass().getResourceAsStream(path);
-    }
-
-    public URL getPathRes(String path){
-        return getClass().getResource(path);
+            
+        }catch(Exception e){}
+        
+        return null;
     }
 }

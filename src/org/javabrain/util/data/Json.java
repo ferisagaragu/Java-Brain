@@ -680,7 +680,7 @@ public class Json extends Object{
     public void read(String jsonFile){
         String out = "";
         try {
-            BufferedReader in = new BufferedReader(new InputStreamReader(Path.getJson(jsonFile), "utf-8"));
+            BufferedReader in = new BufferedReader(new InputStreamReader(Path.get(jsonFile), "utf-8"));
             String sCadena = "";
 
             while ((sCadena = in.readLine())!=null) {
