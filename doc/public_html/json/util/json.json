@@ -1,4 +1,5 @@
 {
+  "package": "org.javabrain.util.data",
   "classname":"Json",
   "description":"Clase para un manejo facil de objetos Json",
   "version":"0.0.2",
@@ -8,7 +9,6 @@
       "contactname":"ferisagaragu@gmail.com"
     }
   ],
-  //Datos para documentar
   "variable":[
     {
       "name":"JSON_MODE",
@@ -67,52 +67,4 @@
     }
 
   ]
-}
-
-
-public Json getJSONArray(Object key, int index){
-JSONArray array = null;
-
-try{array = (JSONArray) parser.parse(obj.get(key).toString());}catch (Exception e){}
-
-return new Json(array.get(index));
-}
-
-public Json getJSONArray(int index){
-return new Json(array.get(index));
-}
-
-public Json getJSONArray(Object key){
-JSONArray array = null;
-try{array = (JSONArray) parser.parse(obj.get(key).toString());}catch (Exception e){}
-return new Json(array);
-}
-
-public Object[] getArray(Object key){
-Object[] dat = null;
-if(getString(key).charAt(0) == '['){
-String dato = getString(key).replace("[","").replace("]","");
-dat = dato.split(",");
-for (int i = 0; i < dat.length; i++) {
-if(dat[i].toString().equals("\"\"")){
-dat[i] = "";
-}else {
-dat[i] = dat[i].toString().replace("\"","");
-}
-}
-}
-return dat;
-}
-
-public ArrayList<Object> getList(Object key){
-ArrayList<Object> list = new ArrayList<>();
-
-for (Object o:getArray(key)) {
-list.add(o);
-}
-return list;
-}
-
-public Timestamp getTimestamp(Object key){
-return Timestamp.valueOf(obj.get(key).toString());
 }
