@@ -1,7 +1,11 @@
 {
     "util":[
         {"name":"Json","version":"0.0.2","package":"org.javabrain.util.data"},
-        {"name":"Archive","version":"0.0.1","package":"org.javabrain.util.data"}
+        {"name":"Archive","version":"0.0.1","package":"org.javabrain.util.data"},
+        {"name":"Path","version":"0.0.1","package":"org.javabrain.util.resource"},
+        {"name":"Petition","version":"0.0.1","package":"org.javabrain.util.web.service"},
+        {"name":"Traslator","version":"0.0.1","package":"org.javabrain.util.web.service"},
+        {"name":"Valuta","version":"0.0.1","package":"org.javabrain.util.web.service"}
     ]
 }
 
