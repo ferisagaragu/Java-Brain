@@ -1,13 +1,21 @@
 {
-  "package": "org.javabrain.util.data",
-  "classname":"Json",
-  "description":"Clase para un manejo facil de objetos Json",
-  "version":"0.0.2",
   "author":[
     {
       "name":"Fernando García Aguirre",
       "contactname":"ferisagaragu@gmail.com"
+    },{
+      "name":"com.googlecode.json-simple",
+      "contactname":"https://code.google.com/archive/p/json-simple/"
     }
+  ],
+  "constant":[
+        {
+            "name":"JSON_MODE",
+            "description":"Variable para seleccionar el modo del Json",
+            "code":"public static final int JSON_MODE;",
+            "value":"23",
+            "example":"Json json = new Json(Json.JSON_MODE);"
+        }
   ],
   "variable":[
     {
