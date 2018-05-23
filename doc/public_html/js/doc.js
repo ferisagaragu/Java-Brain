@@ -29,9 +29,10 @@ function renderInfo(jsonName,categorie){
         if (constante.length !== 0 || typeof constante !== 'undefined') {
             var out = '';
             $.each(constante, function (key, value) {
-                out += '<ul class="list-group">' +
+                out += '<ul class="list-group" style="margin-bottom: 20px;">' +
                         '<li class="list-group-item">' +
-                        '<b>Nombre: </b><font color=#2196F3>&nbsp;&nbsp;' + value.name + '</font><br>' +
+                        '<b>ID :</b><font color=#B71C1C>&nbsp;&nbsp;'+value.id+'</font><br>'+
+                        '<b>Nombre: </b><font color=#2196F3>&nbsp;&nbsp;<search>' + value.name + '</search></font><br>' +
                         '<b>Descripción: </b>&nbsp;&nbsp;' + value.description + '<br>' +
                         '<b>Retorno: </b><font color=#FF9800>&nbsp;&nbsp;' + value.value + '</font><br>' +
                         '<b>Tipo: <font color=#00BCD4>&nbsp;&nbsp;' + value.type + '</font></b><br>' +
@@ -40,7 +41,8 @@ function renderInfo(jsonName,categorie){
                         '</li>' +
                         '</ul>';
             });
-            $('#constvar').html(out);
+            $('#constvar').html('<input style="margin-bottom: 20px;" type="text" placeholder="Buscar..." class="form-control" id="searchconstant"/><div id="constantlist">'+out+'</div>');
+            onKey('searchconstant','constantlist');
         }
 
         if (constructor.length !== 0 || typeof constructor !== 'undefined') {
@@ -60,16 +62,18 @@ function renderInfo(jsonName,categorie){
                     out2 = 'Este método no tiene parametros de entrada';
                 }
 
-                out += '<ul class="list-group">' +
+                out += '<ul class="list-group" style="margin-bottom: 20px;">' +
                         '<li class="list-group-item">' +
-                        '<b>Nombre: </b><font color=#2196F3>&nbsp;&nbsp;' + value.name + '</font><br>' +
+                        '<b>ID :</b><font color=#B71C1C>&nbsp;&nbsp;'+value.id+'</font><br>'+
+                        '<b>Nombre: </b><font color=#2196F3>&nbsp;&nbsp;<search>' + value.name + '</search></font><br>' +
                         '<b>Descripción: </b>&nbsp;&nbsp;' + value.description + '<br>' +
                         '<b>Parametros: </b><hr>' + out2 + '<hr>' +
                         '<b>Ejemplo: </b><pre><code>' + value.code + '</pre></code>' +
                         '</li>' +
                         '</ul>';
             });
-            $('#constructorvar').html(out);
+            $('#constructorvar').html('<input style="margin-bottom: 20px;" type="text" placeholder="Buscar..." class="form-control" id="searchconstructor"/><div id="constructorlist">'+out+'</div>');
+            onKey('searchconstructor','constructorlist');
         }
 
         if (method.length !== 0 || typeof method !== 'undefined') {
@@ -102,9 +106,10 @@ function renderInfo(jsonName,categorie){
                     out3 = 'Este método no tiene parametros de salida';
                 }
 
-                out += '<hr><ul class="list-group">' +
+                out += '<ul class="list-group" style="margin-bottom: 20px;">' +
                         '<li class="list-group-item">' +
-                        '<b>Nombre: </b><font color=#2196F3>&nbsp;&nbsp;' + value.name + '</font><br>' +
+                        '<b>ID :</b><font color=#B71C1C>&nbsp;&nbsp;'+value.id+'</font><br>'+
+                        '<b>Nombre: </b><font color=#2196F3>&nbsp;&nbsp;<search>' + value.name + '</search></font><br>' +
                         '<b>Descripción: </b>&nbsp;&nbsp;' + value.description + '<br>' +
                         '<b>Parametros: </b><hr>' + out2 + '<hr>' +
                         '<b>Retorno: </b><hr>' + out3 + '<hr>'+
@@ -112,9 +117,35 @@ function renderInfo(jsonName,categorie){
                         '</li>' +
                         '</ul>';
             });
-            $('#methodvar').html(out);
+            $('#methodvar').html('<input style="margin-bottom: 20px;" type="text" placeholder="Buscar..." class="form-control" id="searchmethod"/><div id="methodlist">'+out+'</div>');
+            onKey('searchmethod','methodlist');
         }
         
     });
+    
+}
+
+function onKey(name,list) {
+
+    $('#' + name).keyup(function (evt) {
+        var input, filter, ul, li, a, i;
+        input = document.getElementById(name);
+        filter = input.value.toUpperCase();
+        ul = document.getElementById(list);     
+        li = ul.getElementsByTagName("ul");
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("search")[0];
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                $('#nores').html("");
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    });
+
+}
+
+function myFunction() {
     
 }
