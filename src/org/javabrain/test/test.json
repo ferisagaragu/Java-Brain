@@ -3,5 +3,5 @@
   "item2":"hola amiga",
   "item3":"el perro tiene el nombre {other}",
   "item4":{"nuevo":"otro mas","numeros":1223232,"hasta un pie":{"dentro":"bien"}},
-  "item5":[{"nuevo": ".foreach((e)-> accion)","otroitem":[{"este mas":123}]}]
+  "item5":[{"nuevo": ".foreach((e)-> accion)","otroitem":[{"este mas":123}]},{"nuevo": "datos terror"}]
 }]

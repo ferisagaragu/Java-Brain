@@ -11,21 +11,27 @@
   "constant":[
         {
             "id":"JSONF - 001",
-            "name":"JSON_MODE",
-            "description":"Variable para seleccionar el modo del Json\n",
-            "value":"23",
-            "type":"int",
-            "code":"public static final int JSON_MODE;",
-            "example":"Json json = new Json(Json.JSON_MODE);"
+            "name":"getInstance",
+            "description":"Instancia de la clase Json para utilizar el patron de diseño Singleton.",
+            "value":"Json instance",
+            "type":"Json",
+            "code":"public static Json getInstance() {return ourInstance;}",
+            "example":"Json json = Json.getInstance();\njson.setJSON(\"org.javabrain.{example.json}\");\nConsole.blue(json);"
         }
   ],
   "constructor":[
     {
       "id":"JSONC - 001",
       "name":"Json",
-      "parameter":[{"type":"Object","name":"json","desc":"aquí va la descripcion del metodo"}],
-      "description":"Se construye con un objeto que contenga un String con un Json valido",
-      "code":"aquí va el codigo"
+      "parameter":[{"type":"void","name":"","desc":""}],
+      "description":"Construye una instancia de la clase Json vacía",
+      "code":"Json json = new Json();\njson.setJSON(\"org.example.{data.json}\");\nConsole.blue(json);"
+    },{
+      "id":"JSONC - 002",
+      "name":"Json",
+      "parameter":[{"type":"Object","name":"json","desc":"Este es cualquier objeto que pueda ser convertido a un Json asi como tener su estructura puede ser un 2tipo de dato cadena, ruta, archivo u otro Json"}],
+      "description":"Construye una instancia de la clase Json con el objeto incluido en el parámetro, siempre y cuando este sea un Json.",
+      "code":"Json json = new Json();\njson.setJSON(\"org.example.{data.json}\");\nConsole.blue(json);"
     }
   ],
   "method":

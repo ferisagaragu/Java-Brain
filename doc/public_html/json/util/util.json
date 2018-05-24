@@ -1,6 +1,6 @@
 {
     "util":[
-        {"name":"Json","version":"0.0.2","package":"org.javabrain.util.data","description":"Manejo de Objetos JSON"},
+        {"name":"Json","version":"0.0.3","package":"org.javabrain.util.data","description":"Manejo de Objetos JSON"},
         {"name":"Archive","version":"0.0.1","package":"org.javabrain.util.data","description":"Manejo de archvios"},
         {"name":"Path","version":"0.0.1","package":"org.javabrain.util.resource","description":"Manejo de rutas"},
         {"name":"Petition","version":"0.0.1","package":"org.javabrain.util.web.service","description":"Peticiones GET, POST, UPDATE, DELETE"},

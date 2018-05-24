@@ -700,18 +700,34 @@ public class Json extends Object{
         }
     }
 
-    //todo este es para excluir de un JSONArray pero falta para excluir un elemento
     public Json exclude(int index){
-        int i = 0;
-        String out = "";
-        for (Json json : values()) {
-            if(i != index){
-                out += json.toString();
+
+        if(isJSONArray()){
+            int i = 0;
+            String out = "";
+            for (Json json : values()) {
+                if(i != index){
+                    out += json.toString();
+                }
+                i++;
             }
-            i++;
+            return new Json("["+out+"]");
+        }else {
+            try {
+                int i = 0;
+                JSONObject out = (JSONObject) parser.parse(obj.toString());
+                for (Object jsons : obj.keySet()) {
+                    if(i == index){
+                       out.remove(jsons);
+                       return new Json(out);
+                    }
+                    i++;
+                }
+            }catch (Exception e){}
         }
-        return new Json("["+out+"]");
+        return new Json();
     }
+
 
     public Json select(String[] keys){
 
