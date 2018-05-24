@@ -7,13 +7,13 @@ function renderInfo(jsonName,categorie){
     $('#className').html('<a href="/doc/index.html"><h2 style="color:white;">'+jsonName+'</h2></a>');
     
     $.getJSON("json/" + categorie + "/" + jsonName + ".json", function (data) {
-
+        
         var author = data.author;
         var constante = data.constant;
         var constructor = data.constructor;
         var method = data.method;
 
-        if (author.length !== 0 || typeof author !== 'undefined') {
+        if (typeof author !== 'undefined') {
             var out = '';
             $.each(author, function (key, value) {
                 out += '<div class="list-group">' +
@@ -25,8 +25,8 @@ function renderInfo(jsonName,categorie){
             });
             $('#authorvar').html(out);
         }
-
-        if (constante.length !== 0 || typeof constante !== 'undefined') {
+        
+        if (typeof constante !== 'undefined') {
             var out = '';
             $.each(constante, function (key, value) {
                 out += '<ul class="list-group" style="margin-bottom: 20px;">' +
@@ -44,8 +44,8 @@ function renderInfo(jsonName,categorie){
             $('#constvar').html('<input style="margin-bottom: 20px;" type="text" placeholder="Buscar..." class="form-control" id="searchconstant"/><div id="constantlist">'+out+'</div>');
             onKey('searchconstant','constantlist');
         }
-
-        if (constructor.length !== 0 || typeof constructor !== 'undefined') {
+        console.log(constructor);
+        if (typeof constructor[0] !== 'undefined') {
             var out = '';
             $.each(constructor, function (key, value) {
                 var parameter = value.parameter;
@@ -76,7 +76,7 @@ function renderInfo(jsonName,categorie){
             onKey('searchconstructor','constructorlist');
         }
 
-        if (method.length !== 0 || typeof method !== 'undefined') {
+        if (typeof method !== 'undefined') {
             var out = '';
             $.each(method, function (key, value) {
                 var parameter = value.parameter;
@@ -105,12 +105,19 @@ function renderInfo(jsonName,categorie){
                 } else {
                     out3 = 'Este método no tiene parametros de salida';
                 }
-
+                
+                var encaps = '';
+                
+                if(typeof value.encapsulation !== 'undefined'){
+                    encaps = '<b>Encapsulacion :</b>&nbsp;&nbsp;<font color=#E91E63>'+value.encapsulation+'</font><br>'
+                }
+                
                 out += '<ul class="list-group" style="margin-bottom: 20px;">' +
                         '<li class="list-group-item">' +
                         '<b>ID :</b><font color=#B71C1C>&nbsp;&nbsp;'+value.id+'</font><br>'+
                         '<b>Nombre: </b><font color=#2196F3>&nbsp;&nbsp;<search>' + value.name + '</search></font><br>' +
                         '<b>Descripción: </b>&nbsp;&nbsp;' + value.description + '<br>' +
+                        encaps+
                         '<b>Parametros: </b><hr>' + out2 + '<hr>' +
                         '<b>Retorno: </b><hr>' + out3 + '<hr>'+
                         '<b>Ejemplo: </b><pre><code>' + value.code + '</pre></code>' +
