@@ -1,6 +1,5 @@
 package org.javabrain.swing.event;
 
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;

@@ -1,0 +1,99 @@
+{
+  "author":[
+    {
+      "name":"Fernando García Aguirre",
+      "contactname":"ferisagaragu@gmail.com"
+    },{
+      "name":"com.googlecode.json-simple",
+      "contactname":"https://code.google.com/archive/p/json-simple/"
+    }
+  ],
+  "constant":[
+        {
+            "id":"JSONF - 001",
+            "name":"JSON_MODE",
+            "description":"Variable para seleccionar el modo del Json\n",
+            "value":"23",
+            "type":"int",
+            "code":"public static final int JSON_MODE;",
+            "example":"Json json = new Json(Json.JSON_MODE);"
+        }
+  ],
+  "constructor":[
+    {
+      "id":"JSONC - 001",
+      "name":"Json",
+      "parameter":[{"type":"Object","name":"json","desc":"aquí va la descripcion del metodo"}],
+      "description":"Se construye con un objeto que contenga un String con un Json valido",
+      "code":"aquí va el codigo"
+    }
+  ],
+  "method":
+  [
+    {
+      "id":"JSONM - 001",
+      "name":"getString",
+      "parameter":[{"type":"Object","name":"key","desc":"aquí va la descripcion del metodo"}],
+      "description":"Trae un objeto del Json convertido en String",
+      "return":[{"type":"Object","desc":"aquí va la descripcion del metodo"}],
+      "code":"aquí va el codigo"
+    },{
+      "id":"JSONM - 002",
+      "name":"getInteger",
+      "parameter":[{"type":"Object","name":"key","desc":"aquí va la descripcion del metodo"}],
+      "description":"Trae un objeto del Json convertido en Integer",
+      "return":[{"type":"Object","desc":"aquí va la descripcion del metodo"}],
+      "code":"aquí va el codigo"
+    },{
+      "id":"JSONM - 003",
+      "name":"getFloat",
+      "parameter":[{"type":"Object","name":"key","desc":"aquí va la descripcion del metodo"}],
+      "description":"Trae un objeto del Json convertido en Float",
+      "return":[{"type":"Object","desc":"aquí va la descripcion del metodo"}],
+      "code":"aquí va el codigo"
+    },{
+      "id":"JSONM - 004",
+      "name":"getBoolean",
+      "parameter":[{"type":"Object","name":"key","desc":"aquí va la descripcion del metodo"}],
+      "description":"Trae un objeto del Json convertido en Boolean",
+      "return":[{"type":"Object","desc":"aquí va la descripcion del metodo"}],
+      "code":"aquí va el codigo"
+    },{
+      "id":"JSONM - 005",
+      "name":"getCharacter",
+      "parameter":[{"type":"Object","name":"key","desc":"aquí va la descripcion del metodo"}],
+      "description":"Trae un objeto del Json convertido en Character",
+      "return":[{"type":"Object","desc":"aquí va la descripcion del metodo"}],
+      "code":"aquí va el codigo"
+    },{
+      "id":"JSONM - 006",
+      "name":"getDouble",
+      "parameter":[{"type":"Object","name":"key","desc":"aquí va la descripcion del metodo"}],
+      "description":"Trae un objeto del Json convertido en Boolean",
+      "return":[{"type":"Object","desc":"aquí va la descripcion del metodo"}],
+      "code":"aquí va el codigo"
+    },{
+      "id":"JSONM - 007",
+      "name":"getObject",
+      "parameter":[{"type":"Object","name":"key"}],
+      "description":"Trae un objeto del Json convertido en Object",
+      "return":[{"type":"Object","desc":"aquí va la descripcion del metodo"}],
+      "code":"aquí va el codigo"
+    },{
+      "id":"JSONM - 008",
+      "name":"getJSON",
+      "parameter":[{"type":"Object","name":"key","desc":"aquí va la descripcion del metodo"}],
+      "description":"Trae un objeto del Json convertido en JSON",
+      "return":[{"type":"Object","desc":"aquí va la descripcion del metodo"}],
+      "code":"aquí va el codigo"
+    },{
+      "id":"JSONM - 009",
+      "name":"getJSONArray",
+      "parameter":[{"type":"Object","name":"key","desc":"aquí va la descripcion del metodo"}],
+      "description":"Trae un objeto del Json convertido en JSONArray",
+      "return":[{"type":"Object","desc":"aquí va la descripcion del metodo"}],
+      "code":"aquí va el codigo"
+    }
+
+  ]
+}
