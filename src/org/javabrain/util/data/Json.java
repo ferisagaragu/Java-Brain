@@ -615,14 +615,14 @@ public class Json extends Object{
         return new Json(replace(key,array));
     }
 
-    //Falta Json
-
     public boolean existKey(Object key) {
-        for (Object sets:getKeys()) {
-            if (sets.toString().equals(key.toString())){
-                return true;
+        try {
+            for (Object sets:getKeys()) {
+                if (sets.toString().equals(key.toString())){
+                    return true;
+                }
             }
-        }
+        }catch (Exception e){}
         return false;
     }
 
@@ -637,10 +637,22 @@ public class Json extends Object{
     }
 
     public Json putJSON(Json json){
+
         if (this.isJSONArray()){
             array.add(json);
         }else {
             int i = 0;
+            if (json.isJSONArray()){
+                Date date = new Date();
+                Long j = new Long(date.getTime());
+                if (json.existKey("item"+j)){
+                    obj.put("item"+(j+1),json);
+                }else {
+                    obj.put("item"+j,json);
+                }
+                return this;
+            }
+
             for (Object object:json.getKeys()){
 
                 if (this.existKey(object)){
@@ -865,30 +877,21 @@ public class Json extends Object{
     }
 
     //todo este metodo es inperfecto
-    public Json join(Json arrayJoin,String idJSON,String idJSON2,String match){
+    public Json join(Json arrayJoin,Object matchKey){
+        System.out.println(this);
+        System.out.println(arrayJoin);
+        if (this.isJSONArray() && arrayJoin.isJSONArray()){
+            for (Json json:this.values()){
+                for (Json json1:arrayJoin.values()){
 
-        JSONArray  nArray = new JSONArray();
-
-        try {
-            for (Object obj1 : array) {
-
-                JSONObject js1 = (JSONObject) parser.parse(obj1.toString());
-
-                for (Object obj2 : arrayJoin.values()) {
-
-                    JSONObject js2 = (JSONObject) parser.parse(obj2.toString());
-
-                    if (js1.get(idJSON).toString().toLowerCase().equals(match.toLowerCase()) &&
-                            js2.get(idJSON2).toString().toLowerCase().equals(match.toLowerCase())) {
-                        nArray.add((JSONObject) parser.parse(js1.toString().replace("}", js2.toString().replace("{", ",").replace("\"id\"", "\"idjoin\""))));
+                    if (json.getObject(matchKey) == json1.getObject(matchKey)){
+                        System.out.println("Coincidencia");
                     }
-
                 }
-
             }
-        }catch (Exception e){}
+        }
 
-        return  new Json(nArray);
+        return null;
     }
 
     public Json orderBy(Object key){
@@ -948,6 +951,30 @@ public class Json extends Object{
     
     public Json use(Object jsonFile){
         return new Json(jsons.get(jsonFile));
+    }
+
+    public Json as(int index,Object newKey){
+        if (isJSONObject()){
+            Json out = this;
+            Object data = null;
+            data = out.getObject(getKey(index));
+            out.remove(getKey(index));
+            out.put(newKey,data);
+            return out;
+        }
+        return null;
+    }
+
+    public Json as(Object key,Object newKey){
+        if (isJSONObject()){
+            Json out = this;
+            Object data = null;
+            data = out.getObject(key);
+            out.remove(key);
+            out.put(newKey,data);
+            return out;
+        }
+        return null;
     }
     //===============================================================
 
