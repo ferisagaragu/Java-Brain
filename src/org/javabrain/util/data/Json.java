@@ -6,6 +6,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.omg.CORBA.OBJ_ADAPTER;
 
 import java.io.*;
 import java.math.BigDecimal;
@@ -1076,6 +1077,13 @@ public class Json extends Object{
             i++;
         }
         return json;
+    }
+
+    public static Json parseJson(Object object){
+        try {
+            return new Json(object);
+        }catch (Exception e){}
+        return null;
     }
 
     public static boolean isJSONArray(Object obj){

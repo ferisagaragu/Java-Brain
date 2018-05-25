@@ -9,7 +9,7 @@ public class Run {
     public static void main(String[] args) {
 
         Json json = new Json("org.javabrain.test.{test.json}");
-        Console.blue(Json.parseJson(json.toList()));
+        Console.blue(Json.parseJson(json));
     }
 
     /*todo Classes por añadir
