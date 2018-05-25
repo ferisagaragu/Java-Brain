@@ -61,9 +61,11 @@ public class Console {
     }
     
     public static void blue(Object message){
-        System.out.println("\033[34m"+message.toString().replace("<3","❤").replace(":)","☺")
+        try{
+            System.out.println("\033[34m"+message.toString().replace("<3","❤").replace(":)","☺")
                     .replace(":(","☹").replace("<-","←")
                     .replace("->","→")+"\033[30m");
+        }catch (Exception e){}
     }
 
     public static void magenta(Object message){
