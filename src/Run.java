@@ -1,15 +1,15 @@
 
 import org.javabrain.util.alert.Console;
 import org.javabrain.util.data.Json;
-import org.javabrain.util.web.service.Valuta;
-import org.javabrain.util.web.service.res.Dottydots;
 
 public class Run {
 
     public static void main(String[] args) {
 
         Json json = new Json("org.javabrain.test.{test.json}");
-        Console.blue(Json.parseJson(json));
+        Json jso = json.putJSON(new Json("org.javabrain.test.{new.json}"));
+        Console.viewer(jso);
+
     }
 
     /*todo Classes por añadir
