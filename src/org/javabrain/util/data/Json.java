@@ -6,6 +6,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.omg.CORBA.OBJ_ADAPTER;
 
 import java.io.*;
 import java.math.BigDecimal;
@@ -33,6 +34,7 @@ public class Json extends Object{
     private JSONArray array;
     private Object destructurinOunt = null;
     private Map<Object,String> jsons;
+    private int mapCount = 0;
     //===========================================================================
 
     //Constantes privadas
@@ -700,21 +702,50 @@ public class Json extends Object{
         }
     }
 
-    //todo este es para excluir de un JSONArray pero falta para excluir un elemento
     public Json exclude(int index){
-        int i = 0;
-        String out = "";
-        for (Json json : values()) {
-            if(i != index){
-                out += json.toString();
+
+        if(isJSONArray()){
+            int i = 0;
+            String out = "";
+            for (Json json : values()) {
+                if(i != index){
+                    out += json.toString();
+                }
+                i++;
             }
-            i++;
+            return new Json("["+out+"]");
+        }else {
+            try {
+                int i = 0;
+                JSONObject out = (JSONObject) parser.parse(obj.toString());
+                for (Object jsons : obj.keySet()) {
+                    if(i == index){
+                       out.remove(jsons);
+                       return new Json(out);
+                    }
+                    i++;
+                }
+            }catch (Exception e){}
         }
-        return new Json("["+out+"]");
+        return new Json();
+    }
+
+    public Json exclude(Object key){
+        if(!isJSONArray()){
+            try {
+                JSONObject out = (JSONObject) parser.parse(obj.toString());
+                for (Object jsons : obj.keySet()) {
+                    if(jsons.toString().equals(key.toString())){
+                        out.remove(jsons);
+                        return new Json(out);
+                    }
+                }
+            }catch (Exception e){}
+        }
+        return new Json();
     }
 
     public Json select(String[] keys){
-
         String out = "{";
         String js = "";
         if(obj.toString().equals("{}")) {
@@ -936,21 +967,60 @@ public class Json extends Object{
         
         return null;
     }
+
+    private ArrayList toList(Json json,ArrayList list){
+
+        if (json.isJSONArray()){
+            for (Json json1:json.values()){
+                toList(json1,list);
+            }
+        }else {
+            for (Object data:json.getKeys()){
+
+                try {
+                    Json json1 = new Json(json.getString(data));
+                    toList(json1,list);
+                }catch (Exception e){
+                    list.add(json.getString(data));
+                }
+            }
+        }
+        return list;
+    }
+
+    private Map<Object,Object> toMap(Json json, Map map){
+
+        if (json.isJSONArray()){
+            for (Json json1:json.values()){
+                toMap(json1,map);
+            }
+        }else {
+            for (Object data:json.getKeys()){
+                try {
+                    Json json1 = new Json(json.getString(data));
+                    toMap(json1,map);
+                }catch (Exception e){
+                    if (map.containsKey(data) || map.containsKey(data.toString()+mapCount)){
+                        map.put(data.toString()+mapCount,json.getString(data));
+                        mapCount++;
+                    }else {
+                        map.put(data.toString(),json.getString(data));
+                    }
+                }
+            }
+        }
+        return map;
+    }
     //==============================================================
 
-    //Todo metodos TO en versión 0.0.3
     //METODOS TO
     public Map<Object,Object> toMap(){
-        Map<Object,Object> map = new LinkedHashMap<>();
-        for (Object key:getKeys()){
-            map.put(key,obj.get(key));
-        }
-
-        return map;
+        return toMap(this,new HashMap());
     }
 
     public ArrayList toList(){
-        return null;
+        ArrayList list = toList(this,new ArrayList());
+        return list;
     }
 
     public String toJSONString(){
@@ -990,6 +1060,47 @@ public class Json extends Object{
 
     //===============================================================
 
+    //Métodos static
+    public static Json parseJson(Map map){
+        Json out = new Json();
+        for (Object object:map.keySet()){
+            out.put(object,map.get(object));
+        }
+        return out;
+    }
+
+    public static Json parseJson(ArrayList list){
+        int i = 0;
+        Json json = new Json();
+        for (Object object:list){
+            json.put("item"+i,object);
+            i++;
+        }
+        return json;
+    }
+
+    public static Json parseJson(Object object){
+        try {
+            return new Json(object);
+        }catch (Exception e){}
+        return null;
+    }
+
+    public static boolean isJSONArray(Object obj){
+        try {
+            return new Json(obj).isJSONArray();
+        }catch (Exception e){}
+        return false;
+    }
+
+    public static boolean isJSONObject(Object obj){
+        try {
+            return new Json(obj).isJSONObject();
+        }catch (Exception e){}
+        return false;
+    }
+    //===============================================================
+
     //METODOS COMPLEJOS "DESTRUCTURIN"
     public Object get(Object key){
         getDestructurin(this,key);
@@ -1001,7 +1112,5 @@ public class Json extends Object{
     Versión 0.0.2 ->
     -AGREGAR JSONJOIN
     -METODO PARA ORDENAR EL JSON
-    -TIPEAR EL BSON "HACER EN OTRA CLACE"
-    -METODOS PARA CONVERTIR SQL EN JSON Y BISEVERSA
-    -HasMap a JSON y biseversa*/
+    -METODOS PARA CONVERTIR SQL EN JSON Y BISEVERSA*/
 }
