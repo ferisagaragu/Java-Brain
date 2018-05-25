@@ -49,7 +49,7 @@ public class Json extends Object{
         } catch (ParseException e) {}
     }
     
-    /*
+    /*todo
     FUNCIONAN - EXTERNOS
     Json json = new Json(new File("C:\\Users\\QualtopGroup\\Desktop\\test.json"));
     Json json = new Json("C:\\Users\\QualtopGroup\\Desktop\\test.json");
@@ -191,128 +191,179 @@ public class Json extends Object{
 
     //MJSONG-0001
     public String getString(Object key){
-        return obj.get(key).toString();
+        try{
+            return obj.get(key).toString();
+        }catch (Exception e){}
+        return null;
     }
 
     //MJSONG-0002
     public int getInteger(Object key){
-        return Integer.parseInt(obj.get(key).toString());
+        try {
+            return Integer.parseInt(obj.get(key).toString());
+        }catch (Exception e){}
+        return -1;
     }
 
     //MJSONG-0003
     public float getFloat(Object key){
-        return Float.parseFloat(obj.get(key).toString());
+        try {
+            return Float.parseFloat(obj.get(key).toString());
+        }catch (Exception e){}
+        return -1f;
     }
 
     //MJSONG-0004
     public boolean getBoolean(Object key){
-        return Boolean.parseBoolean(obj.get(key).toString());
+        try {
+            return Boolean.parseBoolean(obj.get(key).toString());
+        }catch (Exception e){}
+        return false;
     }
 
     //MJSONG-0005
     public char getCharacter(Object key){
-        return obj.get(key).toString().charAt(0);
+        try{
+            return obj.get(key).toString().charAt(0);
+        }catch (Exception e){}
+        return ' ';
     }
 
     //MJSONG-0006
     public double getDouble(Object key){
-        return Double.parseDouble(obj.get(key).toString());
+        try {
+            return Double.parseDouble(obj.get(key).toString());
+        }catch (Exception e){}
+        return -1;
     }
 
     //MJSONG-0007
     public Object getObject(Object key){
-        return obj.get(key);
+        try {
+            return obj.get(key);
+        }catch (Exception e){}
+        return null;
     }
 
     //MJSONG-0008
     public Json getJSON(Object key){
-        return new Json(obj.get(key));
+        try {
+            return new Json(obj.get(key));
+        }catch (Exception e){}
+        return null;
     }
 
     //MJSONG-0009
     public Object[] getArray(Object key){
-        Object[] dat = null;
-        if(getString(key).charAt(0) == '['){
-           String dato = getString(key).replace("[","").replace("]","");
-           dat = dato.split(",");
-            for (int i = 0; i < dat.length; i++) {
-                if(dat[i].toString().equals("\"\"")){
-                    dat[i] = "";
-                }else {
-                    dat[i] = dat[i].toString().replace("\"","");
+        try {
+            Object[] dat = null;
+            if(getString(key).charAt(0) == '['){
+                String dato = getString(key).replace("[","").replace("]","");
+                dat = dato.split(",");
+                for (int i = 0; i < dat.length; i++) {
+                    if(dat[i].toString().equals("\"\"")){
+                        dat[i] = "";
+                    }else {
+                        dat[i] = dat[i].toString().replace("\"","");
+                    }
                 }
             }
-        }
-        return dat;
+            return dat;
+        }catch (Exception e){}
+        return null;
     }
 
     //MJSONG-0010
     public ArrayList<Object> getList(Object key){
-        ArrayList<Object> list = new ArrayList<>();
-
-        for (Object o:getArray(key)) {
-            list.add(o);
-        }
-        return list;
+        try {
+            ArrayList<Object> list = new ArrayList<>();
+            for (Object o:getArray(key)) {
+                list.add(o);
+            }
+            return list;
+        }catch (Exception e){}
+        return null;
     }
 
     //MJSONG-0011
     public Timestamp getTimestamp(Object key){
-        return Timestamp.valueOf(obj.get(key).toString());
+        try {
+            return Timestamp.valueOf(obj.get(key).toString());
+        }catch (Exception e){}
+        return null;
     }
 
     //MJSONG-0012
     public Collection getKeys(){
-        Collection collection = new ArrayList();
-        for (Object sets:obj.keySet()) {
-            collection.add(sets);
-        }
-        return collection;
+        try {
+            Collection collection = new ArrayList();
+            for (Object sets:obj.keySet()) {
+                collection.add(sets);
+            }
+            return collection;
+        }catch (Exception e){}
+        return null;
     }
 
     //MJSONG-0013
     public String getKey(int index) {
-        int i = 0;
-        for (Object sets:obj.keySet()) {
-            if(i == index){
-                return sets.toString();
+        try {
+            int i = 0;
+            for (Object sets:obj.keySet()) {
+                if(i == index){
+                    return sets.toString();
+                }
+                i++;
             }
-            i++;
-        }
+            return null;
+        }catch (Exception e){}
         return null;
     }
 
     //MJSONG-0014
     public Json getJSONArray(Object key, int index){
-        JSONArray array = null;
-
-        try{array = (JSONArray) parser.parse(obj.get(key).toString());}catch (Exception e){}
-
-        return new Json(array.get(index));
+        try{
+            JSONArray array = null;
+            try{array = (JSONArray) parser.parse(obj.get(key).toString());}catch (Exception e){}
+            return new Json(array.get(index));
+        }catch (Exception e){}
+        return null;
     }
 
     //MJSONG-0015
     public Json getJSONArray(int index){
-        return new Json(array.get(index));
+        try {
+            return new Json(array.get(index));
+        }catch (Exception e){}
+        return null;
     }
 
     //MJSONG-0016
     public Json getJSONArray(Object key){
         JSONArray array = null;
-        try{array = (JSONArray) parser.parse(obj.get(key).toString());}catch (Exception e){}
+        try{array = (JSONArray) parser.parse(obj.get(key).toString());}catch (Exception e){return null;}
         return new Json(array);
     }
 
     public BigDecimal getBigDecimal(Object key){
-        return BigDecimal.valueOf(Double.parseDouble(obj.get(key).toString()));
+        try {
+            return BigDecimal.valueOf(Double.parseDouble(obj.get(key).toString()));
+        }catch (Exception e){}
+        return null;
     }
 
     public Byte getByte(Object key){
-        return Byte.parseByte(obj.get(key).toString());
+        try {
+            return Byte.parseByte(obj.get(key).toString());
+        }catch (Exception e){}
+        return null;
     }
 
     public Long getLong(Object key){
-        return Long.parseLong(obj.get(key).toString());
+        try {
+            return Long.parseLong(obj.get(key).toString());
+        }catch (Exception e){}
+        return null;
     }
 
     public String getDate(Object key, String format) {
@@ -321,15 +372,16 @@ public class Json extends Object{
             Date date = formatter.parse(obj.get(key).toString());
             String sdate = formatter.format(date);
             return sdate;
-        } catch (java.text.ParseException e) {
-            e.printStackTrace();
-        }
+        } catch (Exception e) {}
         return null;
     }
 
     public String getDecimal(Object key, String format){
-        DecimalFormat format1 = new DecimalFormat(format);
-        return format1.format(obj.get(key));
+        try{
+            DecimalFormat format1 = new DecimalFormat(format);
+            return format1.format(obj.get(key));
+        }catch (Exception e){}
+        return null;
     }
     //===============================================================
 
@@ -454,19 +506,24 @@ public class Json extends Object{
 
     //===============================================================
 
-    //todo revisar el por que regresan unos metodo object
-    //METODOS DE ACCION 19
-
+    //METODOS DE ACCION
     public void remove(Object key){
         obj.remove(key);
     }
 
-    public int size(){
+    public void remove(int index){
 
+        if (isJSONArray()){
+            array.remove(index);
+        }else {
+            obj.remove(getKey(index));
+        }
+    }
+
+    public int size(){
         if(obj == null){
             return array.size();
         }
-
         return obj.size();
     }
 
@@ -579,10 +636,21 @@ public class Json extends Object{
         return  new Json(obj);
     }
 
-    //Todo falta hacer el metodo to hasmap para que se pueda usar este
     public Json putJSON(Json json){
-        //obj.putAll();
-        return  new Json(obj);
+        if (this.isJSONArray()){
+            array.add(json);
+        }else {
+            int i = 0;
+            for (Object object:json.getKeys()){
+
+                if (this.existKey(object)){
+                    obj.put(object.toString()+i,json.getObject(object));
+                }else {
+                    obj.put(object.toString(),json.getObject(object));
+                }
+            }
+        }
+        return this;
     }
 
     public Json putJSONArray(Object key, Map<Object,Object> objects){
