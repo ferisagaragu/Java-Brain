@@ -48,7 +48,23 @@ public class Json extends Object{
             obj = (org.json.simple.JSONObject) parser.parse("{}");
         } catch (ParseException e) {}
     }
-    
+
+    public Json(Map<Object,Object> json){
+        String out = "{";
+        if(!json.isEmpty()) {
+            for (Object key : json.keySet()) {
+                out += "\"" + key + "\"" + ":\"" + json.get(key) + "\",";
+            }
+            out = out.substring(0, out.length() - 1) + "}";
+        }else {
+            out = "{}";
+        }
+        try {
+            parser = new JSONParser();
+            obj = (org.json.simple.JSONObject) parser.parse(out);
+        } catch (ParseException e) {}
+    }
+
     /*todo
     FUNCIONAN - EXTERNOS
     Json json = new Json(new File("C:\\Users\\QualtopGroup\\Desktop\\test.json"));
@@ -508,7 +524,11 @@ public class Json extends Object{
 
     //METODOS DE ACCION
     public void remove(Object key){
-        obj.remove(key);
+        if (isJSONArray()) {
+            array.remove(key);
+        } else {
+            obj.remove(key);
+        }
     }
 
     public void remove(int index){
@@ -637,29 +657,24 @@ public class Json extends Object{
     }
 
     public Json putJSON(Json json){
-
-        if (this.isJSONArray()){
-            array.add(json);
-        }else {
-            int i = 0;
-            if (json.isJSONArray()){
-                Date date = new Date();
-                Long j = new Long(date.getTime());
-                if (json.existKey("item"+j)){
-                    obj.put("item"+(j+1),json);
-                }else {
-                    obj.put("item"+j,json);
-                }
-                return this;
+        int i = 0;
+        if (json.isJSONArray()){
+            Date date = new Date();
+            Long j = new Long(date.getTime());
+            if (json.existKey("item"+j)){
+                obj.put("item"+(j+1),json);
+            }else {
+                obj.put("item"+j,json);
             }
+            return this;
+        }
 
-            for (Object object:json.getKeys()){
+        for (Object object:json.getKeys()){
 
-                if (this.existKey(object)){
-                    obj.put(object.toString()+i,json.getObject(object));
-                }else {
-                    obj.put(object.toString(),json.getObject(object));
-                }
+            if (this.existKey(object)){
+                obj.put(object.toString()+i,json.getObject(object));
+            }else {
+                obj.put(object.toString(),json.getObject(object));
             }
         }
         return this;
@@ -694,13 +709,8 @@ public class Json extends Object{
     }
 
     public Json putJSONArray(Json json){
-        try {
-            array = (JSONArray) parser.parse("["+json.toJSONString()+"]");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        return new Json(array);
+        array.add(json);
+        return this;
     }
 
     public ArrayList<Json> values(){
@@ -878,20 +888,38 @@ public class Json extends Object{
 
     //todo este metodo es inperfecto
     public Json join(Json arrayJoin,Object matchKey){
-        System.out.println(this);
-        System.out.println(arrayJoin);
+        Json out = null;
+        Json outArray = new Json("[]");
         if (this.isJSONArray() && arrayJoin.isJSONArray()){
             for (Json json:this.values()){
                 for (Json json1:arrayJoin.values()){
-
                     if (json.getObject(matchKey) == json1.getObject(matchKey)){
-                        System.out.println("Coincidencia");
+                        out = json.as(matchKey,matchKey+"Join").putJSON(json1);
+                        out.remove(matchKey);
+                        outArray.putJSONArray(out);
                     }
                 }
             }
         }
+        return outArray;
+    }
 
-        return null;
+    public Json leftJoin(Json arrayJoin,Object matchKey){
+        Json outArray = arrayJoin;
+        if (this.isJSONArray() && arrayJoin.isJSONArray()){
+            for (Json json:this.values()){
+                int i = 0;
+                for (Json json1:arrayJoin.values()){
+                    if (json.getObject(matchKey) == json1.getObject(matchKey)){
+                        outArray.remove(i);
+                    }
+                    i++;
+                }
+            }
+        }else{
+            return null;
+        }
+        return outArray;
     }
 
     public Json orderBy(Object key){
@@ -1203,9 +1231,9 @@ public class Json extends Object{
     }
     //===============================================================
     
-    /*todo Versión 0.0.2
-    Versión 0.0.2 ->
-    -AGREGAR JSONJOIN
+    /*todo Versión 0.0.4
+    Versión 0.0.4 ->
     -METODO PARA ORDENAR EL JSON
+    -METODO PARA AUTO COMPLETAR json.getMatch(exam)  y que esto se ignifique json.get(example)
     -METODOS PARA CONVERTIR SQL EN JSON Y BISEVERSA*/
 }
