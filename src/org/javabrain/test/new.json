@@ -1,6 +1,13 @@
-{
+[{
+  "id":1,
   "example1":"dato1",
   "example2":"dato2",
   "example3":"dato3",
   "example4":"dato4"
-}
+},{
+  "id":2,
+  "example1":"dato5",
+  "example2":"dato6",
+  "example3":"dato7",
+  "example4":"dato8"
+}]
