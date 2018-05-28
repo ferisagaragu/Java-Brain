@@ -1,15 +1,18 @@
 package org.javabrain.util.data;
 
 import org.javabrain.util.resource.Path;
+import org.javabrain.util.web.service.Petition;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.omg.CORBA.OBJ_ADAPTER;
 
 import java.io.*;
 import java.math.BigDecimal;
+import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -49,6 +52,14 @@ public class Json extends Object{
         } catch (ParseException e) {}
     }
 
+    public  Json(Json json){
+        if (json.isJSONArray()){
+            array = json.array;
+        }else {
+            obj = json.obj;
+        }
+    }
+
     public Json(Map<Object,Object> json){
         String out = "{";
         if(!json.isEmpty()) {
@@ -83,6 +94,112 @@ public class Json extends Object{
         } catch (ParseException e) {}
     }
 
+    public Json(URL json){
+        if (json != null) {
+            String out = Petition.doGet(json.toString());
+            parser = new JSONParser();
+            if (Json.isJSONArray(out)) {
+                try {
+                    array = (org.json.simple.JSONArray) parser.parse(out);
+                } catch (ParseException e) {
+                }
+            } else {
+                try {
+                    obj = (org.json.simple.JSONObject) parser.parse(out);
+                } catch (ParseException e) {
+                }
+            }
+        }else {
+            parser = new JSONParser();
+            try {
+                obj = (org.json.simple.JSONObject) parser.parse("{}");
+            } catch (ParseException e) {}
+        }
+    }
+
+    public  Json(InputStream json){
+        if (json != null) {
+            try {
+                parser = new JSONParser();
+                BufferedReader in = new BufferedReader(new InputStreamReader(json, "utf-8"));
+                String sCadena;
+                String out = "";
+                while ((sCadena = in.readLine()) != null) {
+                    out += sCadena;
+                }
+
+                if (Json.isJSONArray(out)) {
+                    array = (JSONArray) parser.parse(out);
+                } else {
+                    obj = (JSONObject) parser.parse(out);
+                }
+            } catch (Exception e) {}
+        }else {
+            parser = new JSONParser();
+            try {
+                obj = (JSONObject) parser.parse("{}");
+            } catch (ParseException e) {}
+        }
+    }
+
+    public Json(File json){
+        if (json.isDirectory()){
+            File[] files = json.listFiles();
+            jsons = new HashMap<>();
+            for (File file:files){
+                parser = new JSONParser();
+                BufferedReader ino = null;
+                try {
+                    ino = new BufferedReader(new InputStreamReader(new FileInputStream(file), "utf-8"));
+                    String sCadena;
+                    String out = "";
+                    while ((sCadena = ino.readLine()) != null) {
+                        out += sCadena;
+                    }
+                    jsons.put(file.getName().replace(".json",""),out);
+                }catch (Exception e){}
+            }
+            return;
+        }
+        if (json != null) {
+            try {
+                parser = new JSONParser();
+                BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(json), "utf-8"));
+                String sCadena;
+                String out = "";
+                while ((sCadena = in.readLine()) != null) {
+                    out += sCadena;
+                }
+
+                if (Json.isJSONArray(out)) {
+                    array = (JSONArray) parser.parse(out);
+                } else {
+                    obj = (JSONObject) parser.parse(out);
+                }
+            } catch (Exception e) {}
+        }else {
+            parser = new JSONParser();
+            try {
+                obj = (JSONObject) parser.parse("{}");
+            } catch (ParseException e) {}
+        }
+    }
+
+    public Json(ResultSet json){
+        try {
+            array = new JSONArray();
+            ResultSetMetaData rsmd = json.getMetaData();
+            while (json.next()) {
+                JSONObject obje = new JSONObject();
+                for (int i = 1; i <= rsmd.getColumnCount(); i++) {
+                    String columnName = rsmd.getColumnName(i).toLowerCase();
+                    obje.put(columnName, json.getString(i));
+                }
+                array.add(obje);
+            }
+        }catch (Exception e){}
+    }
+
     /*todo
     FUNCIONAN - EXTERNOS
     Json json = new Json(new File("C:\\Users\\QualtopGroup\\Desktop\\test.json"));
@@ -92,10 +209,6 @@ public class Json extends Object{
     Console.black(json.use("acciones"));
     Falta el Json json = new Json("[C:\\Users\\QualtopGroup\\Desktop\\]");
     Falta sql a Json json = new Json("select * from example" o statemen);
-    Falta iniciar con hasmap
-    Falta iniciar apartir de un arraylist o arra en los cuales el json se formara de item1: valor item2: valor
-    Falta iniciar json con petition solo get Json json = new Json("http://www.javabrain.com/example-data");
-    Falta iniciar json con inputString
     Falta iniciar json encriptado
     
     FUNCIONAN - INTERNOS
@@ -996,7 +1109,11 @@ public class Json extends Object{
     }
     
     public Json use(Object jsonFile){
-        return new Json(jsons.get(jsonFile));
+        try{
+            Json out = new Json(jsons.get(jsonFile));
+            return new Json(out);
+        }catch (Exception e){}
+        return null;
     }
 
     public Json as(int index,Object newKey){

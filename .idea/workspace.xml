@@ -7,8 +7,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="379cf134-9341-47c8-a088-fede3cf958f4" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/jsoup_1_11_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/jsoup_1_11_2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java-Brain.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Java-Brain.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/built-jar.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/built-jar.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/org/javabrain/test/test.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/test/test.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/org/javabrain/util/alert/Console.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/alert/Console.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/org/javabrain/util/data/Json$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/data/Json$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/org/javabrain/util/data/Json.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/data/Json.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/org/javabrain/util/resource/Path.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/resource/Path.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/org/javabrain/util/web/service/Petition.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/web/service/Petition.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Java-Brain.jar" beforeDir="false" afterPath="$PROJECT_DIR$/dist/Java-Brain.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/project.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Run.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/test/new2.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/javabrain/test/new2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/util/alert/Console.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/javabrain/util/alert/Console.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/javabrain/util/data/Json.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/javabrain/util/data/Json.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -21,11 +34,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Run.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Run.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Run.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="12" column="41" lean-forward="true" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
+            <state relative-caret-position="390">
+              <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -33,20 +46,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/javabrain/test/new.json">
+      <file leaf-file-name="Console.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/alert/Console.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
+            <state relative-caret-position="225">
+              <caret line="394" column="72" selection-start-line="394" selection-start-column="72" selection-end-line="394" selection-end-column="72" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new2.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/javabrain/test/new2.json">
+      <file leaf-file-name="new.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/javabrain/test/new.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="690">
-              <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+            <state>
+              <caret column="2" selection-start-column="2" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -54,8 +67,12 @@
       <file leaf-file-name="Json.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/data/Json.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="63" column="38" lean-forward="true" selection-start-line="63" selection-start-column="38" selection-end-line="63" selection-end-column="38" />
+            <state relative-caret-position="220">
+              <caret line="188" column="13" selection-start-line="188" selection-start-column="13" selection-end-line="188" selection-end-column="13" />
+              <folding>
+                <element signature="e#40106#40107#0" expanded="true" />
+                <element signature="e#40154#40155#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -66,7 +83,7 @@
     <findStrings>
       <find>excl</find>
       <find>Syste</find>
-      <find>public ob</find>
+      <find />
       <find>remove</find>
       <find>todo</find>
       <find>to</find>
@@ -76,8 +93,8 @@
       <find>Sy</find>
       <find>as(</find>
       <find>this</find>
-      <find>return t</find>
-      <find>return this</find>
+      <find />
+      <find />
       <find>putJsonA</find>
       <find>join(</find>
       <find>put</find>
@@ -85,6 +102,9 @@
       <find>JsonObject(</find>
       <find>join</find>
       <find>left</find>
+      <find>jsons</find>
+      <find>use(</find>
+      <find>type</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -96,13 +116,13 @@
         <option value="$PROJECT_DIR$/src/org/javabrain/util/data/test.json" />
         <option value="$PROJECT_DIR$/doc/public_html/json/util/json.json" />
         <option value="$PROJECT_DIR$/doc/public_html/json/util/util.json" />
-        <option value="$PROJECT_DIR$/src/org/javabrain/util/alert/Console.java" />
         <option value="$PROJECT_DIR$/src/org/javabrain/util/data/Archive.java" />
         <option value="$PROJECT_DIR$/src/org/javabrain/test/test.json" />
         <option value="$PROJECT_DIR$/src/org/javabrain/test/new2.json" />
         <option value="$PROJECT_DIR$/src/org/javabrain/test/new.json" />
         <option value="$PROJECT_DIR$/src/org/javabrain/util/data/Json.java" />
         <option value="$PROJECT_DIR$/src/Run.java" />
+        <option value="$PROJECT_DIR$/src/org/javabrain/util/alert/Console.java" />
       </list>
     </option>
   </component>
@@ -112,9 +132,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1" />
-    <option name="y" value="1" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-2" />
+    <option name="y" value="181" />
     <option name="width" value="1364" />
     <option name="height" value="726" />
   </component>
@@ -126,8 +146,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -197,14 +215,19 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="true" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="C:/diccionario/src/dict/spanish.dic" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/dist/lib/postgresql-9.4.1209.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="Errors" />
@@ -313,22 +336,23 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49926794" weight="0.32913387" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.3273495" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50073206" side_tool="true" weight="0.32913387" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49926794" weight="0.30866143" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49926794" visible="true" weight="0.20696938" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.25183016" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1109375" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -342,7 +366,6 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32755905" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="3" />
@@ -414,6 +437,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1770">
           <caret line="59" column="23" selection-start-line="59" selection-start-column="23" selection-end-line="59" selection-end-column="23" />
+          <folding>
+            <element signature="e#40106#40107#0" expanded="true" />
+            <element signature="e#40154#40155#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -445,6 +472,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="26790">
           <caret line="893" column="53" selection-start-line="893" selection-start-column="53" selection-end-line="893" selection-end-column="53" />
+          <folding>
+            <element signature="e#40106#40107#0" expanded="true" />
+            <element signature="e#40154#40155#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -671,13 +702,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/resource/Path.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/data/Archive.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -699,41 +723,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/alert/Console.java">
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/test/new2.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="250" column="23" selection-start-line="250" selection-start-column="23" selection-end-line="250" selection-end-column="23" />
+        <state>
+          <caret column="1" lean-forward="true" selection-start-column="1" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/web/service/res/Dottydots.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-450">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/resource/Path.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="69" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/javabrain/test/new.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/test/new2.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+        <state>
+          <caret column="2" selection-start-column="2" selection-end-column="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/data/Json.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="63" column="38" lean-forward="true" selection-start-line="63" selection-start-column="38" selection-end-line="63" selection-end-column="38" />
+        <state relative-caret-position="220">
+          <caret line="188" column="13" selection-start-line="188" selection-start-column="13" selection-end-line="188" selection-end-column="13" />
+          <folding>
+            <element signature="e#40106#40107#0" expanded="true" />
+            <element signature="e#40154#40155#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Run.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="12" column="41" lean-forward="true" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
+        <state relative-caret-position="390">
+          <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/alert/Console.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="394" column="72" selection-start-line="394" selection-start-column="72" selection-end-line="394" selection-end-column="72" />
         </state>
       </provider>
     </entry>
@@ -756,7 +798,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>No facets are configured</last-edited>
+          <last-edited />
           <splitter-proportions>
             <option name="proportions">
               <list>

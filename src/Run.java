@@ -1,24 +1,49 @@
-
 import org.javabrain.util.alert.Console;
 import org.javabrain.util.data.Json;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class Run {
 
     public static void main(String[] args) {
 
-        ArrayList list = new ArrayList();
-        list.add("nuevo 1");
-        list.add("nuevo 2");
-
-
-        Json json1 = new Json("org.javabrain.test.{new.json}");
-        Json json2 = new Json("org.javabrain.test.{new2.json}");
-        Json json = new Json(list);
+        Json json = null;
+        try{
+            String query = "select * from reportfailures;";
+            Statement st = connectDatabase().createStatement();
+            ResultSet rs = st.executeQuery(query);
+            json = new Json(rs);
+        }catch (Exception e){System.err.println(e.getMessage());}
         Console.viewer(json);
+
+    }
+
+    public static Connection connectDatabase() {
+        try {
+            // We register the PostgreSQL driver
+            // Registramos el driver de PostgresSQL
+            try {
+                Class.forName("org.postgresql.Driver");
+            } catch (ClassNotFoundException ex) {
+                System.out.println("Error al registrar el driver de PostgreSQL: " + ex);
+            }
+            Connection connection = null;
+            // Database connect
+            // Conectamos con la base de datos
+            connection = DriverManager.getConnection(
+                    "jdbc:postgresql://localhost:5432/atencion",
+                    "postgres", "root");
+
+            boolean valid = connection.isValid(50000);
+            System.out.println(valid ? "TEST OK" : "TEST FAIL");
+            return connection;
+        } catch (java.sql.SQLException sqle) {
+            System.out.println("Error: " + sqle);
+        }
+        return null;
     }
 
     /*todo Classes por añadir
