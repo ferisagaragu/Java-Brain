@@ -65,6 +65,24 @@ public class Json extends Object{
         } catch (ParseException e) {}
     }
 
+    public Json(ArrayList list){
+        String out = "{";
+        int i = 0;
+        if (!list.isEmpty()){
+            for (Object object:list) {
+                out += "\"item " + i + "\":\"" + object + "\",";
+                i++;
+            }
+            out = out.substring(0,out.length() - 1) + "}";
+        } else {
+            out = "{}";
+        }
+        try {
+            parser = new JSONParser();
+            obj = (org.json.simple.JSONObject) parser.parse(out);
+        } catch (ParseException e) {}
+    }
+
     /*todo
     FUNCIONAN - EXTERNOS
     Json json = new Json(new File("C:\\Users\\QualtopGroup\\Desktop\\test.json"));
