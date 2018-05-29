@@ -249,38 +249,47 @@ public class Console {
     }
     
     public static void viewer(Object message){
-        Json json2 = null;
-        Json json = null;
-        int type = -1;
-        boolean isJson = true;
-        try{
-            json = new Json(message);
-            message = json.toJSONString().replace("<3","❤").replace(":)","☺")
-                    .replace(":(","☹").replace("<-","←")
-                    .replace("->","→");
-            json2 = new Json(message);
-            type = 0;
-            isJson = false;
-        }catch (Exception e){}
-        
-        if(message.toString().contains("http") && isJson){
-            type = 1;
+        if (message != null) {
+            Json json2 = null;
+            Json json = null;
+            int type = -1;
+            boolean isJson = true;
+            try {
+                json = new Json(message);
+                message = json.toJSONString().replace("<3", "❤").replace(":)", "☺")
+                        .replace(":(", "☹").replace("<-", "←")
+                        .replace("->", "→");
+                json2 = new Json(message);
+                type = 0;
+                isJson = false;
+            } catch (Exception e) {
+            }
+
+            if (message.toString().contains("http") && isJson) {
+                type = 1;
+            }
+            //Caragar elementos internos en una clase estatica
+            ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+            Image img = new ImageIcon(classLoader.getResource("res/component/json.png")).getImage();
+            switch (type) {
+                case 0:
+                    new SwingTree(json2, json, img);
+                    break;
+                case 1: {
+                    try {
+                        new ImageViewer(new URL(message.toString()), img);
+                    } catch (Exception ex) {
+                        Logger.getLogger(Console.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                break;
+                default:
+                    new JavaViewer(message.toString(), img);
+            }
+            breakLine();
+        }else {
+            System.err.println("Untraceable content");
         }
-        //Caragar elementos internos en una clase estatica
-        ClassLoader classLoader = ClassLoader.getSystemClassLoader();
-        Image img = new ImageIcon(classLoader.getResource("res/component/json.png")).getImage();
-        switch (type) {
-            case 0: new SwingTree(json2,json,img); break;
-            case 1: {
-                        try {
-                            new ImageViewer(new URL(message.toString()), img); 
-                        } catch (Exception ex) {
-                            Logger.getLogger(Console.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    } break;
-            default: new JavaViewer(message.toString(),img);
-        }
-        breakLine();
     }
     
     //=======================================================================
@@ -348,7 +357,6 @@ class SwingTree extends JFrame {
         for(Object key:json.getKeys()){
             try{
                 Json obj = json.getJSON(key);
-                
                 if(obj.isJSONArray()){
                     root.add(renderJson(key.toString(),obj,color));
                 }else{

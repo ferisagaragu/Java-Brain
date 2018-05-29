@@ -1,14 +1,17 @@
 import org.javabrain.util.alert.Console;
 import org.javabrain.util.data.Json;
 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class Run {
 
-    public static void main(String[] args) {
-        Json json = new Json("[db/nueva]");
-        Console.viewer(json.use("muestrarios"));
+    public static void main(String[] args) throws Exception {
+
+        Json json = new Json("res.json.{emojis.json}");
+
+        Console.viewer(json);
     }
 
     public static Connection connectDatabase() {
