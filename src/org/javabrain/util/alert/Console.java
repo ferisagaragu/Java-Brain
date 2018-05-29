@@ -252,6 +252,7 @@ public class Console {
         Json json2 = null;
         Json json = null;
         int type = -1;
+        boolean isJson = true;
         try{
             json = new Json(message);
             message = json.toJSONString().replace("<3","❤").replace(":)","☺")
@@ -259,9 +260,10 @@ public class Console {
                     .replace("->","→");
             json2 = new Json(message);
             type = 0;
+            isJson = false;
         }catch (Exception e){}
         
-        if(message.toString().contains("http")){
+        if(message.toString().contains("http") && isJson){
             type = 1;
         }
         //Caragar elementos internos en una clase estatica
@@ -396,7 +398,7 @@ class SwingTree extends JFrame {
                     case 1: root.add(new DefaultMutableTreeNode(element(key.toString(),"emply","#9E9E9E"))); break;
                     case 2: root.add(new DefaultMutableTreeNode(element(key.toString(),result,"#EC407A"))); break;
                     case 3: root.add(new DefaultMutableTreeNode(element(key.toString(),result,"#26A69A"))); break;
-                    case 4: root.add(new DefaultMutableTreeNode(element(key.toString(),result,"#90CAF9"))); break;
+                    case 4: root.add(new DefaultMutableTreeNode(element(key.toString(),"<a href=\""+result+"\">"+result+"</a>","#90CAF9"))); break;
                     case 5: root.add(new DefaultMutableTreeNode(element(key.toString(),"base64 ﬦ","#FF9800"))); break;
                     case 6: root.add(new DefaultMutableTreeNode(element(key.toString(),"null","#3F51B5"))); break;
                     default:
