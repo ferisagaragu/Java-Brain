@@ -20,7 +20,6 @@ import javax.swing.ImageIcon;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JScrollPane;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeCellRenderer;
@@ -308,7 +307,7 @@ public class Console {
 //Clase para cargar todo con respecto a Json
 //Falta cambiar los scrolls por unos mas nuevos y el boton
 class SwingTree extends JFrame {
-  private JScrollPane scrollPane = new JScrollPane();
+  private org.javabrain.swing.container.ScrollPanel scrollPane = new org.javabrain.swing.container.ScrollPanel();
   private JTree tree;
   private Renderer renderer = new Renderer();
 
@@ -318,7 +317,7 @@ class SwingTree extends JFrame {
     getContentPane().setLayout(new BorderLayout());
     tree.setCellRenderer(renderer);
     scrollPane.getViewport().add(tree);
-    Button button = new Button("Copy");
+    org.javabrain.swing.control.Button button = new org.javabrain.swing.control.Button("Copy");
     getContentPane().add("Center", scrollPane);
     getContentPane().add(BorderLayout.SOUTH,button);
     setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -453,7 +452,7 @@ class Renderer extends JLabel implements TreeCellRenderer {
 //Clase para cargar todo con respecto a clases Java
 class JavaViewer extends JFrame{
     
-    private JScrollPane scrollPane = new JScrollPane();
+    private org.javabrain.swing.container.ScrollPanel scrollPane = new org.javabrain.swing.container.ScrollPanel();
     
     public JavaViewer(String code,Image img) {
         JLabel label = new JLabel(renderCode(code));
@@ -544,7 +543,7 @@ class JavaViewer extends JFrame{
 //Clase para cargar todo con respecto a clases Java
 class ImageViewer extends JFrame{
     
-    private JScrollPane scrollPane = new JScrollPane();
+    private org.javabrain.swing.container.ScrollPanel scrollPane = new org.javabrain.swing.container.ScrollPanel();
     
     public ImageViewer(URL url,Image img) throws URISyntaxException {
         
