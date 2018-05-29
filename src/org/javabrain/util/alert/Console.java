@@ -252,6 +252,7 @@ public class Console {
         Json json2 = null;
         Json json = null;
         int type = -1;
+        boolean isJson = true;
         try{
             json = new Json(message);
             message = json.toJSONString().replace("<3","❤").replace(":)","☺")
@@ -259,9 +260,10 @@ public class Console {
                     .replace("->","→");
             json2 = new Json(message);
             type = 0;
+            isJson = false;
         }catch (Exception e){}
         
-        if(message.toString().contains("http")){
+        if(message.toString().contains("http") && isJson){
             type = 1;
         }
         //Caragar elementos internos en una clase estatica
@@ -327,9 +329,9 @@ class SwingTree extends JFrame {
   }
   
   private DefaultMutableTreeNode renderJson(String pre,Json json,String color){
-      
+
     DefaultMutableTreeNode root = null;
-      
+
     int a = 1;
     if(json.isJSONArray()){
         root = new DefaultMutableTreeNode(html(pre,"Array","#2196F3"));
@@ -348,44 +350,57 @@ class SwingTree extends JFrame {
                 Json obj = json.getJSON(key);
                 
                 if(obj.isJSONArray()){
-                    root.add(renderJson(key.toString(),obj,color)); 
+                    root.add(renderJson(key.toString(),obj,color));
                 }else{
                     root.add(renderJson(key.toString(),obj,"#2196F3"));
                 }
                 
             }catch(Exception e){
                 String result = json.getString(key);
-                int type= 0;
-                
-                if(result.isEmpty()){
-                    type = 1;
-                }
+                int typo= 0;
+
+                try {
+                    if(result.isEmpty()){
+                        typo = 1;
+                    }
+                }catch (Exception ex){}
                 
                 try{
                     Integer.parseInt(result);
-                    type = 2;
+                    typo = 2;
                 }catch(Exception ex){}
                 
                 try{
                     if(result.charAt(0) == '['){
-                       type = 3;
+                       typo = 3;
                     }
                 }catch(Exception ex){}
-                
-                if(result.contains("http")){
-                    type = 4;
-                }
-                
-                if(result.contains(";base64,")){
-                    type = 5;
-                }
-                
-                switch(type){
+
+                try {
+                    if(result.contains("http")){
+                        typo = 4;
+                    }
+                }catch (Exception ex){}
+
+                try{
+                    if(result.contains(";base64,")){
+                        typo = 5;
+                    }
+                }catch (Exception ex){}
+
+                try {
+                    if (result == null){
+                        typo = 6;
+                    }
+                }catch (Exception ex){}
+
+                switch(typo){
                     case 1: root.add(new DefaultMutableTreeNode(element(key.toString(),"emply","#9E9E9E"))); break;
                     case 2: root.add(new DefaultMutableTreeNode(element(key.toString(),result,"#EC407A"))); break;
                     case 3: root.add(new DefaultMutableTreeNode(element(key.toString(),result,"#26A69A"))); break;
-                    case 4: root.add(new DefaultMutableTreeNode(element(key.toString(),result,"#90CAF9"))); break;
+                    case 4: root.add(new DefaultMutableTreeNode(element(key.toString(),"<a href=\""+result+"\">"+result+"</a>","#90CAF9"))); break;
                     case 5: root.add(new DefaultMutableTreeNode(element(key.toString(),"base64 ﬦ","#FF9800"))); break;
+                    case 6: root.add(new DefaultMutableTreeNode(element(key.toString(),"null","#3F51B5"))); break;
                     default:
                        root.add(new DefaultMutableTreeNode(element(key.toString(),"\""+result+"\"","#EF5350"))); 
                 }

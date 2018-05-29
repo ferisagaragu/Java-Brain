@@ -1,19 +1,24 @@
 package org.javabrain.util.data;
 
 import org.javabrain.util.resource.Path;
+import org.javabrain.util.web.service.Petition;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.omg.CORBA.OBJ_ADAPTER;
 
 import java.io.*;
 import java.math.BigDecimal;
+import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /***
  * @author Fernando García
@@ -49,6 +54,14 @@ public class Json extends Object{
         } catch (ParseException e) {}
     }
 
+    public  Json(Json json){
+        if (json.isJSONArray()){
+            array = json.array;
+        }else {
+            obj = json.obj;
+        }
+    }
+
     public Json(Map<Object,Object> json){
         String out = "{";
         if(!json.isEmpty()) {
@@ -65,19 +78,237 @@ public class Json extends Object{
         } catch (ParseException e) {}
     }
 
+    public Json(ArrayList list){
+        String out = "{";
+        int i = 0;
+        if (!list.isEmpty()){
+            for (Object object:list) {
+                out += "\"item " + i + "\":\"" + object + "\",";
+                i++;
+            }
+            out = out.substring(0,out.length() - 1) + "}";
+        } else {
+            out = "{}";
+        }
+        try {
+            parser = new JSONParser();
+            obj = (org.json.simple.JSONObject) parser.parse(out);
+        } catch (ParseException e) {}
+    }
+
+    public Json(URL json){
+        if (json != null) {
+            String out = Petition.doGet(json.toString());
+            parser = new JSONParser();
+            if (Json.isJSONArray(out)) {
+                try {
+                    array = (org.json.simple.JSONArray) parser.parse(out);
+                } catch (ParseException e) {
+                }
+            } else {
+                try {
+                    obj = (org.json.simple.JSONObject) parser.parse(out);
+                } catch (ParseException e) {
+                }
+            }
+        }else {
+            parser = new JSONParser();
+            try {
+                obj = (org.json.simple.JSONObject) parser.parse("{}");
+            } catch (ParseException e) {}
+        }
+    }
+
+    public  Json(InputStream json){
+        if (json != null) {
+            try {
+                parser = new JSONParser();
+                BufferedReader in = new BufferedReader(new InputStreamReader(json, "utf-8"));
+                String sCadena;
+                String out = "";
+                while ((sCadena = in.readLine()) != null) {
+                    out += sCadena;
+                }
+
+                if (Json.isJSONArray(out)) {
+                    array = (JSONArray) parser.parse(out);
+                } else {
+                    obj = (JSONObject) parser.parse(out);
+                }
+            } catch (Exception e) {}
+        }else {
+            parser = new JSONParser();
+            try {
+                obj = (JSONObject) parser.parse("{}");
+            } catch (ParseException e) {}
+        }
+    }
+
+    public Json(File json){
+        if (json.isDirectory()){
+            File[] files = json.listFiles();
+            jsons = new HashMap<>();
+            for (File file:files){
+                parser = new JSONParser();
+                BufferedReader ino = null;
+                try {
+                    ino = new BufferedReader(new InputStreamReader(new FileInputStream(file), "utf-8"));
+                    String sCadena;
+                    String out = "";
+                    while ((sCadena = ino.readLine()) != null) {
+                        out += sCadena;
+                    }
+                    jsons.put(file.getName().replace(".json",""),out);
+                }catch (Exception e){}
+            }
+            return;
+        }
+        if (json != null) {
+            try {
+                parser = new JSONParser();
+                BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(json), "utf-8"));
+                String sCadena;
+                String out = "";
+                while ((sCadena = in.readLine()) != null) {
+                    out += sCadena;
+                }
+
+                if (Json.isJSONArray(out)) {
+                    array = (JSONArray) parser.parse(out);
+                } else {
+                    obj = (JSONObject) parser.parse(out);
+                }
+            } catch (Exception e) {}
+        }else {
+            parser = new JSONParser();
+            try {
+                obj = (JSONObject) parser.parse("{}");
+            } catch (ParseException e) {}
+        }
+    }
+
+    public Json(ResultSet json){
+        try {
+            array = new JSONArray();
+            ResultSetMetaData rsmd = json.getMetaData();
+            while (json.next()) {
+                JSONObject obje = new JSONObject();
+                for (int i = 1; i <= rsmd.getColumnCount(); i++) {
+                    String columnName = rsmd.getColumnName(i).toLowerCase();
+                    obje.put(columnName, json.getString(i));
+                }
+                array.add(obje);
+            }
+        }catch (Exception e){}
+    }
+
+    public Json(String json){
+        if (!json.isEmpty()){
+            int type = -1;
+            boolean isJSON = false;
+            //VALIDACIÓN DE SI LA CADENA ES UN JSON
+            if (Json.isJSONArray(json)){
+                type = 0;
+                isJSON = true;
+            }
+
+            if (Json.isJSONObject(json)){
+                type = 1;
+                isJSON = true;
+            }
+            //======================================
+
+            //VALIDACIÓN CON UNA URL
+            if (isUrl(json) && (!isJSON)){
+                type = 2;
+            }
+            //======================================
+
+            //VALIDACIÓN DE RUTAS EXTERNAS
+            if (new File(json).exists()){
+                type = 3;
+            }
+
+            if (json.contains("[") && json.contains("]") && (!isJSON)){
+                json = json.replace("[","");
+                json = json.replace("]","/");
+                json = json.replace(".","/");
+                type = 3;
+            }
+            //=======================================
+
+            switch (type){
+                //VALIDACIÓN DE SI LA CADENA ES UN JSON
+                case 0:
+                    try {
+                        parser = new JSONParser();
+                        array = (JSONArray) parser.parse(json);
+                        return;
+                    }catch (Exception e){}
+                break;
+
+                case 1:
+                    try {
+                        parser = new JSONParser();
+                        obj = (JSONObject) parser.parse(json);
+                        return;
+                    }catch (Exception e){}
+                break;
+                //==============================================
+
+                //VALIDACIÓN CON UNA URL
+                case 2:
+                    try {
+                        parser = new JSONParser();
+                        String outJson = Petition.doGet(json);
+                        if (Json.isJSONArray(outJson)){
+                            array = (JSONArray) parser.parse(outJson);
+                        }else{
+                            obj = (JSONObject) parser.parse(outJson);
+                        }
+                        return;
+                    }catch (Exception e){}
+                break;
+                //==============================================
+
+                //VALIDACIÓN DE RUTAS EXTERNAS
+                case 3:
+                    try {
+                        if (new File(json).isDirectory()) {
+                            jsons = new HashMap<>();
+                            File out = new File(json);
+                            File[] files = out.listFiles();
+                            for (File file : files) {
+                                jsons.put(file.getName().replace(".json", ""), readFile(file.getPath()));
+                            }
+                        } else {
+                            parser = new JSONParser();
+                            String outJson = readFile(json);
+                            if (Json.isJSONArray(outJson)) {
+                                array = (JSONArray) parser.parse(outJson);
+                            } else {
+                                obj = (JSONObject) parser.parse(outJson);
+                            }
+                        }
+                        return;
+                    } catch (Exception e){}
+                break;
+                //==============================================
+            }
+
+            obj = new JSONObject();
+        }else{
+            obj = new JSONObject();
+        }
+    }
+
     /*todo
     FUNCIONAN - EXTERNOS
-    Json json = new Json(new File("C:\\Users\\QualtopGroup\\Desktop\\test.json"));
     Json json = new Json("C:\\Users\\QualtopGroup\\Desktop\\test.json");
     
     Json json = new Json("[DB.nueva]");
     Console.black(json.use("acciones"));
     Falta el Json json = new Json("[C:\\Users\\QualtopGroup\\Desktop\\]");
-    Falta sql a Json json = new Json("select * from example" o statemen);
-    Falta iniciar con hasmap
-    Falta iniciar apartir de un arraylist o arra en los cuales el json se formara de item1: valor item2: valor
-    Falta iniciar json con petition solo get Json json = new Json("http://www.javabrain.com/example-data");
-    Falta iniciar json con inputString
     Falta iniciar json encriptado
     
     FUNCIONAN - INTERNOS
@@ -86,7 +317,6 @@ public class Json extends Object{
     Json json = new Json("/org/javabrain/test/test.json");
     */
     public Json(Object json) {
-        
         //Carga un Json apartir de un String
         parser = new JSONParser();
         if(json.toString().charAt(0) == '['){
@@ -100,106 +330,6 @@ public class Json extends Object{
                 return;
             } catch (ParseException e) {}
         }
-        
-        //Crea el json con rutas
-        if(!(json.toString().charAt(0) == '[')){
-            if (new java.io.File(json.toString()).isFile()) {
-                java.io.File fil = new java.io.File(json.toString());
-                String out = "";
-                try {
-                    BufferedReader in2 = new BufferedReader(new InputStreamReader(new FileInputStream(fil), "utf-8"));
-                    String sCadena = "";
-
-                    while ((sCadena = in2.readLine()) != null) {
-                        out += sCadena;
-                    }
-
-                } catch (Exception e) {
-                }
-                if (out.charAt(0) == '[') {
-                    try {
-                        array = (org.json.simple.JSONArray) parser.parse(out);
-                    } catch (ParseException e) {
-                    }
-                } else {
-                    try {
-                        obj = (org.json.simple.JSONObject) parser.parse(out);
-                    } catch (ParseException e) {
-                    }
-                }
-                return;
-            }
-
-            if (json.toString().charAt(0) == '/') {
-
-                String out = "";
-                try {
-                    BufferedReader in = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(json.toString()), "utf-8"));
-                    String sCadena = "";
-
-                    while ((sCadena = in.readLine())!=null) {
-                        out += sCadena;
-                    }
-
-                }catch (Exception e){}
-
-                if(out.charAt(0) == '['){
-                    try {
-                        array = (org.json.simple.JSONArray) parser.parse(out);
-                    } catch (ParseException e) {}
-                }else {
-                    try {
-                        obj = (org.json.simple.JSONObject) parser.parse(out);
-                    } catch (ParseException e) {}
-                }
-                return;
-            } else {
-                String path = "",fileName = "";
-                try{
-                    path = json.toString();
-                    fileName = json.toString().split("\\{")[1].replace("}", "");
-                    path = path.replace("{" + fileName + "}", "").replace(".", "/");  
-                }catch(Exception e){
-                    path = json.toString();
-                }
-
-                String out = "";
-                try {
-                    BufferedReader in = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/" + path + fileName), "utf-8"));
-                    String sCadena = "";
-
-                    while ((sCadena = in.readLine())!=null) {
-                        out += sCadena;
-                    }
-
-                }catch (Exception e){}
-
-                if(out.charAt(0) == '['){
-                    try {
-                        array = (org.json.simple.JSONArray) parser.parse(out);
-                    } catch (ParseException e) {}
-                }else {
-                    try {
-                        obj = (org.json.simple.JSONObject) parser.parse(out);
-                    } catch (ParseException e) {}
-                }
-                return;
-            }
-        }else{
-            String path = json.toString().replace("[", "").replace("]", "");
-            if(path.charAt(0) == '/' || path.charAt(0) == '.'){
-                path = path.replace(".", "/");
-                path = path.substring(1, path.length());
-            }else{
-                path = path.replace(".", "/");
-            }
-            
-            jsons = new HashMap();
-            java.io.File fil = new java.io.File(path);
-            for (Object files : fil.list()) {
-                jsons.put(files.toString().replace(".json",""),path+"/"+files);
-            }
-        }  
     }
     //================================================================
 
@@ -978,7 +1108,11 @@ public class Json extends Object{
     }
     
     public Json use(Object jsonFile){
-        return new Json(jsons.get(jsonFile));
+        try{
+            Json out = new Json(jsons.get(jsonFile));
+            return new Json(out);
+        }catch (Exception e){}
+        return null;
     }
 
     public Json as(int index,Object newKey){
@@ -1134,6 +1268,44 @@ public class Json extends Object{
         }
         return map;
     }
+
+    private String readFile(String path){
+        try {
+            String out = "";
+            BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(path), "utf-8"));
+            String sCadena;
+            while ((sCadena = in.readLine()) != null) {
+                out +=  sCadena;
+            }
+            return out;
+        }catch (Exception e){}
+        return null;
+    }
+
+    private String readFile(InputStream path){
+        try {
+            String out = "";
+            BufferedReader in = new BufferedReader(new InputStreamReader(path, "utf-8"));
+            String sCadena;
+            while ((sCadena = in.readLine()) != null) {
+                out +=  sCadena;
+            }
+            return out;
+        }catch (Exception e){}
+        return null;
+    }
+
+    private static boolean isUrl(String s) {
+        String regex = "^(https?://)?(([\\w!~*'().&=+$%-]+: )?[\\w!~*'().&=+$%-]+@)?(([0-9]{1,3}\\.){3}[0-9]{1,3}|([\\w!~*'()-]+\\.)*([\\w^-][\\w-]{0,61})?[\\w]\\.[a-z]{2,6})(:[0-9]{1,4})?((/*)|(/+[\\w!~*'().;?:@&=+$,%#-]+)+/*)$";
+
+        try {
+            Pattern patt = Pattern.compile(regex);
+            Matcher matcher = patt.matcher(s);
+            return matcher.matches();
+        } catch (RuntimeException e) {
+            return false;
+        }
+    }
     //==============================================================
 
     //METODOS TO
@@ -1211,14 +1383,18 @@ public class Json extends Object{
 
     public static boolean isJSONArray(Object obj){
         try {
-            return new Json(obj).isJSONArray();
+            JSONParser parser1 = new JSONParser();
+            JSONArray array1 = (JSONArray) parser1.parse(obj.toString());
+            return true;
         }catch (Exception e){}
         return false;
     }
 
     public static boolean isJSONObject(Object obj){
         try {
-            return new Json(obj).isJSONObject();
+            JSONParser parser1 = new JSONParser();
+            JSONObject obj1 = (JSONObject) parser1.parse(obj.toString());
+            return true;
         }catch (Exception e){}
         return false;
     }
