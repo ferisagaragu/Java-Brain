@@ -9,9 +9,10 @@ public class Run {
 
     public static void main(String[] args) throws Exception {
 
-        Json json = new Json("res.json.{emojis.json}");
-
-        Console.viewer(json);
+        Json json = new Json("[db]");
+        Json out = json.use("muestrarios");
+        String[] select = {"id","name"};
+        Console.viewer(out.select(select).where("name","QualtopGroup"));
     }
 
     public static Connection connectDatabase() {

@@ -40,6 +40,9 @@ public class Json extends Object{
     private Object destructurinOunt = null;
     private Map<Object,String> jsons;
     private int mapCount = 0;
+    private boolean isDataBase = false;
+    private String path = "";
+    private String secName = "";
     //===========================================================================
 
     //Constantes privadas
@@ -223,6 +226,14 @@ public class Json extends Object{
     Json json = new Json("/org/javabrain/test/test.json");
     */
     public Json(Object json) {
+
+        try {
+            Object[] result = (Object[]) json;
+            isDataBase = (Boolean) result[1];
+            json = (Object) result[0];
+            path = String.valueOf(result[2]);
+            secName = String.valueOf(result[3]);
+        }catch (Exception e){}
 
         //Cargar Json desde un URL
         if (isUrl(json.toString())){
@@ -894,7 +905,7 @@ public class Json extends Object{
     public boolean write(String path){
         try {
             BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path), "utf-8"));
-            out.write(toJSONString().toString().replace("\\","").replace("\"{","{").replace("}\"","}"));
+            out.write(toJSONString().replace("\\","").replace("\"{","{").replace("}\"","}"));
             out.close();
             return true;
         } catch (UnsupportedEncodingException e) {
@@ -1000,7 +1011,7 @@ public class Json extends Object{
     public Json select(String[] keys){
         String out = "{";
         String js = "";
-        if(obj.toString().equals("{}")) {
+        if(isJSONArray()) {
             for (Object array : array) {
                 try {
                     obj = (JSONObject) parser.parse(array.toString());
@@ -1046,6 +1057,31 @@ public class Json extends Object{
 
         out = "["+out.substring(0,out.length()-2)+"]";
         return new Json(out);
+    }
+
+    public Json where(Object key,Object match){
+        if(isJSONArray()){
+            try {
+                Json out = new Json("[]");
+                parser = new JSONParser();
+                for (Object data : array) {
+                    JSONObject obj = (JSONObject) parser.parse(data.toString());
+                    if (obj.get(key).toString().equals(match.toString())){
+                        out.putJSONArray(new Json(obj));
+                    }
+                }
+                return new Json(out);
+            }catch (Exception e){e.getCause();e.getMessage();}
+        } else {
+            try {
+                Json out = new Json("[]");
+                if (obj.get(key).toString().equals(match.toString())){
+                    out.putJSONArray(new Json(obj));
+                }
+                return new Json(out);
+            }catch (Exception e){}
+        }
+        return null;
     }
 
     //todo este metodo es inperfecto
@@ -1142,7 +1178,11 @@ public class Json extends Object{
     public Json use(Object jsonFile){
         try{
             Json out = new Json(jsons.get(jsonFile));
-            return new Json(out);
+            Object[] o = {out,true,
+            jsons.get(jsonFile).replace(jsonFile.toString()+".json","")
+            .replace(jsonFile.toString(),""),
+            jsonFile.toString()};
+            return new Json(o);
         }catch (Exception e){}
         return null;
     }
@@ -1170,9 +1210,49 @@ public class Json extends Object{
         }
         return null;
     }
+
+    public long id(){
+        if (isDataBase){
+            File file = new File(path + "secuences");
+            File file1 = new File(path +"/secuences/"+ secName + ".seq");
+            if ((!file.exists()) || (!file1.exists())) {
+                file.mkdirs();
+                createSeq();
+            }
+        }
+        return sumSeq();
+    }
     //===============================================================
 
     //METODOS PRIVADOS
+
+    private void createSeq(){
+        try {
+            BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path +"/secuences/"+ secName + ".seq"), "utf-8"));
+            out.write("0");
+            out.close();
+        } catch (Exception e){}
+    }
+
+    private long sumSeq(){
+        try {
+            BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(path +"/secuences/"+ secName + ".seq"), "utf-8"));
+            String sCadena;
+            String outs = "";
+            while ((sCadena = in.readLine())!=null) {
+                outs += sCadena;
+            }
+            long result = Long.parseLong(outs) + 1;
+            in.close();
+
+            BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path +"/secuences/"+ secName + ".seq"), "utf-8"));
+            out.write(String.valueOf(result));
+            out.close();
+
+            return result;
+        } catch (Exception e){}
+        return 0;
+    }
 
     private String formatJSONString(String str) {
         StringBuilder r = new StringBuilder();

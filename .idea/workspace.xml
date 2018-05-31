@@ -6,7 +6,18 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="379cf134-9341-47c8-a088-fede3cf958f4" name="Default" comment="" />
+    <list default="true" id="379cf134-9341-47c8-a088-fede3cf958f4" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/db/acciones.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/muestrarios.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Java_Brain_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Java_Brain_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/jsoup_1_11_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/jsoup_1_11_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/nueva/acciones.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/nueva/muestrarios.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Java_Brain_jar/Java-Brain.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Java_Brain_jar/Java-Brain.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Run.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/util/data/Json.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/javabrain/util/data/Json.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,17 +27,49 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Run.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Run.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#connectDatabase#0;class#Run#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="muestrarios.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/muestrarios.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="1" column="12" lean-forward="true" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Json.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/data/Json.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="363">
+              <caret line="1517" column="32" selection-start-line="1517" selection-start-column="32" selection-end-line="1517" selection-end-column="32" />
+              <folding>
+                <element signature="e#35215#35227#0" expanded="true" />
+                <element signature="e#39523#39553#1" expanded="true" />
+                <element signature="e#40274#40304#1" expanded="true" />
+                <element signature="e#45377#45378#0" expanded="true" />
+                <element signature="e#45425#45426#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>public ob</find>
-      <find>remove</find>
-      <find>to</find>
-      <find>TO</find>
-      <find>get</find>
-      <find>as</find>
-      <find>Sy</find>
       <find>as(</find>
       <find>this</find>
       <find>return t</find>
@@ -39,7 +82,6 @@
       <find>join</find>
       <find>left</find>
       <find>jsons</find>
-      <find>use(</find>
       <find>type</find>
       <find>readFi</find>
       <find>json(s</find>
@@ -50,6 +92,14 @@
       <find>todo</find>
       <find>classlo</find>
       <find>Syste</find>
+      <find>use</find>
+      <find>use(</find>
+      <find>Use(</find>
+      <find>id</find>
+      <find>id(</find>
+      <find>select</find>
+      <find>putJson(</find>
+      <find>where</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -67,8 +117,10 @@
         <option value="$PROJECT_DIR$/src/res/json/emojis.json" />
         <option value="$PROJECT_DIR$/src/org/javabrain/test/new.json" />
         <option value="$PROJECT_DIR$/src/org/javabrain/util/alert/Console.java" />
+        <option value="$PROJECT_DIR$/db/nueva/secuences/acciones.seq" />
         <option value="$PROJECT_DIR$/src/Run.java" />
         <option value="$PROJECT_DIR$/src/org/javabrain/util/data/Json.java" />
+        <option value="$PROJECT_DIR$/db/muestrarios.json" />
       </list>
     </option>
   </component>
@@ -78,7 +130,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="258" />
     <option name="y" value="-10" />
     <option name="width" value="1364" />
@@ -88,10 +140,12 @@
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="PackagesPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -108,24 +162,25 @@
               <item name="Java-Brain" type="58d84e3e:PackageViewProjectNode" />
               <item name="Java-Brain" type="616d4139:PackageViewModuleNode" />
               <item name="org.javabrain" type="1f31426a:PackageElementNode" />
+              <item name="fx.control" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="Java-Brain" type="58d84e3e:PackageViewProjectNode" />
+              <item name="Java-Brain" type="616d4139:PackageViewModuleNode" />
+              <item name="org.javabrain" type="1f31426a:PackageElementNode" />
               <item name="util" type="1f31426a:PackageElementNode" />
             </path>
             <path>
               <item name="Java-Brain" type="58d84e3e:PackageViewProjectNode" />
               <item name="Java-Brain" type="616d4139:PackageViewModuleNode" />
-              <item name="res" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="Java-Brain" type="58d84e3e:PackageViewProjectNode" />
-              <item name="Java-Brain" type="616d4139:PackageViewModuleNode" />
-              <item name="res" type="1f31426a:PackageElementNode" />
-              <item name="json" type="1f31426a:PackageElementNode" />
+              <item name="org.javabrain" type="1f31426a:PackageElementNode" />
+              <item name="util" type="1f31426a:PackageElementNode" />
+              <item name="data" type="1f31426a:PackageElementNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -142,58 +197,35 @@
               <item name="Java-Brain" type="b2602c69:ProjectViewProjectNode" />
               <item name="Java-Brain" type="462c0819:PsiDirectoryNode" />
               <item name="db" type="462c0819:PsiDirectoryNode" />
-              <item name="nueva" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Java-Brain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Java-Brain" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Java-Brain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Java-Brain" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Java-Brain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Java-Brain" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-              <item name="Java_Brain_jar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Java-Brain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Java-Brain" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Java-Brain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Java-Brain" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="javabrain" type="462c0819:PsiDirectoryNode" />
+              <item name="secuences" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="true" />
+    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
+    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="java-brain" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/dist/lib/postgresql-9.4.1209.jar!/" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Google Drive/Java Swing/Proyectos desde 14-09-2017/JavaBrain/dist/lib/jfoenix.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\GitKraken\Java-Brain\db" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\GitKraken\Java-Brain\src\org\javabrain\test" />
     </key>
@@ -297,65 +329,37 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49926794" weight="0.32913387" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.3273495" />
-      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32440946" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info id="Image Layers" order="2" />
-      <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50073206" side_tool="true" weight="0.32913387" />
-      <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50073206" side_tool="true" weight="0.32913387" />
+      <window_info anchor="right" id="Maven Projects" order="7" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49926794" weight="0.20629922" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info id="Capture Tool" order="2" />
-      <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13836017" />
+      <window_info id="Capture Tool" order="6" />
+      <window_info id="Designer" order="3" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13836017" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="UI Designer" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
-    <layout-to-restore>
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49926794" visible="true" weight="0.21732284" />
-      <window_info anchor="right" id="Theme Preview" order="6" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.17935579" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49926794" weight="0.32913387" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="right" id="Database" order="5" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50073206" side_tool="true" weight="0.32913387" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32755905" />
-      <window_info anchor="right" id="Maven Projects" order="8" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -369,35 +373,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/test/new2.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/data/Json.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1770">
-          <caret line="59" column="23" selection-start-line="59" selection-start-column="23" selection-end-line="59" selection-end-column="23" />
-          <folding>
-            <element signature="e#816#817#0" expanded="true" />
-            <element signature="e#850#851#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Run.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#connectDatabase#0;class#Run#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/javabrain/test/new.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -416,10 +391,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="26790">
           <caret line="893" column="53" selection-start-line="893" selection-start-column="53" selection-end-line="893" selection-end-column="53" />
-          <folding>
-            <element signature="e#816#817#0" expanded="true" />
-            <element signature="e#850#851#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -697,13 +668,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/nueva/acciones.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="3" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/res/json/emojis.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="31544">
@@ -715,10 +679,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1861">
           <caret line="406" column="16" selection-start-line="406" selection-start-column="16" selection-end-line="406" selection-end-column="16" />
-          <folding>
-            <element signature="e#4357#4358#0" expanded="true" />
-            <element signature="e#4395#4396#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -729,9 +689,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/nueva/muestrarios.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/alert/Console.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="141">
@@ -739,21 +696,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/swing/animation/ElevationEffect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="2" column="51" selection-start-line="2" selection-start-column="51" selection-end-line="2" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/fx/control/Frame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="693">
+          <caret line="59" column="26" selection-start-line="59" selection-start-column="26" selection-end-line="59" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/nueva/secuences/acciones.seq" />
+    <entry file="file://$PROJECT_DIR$/db/acciones.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="3" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/data/Json.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="213" column="25" lean-forward="true" selection-start-line="213" selection-start-column="25" selection-end-line="213" selection-end-column="25" />
+        <state relative-caret-position="363">
+          <caret line="1517" column="32" selection-start-line="1517" selection-start-column="32" selection-end-line="1517" selection-end-column="32" />
           <folding>
-            <element signature="e#816#817#0" expanded="true" />
-            <element signature="e#850#851#0" expanded="true" />
+            <element signature="e#35215#35227#0" expanded="true" />
+            <element signature="e#39523#39553#1" expanded="true" />
+            <element signature="e#40274#40304#1" expanded="true" />
+            <element signature="e#45377#45378#0" expanded="true" />
+            <element signature="e#45425#45426#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/muestrarios.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="1" column="12" lean-forward="true" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Run.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="5" column="30" lean-forward="true" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+        <state relative-caret-position="300">
+          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#connectDatabase#0;class#Run#0" />
