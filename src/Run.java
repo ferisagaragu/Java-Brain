@@ -11,8 +11,7 @@ public class Run {
 
         Json json = new Json("[db]");
         Json out = json.use("muestrarios");
-        String[] select = {"id","name"};
-        Console.viewer(out.select(select).where("name","QualtopGroup"));
+        Console.viewer(out.whereNot("id",5));
     }
 
     public static Connection connectDatabase() {

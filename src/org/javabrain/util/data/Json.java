@@ -725,6 +725,11 @@ public class Json extends Object{
         return new Json(obj);
     }
 
+    public Json replaceJSONArray(int index,Object object){
+        array.set(index,object);
+        return new Json(array);
+    }
+
     public Json replaceJSONArray(Object key, Map<Object,Object> objects){
         String data = "";
         Iterator it = objects.entrySet().iterator();
@@ -1067,7 +1072,7 @@ public class Json extends Object{
                 for (Object data : array) {
                     JSONObject obj = (JSONObject) parser.parse(data.toString());
                     if (obj.get(key).toString().equals(match.toString())){
-                        out.putJSONArray(new Json(obj));
+                        out.putJSONArray(new Json(obj.toString()));
                     }
                 }
                 return new Json(out);
@@ -1076,12 +1081,45 @@ public class Json extends Object{
             try {
                 Json out = new Json("[]");
                 if (obj.get(key).toString().equals(match.toString())){
-                    out.putJSONArray(new Json(obj));
+                    out.putJSONArray(new Json(obj.toString()));
                 }
                 return new Json(out);
             }catch (Exception e){}
         }
         return null;
+    }
+
+    public Json whereNot(Object key,Object match){
+        if(isJSONArray()){
+            try {
+                Json out = new Json("[]");
+                parser = new JSONParser();
+                for (Object data : array) {
+                    JSONObject obj = (JSONObject) parser.parse(data.toString());
+                    if (!obj.get(key).toString().equals(match.toString())){
+                        out.putJSONArray(new Json(obj.toString()));
+                    }
+                }
+                return new Json(out);
+            }catch (Exception e){e.getCause();e.getMessage();}
+        } else {
+            try {
+                Json out = new Json("[]");
+                if (!obj.get(key).toString().equals(match.toString())){
+                    out.putJSONArray(new Json(obj.toString()));
+                }
+                return new Json(out);
+            }catch (Exception e){}
+        }
+        return null;
+    }
+
+    public Json select(String keys){
+        try {
+            String[] datas = keys.split(",");
+            return new Json(select(datas));
+        } catch (Exception e){}
+        return this;
     }
 
     //todo este metodo es inperfecto
@@ -1465,6 +1503,18 @@ public class Json extends Object{
         return false;
     }
 
+    public boolean isRepeated(Object key,Object match){
+        if (isJSONArray()){
+            try {
+                if ( where(key, match).size() == 0){
+                    return false;
+                } else {
+                    return true;
+                }
+            } catch (Exception e){}
+        }
+        return false;
+    }
     //===============================================================
 
     //Métodos static
