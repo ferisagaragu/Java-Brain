@@ -1,5 +1,6 @@
 import org.javabrain.util.alert.Console;
 import org.javabrain.util.data.Json;
+import org.javabrain.util.web.service.Petition;
 
 
 import java.sql.Connection;
@@ -9,9 +10,8 @@ public class Run {
 
     public static void main(String[] args) throws Exception {
 
-        Json json = new Json("[db]");
-        Json out = json.use("muestrarios");
-        Console.viewer(out.whereNot("id",5));
+        Console.blue(Petition.doGet("https://dondeestoyahorita.com/"));
+
     }
 
     public static Connection connectDatabase() {

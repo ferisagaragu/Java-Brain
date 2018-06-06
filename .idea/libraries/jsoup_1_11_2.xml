@@ -8,6 +8,7 @@
       <root url="jar://$PROJECT_DIR$/lib/jfoenix-9.0.4.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/timingframework-core-5.0.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/timingframework-swing-5.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/MapsJava.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
