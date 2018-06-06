@@ -267,6 +267,12 @@ public class Console {
             if (message.toString().contains("http") && isJson) {
                 type = 1;
             }
+
+            try {
+                ImageIcon icon = (ImageIcon) message;
+                type = 2;
+            } catch (Exception e){}
+
             //Caragar elementos internos en una clase estatica
             ClassLoader classLoader = ClassLoader.getSystemClassLoader();
             Image img = new ImageIcon(classLoader.getResource("res/component/json.png")).getImage();
@@ -277,6 +283,13 @@ public class Console {
                 case 1: {
                     try {
                         new ImageViewer(new URL(message.toString()), img);
+                    } catch (Exception ex) {
+                        Logger.getLogger(Console.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                case 2:{
+                    try {
+                        new ImageViewer(message, img);
                     } catch (Exception ex) {
                         Logger.getLogger(Console.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -545,13 +558,38 @@ class ImageViewer extends JFrame{
     
     private org.javabrain.swing.container.ScrollPanel scrollPane = new org.javabrain.swing.container.ScrollPanel();
     
-    public ImageViewer(URL url,Image img) throws URISyntaxException {
-        
-        if(url.toURI().toString().endsWith(".png") ||
-           url.toURI().toString().endsWith(".jpg") ||
-           url.toURI().toString().endsWith(".gif")){
-            
-            JLabel label = new JLabel(new ImageIcon(url));
+    public ImageViewer(Object image,Image img) throws URISyntaxException {
+        try {
+            URL url = (URL) image;
+            if (url.toURI().toString().endsWith(".png") ||
+                    url.toURI().toString().endsWith(".jpg") ||
+                    url.toURI().toString().endsWith(".gif")) {
+
+                JLabel label = new JLabel(new ImageIcon(url));
+                scrollPane.getViewport().add(label);
+                scrollPane.getViewport().setBackground(Color.white);
+                getContentPane().add("Center", scrollPane);
+                setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                setSize(500, 500);
+                setVisible(true);
+                setLocationRelativeTo(null);
+                setTitle("Image Viewer");
+                setIconImage(img);
+
+            } else {
+                if (Desktop.isDesktopSupported()) {
+                    Desktop desktop = Desktop.getDesktop();
+
+                    if (desktop.isSupported(Desktop.Action.BROWSE)) {
+                        try {
+                            desktop.browse(new URI(url.toString()));
+                        } catch (Exception e) {
+                        }
+                    }
+                }
+            }
+        }catch (Exception e){
+            JLabel label = new JLabel((ImageIcon) image);
             scrollPane.getViewport().add(label);
             scrollPane.getViewport().setBackground(Color.white);
             getContentPane().add("Center", scrollPane);
@@ -561,17 +599,6 @@ class ImageViewer extends JFrame{
             setLocationRelativeTo(null);
             setTitle("Image Viewer");
             setIconImage(img);
-            
-        }else{
-            if(Desktop.isDesktopSupported()){
-                Desktop desktop = Desktop.getDesktop();
-                
-                if(desktop.isSupported(Desktop.Action.BROWSE)){
-                    try{
-                        desktop.browse(new URI(url.toString()));
-                    }catch(Exception e){}
-                }
-            }
-        } 
+        }
     }
 }
