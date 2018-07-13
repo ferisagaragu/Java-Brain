@@ -32,7 +32,10 @@
       <file leaf-file-name="Run.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Run.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< Updated upstream
+=======
+>>>>>>> develop
             <state relative-caret-position="377">
               <caret line="40" selection-start-line="40" selection-end-line="40" />
               <folding>
@@ -48,6 +51,7 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
 <<<<<<< Updated upstream
       <file leaf-file-name="Location.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/web/service/Location.java">
@@ -66,10 +70,21 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="205">
               <caret line="562" column="30" selection-start-line="562" selection-start-column="30" selection-end-line="562" selection-end-column="30" />
+=======
+      <file leaf-file-name="Location.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/web/service/Location.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+>>>>>>> develop
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="muestrarios.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/db/muestrarios.json">
           <provider selected="true" editor-type-id="text-editor">
@@ -83,6 +98,22 @@
               <caret line="733" column="9" lean-forward="false" selection-start-line="733" selection-start-column="9" selection-end-line="733" selection-end-column="9" />
               <folding />
 >>>>>>> Stashed changes
+=======
+      <file leaf-file-name="Console.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/alert/Console.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="205">
+              <caret line="562" column="30" selection-start-line="562" selection-start-column="30" selection-end-line="562" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="muestrarios.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/muestrarios.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+>>>>>>> develop
             </state>
           </provider>
         </entry>
@@ -197,9 +228,12 @@
           <select />
         </subPane>
       </pane>
+<<<<<<< HEAD
 =======
       <pane id="Scratches" />
 >>>>>>> Stashed changes
+=======
+>>>>>>> develop
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -230,6 +264,7 @@
               <item name="org.javabrain" type="1f31426a:PackageElementNode" />
               <item name="util" type="1f31426a:PackageElementNode" />
               <item name="alert" type="1f31426a:PackageElementNode" />
+<<<<<<< HEAD
             </path>
 <<<<<<< Updated upstream
             <path>
@@ -254,11 +289,18 @@
       <pane id="ProjectPane">
         <subPane>
           <expand>
+=======
+            </path>
+>>>>>>> develop
             <path>
-              <item name="Java-Brain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Java-Brain" type="462c0819:PsiDirectoryNode" />
+              <item name="Java-Brain" type="58d84e3e:PackageViewProjectNode" />
+              <item name="Java-Brain" type="616d4139:PackageViewModuleNode" />
+              <item name="org.javabrain" type="1f31426a:PackageElementNode" />
+              <item name="util" type="1f31426a:PackageElementNode" />
+              <item name="data" type="1f31426a:PackageElementNode" />
             </path>
             <path>
+<<<<<<< HEAD
               <item name="Java-Brain" type="b2602c69:ProjectViewProjectNode" />
               <item name="Java-Brain" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
@@ -269,6 +311,13 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="javabrain" type="462c0819:PsiDirectoryNode" />
 >>>>>>> Stashed changes
+=======
+              <item name="Java-Brain" type="58d84e3e:PackageViewProjectNode" />
+              <item name="Java-Brain" type="616d4139:PackageViewModuleNode" />
+              <item name="org.javabrain" type="1f31426a:PackageElementNode" />
+              <item name="util" type="1f31426a:PackageElementNode" />
+              <item name="web.service" type="1f31426a:PackageElementNode" />
+>>>>>>> develop
             </path>
           </expand>
           <select />
@@ -322,6 +371,17 @@
       <option name="HEIGHT" value="300" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <module />
+    </configuration>
+    <configuration name="Location" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.javabrain.util.web.service.Location" />
+      <module name="Java-Brain" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.javabrain.util.web.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
     </configuration>
     <configuration name="Location" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.javabrain.util.web.service.Location" />
@@ -416,7 +476,10 @@
       <properties />
       <listeners />
     </configuration>
+<<<<<<< HEAD
 <<<<<<< Updated upstream
+=======
+>>>>>>> develop
     <list>
       <item itemvalue="Application.Run" />
       <item itemvalue="Application.Location" />
@@ -555,6 +618,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/data/test.json" />
     <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/data/Json.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -596,6 +660,10 @@
         </state>
       </provider>
 >>>>>>> Stashed changes
+=======
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/test/new.json">
+      <provider selected="true" editor-type-id="text-editor" />
+>>>>>>> develop
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/javabrain/test/new2.json">
       <provider selected="true" editor-type-id="text-editor">
@@ -852,6 +920,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
     <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/alert/Console.java">
@@ -862,6 +931,8 @@
       </provider>
     </entry>
 >>>>>>> Stashed changes
+=======
+>>>>>>> develop
     <entry file="file://$PROJECT_DIR$/src/org/javabrain/swing/animation/ElevationEffect.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -893,7 +964,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/data/Json.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< Updated upstream
+=======
+>>>>>>> develop
         <state relative-caret-position="494">
           <caret line="1520" column="31" selection-start-line="1520" selection-start-column="31" selection-end-line="1520" selection-end-column="31" />
         </state>
@@ -903,11 +977,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2304">
           <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
+<<<<<<< HEAD
 =======
         <state relative-caret-position="11400">
           <caret line="733" column="9" lean-forward="false" selection-start-line="733" selection-start-column="9" selection-end-line="733" selection-end-column="9" />
           <folding />
 >>>>>>> Stashed changes
+=======
+>>>>>>> develop
         </state>
       </provider>
     </entry>
@@ -920,7 +997,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Run.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< Updated upstream
+=======
+>>>>>>> develop
         <state relative-caret-position="377">
           <caret line="40" selection-start-line="40" selection-end-line="40" />
           <folding>
