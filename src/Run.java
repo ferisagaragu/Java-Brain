@@ -1,17 +1,25 @@
-import org.javabrain.util.alert.Console;
-import org.javabrain.util.data.Json;
-import org.javabrain.util.web.service.Petition;
 
+import org.javabrain.util.Log;
+import org.javabrain.util.alert.Console;
+import org.javabrain.util.data.Date;
+import org.javabrain.util.data.Json;
+import org.javabrain.util.data.Type;
+import org.javabrain.util.web.service.Petition;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Run {
 
     public static void main(String[] args) throws Exception {
-
-        Console.blue(Petition.doGet("https://dondeestoyahorita.com/"));
-
+        Map data = new HashMap();
+        data.put("sql","DELETE FROM letter_name WHERE id = 2;");
+        ArrayList<Type> type = Petition.doPost("https://letterlove.webcindario.com/sql.php",data).getValues();
+        System.out.println(type.get(Type.VALUE).JSON.toJSONString());
+        System.out.println(type.get(Type.STATUS).INTEGER);
     }
 
     public static Connection connectDatabase() {

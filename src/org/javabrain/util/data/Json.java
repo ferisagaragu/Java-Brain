@@ -101,7 +101,7 @@ public class Json extends Object{
 
     public Json(URL json){
         if (json != null) {
-            String out = Petition.doGet(json.toString());
+            String out = Petition.doGet(json.toString()).STRING;
             parser = new JSONParser();
             if (Json.isJSONArray(out)) {
                 try {
@@ -238,7 +238,7 @@ public class Json extends Object{
         //Cargar Json desde un URL
         if (isUrl(json.toString())){
             if (json != null) {
-                String out = Petition.doGet(json.toString());
+                String out = Petition.doGet(json.toString()).STRING;
                 parser = new JSONParser();
                 if (Json.isJSONArray(out)) {
                     try {
@@ -531,7 +531,7 @@ public class Json extends Object{
     public Json getJSONArray(Object key){
         JSONArray array = null;
         try{array = (JSONArray) parser.parse(obj.get(key).toString());}catch (Exception e){return null;}
-        return new Json(array);
+        return new Json(array.toString());
     }
 
     public BigDecimal getBigDecimal(Object key){
@@ -558,7 +558,7 @@ public class Json extends Object{
     public String getDate(Object key, String format) {
         SimpleDateFormat formatter = new SimpleDateFormat(format);
         try {
-            Date date = formatter.parse(obj.get(key).toString());
+            java.util.Date date = formatter.parse(obj.get(key).toString());
             String sdate = formatter.format(date);
             return sdate;
         } catch (Exception e) {}
@@ -878,7 +878,11 @@ public class Json extends Object{
 
     public Json putJSONArray(Object key,Json json){
         try {
-            obj.put(key,(JSONArray) parser.parse("["+json.toJSONString()+"]"));
+            if (json.isJSONArray()) {
+                obj.put(key, (JSONArray) parser.parse(json.toJSONString()));
+            } else {
+                return null;
+            }
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -1488,7 +1492,6 @@ public class Json extends Object{
     //===============================================================
 
     //METODOS IS
-
     public boolean isJSONArray(){
         if (obj == null){
             return true;
@@ -1559,6 +1562,10 @@ public class Json extends Object{
             return true;
         }catch (Exception e){}
         return false;
+    }
+
+    public static boolean isJSON(Object obj) {
+        return isJSONObject(obj) || isJSONArray(obj);
     }
     //===============================================================
 

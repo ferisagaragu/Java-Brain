@@ -38,7 +38,9 @@ public class Console {
     private static int count = 0;
     //======================================================================
 
-    //Funciones pra imprimir en pantalla
+    //Funciones para imprimir en pantalla
+
+
 
     public static void red(Object message){
         System.out.println("\033[31m"+message.toString().replace("<3","❤").replace(":)","☺")
@@ -109,9 +111,7 @@ public class Console {
     }
 
     public static void blueOnLine(Object message){
-        System.out.print("\033[34m"+message.toString().replace("<3","❤").replace(":)","☺")
-                    .replace(":(","☹").replace("<-","←")
-                    .replace("->","→")+"\033[30m");
+        System.out.print("\033[34m"+structur(message)+"\033[30m");
     }
 
     public static void magentaOnLine(Object message){
@@ -315,6 +315,19 @@ public class Console {
         System.out.print("\n");
     }
     //=======================================================================
+
+    private static String structur(Object message) {
+        String out = "";
+        try {
+            out = message.toString().replace("<3","❤").replace(":)","☺")
+                    .replace(":(","☹").replace("<-","←")
+                    .replace("->","→");
+        } catch (Exception e) {
+            return "Emply";
+        }
+        return out;
+    }
+
 }
 
 //Clase para cargar todo con respecto a Json

@@ -2,26 +2,34 @@ package org.javabrain.util.web.service;
 
 
 import maps.java.*;
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+import org.omg.PortableServer.LIFESPAN_POLICY_ID;
 
 import java.awt.geom.Point2D;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Location {
 
-    private static String street;
-    private static String streetNumber;
-    private static String city;
-    private static String postalCode;
-    private static String municipality;
-    private static String state;
-    private static String country;
-    private static String direction;
+    public static String street;
+    public static String streetNumber;
+    public static String city;
+    public static String postalCode;
+    public static String municipality;
+    public static String state;
+    public static String country;
+    public static String direction;
 
     public static void setLocation(String hintDirection) {
         MapsJava.setKey("AIzaSyCzWaJYw_MW87ganzyaVlxB9igfGMTTrW8");
         Geocoding ObjGeocoding=new Geocoding();
+
         try {
-            Point2D.Double resultado = ObjGeocoding.getCoordinates(hintDirection);
+            Point2D.Double resultado = resultado = ObjGeocoding.getCoordinates(hintDirection);
             if (resultado.x != 0.0 && resultado.y != 0.0) {
                 String direcction = "";
                 try {
@@ -108,6 +116,56 @@ public class Location {
                 }*/
             }
         }catch (Exception e){}
+    }
+
+    public static String getLocation(){
+        String out;
+        try {
+            ScrapingLoc loc = new ScrapingLoc();
+            out = new Geocoding().getAddress(loc.lat,loc.lon).get(0);
+            setLocation(out);
+        } catch (Exception e) {
+            out = "Unnamed road";
+        }
+        return out;
+    }
+}
+
+class ScrapingLoc {
+
+    public static final String url = "https://www.cual-es-mi-ip.net/geolocalizar-ip-mapa";
+    public static final int maxPages = 1;
+
+    public double lat = 0;
+    public double lon = 0;
+
+    public ScrapingLoc() {
+
+        for (int i=0; i<maxPages; i++){
+            String urlPage = String.format(url, i);
+            if (Petition.getStatusConnectionCode(urlPage) == 200) {
+                Document document = Petition.getHtmlDocument(urlPage);
+                Elements entradas = document.select("div");
+                for (Element elem : entradas) {
+                    String titulo = elem.getElementsByTag("div").text();
+                    String[] results = titulo.split(" ");
+                    int ij = 0;
+                    for (String res:results){
+                        try {
+                            if (ij == 0) {
+                                lat = Double.parseDouble(res);
+                            } if (ij == 1) {
+                                lon = Double.parseDouble(res);
+                            }
+                            ij++;
+                        } catch (Exception e){}
+                    }
+                }
+            }else{
+                System.out.println("El Status Code no es OK es: "+Petition.getStatusConnectionCode(urlPage));
+                break;
+            }
+        }
     }
 
 }

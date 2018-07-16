@@ -9,6 +9,7 @@
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/timingframework-swing-5.0.0.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/timingframework-core-5.0.0.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/Google Drive/Java Swing/Proyectos desde 14-09-2017/JavaBrain/dist/lib/jfoenix.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/MapsJava.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
