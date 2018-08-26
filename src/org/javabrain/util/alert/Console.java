@@ -20,7 +20,6 @@ import javax.swing.ImageIcon;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JScrollPane;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeCellRenderer;
@@ -39,7 +38,9 @@ public class Console {
     private static int count = 0;
     //======================================================================
 
-    //Funciones pra imprimir en pantalla
+    //Funciones para imprimir en pantalla
+
+
 
     public static void red(Object message){
         System.out.println("\033[31m"+message.toString().replace("<3","❤").replace(":)","☺")
@@ -110,9 +111,7 @@ public class Console {
     }
 
     public static void blueOnLine(Object message){
-        System.out.print("\033[34m"+message.toString().replace("<3","❤").replace(":)","☺")
-                    .replace(":(","☹").replace("<-","←")
-                    .replace("->","→")+"\033[30m");
+        System.out.print("\033[34m"+structur(message)+"\033[30m");
     }
 
     public static void magentaOnLine(Object message){
@@ -249,38 +248,60 @@ public class Console {
     }
     
     public static void viewer(Object message){
-        Json json2 = null;
-        Json json = null;
-        int type = -1;
-        boolean isJson = true;
-        try{
-            json = new Json(message);
-            message = json.toJSONString().replace("<3","❤").replace(":)","☺")
-                    .replace(":(","☹").replace("<-","←")
-                    .replace("->","→");
-            json2 = new Json(message);
-            type = 0;
-            isJson = false;
-        }catch (Exception e){}
-        
-        if(message.toString().contains("http") && isJson){
-            type = 1;
+        if (message != null) {
+            Json json2 = null;
+            Json json = null;
+            int type = -1;
+            boolean isJson = true;
+            try {
+                json = new Json(message);
+                message = json.toJSONString().replace("<3", "❤").replace(":)", "☺")
+                        .replace(":(", "☹").replace("<-", "←")
+                        .replace("->", "→");
+                json2 = new Json(message);
+                type = 0;
+                isJson = false;
+            } catch (Exception e) {
+            }
+
+            if (message.toString().contains("http") && isJson) {
+                type = 1;
+            }
+
+            try {
+                ImageIcon icon = (ImageIcon) message;
+                type = 2;
+            } catch (Exception e){}
+
+            //Caragar elementos internos en una clase estatica
+            ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+            Image img = new ImageIcon(classLoader.getResource("res/component/json.png")).getImage();
+            switch (type) {
+                case 0:
+                    new SwingTree(json2, json, img);
+                    break;
+                case 1: {
+                    try {
+                        new ImageViewer(new URL(message.toString()), img);
+                    } catch (Exception ex) {
+                        Logger.getLogger(Console.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                case 2:{
+                    try {
+                        new ImageViewer(message, img);
+                    } catch (Exception ex) {
+                        Logger.getLogger(Console.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                break;
+                default:
+                    new JavaViewer(message.toString(), img);
+            }
+            breakLine();
+        }else {
+            System.err.println("Untraceable content");
         }
-        //Caragar elementos internos en una clase estatica
-        ClassLoader classLoader = ClassLoader.getSystemClassLoader();
-        Image img = new ImageIcon(classLoader.getResource("res/component/json.png")).getImage();
-        switch (type) {
-            case 0: new SwingTree(json2,json,img); break;
-            case 1: {
-                        try {
-                            new ImageViewer(new URL(message.toString()), img); 
-                        } catch (Exception ex) {
-                            Logger.getLogger(Console.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    } break;
-            default: new JavaViewer(message.toString(),img);
-        }
-        breakLine();
     }
     
     //=======================================================================
@@ -294,12 +315,25 @@ public class Console {
         System.out.print("\n");
     }
     //=======================================================================
+
+    private static String structur(Object message) {
+        String out = "";
+        try {
+            out = message.toString().replace("<3","❤").replace(":)","☺")
+                    .replace(":(","☹").replace("<-","←")
+                    .replace("->","→");
+        } catch (Exception e) {
+            return "Emply";
+        }
+        return out;
+    }
+
 }
 
 //Clase para cargar todo con respecto a Json
 //Falta cambiar los scrolls por unos mas nuevos y el boton
 class SwingTree extends JFrame {
-  private JScrollPane scrollPane = new JScrollPane();
+  private org.javabrain.swing.container.ScrollPanel scrollPane = new org.javabrain.swing.container.ScrollPanel();
   private JTree tree;
   private Renderer renderer = new Renderer();
 
@@ -309,7 +343,7 @@ class SwingTree extends JFrame {
     getContentPane().setLayout(new BorderLayout());
     tree.setCellRenderer(renderer);
     scrollPane.getViewport().add(tree);
-    Button button = new Button("Copy");
+    org.javabrain.swing.control.Button button = new org.javabrain.swing.control.Button("Copy");
     getContentPane().add("Center", scrollPane);
     getContentPane().add(BorderLayout.SOUTH,button);
     setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -348,7 +382,6 @@ class SwingTree extends JFrame {
         for(Object key:json.getKeys()){
             try{
                 Json obj = json.getJSON(key);
-                
                 if(obj.isJSONArray()){
                     root.add(renderJson(key.toString(),obj,color));
                 }else{
@@ -445,7 +478,7 @@ class Renderer extends JLabel implements TreeCellRenderer {
 //Clase para cargar todo con respecto a clases Java
 class JavaViewer extends JFrame{
     
-    private JScrollPane scrollPane = new JScrollPane();
+    private org.javabrain.swing.container.ScrollPanel scrollPane = new org.javabrain.swing.container.ScrollPanel();
     
     public JavaViewer(String code,Image img) {
         JLabel label = new JLabel(renderCode(code));
@@ -536,15 +569,40 @@ class JavaViewer extends JFrame{
 //Clase para cargar todo con respecto a clases Java
 class ImageViewer extends JFrame{
     
-    private JScrollPane scrollPane = new JScrollPane();
+    private org.javabrain.swing.container.ScrollPanel scrollPane = new org.javabrain.swing.container.ScrollPanel();
     
-    public ImageViewer(URL url,Image img) throws URISyntaxException {
-        
-        if(url.toURI().toString().endsWith(".png") ||
-           url.toURI().toString().endsWith(".jpg") ||
-           url.toURI().toString().endsWith(".gif")){
-            
-            JLabel label = new JLabel(new ImageIcon(url));
+    public ImageViewer(Object image,Image img) throws URISyntaxException {
+        try {
+            URL url = (URL) image;
+            if (url.toURI().toString().endsWith(".png") ||
+                    url.toURI().toString().endsWith(".jpg") ||
+                    url.toURI().toString().endsWith(".gif")) {
+
+                JLabel label = new JLabel(new ImageIcon(url));
+                scrollPane.getViewport().add(label);
+                scrollPane.getViewport().setBackground(Color.white);
+                getContentPane().add("Center", scrollPane);
+                setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                setSize(500, 500);
+                setVisible(true);
+                setLocationRelativeTo(null);
+                setTitle("Image Viewer");
+                setIconImage(img);
+
+            } else {
+                if (Desktop.isDesktopSupported()) {
+                    Desktop desktop = Desktop.getDesktop();
+
+                    if (desktop.isSupported(Desktop.Action.BROWSE)) {
+                        try {
+                            desktop.browse(new URI(url.toString()));
+                        } catch (Exception e) {
+                        }
+                    }
+                }
+            }
+        }catch (Exception e){
+            JLabel label = new JLabel((ImageIcon) image);
             scrollPane.getViewport().add(label);
             scrollPane.getViewport().setBackground(Color.white);
             getContentPane().add("Center", scrollPane);
@@ -554,17 +612,6 @@ class ImageViewer extends JFrame{
             setLocationRelativeTo(null);
             setTitle("Image Viewer");
             setIconImage(img);
-            
-        }else{
-            if(Desktop.isDesktopSupported()){
-                Desktop desktop = Desktop.getDesktop();
-                
-                if(desktop.isSupported(Desktop.Action.BROWSE)){
-                    try{
-                        desktop.browse(new URI(url.toString()));
-                    }catch(Exception e){}
-                }
-            }
-        } 
+        }
     }
 }

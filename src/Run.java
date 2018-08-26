@@ -1,14 +1,19 @@
-import org.javabrain.util.alert.Console;
-import org.javabrain.util.data.Json;
+
+import org.javabrain.fx.structure.Controller;
+import org.javabrain.util.data.Type;
+import org.javabrain.util.web.service.Petition;
+import org.javabrain.util.web.service.Valuta;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Run {
 
-    public static void main(String[] args) {
-        Json json = new Json("[db/nueva]");
-        Console.viewer(json.use("muestrarios"));
+    public static void main(String[] args) throws Exception {
+        System.out.println(Valuta.usdToMnx(0.080f));
     }
 
     public static Connection connectDatabase() {
