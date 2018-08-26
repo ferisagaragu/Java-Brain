@@ -1,11 +1,6 @@
 package org.javabrain.util.data;
 
-import java.util.ArrayList;
-
 public class Type extends Object{
-
-    public static final int VALUE = 0;
-    public static final int STATUS = 1;
 
     public int INTEGER;
     public float FLOAT;
@@ -17,12 +12,12 @@ public class Type extends Object{
     public Json JSON;
     public Object OBJECT;
 
-    public Object value;
-    public Object status;
+    public Object VALUE;
+    public Object STATUS;
 
     public Type(Object value, Object status) {
-        this.value = value;
-        this.status = status;
+        this.VALUE = value;
+        this.STATUS = status;
     }
 
     public Type(Object obj) {
@@ -74,13 +69,6 @@ public class Type extends Object{
         } catch (Exception e){
             OBJECT = null;
         }
-    }
-
-    public ArrayList<Type> getValues() {
-        ArrayList<Type> types = new ArrayList<>();
-        types.add(new Type(value));
-        types.add(new Type(status));
-        return types;
     }
 
     public static Type parse(Object obj){

@@ -1,6 +1,5 @@
 package org.javabrain.util.web.service;
 
-import org.javabrain.util.data.Json;
 import org.javabrain.util.data.Type;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;

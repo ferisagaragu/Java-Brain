@@ -1,4 +1,5 @@
 
+import org.javabrain.Neuron;
 import org.javabrain.fx.structure.Controller;
 import org.javabrain.util.data.Type;
 import org.javabrain.util.web.service.Petition;
@@ -6,14 +7,31 @@ import org.javabrain.util.web.service.Valuta;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import org.javabrain.util.data.Sql;
 
 public class Run {
 
     public static void main(String[] args) throws Exception {
-        System.out.println(Valuta.usdToMnx(0.080f));
+        ResultSet rs = Sql.execute("SELECT * FROM reportfailures;",Sql.POSTGRESQL);
+        
+        while(rs.next()){
+            System.out.println(rs.getString("desiredend"));
+        }
+        
+        Sql.close();
+        
+        ResultSet rs2 = Sql.execute("SELECT * FROM reportfailures;",Sql.POSTGRESQL);
+        
+        while(rs2.next()){
+            System.out.println(rs2.getString("desiredend"));
+        }
+        
+        Sql.close();
     }
 
     public static Connection connectDatabase() {
