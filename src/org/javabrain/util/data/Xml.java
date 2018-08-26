@@ -9,9 +9,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class Xml {
-
-
-
+    
             public static void main(String args[]) {
                 try {
                     File archivo = new File("C:\\GitKraken\\Java-Brain\\src\\res\\dato.xml");

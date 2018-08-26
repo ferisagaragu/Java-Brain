@@ -1506,6 +1506,8 @@ public class Json extends Object{
         return false;
     }
 
+    public boolean isRegularJson(){return false;}
+
     public boolean isRepeated(Object key,Object match){
         if (isJSONArray()){
             try {

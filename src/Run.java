@@ -1,10 +1,8 @@
 
-import org.javabrain.util.Log;
-import org.javabrain.util.alert.Console;
-import org.javabrain.util.data.Date;
-import org.javabrain.util.data.Json;
+import org.javabrain.fx.structure.Controller;
 import org.javabrain.util.data.Type;
 import org.javabrain.util.web.service.Petition;
+import org.javabrain.util.web.service.Valuta;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,11 +13,7 @@ import java.util.Map;
 public class Run {
 
     public static void main(String[] args) throws Exception {
-        Map data = new HashMap();
-        data.put("sql","DELETE FROM letter_name WHERE id = 2;");
-        ArrayList<Type> type = Petition.doPost("https://letterlove.webcindario.com/sql.php",data).getValues();
-        System.out.println(type.get(Type.VALUE).JSON.toJSONString());
-        System.out.println(type.get(Type.STATUS).INTEGER);
+        System.out.println(Valuta.usdToMnx(0.080f));
     }
 
     public static Connection connectDatabase() {
