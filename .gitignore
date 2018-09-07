@@ -1,10 +1,2 @@
-*.class
-Java-Brain.iml
-build.xml
-manifest.mf
 
-dist/
-build/
-out/
-nbproject/
-.idea/
+/doc/nbproject/private/
