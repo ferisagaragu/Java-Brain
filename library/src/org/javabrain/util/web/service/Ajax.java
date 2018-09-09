@@ -1,5 +1,6 @@
 package org.javabrain.util.web.service;
 
+import org.javabrain.util.data.Json;
 import org.javabrain.util.data.Type;
 
 import java.util.HashMap;
@@ -7,7 +8,7 @@ import java.util.Map;
 
 /***
  * @author Fernando Isaías García Aguirre
- * @version 0.0.1
+ * @version 0.0.2
  * @apiNote Esta clase de Ajax sustituira a Data pesist
  * @implNote esta clase funciona en FX con Platform.runLater(() -> {});
  */
@@ -31,12 +32,19 @@ public class Ajax {
     public void postconstruct() {}
 
     public void get(String url) {
+
+        String resp = getURLAjax(url);
+        if (resp != null) {
+            url = resp;
+        }
+
         if (!url.equals("")) {
+            String finalUrl = url;
             Thread thread = new Thread(new Runnable() {
                 @Override
                 public void run() {
                     postconstruct();
-                    Type resp = Petition.doGet(url);
+                    Type resp = Petition.doGet(finalUrl);
                     if (resp.STATUS.toString().equals("200")) {
                         success(resp);
                     } else {
@@ -51,6 +59,12 @@ public class Ajax {
     }
 
     public void post(String url, Map<Object,Object> params) {
+
+        String resp = getURLAjax(url);
+        if (resp != null) {
+            url = resp;
+        }
+
         urlPost = url;
         if (!url.equals("")) {
 
@@ -74,6 +88,12 @@ public class Ajax {
     }
 
     public void put(String url, Map<Object,Object> params) {
+
+        String resp = getURLAjax(url);
+        if (resp != null) {
+            url = resp;
+        }
+
         urlPut = url;
         if (!url.equals("")) {
 
@@ -97,6 +117,12 @@ public class Ajax {
     }
 
     public void delete(String url, Map<Object,Object> params) {
+
+        String resp = getURLAjax(url);
+        if (resp != null) {
+            url = resp;
+        }
+
         urlDelete = url;
         if (!url.equals("")) {
 
@@ -116,6 +142,16 @@ public class Ajax {
             });
             thread.start();
 
+        }
+    }
+
+
+    private String getURLAjax(String param) {
+        try {
+            Json json = new Json("conf.{neuron.json}");
+            return json.getJSON("ajax").getString(param);
+        } catch (Exception e) {
+            return null;
         }
     }
 

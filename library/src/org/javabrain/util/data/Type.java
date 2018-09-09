@@ -7,6 +7,7 @@ public class Type extends Object{
     public double DOUBLE;
     public byte BYTE;
     public char CHARACTER;
+    public boolean BOOLEAN;
 
     public String STRING;
     public Json JSON;
@@ -15,6 +16,12 @@ public class Type extends Object{
     public Object STATUS;
 
     public Type(Object value, Object status) {
+
+        try {
+            BOOLEAN = Boolean.parseBoolean(value.toString());
+        } catch (Exception e){
+            BOOLEAN = false;
+        }
 
         try {
             INTEGER = Integer.parseInt(value.toString());
@@ -68,6 +75,12 @@ public class Type extends Object{
     }
 
     public Type(Object obj) {
+
+        try {
+            BOOLEAN = Boolean.parseBoolean(obj.toString());
+        } catch (Exception e){
+            BOOLEAN = false;
+        }
 
         try {
             INTEGER = Integer.parseInt(obj.toString());

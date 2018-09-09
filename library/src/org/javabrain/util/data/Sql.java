@@ -14,9 +14,9 @@ public class Sql {
     
     private static Connection connection;
     
-    public static String MYSQL = "1";
-    public static String POSTGRESQL = "2";
-    public static String ORACLE = "3";
+    public static final String MYSQL = "1";
+    public static final String POSTGRESQL = "2";
+    public static final String ORACLE = "3";
     
     public static ResultSet execute(String sql, String db) {
 
@@ -53,16 +53,19 @@ public class Sql {
                     System.err.println(e.getMessage());
                 }
             break;
+
+            default:
+
+                try {
+                    connection = Neuron.connection(db);
+                    Statement st = connection.createStatement();
+                    ResultSet rs = st.executeQuery(sql);
+                    return rs;
+                } catch (SQLException e) {
+                    System.err.println(e.getMessage());
+                }
         }
-        
-        try {
-            connection = Neuron.connection(db);
-            Statement st = connection.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            return rs;
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
-        }
+
         return null;
     }
     

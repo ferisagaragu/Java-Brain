@@ -2,6 +2,7 @@
 package ${package};
 </#if>
 
+import java.util.Map;
 import org.javabrain.util.data.Type;
 import org.javabrain.util.web.service.Ajax;
 

@@ -10,27 +10,8 @@ import java.util.Collection;
  * @author Fernny
  */
 public class Seeker {
-    
-    // <editor-fold defaultstate="collapsed" desc="Singleton">
-    private static Seeker datos;
 
-    /***
-     * Este método construirá la clase solo una vez desde donde se llame.
-     * @return este nos regresara una instancia de la clase.
-     */
-    public static synchronized Seeker getInstance()
-    {
-        if(datos == null)
-        {
-            datos = new Seeker();
-        }    
-        
-        return datos;
-    }       
-    // </editor-fold>
-    
-
-    public ArrayList<String> search(ArrayList<String> elements,String search)
+    public static ArrayList<String> search(ArrayList<String> elements,String search)
     {
         Collection<String> collection = Collections2.filter(elements,
         Predicates.containsPattern(search));
@@ -45,7 +26,7 @@ public class Seeker {
         return al;
     }
 
-    public ArrayList<String> search(String[] elements,String search)
+    public static ArrayList<String> search(String[] elements,String search)
     {
         ArrayList<String> elm = new ArrayList<>();
         
@@ -68,7 +49,7 @@ public class Seeker {
         return al;
     }
 
-    public String[] searchToArray(ArrayList<String> elements,String search)
+    public static String[] searchToArray(ArrayList<String> elements,String search)
     {
         Collection<String> collection = Collections2.filter(elements,
         Predicates.containsPattern(search));

@@ -13,7 +13,7 @@ public class Neuron {
     private static Map<Object,Object> map = new HashMap<>();
 
     public static Object param(Object key){
-        Json json = new Json("conf.{neuron.json}");
+        Json json = new Json("conf.{neuron_example.json}");
         return json.getJSON("param").getObject(key.toString());
     }
 
@@ -31,7 +31,7 @@ public class Neuron {
 
     public static Connection postgresConnection() {
         try {
-            Json json = new Json("conf.{neuron.json}");
+            Json json = new Json("conf.{neuron_example.json}");
             Json json1 = json.getJSON("connection").getJSON("postgres");
             String user = json1.getString("user");
             String password = json1.getString("password");
@@ -51,7 +51,7 @@ public class Neuron {
     
     public static Connection connection(String dbName) {
         try {
-            Json json = new Json("conf.{neuron.json}");
+            Json json = new Json("conf.{neuron_example.json}");
             Json json1 = json.getJSON("connection").getJSON(dbName);
             Console.viewer(json1);
             String user = json1.getString("user");
