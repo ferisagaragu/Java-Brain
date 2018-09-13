@@ -1264,6 +1264,17 @@ public class Json extends Object{
         }
         return sumSeq();
     }
+
+    public void clear() {
+
+        if (array == null) {
+            obj.clear();
+        } else {
+            array.clear();
+        }
+
+    }
+
     //===============================================================
 
     //METODOS PRIVADOS

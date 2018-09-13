@@ -2,15 +2,11 @@ package org.javabrain.util.web.service;
 
 
 import maps.java.*;
-import org.jsoup.Connection;
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.omg.PortableServer.LIFESPAN_POLICY_ID;
 
 import java.awt.geom.Point2D;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class Location {
