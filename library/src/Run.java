@@ -1,14 +1,15 @@
 
-
-import org.javabrain.util.web.service.res.RemoteIcon;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
+import org.javabrain.util.data.Json;
 
 public class Run {
 
     public static void main(String[] args) throws Exception {
-        RemoteIcon.get("dottydots data activity_feed");
+        Json json = new Json("conf.{dataTable.json}");
+        json.getJSONArray(0).put("nuevo","dato");
+        json.values().forEach( e -> {
+            System.out.println(e);
+        });
+
     }
 
 }
