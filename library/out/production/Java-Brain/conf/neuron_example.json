@@ -10,7 +10,11 @@
   },
   "ajax":{
     "getbudgets":"https://budget.webcindario.com/getbudgets.php"
+  },
+  "message":{
+    "info": false,
+    "alert":true,
+    "error":true
   }
-
 
 }

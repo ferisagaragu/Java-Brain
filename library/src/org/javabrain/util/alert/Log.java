@@ -1,13 +1,28 @@
-package org.javabrain.util;
+package org.javabrain.util.alert;
 
 import org.javabrain.util.data.Json;
 
 public class Log {
 
-    public static void log(Object obj){
-        System.out.println(structur(obj));
+    private static Json data = new Json("conf.{neuron_example.json}");
+
+    public static void message(Object obj){
+        if (data.getJSON("message").getBoolean("info")) {
+            System.out.println("\033[34m" + structur(obj) + "\033[30m");
+        }
     }
 
+    public static void alert(Object obj) {
+        if (data.getJSON("message").getBoolean("info")) {
+            System.out.println("\033[33m" + structur(obj) + "\033[30m");
+        }
+    }
+
+    public static void error(Object obj) {
+        if (data.getJSON("message").getBoolean("error")) {
+            System.out.println("\033[31m" + structur(obj) + "\033[30m");
+        }
+    }
 
     public static void viewer(Object obj) {
 

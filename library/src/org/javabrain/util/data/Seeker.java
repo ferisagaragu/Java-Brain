@@ -11,8 +11,7 @@ import java.util.Collection;
  */
 public class Seeker {
 
-    public static ArrayList<String> search(ArrayList<String> elements,String search)
-    {
+    public static ArrayList<String> search(ArrayList<String> elements,String search) {
         Collection<String> collection = Collections2.filter(elements,
         Predicates.containsPattern(search));
         ArrayList<String> al = new ArrayList<>();
@@ -26,8 +25,7 @@ public class Seeker {
         return al;
     }
 
-    public static ArrayList<String> search(String[] elements,String search)
-    {
+    public static ArrayList<String> search(String[] elements,String search) {
         ArrayList<String> elm = new ArrayList<>();
         
         for (int i = 0; i < elements.length; i++) {
@@ -49,8 +47,7 @@ public class Seeker {
         return al;
     }
 
-    public static String[] searchToArray(ArrayList<String> elements,String search)
-    {
+    public static String[] searchToArray(ArrayList<String> elements,String search) {
         Collection<String> collection = Collections2.filter(elements,
         Predicates.containsPattern(search));
         String[] al = new String[collection.size()];
@@ -65,8 +62,7 @@ public class Seeker {
         return al;
     }
 
-    public String[] searchToArray(String[] elements,String search)
-    {
+    public String[] searchToArray(String[] elements,String search) {
         ArrayList<String> elm = new ArrayList<>();
         
         for (int i = 0; i < elements.length; i++) {
