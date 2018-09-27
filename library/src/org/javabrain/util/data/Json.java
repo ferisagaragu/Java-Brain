@@ -51,6 +51,12 @@ public class Json extends Object{
 
     //CONSTRUCTORES
     public Json(){
+        
+        System.out.println(this.getClass());
+        
+        
+        
+        
         parser = new JSONParser();
         try {
             obj = (org.json.simple.JSONObject) parser.parse("{}");

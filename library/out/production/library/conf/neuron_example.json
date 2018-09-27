@@ -1,0 +1,16 @@
+{
+  "param":{},
+  "connection":{
+      "postgres":{
+        "host":"localhost:5432",
+        "user":"postgres",
+        "password":"root",
+        "database":"atencion"
+      }
+  },
+  "ajax":{
+    "getbudgets":"https://budget.webcindario.com/getbudgets.php"
+  }
+
+
+}
