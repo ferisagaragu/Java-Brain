@@ -1,34 +1,20 @@
 
+import java.util.List;
 import org.javabrain.util.data.Json;
 
 public class Run{
     
-    /*@FillJson(data = "conf.{dataTable.json}")
-    public Json json;
-    
-    @FillJson(data = "conf.{neuron_example.json}")
-    public Json json2;
-
-    public Run() {
-        Class<?> aliClass = this.getClass();
-        Field[] field = aliClass.getDeclaredFields();
-
-        for (Field fld : field) {
-            Annotation annotation = fld.getAnnotation(FillJson.class);
-            if (annotation != null && annotation instanceof FillJson) {
-                try {
-                    FillJson data = (FillJson) annotation;
-                    Json j = (Json) fld.getType().newInstance();
-                    j.setJSON(data.data());
-                } catch (Exception e) {
-                    System.out.print(e.getMessage());
-                }
-            }
-        }
-    }*/
-    
     public static void main(String[] args) throws Exception {
         
+        // List<Budget> lista = Json.inject(Budget.class);
+        Budget budget = new Budget();
+        budget.setId(39);
+        budget.setName("UPDATE");
+        budget.setDate("02/10/2018");
+        budget.setMoney("300 MNX");
+        budget.setType(1);
+        
+        System.out.println(/*Json.save(budget)*/ Json.delete(budget));
     }
 
 }

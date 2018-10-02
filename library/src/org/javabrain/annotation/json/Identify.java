@@ -10,11 +10,5 @@ import java.lang.annotation.Target;
  * @version 0.0.1
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.TYPE})
-public @interface Json {
-    String path() default "";
-    String get() default "";
-    String post() default "";
-    String put() default "";
-    String delete() default "";
-}
+@Target({ElementType.FIELD})
+public @interface Identify {}
