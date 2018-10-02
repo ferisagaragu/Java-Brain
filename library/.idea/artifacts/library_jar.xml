@@ -16,6 +16,7 @@
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/timingframework-core-5.0.0.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/timingframework-swing-5.0.0.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/org.postgresql-9.1.901.jdbc4.1-rc9.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/xmlworker-1.1.0.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

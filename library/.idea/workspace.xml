@@ -7,23 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ddbad57d-9c18-4b1a-a006-5d294ffb87ca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/library_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/library_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/budget.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/Run.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/alert/Log.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/data/Text.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/library/Run.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/library/Run.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/library/conf/neuron_example.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/library/conf/neuron_example.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/util/data/Json$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/library/org/javabrain/util/data/Json$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/util/data/Json.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/library/org/javabrain/util/data/Json.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/util/web/service/Translator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/library/org/javabrain/util/web/service/Translator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Budget.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Run.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/budget.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/javabrain/util/data/Json.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/javabrain/util/data/Json.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/javabrain/util/web/service/Ajax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/javabrain/util/web/service/Ajax.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/library_jar/library.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/library_jar/library.jar" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -67,8 +53,8 @@
       <file leaf-file-name="Ajax.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/web/service/Ajax.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+            <state relative-caret-position="-210">
+              <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
             </state>
           </provider>
         </entry>
@@ -86,7 +72,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="width" value="1386" />
     <option name="height" value="735" />
@@ -192,10 +178,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537984076664" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/xmlworker-1.1.0.jar!/" />
     <property name="project.structure.last.edited" value="Artifacts" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -235,7 +222,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1386" height="735" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="DB Execution Console" />
@@ -259,7 +245,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32890365" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19607843" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19607843" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -293,8 +279,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/web/service/Ajax.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+        <state relative-caret-position="-210">
+          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
         </state>
       </provider>
     </entry>
@@ -357,7 +343,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
