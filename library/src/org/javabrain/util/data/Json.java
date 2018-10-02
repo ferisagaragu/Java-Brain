@@ -9,6 +9,9 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.*;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -19,10 +22,11 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.javabrain.annotation.json.Key;
 
 /***
  * @author Fernando García
- * @version 0.0.2
+ * @version 0.0.3
  */
 public class Json extends Object{
 
@@ -1280,6 +1284,60 @@ public class Json extends Object{
         }
 
     }
+    
+    public List injectOn(Class clazz){
+        List list = new ArrayList<>();
+
+        try {
+            org.javabrain.annotation.json.Json js = (org.javabrain.annotation.json.Json) clazz.getAnnotations()[0];
+            if (js.logical()) {
+
+                if (this.isJSONArray() && this.isRegularJson()) {
+                    for (Json jso : this.values()) {
+
+                        Object dao = clazz.newInstance();
+                        for (Field fld : dao.getClass().getDeclaredFields()) {
+                            Annotation getAnnotation = fld.getAnnotation(Key.class);
+                            if (getAnnotation != null) {
+                                Key k = (Key) getAnnotation;
+                                Method m = dao.getClass().getMethod("set" + Text.upperFirst(fld.getName()), fld.getType());
+
+                                switch (fld.getType().getName()) {
+
+                                    case "String":
+                                        m.invoke(dao, jso.getString(k.name()));
+                                        break;
+
+                                    case "int":
+                                        m.invoke(dao, jso.getInteger(k.name()));
+                                        break;
+
+                                    case "float":
+                                        m.invoke(dao, jso.getFloat(k.name()));
+                                        break;
+
+                                    case "boolean":
+                                        m.invoke(dao, jso.getBoolean(k.name()));
+                                        break;
+
+                                    case "double":
+                                        m.invoke(dao, jso.getDouble(k.name()));
+                                        break;
+
+                                    default:
+                                        m.invoke(dao, jso.getObject(k.name()));
+                                }
+                            }
+                        }
+                        list.add(dao);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return list;
+    }
 
     //===============================================================
 
@@ -1498,6 +1556,7 @@ public class Json extends Object{
         return formatJSONString(obj.toString());
     }
 
+    @Override
     public String toString(){
 
         if(obj == null || obj.toString().equals("{}")){
@@ -1523,7 +1582,25 @@ public class Json extends Object{
         return false;
     }
 
-    public boolean isRegularJson(){return false;}
+    public boolean isRegularJson(){
+        
+        if (this.isJSONArray()) {
+            Collection firstKey = null;
+            boolean first = true;
+            for (Json j : this.values()) {
+                if (first) {
+                    firstKey = j.getKeys();
+                    first = false;
+                } else {
+                    if(!firstKey.equals(j.getKeys())) {
+                       return false; 
+                    }
+                }
+            }
+        }
+                
+        return true;
+    }
 
     public boolean isRepeated(Object key,Object match){
         if (isJSONArray()){
@@ -1586,6 +1663,20 @@ public class Json extends Object{
     public static boolean isJSON(Object obj) {
         return isJSONObject(obj) || isJSONArray(obj);
     }
+    
+    public static Json convertTo(Object obj) {
+        String out = "";
+        try {
+            for (Field f : obj.getClass().getDeclaredFields()) {
+                Method m2 = obj.getClass().getMethod("get"+Text.upperFirst(f.getName()));
+                Object o = (Object) m2.invoke(obj);
+                out = out + "\"" + f.getName() + "\":\"" + o +"\",";
+            }
+            out = out.substring(0,out.length() - 1);
+        } catch (Exception e) {}
+            return new Json("{" + out + "}");
+    }
+    
     //===============================================================
 
     //METODOS COMPLEJOS "DESTRUCTURIN"
@@ -1595,9 +1686,70 @@ public class Json extends Object{
     }
     //===============================================================
     
+    //METODOS CON REFLECT
+    public static List inject(Class clazz) {
+        List list = new ArrayList<>();
+
+        try {
+            org.javabrain.annotation.json.Json js = (org.javabrain.annotation.json.Json) clazz.getAnnotations()[0];
+            if (!js.logical()) {
+                String path = js.path();
+                Json j = new Json(path);
+
+                if (j.isJSONArray() && j.isRegularJson()) {
+                    for (Json jso : j.values()) {
+
+                        Object dao = clazz.newInstance();
+                        for (Field fld : dao.getClass().getDeclaredFields()) {
+                            Annotation getAnnotation = fld.getAnnotation(Key.class);
+                            if (getAnnotation != null) {
+                                Key k = (Key) getAnnotation;
+                                Method m = dao.getClass().getMethod("set" + Text.upperFirst(fld.getName()), fld.getType());
+
+                                switch (fld.getType().getName()) {
+
+                                    case "String":
+                                        m.invoke(dao, jso.getString(k.name()));
+                                        break;
+
+                                    case "int":
+                                        m.invoke(dao, jso.getInteger(k.name()));
+                                        break;
+
+                                    case "float":
+                                        m.invoke(dao, jso.getFloat(k.name()));
+                                        break;
+
+                                    case "boolean":
+                                        m.invoke(dao, jso.getBoolean(k.name()));
+                                        break;
+
+                                    case "double":
+                                        m.invoke(dao, jso.getDouble(k.name()));
+                                        break;
+
+                                    default:
+                                        m.invoke(dao, jso.getObject(k.name()));
+                                }
+                            }
+                        }
+                        list.add(dao);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Error at the injection\n" +
+            "Please mapping the class whit the correct fields and create methods getter and setter.");
+        }
+        return list;
+    }
+    //===============================================================
+    
     /*todo Versión 0.0.4
     Versión 0.0.4 ->
     -METODO PARA ORDENAR EL JSON
     -METODO PARA AUTO COMPLETAR json.getMatch(exam)  y que esto se ignifique json.get(example)
-    -METODOS PARA CONVERTIR SQL EN JSON Y BISEVERSA*/
+    -METODOS PARA CONVERTIR SQL EN JSON Y BISEVERSA
+    -METODO QUE USA REFLECT PARA HACER MERGE EN EL JSON
+    -METODO QUE USA REFLECT PARA HACER UPDATE EN EL JSON */
 }
