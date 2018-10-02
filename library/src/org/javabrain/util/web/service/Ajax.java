@@ -12,6 +12,7 @@ import java.util.Map;
  * @apiNote Esta clase de Ajax sustituira a Data pesist
  * @implNote esta clase funciona en FX con Platform.runLater(() -> {});
  */
+@Deprecated
 public class Ajax {
 
     private Map<Object,Object> params = new HashMap<>();

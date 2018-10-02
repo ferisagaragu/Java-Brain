@@ -1339,7 +1339,7 @@ public class Json extends Object{
         }
         return list;
     }
-
+    
     
     public void mergeToRemote(String merged){
         
@@ -1885,7 +1885,6 @@ public class Json extends Object{
         }
         return false;
     }
-    
     //===============================================================
     
     /*todo Versión 0.0.4
