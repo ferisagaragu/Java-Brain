@@ -310,14 +310,14 @@ class DropShadowBorder extends AbstractBorder implements Border {
       
       /*
        * Do draw a drop shadow, I have to:
-       *  1) Create a rounded rectangle
-       *  2) Create a BufferedImage to draw the rounded rect in
+       *  1) create a rounded rectangle
+       *  2) create a BufferedImage to draw the rounded rect in
        *  3) Translate the graphics for the image, so that the rectangle
        *     is centered in the drawn space. The border around the rectangle
        *     needs to be shadowWidth wide, so that there is space for the
        *     shadow to be drawn.
        *  4) Draw the rounded rect as black, with an opacity of 50%
-       *  5) Create the BLUR_KERNEL
+       *  5) create the BLUR_KERNEL
        *  6) Blur the image
        *  7) copy off the corners, sides, etc into images to be used for
        *     drawing the Border

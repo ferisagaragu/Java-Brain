@@ -13,8 +13,4 @@ import java.lang.annotation.Target;
 @Target({ElementType.TYPE})
 public @interface Json {
     String path() default "";
-    String get() default "";
-    String post() default "";
-    String put() default "";
-    String delete() default "";
 }

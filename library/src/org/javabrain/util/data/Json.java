@@ -1,5 +1,6 @@
 package org.javabrain.util.data;
 
+import org.javabrain.annotation.json.*;
 import org.javabrain.util.resource.Path;
 import org.javabrain.util.web.service.Petition;
 import org.json.simple.JSONArray;
@@ -10,6 +11,7 @@ import org.json.simple.parser.ParseException;
 
 import java.io.*;
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
@@ -23,8 +25,6 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.javabrain.Neuron;
-import org.javabrain.annotation.json.Identify;
-import org.javabrain.annotation.json.Key;
 
 /***
  * @author Fernando García
@@ -57,12 +57,6 @@ public class Json extends Object{
 
     //CONSTRUCTORES
     public Json(){
-        
-        System.out.println(this.getClass());
-        
-        
-        
-        
         parser = new JSONParser();
         try {
             obj = (org.json.simple.JSONObject) parser.parse("{}");
@@ -1697,188 +1691,352 @@ public class Json extends Object{
         List list = new ArrayList<>();
 
         try {
-            org.javabrain.annotation.json.Json js = (org.javabrain.annotation.json.Json) clazz.getAnnotations()[0];
+            org.javabrain.annotation.json.Json js = (org.javabrain.annotation.json.Json) clazz.getAnnotation(org.javabrain.annotation.json.Json.class);
+            Get get = (Get) clazz.getAnnotation(Get.class);
 
-            String path = js.path().contains("http") || js.path().equals("") ? js.get() : js.path();
-            Json j = new Json(path);
+            if (js != null) {
 
-            if (j.isJSONArray() && j.isRegularJson()) {
-                for (Json jso : j.values()) {
+                Json j;
 
-                    Object dao = clazz.newInstance();
-                    for (Field fld : dao.getClass().getDeclaredFields()) {
-                        Annotation getAnnotation = fld.getAnnotation(Key.class);
-                        if (getAnnotation != null) {
-                            Key k = (Key) getAnnotation;
-                            Method m = dao.getClass().getMethod("set" + Text.upperFirst(fld.getName()), fld.getType());
+                if (get != null) {
+                    j = get.type() == 1 ? Petition.doGet(get.url()).JSON : null;
+                } else {
+                    j = new Json(js.path());
+                }
 
-                            switch (fld.getType().getName()) {
+                if (j.isJSONArray() && j.isRegularJson()) {
+                    for (Json jso : j.values()) {
 
-                                case "String":
-                                    m.invoke(dao, jso.getString(k.name()));
-                                    break;
+                        Object dao = clazz.newInstance();
+                        for (Field fld : dao.getClass().getDeclaredFields()) {
+                            Annotation getAnnotation = fld.getAnnotation(Key.class);
+                            if (getAnnotation != null) {
+                                Key k = (Key) getAnnotation;
+                                Method m = dao.getClass().getMethod("set" + Text.upperFirst(fld.getName()), fld.getType());
 
-                                case "int":
-                                    m.invoke(dao, jso.getInteger(k.name()));
-                                    break;
+                                switch (fld.getType().getName()) {
 
-                                case "float":
-                                    m.invoke(dao, jso.getFloat(k.name()));
-                                    break;
+                                    case "String":
+                                        m.invoke(dao, jso.getString(k.name()));
+                                        break;
 
-                                case "boolean":
-                                    m.invoke(dao, jso.getBoolean(k.name()));
-                                    break;
+                                    case "int":
+                                        m.invoke(dao, jso.getInteger(k.name()));
+                                        break;
 
-                                case "double":
-                                    m.invoke(dao, jso.getDouble(k.name()));
-                                    break;
+                                    case "float":
+                                        m.invoke(dao, jso.getFloat(k.name()));
+                                        break;
 
-                                default:
-                                    m.invoke(dao, jso.getObject(k.name()));
+                                    case "boolean":
+                                        m.invoke(dao, jso.getBoolean(k.name()));
+                                        break;
+
+                                    case "double":
+                                        m.invoke(dao, jso.getDouble(k.name()));
+                                        break;
+
+                                    default:
+                                        m.invoke(dao, jso.getObject(k.name()));
+                                }
                             }
                         }
+                        list.add(dao);
                     }
-                    list.add(dao);
                 }
+            } else {
+                System.err.println("Error at the injection\n"
+                + "Please mapping the class whit the correct fields and create methods getter and setter and simple constructor.");
             }
 
         } catch (Exception e) {
             System.err.println("Error at the injection\n"
-                    + "Please mapping the class whit the correct fields and create methods getter and setter.");
+                    + "Please mapping the class whit the correct fields and create methods getter and setter and simple constructor.");
             System.err.println(e.getMessage());
         }
         return list;
     }
-    
+
+    public static List inject(Class clazz,Map<Object,Object> params) {
+        List list = new ArrayList<>();
+
+        try {
+            org.javabrain.annotation.json.Json js = (org.javabrain.annotation.json.Json) clazz.getAnnotation(org.javabrain.annotation.json.Json.class);
+            Get get = (Get) clazz.getAnnotation(Get.class);
+
+            if (js != null) {
+
+                Json j;
+
+                if (get != null) {
+
+                    switch (get.type()) {
+                        case 2: j = Petition.doPost(get.url(),params).JSON; break;
+                        case 3: j = Petition.doPut(get.url(),params).JSON; break;
+                        case 4: j = Petition.doDelete(get.url(),params).JSON; break;
+                        default: j = null;
+                    }
+
+                } else {
+                    j = new Json(js.path());
+                }
+
+                if (j.isJSONArray() && j.isRegularJson()) {
+                    for (Json jso : j.values()) {
+
+                        Object dao = clazz.newInstance();
+                        for (Field fld : dao.getClass().getDeclaredFields()) {
+                            Annotation getAnnotation = fld.getAnnotation(Key.class);
+                            if (getAnnotation != null) {
+                                Key k = (Key) getAnnotation;
+                                Method m = dao.getClass().getMethod("set" + Text.upperFirst(fld.getName()), fld.getType());
+
+                                switch (fld.getType().getName()) {
+
+                                    case "String":
+                                        m.invoke(dao, jso.getString(k.name()));
+                                        break;
+
+                                    case "int":
+                                        m.invoke(dao, jso.getInteger(k.name()));
+                                        break;
+
+                                    case "float":
+                                        m.invoke(dao, jso.getFloat(k.name()));
+                                        break;
+
+                                    case "boolean":
+                                        m.invoke(dao, jso.getBoolean(k.name()));
+                                        break;
+
+                                    case "double":
+                                        m.invoke(dao, jso.getDouble(k.name()));
+                                        break;
+
+                                    default:
+                                        m.invoke(dao, jso.getObject(k.name()));
+                                }
+                            }
+                        }
+                        list.add(dao);
+                    }
+                }
+            } else {
+                System.err.println("Error at the injection\n"
+                        + "Please mapping the class whit the correct fields and create methods getter and setter and simple constructor.");
+            }
+
+        } catch (Exception e) {
+            System.err.println("Error at the injection\n"
+                    + "Please mapping the class whit the correct fields and create methods getter and setter and simple constructor.");
+            System.err.println(e.getMessage());
+        }
+        return list;
+    }
+
     public static boolean save(Object o) {
         try {
-            Annotation annotation = o.getClass().getAnnotation(org.javabrain.annotation.json.Json.class);
-            org.javabrain.annotation.json.Json anJ = (org.javabrain.annotation.json.Json) annotation;
-            String path = anJ.path().contains("http") || anJ.path().equals("") ? anJ.post() : anJ.path();
-            Map<Object, Object> map = new HashMap();
-            Field id = null;
-            
-            for (Field fld : o.getClass().getDeclaredFields()) {
-                Annotation annFld = fld.getAnnotation(Key.class);
-                Annotation annFldId = fld.getAnnotation(Identify.class);
-                
-                if (annFldId != null) {
-                    id = fld;
+
+            org.javabrain.annotation.json.Json anJ = (org.javabrain.annotation.json.Json) o.getClass().getAnnotation(org.javabrain.annotation.json.Json.class);
+            Create create = (Create) o.getClass().getAnnotation(Create.class);
+
+            if (anJ != null) {
+
+                String path;
+
+                if (create != null) {
+                    path = create.url();
+                } else {
+                    path = anJ.path();
                 }
-                if (annFld != null && annFldId == null) {
-                    Key k = (Key) annFld;
-                    Method m = o.getClass().getMethod("get" + Text.upperFirst(k.name()));
-                    map.put(k.name(), m.invoke(o));
+
+                Map<Object, Object> map = new HashMap();
+                Field id = null;
+
+                for (Field fld : o.getClass().getDeclaredFields()) {
+                    Annotation annFld = fld.getAnnotation(Key.class);
+                    Annotation annFldId = fld.getAnnotation(Identify.class);
+
+                    if (annFldId != null) {
+                        id = fld;
+                    }
+                    if (annFld != null && annFldId == null) {
+                        Key k = (Key) annFld;
+                        Method m = o.getClass().getMethod("get" + Text.upperFirst(k.name()));
+                        map.put(k.name(), m.invoke(o));
+                    }
                 }
-            }
-            if (isUrl(path)) {
-                return Integer.parseInt(Petition.doPost(path, map).STATUS.toString()) == 200;
+                if (isUrl(path)) {
+
+                    if (create != null) {
+
+                        switch (create.type()) {
+                            case 2: return Integer.parseInt(Petition.doPost(create.url(),map).STATUS.toString()) == 200;
+                            case 3: return Integer.parseInt(Petition.doPut(create.url(),map).STATUS.toString()) == 200;
+                            case 4: return Integer.parseInt(Petition.doDelete(create.url(),map).STATUS.toString()) == 200;
+                            default: return false;
+                        }
+
+                    }
+
+                } else {
+                    Annotation key = id.getAnnotation(Key.class);
+                    Key key1 = (Key) key;
+                    Method m = o.getClass().getMethod("get" + Text.upperFirst(key1.name()));
+                    map.put(key1.name(), m.invoke(o));
+                    Json json = new Json(path);
+                    json.putJSONArray(Json.parseJson(map));
+                    json.write(path);
+                    return true;
+                }
             } else {
-                Annotation key = id.getAnnotation(Key.class);
-                Key key1 = (Key) key;
-                Method m = o.getClass().getMethod("get"+Text.upperFirst(key1.name()));
-                map.put(key1.name(),m.invoke(o));
-                Json json = new Json(path);
-                json.putJSONArray(Json.parseJson(map));
-                json.write(path);
-                return true;
+                System.err.println("Have a problem to save JSON.");
             }
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
         return false;
     }
-    
+
     public static boolean update(Object o) {
         try {
-            Annotation annotation = o.getClass().getAnnotation(org.javabrain.annotation.json.Json.class);
-            org.javabrain.annotation.json.Json anJ = (org.javabrain.annotation.json.Json) annotation;
-            String path = anJ.path().contains("http") || anJ.path().equals("") ? anJ.put(): anJ.path();
-            Map<Object, Object> map = new HashMap();
-            Field id = null;
-            
-            for (Field fld : o.getClass().getDeclaredFields()) {
-                Annotation annFld = fld.getAnnotation(Key.class);
-                Annotation annId = fld.getAnnotation(Identify.class);
-                
-                if (annId != null) {
-                    id = fld;
+
+            org.javabrain.annotation.json.Json anJ = (org.javabrain.annotation.json.Json) o.getClass().getAnnotation(org.javabrain.annotation.json.Json.class);
+            Replace replace = (Replace) o.getClass().getAnnotation(Replace.class);
+
+            if (anJ != null) {
+
+                String path;
+
+                if (replace != null) {
+                    path = replace.url();
+                } else {
+                    path = anJ.path();
                 }
-                if (annFld != null) {
-                    Key k = (Key) annFld;
-                    Method m = o.getClass().getMethod("get" + Text.upperFirst(k.name()));
-                    map.put(k.name(),m.invoke(o));
-                }
-            }
-            if (isUrl(path)) {
-                return Integer.parseInt(Petition.doPost(path, map).STATUS.toString()) == 200;
-            } else {
-                
-                Json json = new Json(path);
-                Key k = (Key) id.getAnnotation(Key.class);
-                Method m = o.getClass().getMethod("get"+Text.upperFirst(k.name()));
-                
-                int count = 0;
-                int outCont = -1;
-                for (Json j : json.values()) {
-                    if (j.getObject(k.name()).toString().equals(m.invoke(o).toString())) {
-                        outCont = count;
+
+                Map<Object, Object> map = new HashMap();
+                Field id = null;
+
+                for (Field fld : o.getClass().getDeclaredFields()) {
+                    Annotation annFld = fld.getAnnotation(Key.class);
+                    Annotation annId = fld.getAnnotation(Identify.class);
+
+                    if (annId != null) {
+                        id = fld;
                     }
-                    count++;
+                    if (annFld != null) {
+                        Key k = (Key) annFld;
+                        Method m = o.getClass().getMethod("get" + Text.upperFirst(k.name()));
+                        map.put(k.name(), m.invoke(o));
+                    }
                 }
-                
-                json.replaceJSONArray(outCont,Json.parseJson(map));
-                json.write(path);
-                
-                return true;
+                if (isUrl(path)) {
+
+                    if (replace != null) {
+
+                        switch (replace.type()) {
+                            case 2: return Integer.parseInt(Petition.doPost(replace.url(),map).STATUS.toString()) == 200;
+                            case 3: return Integer.parseInt(Petition.doPut(replace.url(),map).STATUS.toString()) == 200;
+                            case 4: return Integer.parseInt(Petition.doDelete(replace.url(),map).STATUS.toString()) == 200;
+                            default: return false;
+                        }
+
+                    }
+
+                } else {
+
+                    Json json = new Json(path);
+                    Key k = (Key) id.getAnnotation(Key.class);
+                    Method m = o.getClass().getMethod("get" + Text.upperFirst(k.name()));
+
+                    int count = 0;
+                    int outCont = -1;
+                    for (Json j : json.values()) {
+                        if (j.getObject(k.name()).toString().equals(m.invoke(o).toString())) {
+                            outCont = count;
+                        }
+                        count++;
+                    }
+
+                    json.replaceJSONArray(outCont, Json.parseJson(map));
+                    json.write(path);
+
+                    return true;
+                }
+            } else {
+                System.err.println("Update error");
             }
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
         return false;
     }
-    
+
     public static boolean delete(Object o) {
         try {
-            Annotation annotation = o.getClass().getAnnotation(org.javabrain.annotation.json.Json.class);
-            org.javabrain.annotation.json.Json anJ = (org.javabrain.annotation.json.Json) annotation;
-            String path = anJ.path().contains("http") || anJ.path().equals("") ? anJ.delete(): anJ.path();
-            Map<Object, Object> map = new HashMap();
-            Field id = null;
-            
-            for (Field fld : o.getClass().getDeclaredFields()) {
-                Annotation annFld = fld.getAnnotation(Key.class);
-                Annotation annFldId = fld.getAnnotation(Identify.class);
-                
-                if (annFld != null && annFldId != null) {
-                    Key k = (Key) annFld;
-                    Method m = o.getClass().getMethod("get" + Text.upperFirst(k.name()));
-                    map.put(k.name(),m.invoke(o));
-                    id = fld;
+            org.javabrain.annotation.json.Json anJ = (org.javabrain.annotation.json.Json) o.getClass().getAnnotation(org.javabrain.annotation.json.Json.class);
+            Delete delete = (Delete) o.getClass().getAnnotation(Delete.class);
+
+            if (anJ != null) {
+
+                String path;
+
+                if (delete != null) {
+                    path = delete.url();
+                } else {
+                    path = anJ.path();
                 }
-            }
-            if (isUrl(path)) {
-                return Integer.parseInt(Petition.doPost(path, map).STATUS.toString()) == 200;
-            } else {
-                
-                Json json = new Json(path);
-                Key k = (Key) id.getAnnotation(Key.class);
-                Method m = o.getClass().getMethod("get"+Text.upperFirst(k.name()));
-                
-                int count = 0;
-                int outCont = -1;
-                for (Json j : json.values()) {
-                    if (j.getObject(k.name()).toString().equals(m.invoke(o).toString())) {
-                        outCont = count;
+
+                Map<Object, Object> map = new HashMap();
+                Field id = null;
+
+                for (Field fld : o.getClass().getDeclaredFields()) {
+                    Annotation annFld = fld.getAnnotation(Key.class);
+                    Annotation annFldId = fld.getAnnotation(Identify.class);
+
+                    if (annFld != null && annFldId != null) {
+                        Key k = (Key) annFld;
+                        Method m = o.getClass().getMethod("get" + Text.upperFirst(k.name()));
+                        map.put(k.name(), m.invoke(o));
+                        id = fld;
                     }
-                    count++;
                 }
-                
-                json.remove(outCont);
-                json.write(path);
-                
-                return true;
+                if (isUrl(path)) {
+
+                    if (delete != null) {
+
+                        switch (delete.type()) {
+                            case 2: return Integer.parseInt(Petition.doPost(delete.url(),map).STATUS.toString()) == 200;
+                            case 3: return Integer.parseInt(Petition.doPut(delete.url(),map).STATUS.toString()) == 200;
+                            case 4: return Integer.parseInt(Petition.doDelete(delete.url(),map).STATUS.toString()) == 200;
+                            default: return false;
+                        }
+
+                    }
+
+
+                } else {
+
+                    Json json = new Json(path);
+                    Key k = (Key) id.getAnnotation(Key.class);
+                    Method m = o.getClass().getMethod("get" + Text.upperFirst(k.name()));
+
+                    int count = 0;
+                    int outCont = -1;
+                    for (Json j : json.values()) {
+                        if (j.getObject(k.name()).toString().equals(m.invoke(o).toString())) {
+                            outCont = count;
+                        }
+                        count++;
+                    }
+
+                    json.remove(outCont);
+                    json.write(path);
+
+                    return true;
+                }
+            } else {
+                System.err.println("Error in delete");
             }
         } catch (Exception e) {
             System.err.println(e.getMessage());            
@@ -1886,7 +2044,7 @@ public class Json extends Object{
         return false;
     }
     //===============================================================
-    
+
     /*todo Versión 0.0.4
     Versión 0.0.4 ->
     -METODO PARA ORDENAR EL JSON
