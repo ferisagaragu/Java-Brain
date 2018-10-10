@@ -28,6 +28,9 @@ public class BudGet {
     
     @Key( name = "type" )
     private int type;
+    
+    @Key( name = "data") 
+    private org.javabrain.util.data.Json data;
 
     public BudGet() {}
     
@@ -89,4 +92,13 @@ public class BudGet {
     public void setType(int type) {
         this.type = type;
     }
+
+    public org.javabrain.util.data.Json getData() {
+        return data;
+    }
+
+    public void setData(org.javabrain.util.data.Json data) {
+        this.data = data;
+    }
+
 }

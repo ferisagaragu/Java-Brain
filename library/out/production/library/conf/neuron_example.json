@@ -15,6 +15,13 @@
     "info": false,
     "alert":true,
     "error":true
+  },
+  "package": {
+    "company" : "org.javabrain",
+    "modules" : ["model","view","controller","pojo","ajax","css","run","res"]
+  } ,
+  "res" : {
+    "img":"org.javabrain.res.img",
+    "audio" : "org.javabrain.res.audio"
   }
-
 }

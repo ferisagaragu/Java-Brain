@@ -11,7 +11,6 @@ import org.json.simple.parser.ParseException;
 
 import java.io.*;
 import java.lang.annotation.Annotation;
-import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
@@ -24,7 +23,6 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.javabrain.Neuron;
 
 /***
  * @author Fernando García
@@ -1703,7 +1701,7 @@ public class Json extends Object{
                 } else {
                     j = new Json(js.path());
                 }
-
+                
                 if (j.isJSONArray() && j.isRegularJson()) {
                     for (Json jso : j.values()) {
 
@@ -1715,30 +1713,36 @@ public class Json extends Object{
                                 Method m = dao.getClass().getMethod("set" + Text.upperFirst(fld.getName()), fld.getType());
 
                                 switch (fld.getType().getName()) {
-
-                                    case "String":
-                                        m.invoke(dao, jso.getString(k.name()));
-                                        break;
-
-                                    case "int":
-                                        m.invoke(dao, jso.getInteger(k.name()));
-                                        break;
-
-                                    case "float":
-                                        m.invoke(dao, jso.getFloat(k.name()));
-                                        break;
-
-                                    case "boolean":
-                                        m.invoke(dao, jso.getBoolean(k.name()));
-                                        break;
-
-                                    case "double":
-                                        m.invoke(dao, jso.getDouble(k.name()));
-                                        break;
-
-                                    default:
-                                        m.invoke(dao, jso.getObject(k.name()));
+                                    
+                                    case "int":  m.invoke(dao, jso.getInteger(k.name())); break;
+                                    case "java.lang.Integer":  m.invoke(dao, jso.getInteger(k.name())); break;
+                                    
+                                    case "float": m.invoke(dao, jso.getFloat(k.name())); break;
+                                    case "java.lang.Float": m.invoke(dao, jso.getFloat(k.name())); break;
+                                    
+                                    case "double": m.invoke(dao, jso.getDouble(k.name())); break;
+                                    case "java.lang.Double": m.invoke(dao, jso.getDouble(k.name())); break;
+                                    
+                                    case "byte": m.invoke(dao,jso.getCharacter(k.name()));; break;
+                                    case "java.lang.Byte": m.invoke(dao, jso.getCharacter(k.name())); break;
+                                    
+                                    case "char": m.invoke(dao,jso.getCharacter(k.name()));; break;
+                                    case "java.lang.Character": m.invoke(dao,jso.getCharacter(k.name()));; break;
+                                    
+                                    case "boolean": m.invoke(dao, jso.getBoolean(k.name())); break;
+                                    case "java.lang.Boolean": m.invoke(dao, jso.getBoolean(k.name())); break;
+                                    
+                                    case "short": m.invoke(dao,(short) jso.getObject(k.name())); break;
+                                    case "java.lang.Short": m.invoke(dao,(short) jso.getObject(k.name())); break;
+                                    
+                                    case "long": m.invoke(dao,jso.getLong(k.name())); break;
+                                    case "java.lang.Long": m.invoke(dao,jso.getLong(k.name())); break;
+                                    
+                                    case "java.lang.String": m.invoke(dao, jso.getString(k.name())); break;
+                                    case "org.javabrain.util.data.Json": m.invoke(dao,jso.getJSON(k.name())); break;
+                                    default: m.invoke(dao, jso.getObject(k.name()));;
                                 }
+                                
                             }
                         }
                         list.add(dao);
@@ -1792,29 +1796,34 @@ public class Json extends Object{
                                 Method m = dao.getClass().getMethod("set" + Text.upperFirst(fld.getName()), fld.getType());
 
                                 switch (fld.getType().getName()) {
-
-                                    case "String":
-                                        m.invoke(dao, jso.getString(k.name()));
-                                        break;
-
-                                    case "int":
-                                        m.invoke(dao, jso.getInteger(k.name()));
-                                        break;
-
-                                    case "float":
-                                        m.invoke(dao, jso.getFloat(k.name()));
-                                        break;
-
-                                    case "boolean":
-                                        m.invoke(dao, jso.getBoolean(k.name()));
-                                        break;
-
-                                    case "double":
-                                        m.invoke(dao, jso.getDouble(k.name()));
-                                        break;
-
-                                    default:
-                                        m.invoke(dao, jso.getObject(k.name()));
+                                    
+                                    case "int":  m.invoke(dao, jso.getInteger(k.name())); break;
+                                    case "java.lang.Integer":  m.invoke(dao, jso.getInteger(k.name())); break;
+                                    
+                                    case "float": m.invoke(dao, jso.getFloat(k.name())); break;
+                                    case "java.lang.Float": m.invoke(dao, jso.getFloat(k.name())); break;
+                                    
+                                    case "double": m.invoke(dao, jso.getDouble(k.name())); break;
+                                    case "java.lang.Double": m.invoke(dao, jso.getDouble(k.name())); break;
+                                    
+                                    case "byte": m.invoke(dao,jso.getCharacter(k.name()));; break;
+                                    case "java.lang.Byte": m.invoke(dao, jso.getCharacter(k.name())); break;
+                                    
+                                    case "char": m.invoke(dao,jso.getCharacter(k.name()));; break;
+                                    case "java.lang.Character": m.invoke(dao,jso.getCharacter(k.name()));; break;
+                                    
+                                    case "boolean": m.invoke(dao, jso.getBoolean(k.name())); break;
+                                    case "java.lang.Boolean": m.invoke(dao, jso.getBoolean(k.name())); break;
+                                    
+                                    case "short": m.invoke(dao,(short) jso.getObject(k.name())); break;
+                                    case "java.lang.Short": m.invoke(dao,(short) jso.getObject(k.name())); break;
+                                    
+                                    case "long": m.invoke(dao,jso.getLong(k.name())); break;
+                                    case "java.lang.Long": m.invoke(dao,jso.getLong(k.name())); break;
+                                    
+                                    case "java.lang.String": m.invoke(dao, jso.getString(k.name())); break;
+                                    case "org.javabrain.util.data.Json": m.invoke(dao,jso.getJSON(k.name())); break;
+                                    default: m.invoke(dao, jso.getObject(k.name()));;
                                 }
                             }
                         }

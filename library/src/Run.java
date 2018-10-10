@@ -1,21 +1,23 @@
-import org.javabrain.test.ajax.GetBudget;
-import org.javabrain.test.ajax.PutBudget;
+
+import java.util.List;
 import org.javabrain.test.pojo.BudGet;
-import org.javabrain.util.web.service.Ajax;
+import org.javabrain.util.data.Json;
 
 public class Run{
     
     public static void main(String[] args) throws Exception {
-        GetBudget getBudget = new GetBudget();
-
-        BudGet budGet = new BudGet();
-        budGet.setName("Peticion multiple 2018");
-        budGet.setDate("07/10/2018");
-        PutBudget putBudget = new PutBudget(budGet);
-
-
-        Ajax.petitions(getBudget,getBudget);
-        System.out.println("Nuevo proceso");
+        
+        List<BudGet> list = Json.inject(BudGet.class);
+        
+        list.forEach(o -> {
+            System.out.println(o.getId());
+            System.out.println(o.getName());
+            System.out.println(o.getMoney());
+            System.out.println(o.getDate());
+            System.out.println(o.getType());
+            System.out.println(o.getData() != null ? o.getData().getString("nuevo") : "NO HAY DATOS");
+        });
+        
     }
 
 }
