@@ -11,5 +11,14 @@ public class Text {
         return out;
     }
 
+    /*
+    para escribir ' se usa /´
+     */
+    public static String internalString(String text) {
+        if (text != null) {
+            return text.replace("'","\"").replace("/´","'");
+        }
+        return "";
+    }
 
 }

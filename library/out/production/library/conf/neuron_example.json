@@ -12,7 +12,7 @@
     "getbudgets":"https://budget.webcindario.com/getbudgets.php"
   },
   "message":{
-    "info": false,
+    "info": true,
     "alert":true,
     "error":true
   },

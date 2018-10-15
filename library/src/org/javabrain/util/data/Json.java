@@ -264,12 +264,14 @@ public class Json extends Object{
         parser = new JSONParser();
         if(json.toString().charAt(0) == '['){
             try {
-                array = (org.json.simple.JSONArray) parser.parse(json.toString());
+                String out = Text.internalString(json.toString());
+                array = (org.json.simple.JSONArray) parser.parse(out);
                 return;
             } catch (ParseException e) {}
         }else {
             try {
-                obj = (org.json.simple.JSONObject) parser.parse(json.toString());
+                String out = Text.internalString(json.toString());
+                obj = (org.json.simple.JSONObject) parser.parse(out);
                 return;
             } catch (ParseException e) {}
         }

@@ -20,7 +20,7 @@ public class Log {
 
     public static void error(Object obj) {
         if (data.getJSON("message").getBoolean("error")) {
-            System.out.println("\033[31m" + structur(obj) + "\033[30m");
+            System.out.println("\033[31m" + structur("Error -> " + obj) + "\033[30m");
         }
     }
 
