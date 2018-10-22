@@ -445,7 +445,7 @@ public class Json extends Object{
         try {
             return new Json(obj.get(key));
         }catch (Exception e){}
-        return null;
+        return new Json();
     }
 
     //MJSONG-0009
@@ -1386,7 +1386,7 @@ public class Json extends Object{
             Object[] keys = map.keySet().toArray();
             Arrays.sort(keys);
             r.append("{\n");
-            String indentTab = indent + TAB;
+            String indentTab = indent + "  ";
             for (int i = 0; i < keys.length; i++) {
                 if (i > 0) {
                     r.append(",\n");
@@ -1406,7 +1406,7 @@ public class Json extends Object{
             Iterator it = ((List) obj).iterator();
             r.append("[\n");
             if (it.hasNext()) {
-                String indentTab = indent + TAB;
+                String indentTab = indent + "  ";
                 r.append(indentTab);
                 formatJSON(it.next(), r, indentTab);
                 while (it.hasNext()) {

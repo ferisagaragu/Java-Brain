@@ -4,7 +4,7 @@ import org.javabrain.util.data.Json;
 
 public class Log {
 
-    private static Json data = new Json("conf.{neuron_example.json}");
+    private static Json data = new Json("conf.{neuron.json}");
 
     public static void message(Object obj){
         if (data.getJSON("message").getBoolean("info")) {
@@ -13,14 +13,21 @@ public class Log {
     }
 
     public static void alert(Object obj) {
-        if (data.getJSON("message").getBoolean("info")) {
-            System.out.println("\033[33m" + structur(obj) + "\033[30m");
+        if (data.getJSON("message").getBoolean("alert")) {
+            System.out.println("\033[33m" + structur("Warning -> " + obj) + "\033[30m");
         }
     }
 
     public static void error(Object obj) {
         if (data.getJSON("message").getBoolean("error")) {
             System.out.println("\033[31m" + structur("Error -> " + obj) + "\033[30m");
+        }
+    }
+    
+    public static void error(Object obj,Object detail) {
+        if (data.getJSON("message").getBoolean("error")) {
+            System.out.println("\033[31m" + structur("Error -> " + obj) + "\033[30m");
+            System.out.println("\033[31m" + structur("Detail -> " + detail) + "\033[30m");
         }
     }
 
@@ -36,7 +43,7 @@ public class Log {
         if (Json.isJSON(message)){
             out = Json.parseJson(message).toJSONString().replace("<3", "❤").replace(":)", "☺")
                     .replace(":(", "☹").replace("<-", "←")
-                    .replace("->", "→");;
+                    .replace("->", "→");
         } else {
 
             try {

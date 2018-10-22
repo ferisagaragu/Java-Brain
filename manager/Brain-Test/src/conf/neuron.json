@@ -1,0 +1,23 @@
+{
+  "message": {
+    "alert": true,
+    "error": true,
+    "info": true
+  },
+  "package": {
+    "company": "",
+    "modules": [
+      "model",
+      "drawable",
+      "controller",
+      "run",
+      "res"
+    ]
+  },
+  "param": {
+  },
+  "res": {
+    "audio": "res",
+    "img": "res"
+  }
+}
