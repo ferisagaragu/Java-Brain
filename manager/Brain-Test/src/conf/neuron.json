@@ -1,23 +1,34 @@
 {
   "message": {
-    "alert": true,
+    "alert": false,
     "error": true,
     "info": true
   },
   "package": {
-    "company": "",
+    "company": "org.company",
     "modules": [
       "model",
-      "drawable",
-      "controller",
-      "run",
-      "res"
+      "draw",
+      "controller"
     ]
   },
   "param": {
   },
   "res": {
-    "audio": "res",
-    "img": "res"
+    "img": [
+      ".jpg",
+      ".png",
+      ".gif"
+    ],
+    "layout": [
+      ".xml",
+      ".html",
+      ".css"
+    ],
+    "raw": [
+      ".mp3",
+      ".mp4",
+      ".txt"
+    ]
   }
 }

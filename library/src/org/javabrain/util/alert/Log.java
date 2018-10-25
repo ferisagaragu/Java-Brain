@@ -8,7 +8,7 @@ public class Log {
 
     public static void message(Object obj){
         if (data.getJSON("message").getBoolean("info")) {
-            System.out.println("\033[34m" + structur(obj) + "\033[30m");
+            System.out.println("\033[34m" + structur("Info -> " + obj) + "\033[30m");
         }
     }
 

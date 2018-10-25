@@ -1,6 +1,6 @@
 package brain.test;
 
-import org.javabrain.Neuron;
+import org.javabrain.Neuron; //If you don't use erase this. //If you don't use erase this. //If you don't use erase this. //If you don't use erase this. //If you don't use erase this. //If you don't use erase this. //If you don't use erase this. //If you don't use erase this.
 
 /**
  *
@@ -9,7 +9,75 @@ import org.javabrain.Neuron;
 public class BrainTest {
 
     public static void main(String[] args) {
-        Neuron.init();
+        // Neuron.init();
     }
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
