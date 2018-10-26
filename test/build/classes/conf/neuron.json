@@ -1,0 +1,34 @@
+{
+  "message": {
+    "alert": false,
+    "error": true,
+    "info": true
+  },
+  "package": {
+    "company": "org.company",
+    "modules": [
+      "model",
+      "draw",
+      "controller"
+    ]
+  },
+  "param": {
+  },
+  "res": {
+    "img": [
+      ".jpg",
+      ".png",
+      ".gif"
+    ],
+    "layout": [
+      ".xml",
+      ".html",
+      ".css"
+    ],
+    "raw": [
+      ".mp3",
+      ".mp4",
+      ".txt"
+    ]
+  }
+}

@@ -17,6 +17,10 @@ import java.util.HashMap;
 import java.util.Map;
 import org.javabrain.util.alert.Log;
 
+/***
+ * @author Fernando García
+ * @version 0.0.2
+ */
 public class Neuron {
     
     private static Map<Object,Object> map = new HashMap<>();
