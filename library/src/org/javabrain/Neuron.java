@@ -8,7 +8,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import org.javabrain.util.alert.Console;
 import org.javabrain.util.data.Json;
 
 import java.sql.Connection;
@@ -378,7 +377,6 @@ public class Neuron {
         try {
             Json json = new Json("conf.{neuron_example.json}");
             Json json1 = json.getJSON("connection").getJSON(dbName);
-            Console.viewer(json1);
             String user = json1.getString("user");
             String password = json1.getString("password");
             String host = json1.getString("host");

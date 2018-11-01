@@ -242,16 +242,15 @@ public class Json extends Object{
         //Cargar Json desde un URL
         if (isUrl(json.toString())){
             if (json != null) {
-                String out = Petition.doGet(json.toString()).STRING;
+                Json js = Petition.doGet(json.toString()).JSON;
                 parser = new JSONParser();
-                if (Json.isJSONArray(out)) {
+                if (Json.isJSONArray(js)) {
                     try {
-                        array = (org.json.simple.JSONArray) parser.parse(out);
-                    } catch (ParseException e) {
-                    }
+                        array = (org.json.simple.JSONArray) parser.parse(js.toString());
+                    } catch (ParseException e) {}
                 } else {
                     try {
-                        obj = (org.json.simple.JSONObject) parser.parse(out);
+                        obj = (org.json.simple.JSONObject) parser.parse(js.toJSONString());
                     } catch (ParseException e) {
                     }
                 }
@@ -1569,17 +1568,11 @@ public class Json extends Object{
 
     //METODOS IS
     public boolean isJSONArray(){
-        if (obj == null){
-            return true;
-        }
-        return false;
+        return Json.isJSONArray(this.toString());
     }
 
-    public boolean isJSONObject(){
-        if (array == null){
-            return true;
-        }
-        return false;
+    public boolean isJSONObject(){        
+        return Json.isJSONObject(this.toString());
     }
 
     public boolean isRegularJson(){
@@ -1646,7 +1639,7 @@ public class Json extends Object{
         try {
             JSONParser parser1 = new JSONParser();
             JSONArray array1 = (JSONArray) parser1.parse(obj.toString());
-            return true;
+            return array1.toString().contains("{") && array1.toString().contains("}") && array1.toString().contains("{\"") && array1.toString().contains("[") && array1.toString().contains("]");
         }catch (Exception e){}
         return false;
     }
@@ -1661,6 +1654,16 @@ public class Json extends Object{
     }
 
     public static boolean isJSON(Object obj) {
+        
+        if (obj.toString().contains("http")) {
+            try {
+                Json j = new Json(obj);
+                return j.isJSONObject() || j.isJSONArray();
+            } catch (Exception e) {
+                return false;
+            }
+        }
+        
         return isJSONObject(obj) || isJSONArray(obj);
     }
     
@@ -1676,7 +1679,7 @@ public class Json extends Object{
         } catch (Exception e) {}
             return new Json("{" + out + "}");
     }
-    
+   
     //===============================================================
 
     //METODOS COMPLEJOS "DESTRUCTURIN"

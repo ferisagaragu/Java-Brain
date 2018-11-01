@@ -1,0 +1,51 @@
+<div class="alert alert-info" role="info">
+                <h4>
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    La clase <b>Log</b> nos permitirá hacer impreciones en pantalla de una manera
+                    mejorada al común <b>System.out.printnl("Hello world");</b>, dándonos etiquetas y mensajes
+                    personalizados dependiendo a la situación del estado del código.
+                </h4>
+            </div>
+            
+            <h3>Ejemplo:</h3><br>
+            
+            <div>
+                <pre class="language-java" style="background-color: white;">
+                    <code>
+                        import org.javabrain.util.alert.Log;
+
+                        public class Run {
+
+                            public static void main(String[] args) {
+
+                                Log.message("Hola soy un mensaje!");
+                                Log.alert("Hola soy una alerta!");
+                                Log.error("Hola soy un error :( !");
+                                Log.error("Hola soy un error :( !","Este es mi error detallado");
+
+                            }
+
+                        }
+                    </code>
+                </pre> 
+            </div>
+            
+            <h3>Resultado:</h3><br>
+            
+            <div>
+                <pre style="background-color: black; color: white;">
+                    <code>
+                        out:
+                    </code>
+                    <code style="color: blue;">
+                        Info → Hola soy un mensaje!
+                    </code>
+                    <code style="color: yellow;">
+                        Warning → Hola soy una alerta!
+                    </code>
+                    <code style="color: red;">
+                        Error → Hola soy un error ☹ !
+                        Error → Hola soy un error ☹ !
+                    </code>
+                </pre> 
+            </div>

@@ -1,4 +1,4 @@
-package org.javabrain.util.alert;
+
 
 import java.awt.BorderLayout;
 import java.awt.Button;
