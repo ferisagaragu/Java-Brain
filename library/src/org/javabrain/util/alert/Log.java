@@ -22,12 +22,17 @@ import org.javabrain.util.web.service.Petition;
 public class Log {
 
     private static Json data = new Json("conf.{neuron.json}");
+    private static boolean errorControl = true;
 
     public static void message(Object obj){
         if (data.getJSON("message").getBoolean("info") && data != null) {
             System.out.println("\033[34m" + structur("Info -> " + obj) + "\033[30m");
         } else {
             System.out.println("\033[34m" + structur("Info -> " + obj) + "\033[30m");
+            if (errorControl) {
+                Doc.show("Neuron", "The configuration \"neuron.json\" can not be found. Do you want to see how to create it?");
+                errorControl = false;
+            }
         }
     }
 
@@ -36,6 +41,10 @@ public class Log {
             System.out.println("\033[33m" + structur("Warning -> " + obj) + "\033[30m");
         } else {
             System.out.println("\033[33m" + structur("Warning -> " + obj) + "\033[30m");
+            if (errorControl) {
+                Doc.show("Neuron", "The configuration \"neuron.json\" can not be found. Do you want to see how to create it?");
+                errorControl = false;
+            }
         }
     }
 
@@ -44,6 +53,10 @@ public class Log {
             System.out.println("\033[31m" + structur("Error -> " + obj) + "\033[30m");
         } else {
             System.out.println("\033[31m" + structur("Error -> " + obj) + "\033[30m");
+            if (errorControl) {
+                Doc.show("Neuron", "The configuration \"neuron.json\" can not be found. Do you want to see how to create it?");
+                errorControl = false;
+            }
         }
     }
     
@@ -54,12 +67,20 @@ public class Log {
         } else {
             System.out.println("\033[31m" + structur("Error -> " + obj) + "\033[30m");
             System.out.println("\033[31m" + structur("Detail -> " + detail) + "\033[30m");
+            if (errorControl) {
+                Doc.show("Neuron", "The configuration \"neuron.json\" can not be found. Do you want to see how to create it?");
+                errorControl = false;
+            }
         }
     }
 
     public static void viewer(Object message) {
         if (Json.isJSON(message)) {
             JsonViewer.show(new Json(message));
+            if (errorControl) {
+                Doc.show("Neuron", "The configuration \"neuron.json\" can not be found. Do you want to see how to create it?");
+                errorControl = false;
+            }
         }
     }
 
@@ -190,7 +211,7 @@ class JsonViewer {
 
     }
     
-    //Aquí se le da todo el estilo a los items
+    //Aquí se le da todo el estilo errorControl los items
     private TreeItem<HBox> createItem(String itemName,String item) {
 
         Label itemNameLbl = new Label(itemName + ": ");

@@ -8,6 +8,20 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.JFXTextField;
+import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import org.javabrain.fx.control.Frame;
 import org.javabrain.util.data.Json;
 
 import java.sql.Connection;
@@ -15,6 +29,8 @@ import java.sql.DriverManager;
 import java.util.HashMap;
 import java.util.Map;
 import org.javabrain.util.alert.Log;
+
+import javax.swing.*;
 
 /***
  * @author Fernando García
@@ -33,23 +49,16 @@ public class Neuron {
         //Crea el archivo de configuracion
         File file = new File(folder.getPath() + "\\neuron.json");
         if (!file.exists() && folder.exists()) {
-            NeuronConfing neuronJs =  new NeuronConfing(null, true);
-            neuronJs.setVisible(true);
-            str = Json.parseJson(neuronJs.getResp()).toJSONString();
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(file.getPath()))) {
-                writer.write(str);
-            } catch (IOException ex) {
-                Log.error(ex.getMessage());
-            }
+            NeuronConf.show();
+        } else {
+            Json js = new Json(str.isEmpty() ? "/conf/neuron.json" : str);
+            makeModules(js);
+            makeRes(js);
+            clearMain(new File(System.getProperty("user.dir") + "\\src\\"));
+            System.exit(0);
         }
-
-        Json js = new Json(str.isEmpty() ? "/conf/neuron.json" : str);
-        makeModules(js);
-        makeRes(js);
-        clearMain(new File(System.getProperty("user.dir") + "\\src\\"));
-        System.exit(0);
     }
-    
+
     // CREACION DE MODULOS
     private static  void makeModules(Json js) {
         String[] modules = (String[]) js.getJSON("package").getArray("modules");
@@ -60,31 +69,31 @@ public class Neuron {
         for (String mod : modules) {
             mod = mod.replace(".","\\");
             File file = new File(moduleMk.getPath() + "\\" + mod);
-            
+
             if ((!file.exists()) && getmodulePath(new File(System.getProperty("user.dir") + "\\src\\"),file.getName()).equals("emply")) {
                 file.mkdirs();
             } else {
                 String originalPath = getmodulePath(new File(System.getProperty("user.dir") + "\\src\\"),file.getName());
                 File[] fils = new File(originalPath).listFiles();
-                
+
                 for (File fil : fils) {
-                    
+
                     String pack = fil.getPath().replace(System.getProperty("user.dir") + "\\src\\","").replace(fil.getName(),"").replace("\\",".");
                     pack = pack.substring(0, pack.length() - 1);
-                    
+
                     String finalPack = file.getPath().replace(System.getProperty("user.dir") + "\\src\\","").replace("\\",".");
                     changePack(fil, pack, finalPack);
                     changeImport(new File(System.getProperty("user.dir") + "\\src\\"),pack,finalPack);
-                    
+
                 }
                 moveCmd(originalPath,file.getPath());
             }
         }
     }
-        
+
     private static String out = "";
     private static String getmodulePath(File dir,String module) {
-        
+
         File listFile[] = dir.listFiles();
         if (listFile != null) {
             for (int i = 0; i < listFile.length; i++) {
@@ -92,15 +101,15 @@ public class Neuron {
                     if (module.equals(listFile[i].getName())) {
                         out = listFile[i].getPath();
                     } else {
-                       getmodulePath(listFile[i],module); 
+                       getmodulePath(listFile[i],module);
                     }
                 }
             }
         }
-        
+
         return out.isEmpty() ? "emply" : out;
     }
-     
+
     private static void changePack(File dir, String pack, String finalPack) {
         try {
             BufferedReader br = new BufferedReader(new FileReader(dir.getPath()));
@@ -140,7 +149,7 @@ public class Neuron {
         } catch (Exception e) {
         }
     }
-    
+
     private static void changeImport(File dir, String pack, String finalPack) {
         File listFile[] = dir.listFiles();
         if (listFile != null) {
@@ -189,7 +198,7 @@ public class Neuron {
         }
     }
     //==========================================================================
-     
+
     //MANEJO DE RECURSOS
     private static void makeRes(Json js){
         if (js.getString("res") != null) {
@@ -198,7 +207,7 @@ public class Neuron {
             if (!resFolder.exists()) {
                 resFolder.mkdirs();
             }
-            
+
             if (jso.getArray("img") != null) {
                File f = new File(resFolder.getPath() + "\\img");
                if (!f.exists()) {
@@ -221,7 +230,7 @@ public class Neuron {
             moveRes(new File(System.getProperty("user.dir") + "\\src\\"),jso);
         }
     }
-    
+
     private static void moveRes(File dir,Json js) {
         File listFile[] = dir.listFiles();
         if (listFile != null) {
@@ -235,26 +244,26 @@ public class Neuron {
                             moveCmd(listFile[i].getPath(),System.getProperty("user.dir") + "\\src\\res\\raw\\"+listFile[i].getName());
                         }
                     }
-                    
+
                     for (Object o : js.getArray("img")){
                         String ext = getFileExtension(listFile[i]);
                         if (o.toString().equals(ext)) {
                             moveCmd(listFile[i].getPath(),System.getProperty("user.dir") + "\\src\\res\\img\\"+listFile[i].getName());
                         }
                     }
-                    
+
                     for (Object o : js.getArray("layout")){
                         String ext = getFileExtension(listFile[i]);
                         if (o.toString().equals(ext)) {
                             moveCmd(listFile[i].getPath(),System.getProperty("user.dir") + "\\src\\res\\layout\\"+listFile[i].getName());
                         }
                     }
-                    
+
                 }
             }
         }
     }
-    
+
     private static String getFileExtension(File file) {
         String name = file.getName();
         int lastIndexOf = name.lastIndexOf(".");
@@ -263,31 +272,25 @@ public class Neuron {
         }
         return name.substring(lastIndexOf);
     }
-    
+
     //==========================================================================
-    
+
     private static boolean moveCmd(String inf ,String outf) {
-        try {  
-            Process p = Runtime.getRuntime().exec("cmd /C MOVE "+ inf +" "+outf);  
-            BufferedReader in = new BufferedReader( new InputStreamReader(p.getInputStream()));  
+        try {
+            Process p = Runtime.getRuntime().exec("cmd /C MOVE "+ inf +" "+outf);
+            BufferedReader in = new BufferedReader( new InputStreamReader(p.getInputStream()));
             String line = null;
             String out = "";
-            while ((line = in.readLine()) != null) {  
-                out = out + line;  
-            }  
+            while ((line = in.readLine()) != null) {
+                out = out + line;
+            }
             return !out.isEmpty();
-        } catch (IOException e) {  
-            e.printStackTrace();  
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return false;
     }
-    
-    
-    
-    
-    
-    
-    
+
     private static void clearMain(File dir){
         File listFile[] = dir.listFiles();
         if (listFile != null) {
@@ -313,7 +316,7 @@ public class Neuron {
                                 try {
                                     fichero = new FileWriter(listFile[i].getPath());
                                     pw = new PrintWriter(fichero);
-                                    pw.println(everything.replace("Neuron.init();", "// Neuron.init();").replace("import org.javabrain.Neuron;","import org.javabrain.Neuron; //If you don't use erase this."));
+                                    pw.println(everything.replace("// // Neuron.init();", "// // // Neuron.init();").replace("import org.javabrain.Neuron; //If you don't use erase this. //If you don't use erase this.","import org.javabrain.Neuron; //If you don't use erase this. //If you don't use erase this. //If you don't use erase this."));
                                 } catch (IOException e) {
                                 } finally {
                                     try {
@@ -335,7 +338,7 @@ public class Neuron {
             }
         }
     }
-    
+
     public static Object param(Object key){
         Json json = new Json("conf.{neuron_example.json}");
         return json.getJSON("param").getObject(key.toString());
@@ -352,7 +355,7 @@ public class Neuron {
     public static void removeStash(Object key){
         map.remove(key);
     }
-   
+
     public static Connection sqlConnection() {
         try {
             Json json = new Json("conf.{neuron_example.json}");
@@ -395,3 +398,391 @@ public class Neuron {
     }
      
 }
+
+class NeuronConf {
+
+    private void initAndShowGUI() {
+        JFrame frame = new JFrame("Neuron config");
+        final JFXPanel fxPanel = new JFXPanel();
+        frame.add(fxPanel);
+        frame.setSize(600, 425);
+        frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setIconImage(new ImageIcon(getClass().getResource("/res/component/json.png")).getImage());
+        Platform.runLater(() -> {
+            initFX(fxPanel);
+        });
+    }
+
+    private void initFX(JFXPanel fxPanel) {
+        Scene scene = createScene();
+        fxPanel.setScene(scene);
+    }
+
+    private Scene createScene() {
+        Frame frame = new Frame("/org/javabrain/neuron.fxml");
+        StackPane root = (StackPane) frame.getStage().getScene().getRoot();
+        VBox principal = (VBox) root.getChildren().get(0);
+        JFXButton okBtn = (JFXButton) principal.getChildren().get(2);
+
+        JFXCheckBox alertChk = null;
+        JFXCheckBox errorChk = null;
+        JFXCheckBox infoChk = null;
+
+        JFXTextField packFld = null;
+        JFXTextField comFld = null;
+
+        for (Node com :((HBox)((VBox)principal.getChildren().get(0)).getChildren().get(1)).getChildren()) {
+
+            switch (((JFXCheckBox)com).getText()) {
+                case "Alert" : alertChk = (JFXCheckBox) com; break;
+                case "Error" : errorChk = (JFXCheckBox) com; break;
+                case "Info"  : infoChk = (JFXCheckBox) com; break;
+            }
+
+        }
+
+        for (Node com : ((VBox)principal.getChildren().get(1)).getChildren()) {
+
+            if (!com.getClass().getName().equals("javafx.scene.control.Label")) {
+                switch (((JFXTextField) com).getPromptText()) {
+                    case "Package name": packFld = (JFXTextField) com; break;
+                    case "Modules": comFld = (JFXTextField) com; break;
+                }
+            }
+
+        }
+
+        JFXTextField finalComFld = comFld;
+        JFXCheckBox finalAlertChk = alertChk;
+        JFXTextField finalPackFld = packFld;
+        JFXCheckBox finalErrorChk = errorChk;
+        JFXCheckBox finalInfoChk = infoChk;
+
+        okBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                String[] mod = finalComFld.getText().toLowerCase().split(",");
+                String out = "";
+                for (String val : mod) {
+                    out = out + "'" + val + "',";
+                }
+                out = out.substring(0, out.length() - 1);
+
+                String data = "{'message':{'alert':" + finalAlertChk.isSelected() + ",'error':" + finalErrorChk.isSelected() + ",'info':" + finalInfoChk.isSelected() + "},"
+                        + "'package':{'company':'" + finalPackFld.getText() + "','modules':[" + out + "]},'param':{},'res':{'img':['.jpg','.png','.gif'],'raw':['.mp3','.mp4','.txt'],'layout':['.xml','.html','.css']}}";
+
+                File folder = new File(System.getProperty("user.dir") + "\\src\\conf");
+                File file = new File(folder.getPath() + "\\neuron.json");
+                String str = Json.parseJson(data).toJSONString();
+
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(file.getPath()))) {
+                    writer.write(str);
+                } catch (IOException ex) {
+                    Log.error(ex.getMessage());
+                }
+
+                Json js = new Json(str.isEmpty() ? "/conf/neuron.json" : str);
+                makeModules(js);
+                makeRes(js);
+                clearMain(new File(System.getProperty("user.dir") + "\\src\\"));
+                System.exit(0);
+            }
+        });
+
+        return frame.getStage().getScene();
+    }
+
+
+    // CREACION DE MODULOS
+    private static  void makeModules(Json js) {
+        String[] modules = (String[]) js.getJSON("package").getArray("modules");
+        File moduleMk = new File(System.getProperty("user.dir") + "\\src\\" + (js.getJSON("package").getString("company").replace(".","\\")));
+        if (!moduleMk.exists()) {
+            moduleMk.mkdirs();
+        }
+        for (String mod : modules) {
+            mod = mod.replace(".","\\");
+            File file = new File(moduleMk.getPath() + "\\" + mod);
+
+            if ((!file.exists()) && getmodulePath(new File(System.getProperty("user.dir") + "\\src\\"),file.getName()).equals("emply")) {
+                file.mkdirs();
+            } else {
+                String originalPath = getmodulePath(new File(System.getProperty("user.dir") + "\\src\\"),file.getName());
+                File[] fils = new File(originalPath).listFiles();
+
+                for (File fil : fils) {
+
+                    String pack = fil.getPath().replace(System.getProperty("user.dir") + "\\src\\","").replace(fil.getName(),"").replace("\\",".");
+                    pack = pack.substring(0, pack.length() - 1);
+
+                    String finalPack = file.getPath().replace(System.getProperty("user.dir") + "\\src\\","").replace("\\",".");
+                    changePack(fil, pack, finalPack);
+                    changeImport(new File(System.getProperty("user.dir") + "\\src\\"),pack,finalPack);
+
+                }
+                moveCmd(originalPath,file.getPath());
+            }
+        }
+    }
+
+    private static String out = "";
+    private static String getmodulePath(File dir,String module) {
+
+        File listFile[] = dir.listFiles();
+        if (listFile != null) {
+            for (int i = 0; i < listFile.length; i++) {
+                if (listFile[i].isDirectory()) {
+                    if (module.equals(listFile[i].getName())) {
+                        out = listFile[i].getPath();
+                    } else {
+                        getmodulePath(listFile[i],module);
+                    }
+                }
+            }
+        }
+
+        return out.isEmpty() ? "emply" : out;
+    }
+
+    private static void changePack(File dir, String pack, String finalPack) {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(dir.getPath()));
+            try {
+                StringBuilder sb = new StringBuilder();
+                String line = br.readLine();
+
+                while (line != null) {
+                    sb.append(line);
+                    sb.append(System.lineSeparator());
+                    line = br.readLine();
+                }
+                String everything = sb.toString();
+
+                FileWriter fichero = null;
+                PrintWriter pw = null;
+                try {
+                    fichero = new FileWriter(dir.getPath());
+                    pw = new PrintWriter(fichero);
+                    pw.println(everything.replace("package " + pack, "package " + finalPack));
+                    pw.close();
+                } catch (IOException e) {
+                } finally {
+                    try {
+                        if (null != fichero) {
+                            fichero.close();
+                        }
+                    } catch (Exception e2) {
+                        e2.printStackTrace();
+                    }
+                }
+                return;
+
+            } finally {
+                br.close();
+            }
+        } catch (Exception e) {
+        }
+    }
+
+    private static void changeImport(File dir, String pack, String finalPack) {
+        File listFile[] = dir.listFiles();
+        if (listFile != null) {
+            for (int i = 0; i < listFile.length; i++) {
+                if (listFile[i].isDirectory()) {
+                    changeImport(listFile[i], pack, finalPack);
+                } else {
+                    try {
+                        BufferedReader br = new BufferedReader(new FileReader(listFile[i].getPath()));
+                        try {
+                            StringBuilder sb = new StringBuilder();
+                            String line = br.readLine();
+
+                            while (line != null) {
+                                sb.append(line);
+                                sb.append(System.lineSeparator());
+                                line = br.readLine();
+                            }
+                            String everything = sb.toString();
+
+                            FileWriter fichero = null;
+                            PrintWriter pw = null;
+                            try {
+                                fichero = new FileWriter(listFile[i].getPath());
+                                pw = new PrintWriter(fichero);
+                                pw.println(everything.replace("import " + pack,"import " + finalPack));
+                            } catch (IOException e) {
+                            } finally {
+                                try {
+                                    if (null != fichero) {
+                                        fichero.close();
+                                    }
+                                } catch (Exception e2) {
+                                    e2.printStackTrace();
+                                }
+                            }
+                            return;
+
+                        } finally {
+                            br.close();
+                        }
+                    } catch (Exception e) {
+                    }
+                }
+            }
+        }
+    }
+    //==========================================================================
+
+    //MANEJO DE RECURSOS
+    private static void makeRes(Json js){
+        if (js.getString("res") != null) {
+            Json jso = js.getJSON("res");
+            File resFolder = new File(System.getProperty("user.dir") + "\\src\\" + "res");
+            if (!resFolder.exists()) {
+                resFolder.mkdirs();
+            }
+
+            if (jso.getArray("img") != null) {
+                File f = new File(resFolder.getPath() + "\\img");
+                if (!f.exists()) {
+                    f.mkdirs();
+                }
+            }
+            if (jso.getArray("raw") != null) {
+                File f = new File(resFolder.getPath() + "\\raw");
+                if (!f.exists()) {
+                    f.mkdirs();
+                }
+            }
+            if (jso.getArray("layout") != null) {
+                File f = new File(resFolder.getPath() + "\\layout");
+                if (!f.exists()) {
+                    f.mkdirs();
+                }
+            }
+
+            moveRes(new File(System.getProperty("user.dir") + "\\src\\"),jso);
+        }
+    }
+
+    private static void moveRes(File dir,Json js) {
+        File listFile[] = dir.listFiles();
+        if (listFile != null) {
+            for (int i = 0; i < listFile.length; i++) {
+                if (listFile[i].isDirectory()) {
+                    moveRes(listFile[i],js);
+                } else {
+                    for (Object o : js.getArray("raw")){
+                        String ext = getFileExtension(listFile[i]);
+                        if (o.toString().equals(ext)) {
+                            moveCmd(listFile[i].getPath(),System.getProperty("user.dir") + "\\src\\res\\raw\\"+listFile[i].getName());
+                        }
+                    }
+
+                    for (Object o : js.getArray("img")){
+                        String ext = getFileExtension(listFile[i]);
+                        if (o.toString().equals(ext)) {
+                            moveCmd(listFile[i].getPath(),System.getProperty("user.dir") + "\\src\\res\\img\\"+listFile[i].getName());
+                        }
+                    }
+
+                    for (Object o : js.getArray("layout")){
+                        String ext = getFileExtension(listFile[i]);
+                        if (o.toString().equals(ext)) {
+                            moveCmd(listFile[i].getPath(),System.getProperty("user.dir") + "\\src\\res\\layout\\"+listFile[i].getName());
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+
+    private static String getFileExtension(File file) {
+        String name = file.getName();
+        int lastIndexOf = name.lastIndexOf(".");
+        if (lastIndexOf == -1) {
+            return ""; // empty extension
+        }
+        return name.substring(lastIndexOf);
+    }
+
+    //==========================================================================
+
+    private static boolean moveCmd(String inf ,String outf) {
+        try {
+            Process p = Runtime.getRuntime().exec("cmd /C MOVE " + inf + " " + outf);
+            BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            String line = null;
+            String out = "";
+            while ((line = in.readLine()) != null) {
+                out = out + line;
+            }
+            return !out.isEmpty();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    private static void clearMain(File dir){
+        File listFile[] = dir.listFiles();
+        if (listFile != null) {
+            for (int i = 0; i < listFile.length; i++) {
+                if (listFile[i].isDirectory()) {
+                    clearMain(listFile[i]);
+                } else {
+                    try {
+                        BufferedReader br = new BufferedReader(new FileReader(listFile[i].getPath()));
+                        try {
+                            StringBuilder sb = new StringBuilder();
+                            String line = br.readLine();
+
+                            while (line != null) {
+                                sb.append(line);
+                                sb.append(System.lineSeparator());
+                                line = br.readLine();
+                            }
+                            String everything = sb.toString();
+                            if (everything.contains("public static void main")) {
+                                FileWriter fichero = null;
+                                PrintWriter pw = null;
+                                try {
+                                    fichero = new FileWriter(listFile[i].getPath());
+                                    pw = new PrintWriter(fichero);
+                                    pw.println(everything.replace("// // Neuron.init();", "// // // Neuron.init();").replace("import org.javabrain.Neuron; //If you don't use erase this. //If you don't use erase this.","import org.javabrain.Neuron; //If you don't use erase this. //If you don't use erase this. //If you don't use erase this."));
+                                } catch (IOException e) {
+                                } finally {
+                                    try {
+                                        if (null != fichero) {
+                                            fichero.close();
+                                        }
+                                    } catch (Exception e2) {
+                                        e2.printStackTrace();
+                                    }
+                                }
+                                return;
+                            }
+                        } finally {
+                            br.close();
+                        }
+                    } catch (Exception e) {
+                    }
+                }
+            }
+        }
+    }
+
+
+    public static void show() {
+        SwingUtilities.invokeLater(() -> {
+            NeuronConf jv = new NeuronConf();
+            jv.initAndShowGUI();
+        });
+    }
+
+}
+

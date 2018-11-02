@@ -7,7 +7,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ddbad57d-9c18-4b1a-a006-5d294ffb87ca" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/org/javabrain/util/alert/Doc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/library/Run.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/library/Run.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/Neuron.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/library/org/javabrain/Neuron.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/NeuronConfing$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/NeuronConfing.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/util/alert/Console.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/util/alert/ImageViewer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/util/alert/JavaViewer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/util/alert/Log.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/library/org/javabrain/util/alert/Log.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/util/alert/SwingTree$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/util/alert/SwingTree$Renderer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/util/alert/SwingTree.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/util/commando/Console.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/library/org/javabrain/util/commando/Console.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/util/data/Json$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/library/org/javabrain/util/data/Json$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/util/data/Json.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/library/org/javabrain/util/data/Json.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/util/data/Type.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/library/org/javabrain/util/data/Type.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/library/res/dato.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Console.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Run.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/Neuron.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/javabrain/Neuron.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/NeuronConfing.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/NeuronConfing.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/util/alert/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/javabrain/util/alert/Log.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/res/dato.xml" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,8 +70,8 @@
       <file leaf-file-name="Run.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Run.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="270">
+              <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -90,18 +115,22 @@
         <option value="$PROJECT_DIR$/src/org/javabrain/util/data/Text.java" />
         <option value="$PROJECT_DIR$/src/org/javabrain/util/web/service/Geolocation.java" />
         <option value="$PROJECT_DIR$/src/conf/neuron_example.json" />
-        <option value="$PROJECT_DIR$/src/org/javabrain/util/alert/Log.java" />
         <option value="$PROJECT_DIR$/src/org/javabrain/util/web/service/Petition.java" />
         <option value="$PROJECT_DIR$/src/org/javabrain/util/commando/Console.java" />
+        <option value="$PROJECT_DIR$/src/org/javabrain/util/alert/Log.java" />
+        <option value="$PROJECT_DIR$/src/org/javabrain/util/alert/Doc.java" />
+        <option value="$PROJECT_DIR$/src/org/javabrain/neuron.fxml" />
+        <option value="$PROJECT_DIR$/src/org/javabrain/NeuronConf.java" />
+        <option value="$PROJECT_DIR$/src/org/javabrain/Neuron.java" />
         <option value="$PROJECT_DIR$/src/Run.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1600" />
-    <option name="y" value="123" />
-    <option name="width" value="1378" />
-    <option name="height" value="733" />
+    <option name="x" value="-1505" />
+    <option name="y" value="-328" />
+    <option name="width" value="980" />
+    <option name="height" value="695" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -111,6 +140,33 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="library" type="b2602c69:ProjectViewProjectNode" />
+              <item name="library" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="library" type="b2602c69:ProjectViewProjectNode" />
+              <item name="library" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="library" type="58d84e3e:PackageViewProjectNode" />
+              <item name="library" type="616d4139:PackageViewModuleNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -156,65 +212,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="library" type="b2602c69:ProjectViewProjectNode" />
-              <item name="library" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="library" type="b2602c69:ProjectViewProjectNode" />
-              <item name="library" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="library" type="58d84e3e:PackageViewProjectNode" />
-              <item name="library" type="616d4139:PackageViewModuleNode" />
-            </path>
-            <path>
-              <item name="library" type="58d84e3e:PackageViewProjectNode" />
-              <item name="library" type="616d4139:PackageViewModuleNode" />
-              <item name="org.javabrain" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="library" type="58d84e3e:PackageViewProjectNode" />
-              <item name="library" type="616d4139:PackageViewModuleNode" />
-              <item name="org.javabrain" type="1f31426a:PackageElementNode" />
-              <item name="util" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="library" type="58d84e3e:PackageViewProjectNode" />
-              <item name="library" type="616d4139:PackageViewModuleNode" />
-              <item name="org.javabrain" type="1f31426a:PackageElementNode" />
-              <item name="util" type="1f31426a:PackageElementNode" />
-              <item name="commando" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="library" type="58d84e3e:PackageViewProjectNode" />
-              <item name="library" type="616d4139:PackageViewModuleNode" />
-              <item name="org.javabrain" type="1f31426a:PackageElementNode" />
-              <item name="util" type="1f31426a:PackageElementNode" />
-              <item name="data" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="library" type="58d84e3e:PackageViewProjectNode" />
-              <item name="library" type="616d4139:PackageViewModuleNode" />
-              <item name="org.javabrain" type="1f31426a:PackageElementNode" />
-              <item name="util" type="1f31426a:PackageElementNode" />
-              <item name="web.service" type="1f31426a:PackageElementNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -230,14 +227,17 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\GitKraken\Java-Brain\library\db" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\GitKraken\Java-Brain\library\src\org\javabrain\test" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.javabrain.fx.control" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\GitKraken\Java-Brain\library\src\org\javabrain\test" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\GitKraken\Java-Brain\library\src\res\style" />
+      <recent name="C:\GitKraken\Java-Brain\library\src\res\beaninfo" />
+      <recent name="C:\GitKraken\Java-Brain\library\src\res\component" />
+      <recent name="C:\GitKraken\Java-Brain\library\db" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -278,6 +278,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="-319" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="DB Execution Console" order="7" />
@@ -299,9 +300,10 @@
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49895832" weight="0.4534632" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49895832" visible="true" weight="0.35497835" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1359275" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13859275" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32900432" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -309,7 +311,6 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32946146" />
       <window_info anchor="right" id="Coverage" order="4" side_tool="true" weight="0.32980332" />
     </layout>
     <layout-to-restore>
@@ -363,57 +364,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Run.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="1" column="36" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Run.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/test/BudGet.java" />
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/data/Json.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51030">
-          <caret line="1701" selection-start-line="1701" selection-end-line="1701" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Run.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="7" column="26" lean-forward="true" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/annotation/json/Json.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="18" column="31" lean-forward="true" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/test/BudGet.java" />
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/data/Json.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52620">
-          <caret line="1841" column="4" lean-forward="true" selection-start-line="1841" selection-start-column="4" selection-end-line="1841" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Run.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Run.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -477,9 +427,6 @@
           <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/res/dato.xml">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/javabrain/annotation/json/Create.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -622,31 +569,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/conf/neuron_example.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/conf/neuron_example.json" />
     <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/web/service/Petition.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2031">
           <caret line="192" column="44" lean-forward="true" selection-start-line="192" selection-start-column="44" selection-end-line="192" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/alert/Log.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="22" column="61" selection-start-line="22" selection-start-column="61" selection-end-line="22" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/data/Json.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="445" selection-start-line="445" selection-end-line="445" />
         </state>
       </provider>
     </entry>
@@ -664,13 +591,91 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/NeuronConfing.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/commando/Console.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="393">
           <caret line="26" column="40" lean-forward="true" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/res/dato.xml" />
+    <entry file="file://$PROJECT_DIR$/src/res/component/json.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/alert/Doc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1091">
+          <caret line="12" column="18" lean-forward="true" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/NeuronConfing.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/neuron.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="657" selection-start-line="657" selection-end-line="657" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/alert/Log.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="106" selection-start-line="106" selection-end-line="106" />
+          <folding>
+            <element signature="class#JsonViewer#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/NeuronConfing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="9" column="54" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/data/Json.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="1551" selection-start-line="1551" selection-end-line="1551" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/res/style/viewer.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2372" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/NeuronConf.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="22" column="7" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/conf/neuron.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/Neuron.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19639">
+          <caret line="788" selection-start-line="788" selection-end-line="788" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -679,8 +684,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Run.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="270">
+          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
         </state>
       </provider>
     </entry>

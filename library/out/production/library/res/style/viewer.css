@@ -1,0 +1,92 @@
+.tree-view .tree-cell:selected {
+    -fx-background-color: #C5CAE9;
+}
+
+.root-lbl {
+    -fx-font-family: 'Oxygen', sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #BA68C8;
+    -fx-fill: #BA68C8;
+}
+
+.object-lbl {
+    -fx-font-family: 'Oxygen', sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2196F3;
+    -fx-fill: #2196F3;
+}
+
+.array-lbl {
+    -fx-font-family: 'Oxygen', sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FF9800;
+    -fx-fill: #FF9800;
+}
+
+.int-lbl {
+    -fx-font-family: 'Oxygen', sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FF4081;
+    -fx-fill: #FF4081;
+}
+
+.money-lbl {
+    -fx-font-family: 'Oxygen', sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFEB3B;
+    -fx-fill: #FFEB3B;
+}
+
+.date-lbl {
+    -fx-font-family: 'Oxygen', sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #69F0AE;
+    -fx-fill: #69F0AE;
+}
+
+.string-lbl {
+    -fx-font-family: 'Oxygen', sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #EF5350;
+    -fx-fill: #EF5350;
+}
+
+.double-lbl {
+    -fx-font-family: 'Oxygen', sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #3F51B5;
+    -fx-fill: #3F51B5;
+}
+
+.char-lbl {
+    -fx-font-family: 'Oxygen', sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #00E676;
+    -fx-fill: #00E676;
+}
+
+
+.link-lbl {
+    -fx-font-family: 'Oxygen', sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #90CAF9;
+    -fx-fill: #90CAF9;
+}
+
+.type-lbl {
+    -fx-font-family: 'Oxygen', sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #607D8B;
+    -fx-fill: #607D8B;
+}
