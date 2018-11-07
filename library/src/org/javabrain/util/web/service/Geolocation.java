@@ -19,7 +19,7 @@ public class Geolocation {
         if (Petition.getStatusConnectionCode("https://www.google.com/") == 200) {
             try {
                 String token = org.javabrain.util.codify.Security.encrypt(Date.getCompleteDate()).replace("+", "_");
-                Petition.openURL("https://javabrain.webcindario.com/location/service/index.html?token=" + token);
+                Petition.openURL("https://javabrain.webcindario.com/location/index.html?token=" + token);
                 int i = 1;
                 Location out = null;
                 while (true) {

@@ -9,16 +9,154 @@ import org.javabrain.annotation.ajax.*;
 import org.javabrain.util.data.Type;
 
 import java.util.Map;
+import org.javabrain.util.data.Json;
 
 import org.javabrain.util.data.Text;
+import org.javabrain.util.event.PetitionListener;
 
 /***
  * @author Fernando Isaías García Aguirre
- * @version 0.0.3
+ * @version 0.0.4
  * @implNote esta clase funciona en FX con Platform.runLater(() -> {});
  */
 public class Ajax {
 
+    private PetitionListener listener;
+    private Type resp;
+    private Object status;
+    
+    public void get(String url) {
+
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Type typ = Petition.doGet(url);
+                resp = Type.parse(typ.JSON == null ? new Json("{'resp':'empty'}") : typ.JSON);
+                status = typ.STATUS;
+               
+                if (typ.STATUS.toString().equals("200")) {
+                    executeListener('s'); 
+                } else {
+                    executeListener('e');
+                }
+
+                executeListener('a');
+            }
+        });
+        t.start();
+
+    }
+    
+    public void post(String url,Map<Object,Object> params) {
+
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Type typ = Petition.doPost(url,params);
+                resp = Type.parse(typ.JSON == null ? new Json("{'resp':'empty'}") : typ.JSON);
+                status = typ.STATUS;
+
+                if (typ.STATUS.toString().equals("200")) {
+                    executeListener('s'); 
+                } else {
+                    executeListener('e');
+                }
+
+                executeListener('a');
+            }
+        });
+        t.start();
+
+    }
+    
+    public void put(String url,Map<Object,Object> params) {
+
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Type typ = Petition.doPut(url,params);
+                resp = Type.parse(typ.JSON == null ? new Json("{'resp':'empty'}") : typ.JSON);
+                status = typ.STATUS;
+                
+                if (typ.STATUS.toString().equals("200")) {
+                    executeListener('s'); 
+                } else {
+                    executeListener('e');
+                }
+
+                executeListener('a');
+            }
+        });
+        t.start();
+
+    }
+    
+    public void delete(String url,Map<Object,Object> params) {
+
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Type typ = Petition.doDelete(url,params);
+                resp = Type.parse(typ.JSON == null ? new Json("{'resp':'empty'}") : typ.JSON);
+                status = typ.STATUS;
+                
+                if (typ.STATUS.toString().equals("200")) {
+                    executeListener('s'); 
+                } else {
+                    executeListener('e');
+                }
+
+                executeListener('a');
+            }
+        });
+        t.start();
+
+    }
+    
+    private void executeListener(char c) {
+        
+        switch (c) {
+            
+            case 's':
+                if (listener != null) {
+                    listener.success(this);
+                }
+            break;
+            
+            case 'e':
+                if (listener != null) {
+                    listener.error(this);
+                }
+            break;
+            
+            case 'a':
+                if (listener != null) {
+                    listener.always(this);
+                }
+            break;
+        }        
+    }
+    
+    public void setOnPetitionFinish(PetitionListener petition) {
+        this.listener = petition;
+    }
+
+    public Type getResp() {
+        return resp;
+    }
+
+    public Object getStatus() {
+        return status;
+    }
+
+    @Override
+    public String toString() {
+        return "{\"out\":{\"resp\":"+resp+",\"status\":\""+status+"\"}}";
+    }
+    
+    
+    
+    //METODOS ESTATICOS CON USO DE JAVA REFLECT
     public static void petition(Object o) {
         Field[]  fields = o.getClass().getDeclaredFields();
         Method[] methods = o.getClass().getDeclaredMethods();

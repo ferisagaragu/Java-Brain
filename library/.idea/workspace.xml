@@ -7,32 +7,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ddbad57d-9c18-4b1a-a006-5d294ffb87ca" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/org/javabrain/util/alert/Doc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/library/library.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/library/library.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/library/Run.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/library/Run.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/Neuron.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/library/org/javabrain/Neuron.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/NeuronConfing$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/NeuronConfing.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/util/alert/Console.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/util/alert/ImageViewer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/util/alert/JavaViewer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/util/alert/Log.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/library/org/javabrain/util/alert/Log.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/util/alert/SwingTree$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/util/alert/SwingTree$Renderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/util/alert/SwingTree.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/util/commando/Console.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/library/org/javabrain/util/commando/Console.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/util/data/Json$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/library/org/javabrain/util/data/Json$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/util/data/Json.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/library/org/javabrain/util/data/Json.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/util/data/Type.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/library/org/javabrain/util/data/Type.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/library/res/dato.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Console.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/NeuronConf.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/library/org/javabrain/NeuronConf.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/util/alert/JsonViewer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/library/org/javabrain/util/alert/JsonViewer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/library/org/javabrain/util/web/service/Geolocation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/library/org/javabrain/util/web/service/Geolocation.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Run.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/javabrain/Neuron.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/javabrain/Neuron.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/javabrain/NeuronConfing.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/javabrain/NeuronConfing.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/javabrain/util/alert/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/javabrain/util/alert/Log.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/res/dato.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/util/web/service/Geolocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/javabrain/util/web/service/Geolocation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../location-api/public_html/public_html.zip" beforeDir="false" afterPath="$PROJECT_DIR$/../location-api/public_html/public_html.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manager/build/classes/org/javabrain/controller/WebService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../manager/build/classes/org/javabrain/controller/WebService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manager/nbproject/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../manager/nbproject/project.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../manager/src/org/javabrain/controller/WebService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../manager/src/org/javabrain/controller/WebService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/build/classes/brain/test/BrainTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../test/build/classes/brain/test/BrainTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/build/classes/conf/neuron.json" beforeDir="false" afterPath="$PROJECT_DIR$/../test/build/classes/conf/neuron.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/build/classes/res/img/14_Rogue-One-A-Star-Wars-Story.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/build/classes/res/img/gdl-90.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/build/classes/res/img/maxresdefault.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/build/classes/res/layout/file.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/build/classes/res/layout/nuevo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/build/classes/res/raw/archivo.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/build/classes/res/raw/jep.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/build/classes/res/raw/other.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/nbproject/build-impl.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../test/nbproject/build-impl.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/nbproject/genfiles.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../test/nbproject/genfiles.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/nbproject/private/private.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../test/nbproject/private/private.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/nbproject/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../test/nbproject/project.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/nbproject/project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../test/nbproject/project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/src/brain/test/BrainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../test/src/brain/test/BrainTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/src/conf/neuron.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/src/res/img/14_Rogue-One-A-Star-Wars-Story.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/src/res/img/gdl-90.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/src/res/img/maxresdefault.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/src/res/layout/file.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/src/res/layout/nuevo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/src/res/raw/archivo.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/src/res/raw/jep.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/src/res/raw/other.txt" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -70,8 +84,8 @@
       <file leaf-file-name="Run.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Run.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+            <state relative-caret-position="120">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
@@ -167,6 +181,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -212,7 +227,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -278,36 +292,35 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="-319" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info id="DB Browser" order="2" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="DB Execution Console" order="7" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50104165" side_tool="true" weight="0.37254903" />
       <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49895832" weight="0.35497835" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14179105" />
       <window_info id="Project Explorer" order="2" />
       <window_info id="Job Explorer" order="2" />
       <window_info anchor="bottom" id="Console" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49927008" weight="0.38398692" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info id="DB Browser" order="2" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32352942" />
-      <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info id="Image Layers" order="2" />
-      <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49895832" visible="true" weight="0.35497835" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13859275" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32900432" />
       <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49927008" weight="0.38398692" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32352942" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32900432" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -581,13 +594,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="363">
           <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#requestLocation#0;class#Geolocation#0" />
-            <element signature="method#requestLocation#1;class#Geolocation#0" />
-            <element signature="method#searchLocation#0;class#Geolocation#0" />
-            <element signature="method#fastSearchLocation#0;class#Geolocation#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -606,15 +612,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1091">
           <caret line="12" column="18" lean-forward="true" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/NeuronConfing.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/NeuronConfing.form" />
     <entry file="file://$PROJECT_DIR$/src/org/javabrain/neuron.fxml">
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor">
@@ -634,19 +635,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
           <caret line="106" selection-start-line="106" selection-end-line="106" />
-          <folding>
-            <element signature="class#JsonViewer#0" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/NeuronConfing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="9" column="54" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/NeuronConfing.java" />
     <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/data/Json.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -659,33 +651,19 @@
         <state relative-caret-position="-2372" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/NeuronConf.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="22" column="7" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/conf/neuron.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/NeuronConf.java" />
+    <entry file="file://$PROJECT_DIR$/src/conf/neuron.json" />
     <entry file="file://$PROJECT_DIR$/src/org/javabrain/Neuron.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19639">
           <caret line="788" selection-start-line="788" selection-end-line="788" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Run.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+        <state relative-caret-position="120">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>

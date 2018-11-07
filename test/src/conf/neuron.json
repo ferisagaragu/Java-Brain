@@ -1,14 +1,14 @@
 {
   "message": {
-    "alert": false,
+    "alert": true,
     "error": true,
     "info": true
   },
   "package": {
-    "company": "org.company",
+    "company": "org.javabraintest",
     "modules": [
       "model",
-      "draw",
+      "view",
       "controller"
     ]
   },
@@ -23,12 +23,12 @@
     "layout": [
       ".xml",
       ".html",
-      ".css"
+      ".css",
+      ".txt"      
     ],
     "raw": [
       ".mp3",
-      ".mp4",
-      ".txt"
+      ".mp4"
     ]
   }
 }

@@ -1,6 +1,9 @@
 package brain.test;
 
-import org.javabrain.Neuron; //If you don't use erase this. //If you don't use erase this. //If you don't use erase this. //If you don't use erase this. //If you don't use erase this. //If you don't use erase this. //If you don't use erase this. //If you don't use erase this.
+import maps.java.Geocoding;
+import org.javabrain.util.web.service.Geolocation;
+import org.javabraintest.view.NewJFrame;
+
 
 /**
  *
@@ -9,10 +12,18 @@ import org.javabrain.Neuron; //If you don't use erase this. //If you don't use e
 public class BrainTest {
 
     public static void main(String[] args) {
-        // Neuron.init();
+        NewJFrame frame = new NewJFrame();
+        frame.setVisible(true);
+        Geolocation.requestLocation();
     }
     
 }
+
+
+
+
+
+
 
 
 
