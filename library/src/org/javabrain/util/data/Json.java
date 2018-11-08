@@ -1,7 +1,7 @@
 package org.javabrain.util.data;
 
 import org.javabrain.annotation.json.*;
-import org.javabrain.util.resource.Path;
+import org.javabrain.util.resource.Archive;
 import org.javabrain.util.web.service.Petition;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -957,16 +957,7 @@ public class Json extends Object{
     }
 
     public void read(String jsonFile){
-        String out = "";
-        try {
-            BufferedReader in = new BufferedReader(new InputStreamReader(Path.get(jsonFile), "utf-8"));
-            String sCadena = "";
-
-            while ((sCadena = in.readLine())!=null) {
-                out += sCadena;
-            }
-
-        }catch (Exception e){}
+        String out = Archive.read(jsonFile);
 
         if(out.toString().charAt(0) == '['){
             try {
