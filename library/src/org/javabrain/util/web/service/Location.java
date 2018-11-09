@@ -2,6 +2,11 @@ package org.javabrain.util.web.service;
 
 import org.javabrain.util.data.Json;
 
+/**
+ *
+ * @author Fernando García
+ * @version 0.0.1
+ */
 public class Location {
 
     private Json completeGeolocation;

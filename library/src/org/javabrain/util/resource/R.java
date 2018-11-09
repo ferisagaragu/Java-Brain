@@ -15,7 +15,7 @@ public class R {
     private static Map<Object,File> img = new LinkedHashMap();
     private static Map<Object,File> raw = new LinkedHashMap();
     private static Map<Object,File> layout = new LinkedHashMap();
-    private static Json js = new Json(System.getProperty("user.dir") + "\\src\\conf\\neuron.json");
+    private static final Json js = new Json(System.getProperty("user.dir") + "\\src\\conf\\neuron.json");
 
     public R() {
         if (js != null) {

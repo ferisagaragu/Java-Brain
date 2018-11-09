@@ -6,6 +6,7 @@ import org.javabrain.util.web.service.Ajax;
 /**
  *
  * @author Fernando García
+ * @version 0.0.1
  */
 public interface PetitionListener extends EventListener{
   

@@ -1639,13 +1639,13 @@ public class Json extends Object{
         try {
             JSONParser parser1 = new JSONParser();
             JSONObject obj1 = (JSONObject) parser1.parse(obj.toString());
-            return true;
+            return obj1.toString().contains("{") && obj1.toString().contains("}") && obj1.toString().contains("{\"");
         }catch (Exception e){}
         return false;
     }
 
     public static boolean isJSON(Object obj) {
-        
+
         if (obj.toString().contains("http")) {
             try {
                 Json j = new Json(obj);
