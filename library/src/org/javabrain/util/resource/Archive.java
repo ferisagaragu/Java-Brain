@@ -20,7 +20,7 @@ import org.javabrain.util.alert.Log;
  */
 public class Archive {
 
-    public static final ClassLoader CLASS_LOADER = ClassLoader.getSystemClassLoader();
+    private static final ClassLoader CLASS_LOADER = ClassLoader.getSystemClassLoader();
     
     public static final String PROYECT_PATH = System.getProperty("user.dir");
     public static final String SOURCE_PATH = System.getProperty("user.dir") + "\\src\\";
@@ -54,29 +54,41 @@ public class Archive {
 
     }
     
-    public static String read(String path) {
+    public static String read(Object path) {
 
+        if (path.getClass().getName().equals("java.io.File")) {
+            path = ((File) path).getPath();
+        }
+        
         BufferedReader out;
         String outStg;
         String str;
         outStg = "";
-        InputStream inn = CLASS_LOADER.getResourceAsStream(road(path));
-
-        try (InputStream in = inn == null ? new FileInputStream(new File(road(path))) : inn) {
+        InputStream inn = CLASS_LOADER.getResourceAsStream(road(path.toString()));
+        
+        try (InputStream in = inn == null ? new FileInputStream(new File(road(path.toString()))) : inn) {
             out = new BufferedReader(new InputStreamReader(in, "UTF8"));
             while ((str = out.readLine()) != null) {
                 outStg = outStg + str + "\n";
             }
-            return outStg;
+            return outStg.substring(0, outStg.length() - 1);
         } catch (IOException ex) {
             Log.error("Failed to load the file reviews the path that is not being used by another program.", ex);
         }
         return null;
     }
 
-    public static boolean write(String path, String text) {
+    public static boolean write(Object path, String text) {
         
-        try (Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(road(path)), "UTF8"))) {
+        if (path.getClass().getName().equals("java.io.File")) {
+            path = ((File) path).getPath();
+        }
+        
+        if (road(path.toString()).contains("/")) {
+            path = SOURCE_PATH + road(path.toString()).replace("/","\\");
+        }
+
+        try (Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(road(path.toString())), "UTF8"))) {
             out.append(text);
             out.flush();
             out.close();
@@ -86,6 +98,12 @@ public class Archive {
         }
 
         return false;
+    }
+    
+    public static String convertToRelative(String path) {
+        path = path.replace(Archive.SOURCE_PATH,"");
+        path = path.replace("\\","/");
+        return path;
     }
     
 }

@@ -1,19 +1,18 @@
 {
+  "build": 20,
+  "drawable": "org.javabrain.drawable",
   "message": {
     "alert": true,
     "error": true,
     "info": true
   },
   "package": {
-    "company": "org.javabraintest",
+    "company": "org",
     "modules": [
-      "model",
-      "view",
-      "controller"
+      "fer"
     ]
   },
-  "param": {
-  },
+  "param": "$(conf.{param.json})",
   "res": {
     "img": [
       ".jpg",
@@ -23,12 +22,15 @@
     "layout": [
       ".xml",
       ".html",
-      ".css",
-      ".txt"      
+      ".txt"
     ],
     "raw": [
       ".mp3",
       ".mp4"
+    ],
+    "style": [
+      ".css"
     ]
-  }
+  },
+  "script": ""
 }

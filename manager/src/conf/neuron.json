@@ -1,0 +1,40 @@
+{
+  "build": 2,
+  "drawable": "org.javabrain.drawable",
+  "message": {
+    "alert": true,
+    "error": true,
+    "info": true
+  },
+  "package": {
+    "company": "org.javabrain",
+    "modules": [
+      "app",
+      "controller",
+      "drawable",
+      "model",
+      "view"
+    ]
+  },
+  "param": "$(conf.{param.json})",
+  "res": {
+    "img": [
+      ".jpg",
+      ".png",
+      ".gif"
+    ],
+    "layout": [
+      ".xml",
+      ".html",
+      ".txt",
+      ".layout"
+    ],
+    "raw": [
+      ".mp3",
+      ".mp4"
+    ],
+    "style": [
+      ".css"
+    ]
+  }
+}

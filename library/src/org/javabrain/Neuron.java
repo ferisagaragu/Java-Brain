@@ -31,6 +31,7 @@ import java.util.Map;
 import org.javabrain.util.alert.Log;
 
 import javax.swing.*;
+import org.javabrain.util.resource.Archive;
 
 /***
  * @author Fernando García
@@ -39,7 +40,7 @@ import javax.swing.*;
 public class Neuron {
     
     private static Map<Object,Object> map = new HashMap<>();
-        
+    
     public static void init() {
         
         //Crea el folder conf
@@ -51,11 +52,14 @@ public class Neuron {
         if (!file.exists() && folder.exists()) {
             NeuronConf.show();
         } else {
-            Json js = new Json(str.isEmpty() ? "/conf/neuron.json" : str);
-            makeModules(js);
-            makeRes(js);
-            clearMain(new File(System.getProperty("user.dir") + "\\src\\"));
-            System.exit(0);
+            try {
+                Json js = new Json(str.isEmpty() ? "/conf/neuron.json" : str);
+                makeModules(js);
+                makeRes(js);
+                coutBuilds(js);
+                //Esta parte no funcional totalmente bien
+                //clearMain(new File(System.getProperty("user.dir") + "\\src\\"));
+            } catch (Exception e) {}
         }
     }
 
@@ -111,43 +115,7 @@ public class Neuron {
     }
 
     private static void changePack(File dir, String pack, String finalPack) {
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(dir.getPath()));
-            try {
-                StringBuilder sb = new StringBuilder();
-                String line = br.readLine();
-
-                while (line != null) {
-                    sb.append(line);
-                    sb.append(System.lineSeparator());
-                    line = br.readLine();
-                }
-                String everything = sb.toString();
-
-                FileWriter fichero = null;
-                PrintWriter pw = null;
-                try {
-                    fichero = new FileWriter(dir.getPath());
-                    pw = new PrintWriter(fichero);
-                    pw.println(everything.replace("package " + pack, "package " + finalPack));
-                    pw.close();
-                } catch (IOException e) {
-                } finally {
-                    try {
-                        if (null != fichero) {
-                            fichero.close();
-                        }
-                    } catch (Exception e2) {
-                        e2.printStackTrace();
-                    }
-                }
-                return;
-
-            } finally {
-                br.close();
-            }
-        } catch (Exception e) {
-        }
+        Archive.write(dir, Archive.read(dir).replace("package " + pack, "package " + finalPack));
     }
 
     private static void changeImport(File dir, String pack, String finalPack) {
@@ -157,42 +125,7 @@ public class Neuron {
                 if (listFile[i].isDirectory()) {
                     changeImport(listFile[i], pack, finalPack);
                 } else {
-                    try {
-                        BufferedReader br = new BufferedReader(new FileReader(listFile[i].getPath()));
-                        try {
-                            StringBuilder sb = new StringBuilder();
-                            String line = br.readLine();
-
-                            while (line != null) {
-                                sb.append(line);
-                                sb.append(System.lineSeparator());
-                                line = br.readLine();
-                            }
-                            String everything = sb.toString();
-
-                            FileWriter fichero = null;
-                            PrintWriter pw = null;
-                            try {
-                                fichero = new FileWriter(listFile[i].getPath());
-                                pw = new PrintWriter(fichero);
-                                pw.println(everything.replace("import " + pack,"import " + finalPack));
-                            } catch (IOException e) {
-                            } finally {
-                                try {
-                                    if (null != fichero) {
-                                        fichero.close();
-                                    }
-                                } catch (Exception e2) {
-                                    e2.printStackTrace();
-                                }
-                            }
-                            return;
-
-                        } finally {
-                            br.close();
-                        }
-                    } catch (Exception e) {
-                    }
+                    Archive.write(listFile[i],Archive.read(listFile[i]).replace("import " + pack,"import " + finalPack));
                 }
             }
         }
@@ -222,6 +155,12 @@ public class Neuron {
             }
             if (jso.getArray("layout") != null) {
                 File f = new File(resFolder.getPath() + "\\layout");
+                if (!f.exists()) {
+                   f.mkdirs();
+                }
+            }
+            if (jso.getArray("style") != null) {
+                File f = new File(resFolder.getPath() + "\\style");
                 if (!f.exists()) {
                    f.mkdirs();
                 }
@@ -258,7 +197,13 @@ public class Neuron {
                             moveCmd(listFile[i].getPath(),System.getProperty("user.dir") + "\\src\\res\\layout\\"+listFile[i].getName());
                         }
                     }
-
+                    
+                    for (Object o : js.getArray("style")){
+                        String ext = getFileExtension(listFile[i]);
+                        if (o.toString().equals(ext)) {
+                            moveCmd(listFile[i].getPath(),System.getProperty("user.dir") + "\\src\\res\\style\\"+listFile[i].getName());
+                        }
+                    }
                 }
             }
         }
@@ -316,7 +261,7 @@ public class Neuron {
                                 try {
                                     fichero = new FileWriter(listFile[i].getPath());
                                     pw = new PrintWriter(fichero);
-                                    pw.println(everything.replace("// // Neuron.init();", "// // // Neuron.init();").replace("import org.javabrain.Neuron; //If you don't use erase this. //If you don't use erase this.","import org.javabrain.Neuron; //If you don't use erase this. //If you don't use erase this. //If you don't use erase this."));
+                                    pw.println(everything.replace("// Neuron.init();", "// // Neuron.init();").replace("import org.javabrain.Neuron; //If you don't use erase this.","//If you don't use erase this."));
                                 } catch (IOException e) {
                                 } finally {
                                     try {
@@ -339,8 +284,17 @@ public class Neuron {
         }
     }
 
+    public static void coutBuilds(Json js){
+        try {
+            int count = js.getInteger("build") == -1 ? 1 : js.getInteger("build") + 1;
+            js.put("build", count);
+            js.write("/conf/neuron.json");
+        } catch (Exception e) {}
+    }
+    
     public static Object param(Object key){
-        Json json = new Json("conf.{neuron_example.json}");
+        Json json = new Json("conf.{neuron.json}");
+        System.out.println(json.convertParams());
         return json.getJSON("param").getObject(key.toString());
     }
 
@@ -472,7 +426,8 @@ class NeuronConf {
                 out = out.substring(0, out.length() - 1);
 
                 String data = "{'message':{'alert':" + finalAlertChk.isSelected() + ",'error':" + finalErrorChk.isSelected() + ",'info':" + finalInfoChk.isSelected() + "},"
-                        + "'package':{'company':'" + finalPackFld.getText() + "','modules':[" + out + "]},'param':{},'res':{'img':['.jpg','.png','.gif'],'raw':['.mp3','.mp4','.txt'],'layout':['.xml','.html','.css']}}";
+                        + "'package':{'company':'" + finalPackFld.getText() + "','modules':[" + out + "]},'param':'$(conf.{param.json})','res':{'img':['.jpg','.png','.gif'],'raw':['.mp3','.mp4'],'layout':['.xml','.html','.txt'],'style':['.css']},"
+                        + "'build': 0,'drawable':''}";
 
                 File folder = new File(System.getProperty("user.dir") + "\\src\\conf");
                 File file = new File(folder.getPath() + "\\neuron.json");
@@ -488,6 +443,7 @@ class NeuronConf {
                 makeModules(js);
                 makeRes(js);
                 clearMain(new File(System.getProperty("user.dir") + "\\src\\"));
+                Archive.write("./conf/param.json","{}");
                 System.exit(0);
             }
         });
@@ -753,7 +709,7 @@ class NeuronConf {
                                 try {
                                     fichero = new FileWriter(listFile[i].getPath());
                                     pw = new PrintWriter(fichero);
-                                    pw.println(everything.replace("// // Neuron.init();", "// // // Neuron.init();").replace("import org.javabrain.Neuron; //If you don't use erase this. //If you don't use erase this.","import org.javabrain.Neuron; //If you don't use erase this. //If you don't use erase this. //If you don't use erase this."));
+                                    pw.println(everything.replace("// Neuron.init();", "// // Neuron.init();").replace("import org.javabrain.Neuron; //If you don't use erase this.","import org.javabrain.Neuron; //If you don't use erase this. //If you don't use erase this."));
                                 } catch (IOException e) {
                                 } finally {
                                     try {
@@ -776,7 +732,7 @@ class NeuronConf {
         }
     }
 
-
+  
     public static void show() {
         SwingUtilities.invokeLater(() -> {
             NeuronConf jv = new NeuronConf();

@@ -12,6 +12,9 @@ import javafx.scene.control.Label;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.javabrain.controller.WebService;
+import org.javabrain.util.resource.Archive;
+import org.javabrain.util.resource.Layout;
+import org.javabrain.util.resource.R;
 
 /**
  *
@@ -26,7 +29,8 @@ public class DoWebService {
         File fil = chooser.showSaveDialog(stage);
         
         if (fil != null) {
-            doGet(fil, in, elements, stage, serverName, userName, password, database, table);
+            //doGet(fil, in, elements, stage, serverName, userName, password, database, table);
+            add(fil, elements, serverName, userName, password, database, table);
             return true;
         } else {
             return false;
@@ -68,49 +72,35 @@ public class DoWebService {
         }
     }
     
-    private static void doPut(InputStream in, ObservableList<Label> elements, Stage stage, String serverName, String userName, String password, String database, String table) {
+    private static void add(File fil,ObservableList<Label> elements,String serverName, String userName, String password, String database, String table) {
 
-        String out = "";
-
-        try {
-            int i;
-            char c;
-
-            while ((i = in.read()) != -1) {
-                c = (char) i;
-                out = out + c;
-            }
-
-        } catch (IOException ex) {
-            Logger.getLogger(WebService.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        out = out.replace("${servername}", serverName);
-        out = out.replace("${username}", userName);
-        out = out.replace("${password}", password);
-        out = out.replace("${dbname}", database);
-
+        Layout layout = R.getLayout("add.layout");
+        
+        layout.put("servername",serverName);
+        layout.put("username",userName);
+        layout.put("password",password);
+        layout.put("dbname",database);
+        
         String data = "";
-        String query = "";
-        for (Label lbl : elements) {
-            query = query + "," + lbl.getText();
-            data = data + "$json -> " + lbl.getText() + " = $row['" + lbl.getText() + "'];\n        ";
+        String values = "";
+        String params = "";
+        String json = "";
+        
+        for(Label o : elements) {
+            if (!o.getText().equals("id")) {
+                data = data + "$"+o.getText()+"=$_POST['"+o.getText()+"']; \n";
+                values = values +","+ o.getText();
+                params = params +",'\".$"+ o.getText() + ".\"'";
+                json = json + "\""+o.getText()+"\":"+"\"' .$"+o.getText()+". '\",";
+            }
         }
-        String[] array = query.split(",");
-        String query2 = "";
 
-        for (String dat : array) {
-            query2 = query2 + ",'\".$" + dat + ".\"'";
-        }
-
-        out = out.replace("${query}", "INSERT INTO " + table + " (" + query.substring(1, query.length()) + ") "
-                + "VALUES (" + query2.substring(9, query2.length()) + ");");
-        out = out.replace("${jsonMap}", data);
-
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(""))) {
-            writer.write(out);
-        } catch (IOException ex) {
-            Logger.getLogger(WebService.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        layout.put("params",data);
+        
+        layout.put("query","insert into "+table+"("+values.substring(1, values.length())+") values ("+params.substring(1, params.length())+")");
+        
+        layout.put("jsonOut","{"+json.substring(0,json.length() - 1)+"}");
+        
+        Archive.write(fil.getPath(),layout.getLayout());
     }
 }

@@ -1,0 +1,16 @@
+{
+  "drawable": {
+    "index.fxml": "org/javabrain/drawable/index.fxml",
+    "web_service.fxml": "org/javabrain/drawable/web_service.fxml"
+  },
+  "img": {
+  },
+  "layout": {
+    "add.layout": "res/layout/add.layout",
+    "get.layout": "res/layout/get.layout"
+  },
+  "raw": {
+  },
+  "style": {
+  }
+}

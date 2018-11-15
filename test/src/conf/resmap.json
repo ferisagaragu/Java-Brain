@@ -1,0 +1,22 @@
+{
+  "drawable": {
+    "index.fxml": "org/javabrain/drawable/index.fxml",
+    "web_service.fxml": "org/javabrain/drawable/web_service.fxml"
+  },
+  "img": {
+    "14_Rogue-One-A-Star-Wars-Story.jpg": "res/img/14_Rogue-One-A-Star-Wars-Story.jpg",
+    "38855279_1983526588346703_5545516688599941120_n.jpg": "res/img/38855279_1983526588346703_5545516688599941120_n.jpg",
+    "8F8.jpg": "res/img/8F8.jpg"
+  },
+  "layout": {
+    "deletelocation.php": "res/layout/deletelocation.php",
+    "fracment.txt": "res/layout/fracment.txt",
+    "fracment_1.txt": "res/layout/fracment_1.txt"
+  },
+  "raw": {
+    "Ultimate Battle - Dragon Ball Super.mp3": "res/raw/Ultimate Battle - Dragon Ball Super.mp3"
+  },
+  "style": {
+    "nuevo.css": "res/style/nuevo.css"
+  }
+}

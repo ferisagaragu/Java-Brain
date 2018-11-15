@@ -377,8 +377,8 @@ public class Json extends Object{
             for (Object files : fil.list()) {
                 jsons.put(files.toString().replace(".json",""),path+"/"+files);
             }
-        }
-    }
+        }    
+    }     
     //================================================================
 
     //-METODOS GET
@@ -917,20 +917,7 @@ public class Json extends Object{
     }
 
     public boolean write(String path){
-        try {
-            BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path), "utf-8"));
-            out.write(toJSONString().replace("\\","").replace("\"{","{").replace("}\"","}"));
-            out.close();
-            return true;
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return false;
+        return Archive.write(path, toJSONString().replace("\\","").replace("\"{","{").replace("}\"","}"));
     }
 
     public void read(InputStream inputStream){
@@ -1332,7 +1319,7 @@ public class Json extends Object{
     //===============================================================
 
     //METODOS PRIVADOS
-
+    
     private void createSeq(){
         try {
             BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path +"/secuences/"+ secName + ".seq"), "utf-8"));
@@ -1671,6 +1658,30 @@ public class Json extends Object{
             return new Json("{" + out + "}");
     }
    
+    public Json convertParams() {
+        String data = this.toString();
+
+        Matcher m = Pattern.compile("\"\\$\\((.*?)\\)\"").matcher(data);
+        while (m.find()) {
+            data = data.replace("\"$(" + m.group(1) + ")\"", Archive.read(m.group(1)));
+        }
+        
+        if (this.isJSONObject()) {
+            try {
+                obj = (JSONObject) parser.parse(data);
+            } catch (ParseException ex) {
+                return null;
+            }
+        } else {
+            try {
+                array = (JSONArray) parser.parse(data);
+            } catch (ParseException ex) {
+                return null;
+            }
+        }
+        return this;
+    }
+    
     //===============================================================
 
     //METODOS COMPLEJOS "DESTRUCTURIN"

@@ -1,0 +1,23 @@
+<!--Create by Java - Brain-->
+<?php
+
+    $servername = "${servername}";
+    $username = "${username}";
+    $password = "${password}";
+    $dbname = "${dbname}";
+
+    $localhost = mysql_connect($servername,$username,$password) or trigger_error(mysql_error(),E_USER_ERROR); 
+    mysql_select_db($dbname, $localhost);
+
+    ${params}
+
+    $query_search = "${query}"; 
+    $query_exec = mysql_query($query_search) or die(mysql_error());
+
+    if ($query_exec == 1) {
+        echo '{"resp":${jsonOut}}';
+    } else {
+        echo '{"error":${jsonOut}}';
+    }
+
+?>

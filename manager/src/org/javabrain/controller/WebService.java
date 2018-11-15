@@ -79,6 +79,7 @@ public class WebService extends Controller{
                 serverNameFld.getText(), userNameFld.getText(), password.getText(),
                 databaseFld.getText(),tableFld.getText());
         });
+        
     }
 
     public VBox getRoot() {
