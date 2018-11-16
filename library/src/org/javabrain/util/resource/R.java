@@ -11,7 +11,7 @@ import org.javabrain.util.data.Json;
 /**
  *
  * @author Fernando García
- * @version 0.0.2
+ * @version 0.0.3
  */
 public class R {
     
