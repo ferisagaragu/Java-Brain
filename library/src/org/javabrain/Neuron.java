@@ -1,13 +1,9 @@
 package org.javabrain;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
@@ -28,7 +24,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.HashMap;
 import java.util.Map;
-import org.javabrain.util.alert.Log;
 
 import javax.swing.*;
 import org.javabrain.util.resource.Archive;
@@ -47,6 +42,7 @@ public class Neuron {
         File folder = new File(System.getProperty("user.dir") + "\\src\\conf");
         if (!folder.exists()) {folder.mkdirs();}
         String str = "";
+        
         //Crea el archivo de configuracion
         File file = new File(folder.getPath() + "\\neuron.json");
         if (!file.exists() && folder.exists()) {
@@ -54,85 +50,33 @@ public class Neuron {
         } else {
             try {
                 Json js = new Json(str.isEmpty() ? "/conf/neuron.json" : str);
-                makeModules(js);
+                createModules(js);
                 makeRes(js);
                 coutBuilds(js);
-                //Esta parte no funcional totalmente bien
-                //clearMain(new File(System.getProperty("user.dir") + "\\src\\"));
             } catch (Exception e) {}
         }
+        
     }
-
-    // CREACION DE MODULOS
-    private static  void makeModules(Json js) {
+    
+    // <editor-fold defaultstate="collapsed" desc="CREACION DE CARPETAS Y MOVIMIENTO DE RECURSOS">
+    //CREACION DE CARPETAS
+    public static void createModules(Json js) {  
         String[] modules = (String[]) js.getJSON("package").getArray("modules");
         File moduleMk = new File(System.getProperty("user.dir") + "\\src\\" + (js.getJSON("package").getString("company").replace(".","\\")));
         if (!moduleMk.exists()) {
             moduleMk.mkdirs();
         }
+        
         for (String mod : modules) {
             mod = mod.replace(".","\\");
             File file = new File(moduleMk.getPath() + "\\" + mod);
-
-            if ((!file.exists()) && getmodulePath(new File(System.getProperty("user.dir") + "\\src\\"),file.getName()).equals("emply")) {
+            
+            if (!file.exists()) {
                 file.mkdirs();
-            } else {
-                String originalPath = getmodulePath(new File(System.getProperty("user.dir") + "\\src\\"),file.getName());
-                File[] fils = new File(originalPath).listFiles();
-
-                for (File fil : fils) {
-
-                    String pack = fil.getPath().replace(System.getProperty("user.dir") + "\\src\\","").replace(fil.getName(),"").replace("\\",".");
-                    pack = pack.substring(0, pack.length() - 1);
-
-                    String finalPack = file.getPath().replace(System.getProperty("user.dir") + "\\src\\","").replace("\\",".");
-                    changePack(fil, pack, finalPack);
-                    changeImport(new File(System.getProperty("user.dir") + "\\src\\"),pack,finalPack);
-
-                }
-                moveCmd(originalPath,file.getPath());
             }
         }
     }
-
-    private static String out = "";
-    private static String getmodulePath(File dir,String module) {
-
-        File listFile[] = dir.listFiles();
-        if (listFile != null) {
-            for (int i = 0; i < listFile.length; i++) {
-                if (listFile[i].isDirectory()) {
-                    if (module.equals(listFile[i].getName())) {
-                        out = listFile[i].getPath();
-                    } else {
-                       getmodulePath(listFile[i],module);
-                    }
-                }
-            }
-        }
-
-        return out.isEmpty() ? "emply" : out;
-    }
-
-    private static void changePack(File dir, String pack, String finalPack) {
-        Archive.write(dir, Archive.read(dir).replace("package " + pack, "package " + finalPack));
-    }
-
-    private static void changeImport(File dir, String pack, String finalPack) {
-        File listFile[] = dir.listFiles();
-        if (listFile != null) {
-            for (int i = 0; i < listFile.length; i++) {
-                if (listFile[i].isDirectory()) {
-                    changeImport(listFile[i], pack, finalPack);
-                } else {
-                    Archive.write(listFile[i],Archive.read(listFile[i]).replace("import " + pack,"import " + finalPack));
-                }
-            }
-        }
-    }
-    //==========================================================================
-
-    //MANEJO DE RECURSOS
+    
     private static void makeRes(Json js){
         if (js.getString("res") != null) {
             Json jso = js.getJSON("res");
@@ -169,7 +113,9 @@ public class Neuron {
             moveRes(new File(System.getProperty("user.dir") + "\\src\\"),jso);
         }
     }
+    //==========================================================================
 
+    //MANEJO DE RECURSOS
     private static void moveRes(File dir,Json js) {
         File listFile[] = dir.listFiles();
         if (listFile != null) {
@@ -217,9 +163,7 @@ public class Neuron {
         }
         return name.substring(lastIndexOf);
     }
-
-    //==========================================================================
-
+    
     private static boolean moveCmd(String inf ,String outf) {
         try {
             Process p = Runtime.getRuntime().exec("cmd /C MOVE "+ inf +" "+outf);
@@ -236,54 +180,6 @@ public class Neuron {
         return false;
     }
 
-    private static void clearMain(File dir){
-        File listFile[] = dir.listFiles();
-        if (listFile != null) {
-            for (int i = 0; i < listFile.length; i++) {
-                if (listFile[i].isDirectory()) {
-                    clearMain(listFile[i]);
-                } else {
-                    try {
-                        BufferedReader br = new BufferedReader(new FileReader(listFile[i].getPath()));
-                        try {
-                            StringBuilder sb = new StringBuilder();
-                            String line = br.readLine();
-
-                            while (line != null) {
-                                sb.append(line);
-                                sb.append(System.lineSeparator());
-                                line = br.readLine();
-                            }
-                            String everything = sb.toString();
-                            if (everything.contains("public static void main")) {
-                                FileWriter fichero = null;
-                                PrintWriter pw = null;
-                                try {
-                                    fichero = new FileWriter(listFile[i].getPath());
-                                    pw = new PrintWriter(fichero);
-                                    pw.println(everything.replace("// Neuron.init();", "// // Neuron.init();").replace("import org.javabrain.Neuron; //If you don't use erase this.","//If you don't use erase this."));
-                                } catch (IOException e) {
-                                } finally {
-                                    try {
-                                        if (null != fichero) {
-                                            fichero.close();
-                                        }
-                                    } catch (Exception e2) {
-                                        e2.printStackTrace();
-                                    }
-                                }
-                                return;
-                            }
-                        } finally {
-                            br.close();
-                        }
-                    } catch (Exception e) {
-                    }
-                }
-            }
-        }
-    }
-
     public static void coutBuilds(Json js){
         try {
             int count = js.getInteger("build") == -1 ? 1 : js.getInteger("build") + 1;
@@ -291,10 +187,12 @@ public class Neuron {
             js.write("/conf/neuron.json");
         } catch (Exception e) {}
     }
+    //==========================================================================
+    // </editor-fold>
     
     public static Object param(Object key){
         Json json = new Json("conf.{neuron.json}");
-        System.out.println(json.convertParams());
+        json.convertParams();
         return json.getJSON("param").getObject(key.toString());
     }
 
@@ -353,6 +251,7 @@ public class Neuron {
      
 }
 
+// <editor-fold defaultstate="collapsed" desc="CLASE PRIVADA CREA LA CONFIGURACION DE NEURON">
 class NeuronConf {
 
     private void initAndShowGUI() {
@@ -427,23 +326,16 @@ class NeuronConf {
 
                 String data = "{'message':{'alert':" + finalAlertChk.isSelected() + ",'error':" + finalErrorChk.isSelected() + ",'info':" + finalInfoChk.isSelected() + "},"
                         + "'package':{'company':'" + finalPackFld.getText() + "','modules':[" + out + "]},'param':'$(conf.{param.json})','res':{'img':['.jpg','.png','.gif'],'raw':['.mp3','.mp4'],'layout':['.xml','.html','.txt'],'style':['.css']},"
-                        + "'build': 0,'drawable':''}";
+                        + "'build': 0,'drawable':'','script':''}";
 
-                File folder = new File(System.getProperty("user.dir") + "\\src\\conf");
-                File file = new File(folder.getPath() + "\\neuron.json");
+                File file = new File(System.getProperty("user.dir") + "\\src\\conf\\neuron.json");
                 String str = Json.parseJson(data).toJSONString();
-
-                try (BufferedWriter writer = new BufferedWriter(new FileWriter(file.getPath()))) {
-                    writer.write(str);
-                } catch (IOException ex) {
-                    Log.error(ex.getMessage());
-                }
-
-                Json js = new Json(str.isEmpty() ? "/conf/neuron.json" : str);
-                makeModules(js);
-                makeRes(js);
-                clearMain(new File(System.getProperty("user.dir") + "\\src\\"));
+                
+                Archive.write(file, str);
                 Archive.write("./conf/param.json","{}");
+                Json js = new Json(str.isEmpty() ? "/conf/neuron.json" : str);
+                createModules(js);
+                makeRes(js);
                 System.exit(0);
             }
         });
@@ -451,149 +343,26 @@ class NeuronConf {
         return frame.getStage().getScene();
     }
 
-
-    // CREACION DE MODULOS
-    private static  void makeModules(Json js) {
+    // <editor-fold defaultstate="collapsed" desc="CREACION DE CARPETAS Y MOVIMIENTO DE RECURSOS">
+    //CREACION DE CARPETAS
+    public static void createModules(Json js) {
         String[] modules = (String[]) js.getJSON("package").getArray("modules");
-        File moduleMk = new File(System.getProperty("user.dir") + "\\src\\" + (js.getJSON("package").getString("company").replace(".","\\")));
+        File moduleMk = new File(System.getProperty("user.dir") + "\\src\\" + (js.getJSON("package").getString("company").replace(".", "\\")));
         if (!moduleMk.exists()) {
             moduleMk.mkdirs();
         }
+
         for (String mod : modules) {
-            mod = mod.replace(".","\\");
+            mod = mod.replace(".", "\\");
             File file = new File(moduleMk.getPath() + "\\" + mod);
 
-            if ((!file.exists()) && getmodulePath(new File(System.getProperty("user.dir") + "\\src\\"),file.getName()).equals("emply")) {
+            if (!file.exists()) {
                 file.mkdirs();
-            } else {
-                String originalPath = getmodulePath(new File(System.getProperty("user.dir") + "\\src\\"),file.getName());
-                File[] fils = new File(originalPath).listFiles();
-
-                for (File fil : fils) {
-
-                    String pack = fil.getPath().replace(System.getProperty("user.dir") + "\\src\\","").replace(fil.getName(),"").replace("\\",".");
-                    pack = pack.substring(0, pack.length() - 1);
-
-                    String finalPack = file.getPath().replace(System.getProperty("user.dir") + "\\src\\","").replace("\\",".");
-                    changePack(fil, pack, finalPack);
-                    changeImport(new File(System.getProperty("user.dir") + "\\src\\"),pack,finalPack);
-
-                }
-                moveCmd(originalPath,file.getPath());
             }
         }
     }
 
-    private static String out = "";
-    private static String getmodulePath(File dir,String module) {
-
-        File listFile[] = dir.listFiles();
-        if (listFile != null) {
-            for (int i = 0; i < listFile.length; i++) {
-                if (listFile[i].isDirectory()) {
-                    if (module.equals(listFile[i].getName())) {
-                        out = listFile[i].getPath();
-                    } else {
-                        getmodulePath(listFile[i],module);
-                    }
-                }
-            }
-        }
-
-        return out.isEmpty() ? "emply" : out;
-    }
-
-    private static void changePack(File dir, String pack, String finalPack) {
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(dir.getPath()));
-            try {
-                StringBuilder sb = new StringBuilder();
-                String line = br.readLine();
-
-                while (line != null) {
-                    sb.append(line);
-                    sb.append(System.lineSeparator());
-                    line = br.readLine();
-                }
-                String everything = sb.toString();
-
-                FileWriter fichero = null;
-                PrintWriter pw = null;
-                try {
-                    fichero = new FileWriter(dir.getPath());
-                    pw = new PrintWriter(fichero);
-                    pw.println(everything.replace("package " + pack, "package " + finalPack));
-                    pw.close();
-                } catch (IOException e) {
-                } finally {
-                    try {
-                        if (null != fichero) {
-                            fichero.close();
-                        }
-                    } catch (Exception e2) {
-                        e2.printStackTrace();
-                    }
-                }
-                return;
-
-            } finally {
-                br.close();
-            }
-        } catch (Exception e) {
-        }
-    }
-
-    private static void changeImport(File dir, String pack, String finalPack) {
-        File listFile[] = dir.listFiles();
-        if (listFile != null) {
-            for (int i = 0; i < listFile.length; i++) {
-                if (listFile[i].isDirectory()) {
-                    changeImport(listFile[i], pack, finalPack);
-                } else {
-                    try {
-                        BufferedReader br = new BufferedReader(new FileReader(listFile[i].getPath()));
-                        try {
-                            StringBuilder sb = new StringBuilder();
-                            String line = br.readLine();
-
-                            while (line != null) {
-                                sb.append(line);
-                                sb.append(System.lineSeparator());
-                                line = br.readLine();
-                            }
-                            String everything = sb.toString();
-
-                            FileWriter fichero = null;
-                            PrintWriter pw = null;
-                            try {
-                                fichero = new FileWriter(listFile[i].getPath());
-                                pw = new PrintWriter(fichero);
-                                pw.println(everything.replace("import " + pack,"import " + finalPack));
-                            } catch (IOException e) {
-                            } finally {
-                                try {
-                                    if (null != fichero) {
-                                        fichero.close();
-                                    }
-                                } catch (Exception e2) {
-                                    e2.printStackTrace();
-                                }
-                            }
-                            return;
-
-                        } finally {
-                            br.close();
-                        }
-                    } catch (Exception e) {
-                    }
-                }
-            }
-        }
-    }
-    //==========================================================================
-
-    //MANEJO DE RECURSOS
-    private static void makeRes(Json js){
+    private static void makeRes(Json js) {
         if (js.getString("res") != null) {
             Json jso = js.getJSON("res");
             File resFolder = new File(System.getProperty("user.dir") + "\\src\\" + "res");
@@ -619,39 +388,53 @@ class NeuronConf {
                     f.mkdirs();
                 }
             }
+            if (jso.getArray("style") != null) {
+                File f = new File(resFolder.getPath() + "\\style");
+                if (!f.exists()) {
+                    f.mkdirs();
+                }
+            }
 
-            moveRes(new File(System.getProperty("user.dir") + "\\src\\"),jso);
+            moveRes(new File(System.getProperty("user.dir") + "\\src\\"), jso);
         }
     }
+    //==========================================================================
 
-    private static void moveRes(File dir,Json js) {
+    //MANEJO DE RECURSOS
+    private static void moveRes(File dir, Json js) {
         File listFile[] = dir.listFiles();
         if (listFile != null) {
             for (int i = 0; i < listFile.length; i++) {
                 if (listFile[i].isDirectory()) {
-                    moveRes(listFile[i],js);
+                    moveRes(listFile[i], js);
                 } else {
-                    for (Object o : js.getArray("raw")){
+                    for (Object o : js.getArray("raw")) {
                         String ext = getFileExtension(listFile[i]);
                         if (o.toString().equals(ext)) {
-                            moveCmd(listFile[i].getPath(),System.getProperty("user.dir") + "\\src\\res\\raw\\"+listFile[i].getName());
+                            moveCmd(listFile[i].getPath(), System.getProperty("user.dir") + "\\src\\res\\raw\\" + listFile[i].getName());
                         }
                     }
 
-                    for (Object o : js.getArray("img")){
+                    for (Object o : js.getArray("img")) {
                         String ext = getFileExtension(listFile[i]);
                         if (o.toString().equals(ext)) {
-                            moveCmd(listFile[i].getPath(),System.getProperty("user.dir") + "\\src\\res\\img\\"+listFile[i].getName());
+                            moveCmd(listFile[i].getPath(), System.getProperty("user.dir") + "\\src\\res\\img\\" + listFile[i].getName());
                         }
                     }
 
-                    for (Object o : js.getArray("layout")){
+                    for (Object o : js.getArray("layout")) {
                         String ext = getFileExtension(listFile[i]);
                         if (o.toString().equals(ext)) {
-                            moveCmd(listFile[i].getPath(),System.getProperty("user.dir") + "\\src\\res\\layout\\"+listFile[i].getName());
+                            moveCmd(listFile[i].getPath(), System.getProperty("user.dir") + "\\src\\res\\layout\\" + listFile[i].getName());
                         }
                     }
 
+                    for (Object o : js.getArray("style")) {
+                        String ext = getFileExtension(listFile[i]);
+                        if (o.toString().equals(ext)) {
+                            moveCmd(listFile[i].getPath(), System.getProperty("user.dir") + "\\src\\res\\style\\" + listFile[i].getName());
+                        }
+                    }
                 }
             }
         }
@@ -666,9 +449,7 @@ class NeuronConf {
         return name.substring(lastIndexOf);
     }
 
-    //==========================================================================
-
-    private static boolean moveCmd(String inf ,String outf) {
+    private static boolean moveCmd(String inf, String outf) {
         try {
             Process p = Runtime.getRuntime().exec("cmd /C MOVE " + inf + " " + outf);
             BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
@@ -684,55 +465,17 @@ class NeuronConf {
         return false;
     }
 
-    private static void clearMain(File dir){
-        File listFile[] = dir.listFiles();
-        if (listFile != null) {
-            for (int i = 0; i < listFile.length; i++) {
-                if (listFile[i].isDirectory()) {
-                    clearMain(listFile[i]);
-                } else {
-                    try {
-                        BufferedReader br = new BufferedReader(new FileReader(listFile[i].getPath()));
-                        try {
-                            StringBuilder sb = new StringBuilder();
-                            String line = br.readLine();
-
-                            while (line != null) {
-                                sb.append(line);
-                                sb.append(System.lineSeparator());
-                                line = br.readLine();
-                            }
-                            String everything = sb.toString();
-                            if (everything.contains("public static void main")) {
-                                FileWriter fichero = null;
-                                PrintWriter pw = null;
-                                try {
-                                    fichero = new FileWriter(listFile[i].getPath());
-                                    pw = new PrintWriter(fichero);
-                                    pw.println(everything.replace("// Neuron.init();", "// // Neuron.init();").replace("import org.javabrain.Neuron; //If you don't use erase this.","import org.javabrain.Neuron; //If you don't use erase this. //If you don't use erase this."));
-                                } catch (IOException e) {
-                                } finally {
-                                    try {
-                                        if (null != fichero) {
-                                            fichero.close();
-                                        }
-                                    } catch (Exception e2) {
-                                        e2.printStackTrace();
-                                    }
-                                }
-                                return;
-                            }
-                        } finally {
-                            br.close();
-                        }
-                    } catch (Exception e) {
-                    }
-                }
-            }
+    public static void coutBuilds(Json js) {
+        try {
+            int count = js.getInteger("build") == -1 ? 1 : js.getInteger("build") + 1;
+            js.put("build", count);
+            js.write("/conf/neuron.json");
+        } catch (Exception e) {
         }
     }
-
-  
+    //==========================================================================
+    // </editor-fold>
+    
     public static void show() {
         SwingUtilities.invokeLater(() -> {
             NeuronConf jv = new NeuronConf();
@@ -741,4 +484,5 @@ class NeuronConf {
     }
 
 }
+// </editor-fold>
 

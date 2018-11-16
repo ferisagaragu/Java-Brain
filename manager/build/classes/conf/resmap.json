@@ -4,6 +4,7 @@
     "web_service.fxml": "org/javabrain/drawable/web_service.fxml"
   },
   "img": {
+    "brain.png": "res/img/brain.png"
   },
   "layout": {
     "add.layout": "res/layout/add.layout",
@@ -12,5 +13,6 @@
   "raw": {
   },
   "style": {
+    "web_service.css": "res/style/web_service.css"
   }
 }

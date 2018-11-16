@@ -16,7 +16,13 @@
   "raw": {
     "Ultimate Battle - Dragon Ball Super.mp3": "res/raw/Ultimate Battle - Dragon Ball Super.mp3"
   },
+  "script": {
+    "script.js": "org/javabrain/test/app/script.js"
+  },
   "style": {
+    "NewJFrame.form": "res/style/NewJFrame.form",
+    "NewJFrame.java": "res/style/NewJFrame.java",
+    "class.css": "res/style/class.css",
     "nuevo.css": "res/style/nuevo.css"
   }
 }

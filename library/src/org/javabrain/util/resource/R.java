@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import org.javabrain.util.code.JavaScript;
 import org.javabrain.util.data.Json;
 
 /**
@@ -20,6 +21,7 @@ public class R {
     private static Map<Object,Layout> layout = new LinkedHashMap();
     private static Map<Object,String> style = new LinkedHashMap();
     private static Map<Object,String> drawable = new LinkedHashMap();
+    private static Map<Object,JavaScript> script = new LinkedHashMap();
     private static final Json js = new Json("conf.{neuron.json}");
     private static final Json resmap = new Json("conf.{resmap.json}");
     public static final ClassLoader CLASS_LOADER = ClassLoader.getSystemClassLoader();
@@ -33,11 +35,21 @@ public class R {
                     if ((!js.getString("res").equals("{}")) && (!js.getString("res").isEmpty()) && (js.getString("res") != null)) {
                         File data = new File(Archive.SOURCE_PATH + "res");
                         File drawa = new File(Archive.SOURCE_PATH + js.getString("drawable").replace(".", "\\"));
+                        File scri = new File(Archive.SOURCE_PATH + js.getString("script").replace(".", "\\"));
                         
                         Json drawableJson = new Json();
                         if (drawa.exists()) {
                             for (File fil:drawa.listFiles()) {
                                 drawableJson.put(fil.getName(), Archive.convertToRelative(fil.getPath()));
+                            }
+                        }
+                        
+                        Json scriptJson = new Json();
+                        if (!js.getString("script").isEmpty()) {
+                            if (scri.exists()) {
+                                for (File fil:scri.listFiles()) {
+                                    scriptJson.put(fil.getName(), Archive.convertToRelative(fil.getPath()));
+                                }
                             }
                         }
                         
@@ -70,6 +82,7 @@ public class R {
                                 res.put("layout", layoutJson);
                                 res.put("style", styleJson);
                                 res.put("drawable", drawableJson);
+                                res.put("script", scriptJson);
                                 res.write("./conf/resmap.json");
                                 
                                 for (Object key1 : res.getJSON("layout").getKeys()) {
@@ -90,6 +103,10 @@ public class R {
                                 
                                 for (Object key1 : res.getJSON("drawable").getKeys()) {
                                     drawable.put(key1, res.getJSON("drawable").getString(key1));
+                                }
+                                
+                                for (Object key1 : res.getJSON("script").getKeys()) {
+                                    script.put(key1, new JavaScript(res.getJSON("script").getString(key1)));
                                 }
                                 
                             } catch (Exception e) {}
@@ -117,6 +134,10 @@ public class R {
                     
                     for (Object key1 : resmap.getJSON("drawable").getKeys()) {
                         drawable.put(key1, resmap.getJSON("drawable").getString(key1));
+                    }
+                    
+                    for (Object key1 : res.getJSON("script").getKeys()) {
+                        script.put(key1, new JavaScript(res.getJSON("script").getString(key1)));
                     }
                     //=========================================================================================
                 }
@@ -158,5 +179,10 @@ public class R {
     public static String getDrawable(Object key){
         init();
         return "/" + drawable.get(key);
+    }
+    
+    public static JavaScript getScript(Object key){
+        init();
+        return script.get(key);
     }
 }

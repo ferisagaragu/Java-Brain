@@ -1,5 +1,5 @@
 {
-  "build": 20,
+  "build": 9,
   "drawable": "org.javabrain.drawable",
   "message": {
     "alert": true,
@@ -7,9 +7,9 @@
     "info": true
   },
   "package": {
-    "company": "org",
+    "company": "org.javabrain.test",
     "modules": [
-      "fer"
+      "data"
     ]
   },
   "param": "$(conf.{param.json})",
@@ -32,5 +32,5 @@
       ".css"
     ]
   },
-  "script": ""
+  "script": "org.javabrain.test.app"
 }

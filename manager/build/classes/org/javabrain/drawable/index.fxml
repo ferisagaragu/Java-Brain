@@ -7,7 +7,7 @@
 
 <StackPane fx:id="root" maxHeight="-Infinity" style="-fx-background-color: #FFF;" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.javabrain.controller.Index">
    <children>
-      <GridPane prefHeight="409.0" prefWidth="600.0">
+      <GridPane fx:id="indexPane" prefHeight="409.0" prefWidth="600.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

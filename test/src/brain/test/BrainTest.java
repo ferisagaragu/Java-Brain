@@ -1,9 +1,7 @@
 package brain.test;
 
 import org.javabrain.Neuron;
-import org.javabrain.util.data.Json;
 import org.javabrain.util.resource.R;
-import org.javabrain.util.web.service.Email;
 
 
 /**
@@ -18,11 +16,11 @@ public class BrainTest{
         //System.out.println(R.getLayout("fracment_1.txt"));
         System.out.println(R.getDrawable("index.fxml"));
         System.out.println(Neuron.param("name"));
+        Object o = R.getScript("script.js").invokeFunction("hola"," Fernando");
+        System.out.println(o);
     }
     
 }
-
-
 
 
 

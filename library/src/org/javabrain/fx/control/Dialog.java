@@ -21,7 +21,28 @@ public class Dialog {
     private FXMLLoader loader;
     private Parent parent;
 
-    
+    public Dialog(String fxml,Stage st,String title,Image icon,String css)
+    {
+        try
+        {
+            loader = new FXMLLoader(getClass().getResource(fxml));
+            stage = new Stage();
+            Parent login = loader.load();
+            parent = login;
+            scene = new Scene(login);
+            stage.setScene(scene);
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(st);
+            stage.setTitle(title);
+            stage.getIcons().add(icon);
+            scene.getRoot().getStylesheets().add(css);
+        }
+        catch (Exception e)
+        {
+            System.out.print(e.getMessage());
+        }
+    }
+
     public Dialog(String fxml,Stage st,String title,Image icon)
     {
         try
@@ -42,7 +63,27 @@ public class Dialog {
             System.out.print(e.getMessage());
         }
     }
-    
+
+    public Dialog(String fxml,Stage st,String title,String css)
+    {
+        try
+        {
+            loader = new FXMLLoader(getClass().getResource(fxml));
+            stage = new Stage();
+            Parent login = loader.load();
+            scene = new Scene(login);
+            stage.setScene(scene);
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(st);
+            stage.setTitle(title);
+            scene.getRoot().getStylesheets().add(css);
+        }
+        catch (Exception e)
+        {
+            System.out.print(e.getMessage());
+        }
+    }
+
     public Dialog(String fxml,Stage st,String title)
     {
         try

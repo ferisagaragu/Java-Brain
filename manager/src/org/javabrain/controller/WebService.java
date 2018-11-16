@@ -8,10 +8,13 @@ import java.util.Optional;
 import javafx.fxml.FXML;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.javabrain.fx.structure.Controller;
 import org.javabrain.model.DoWebService;
+import org.javabrain.util.resource.R;
 import org.javabrain.view.Dialog;
 
 /**
@@ -33,15 +36,19 @@ public class WebService extends Controller{
     @FXML private JFXListView<Label> elementsLst;
     @FXML private JFXTextField tableFld;
     
+    private GridPane indexPane;
+    
     @Override
     public void init(Object... params) {
         setStage((Stage) params[0]);
+        indexPane = (GridPane) params[1];
         super.init(params);
     }
 
     @Override
     public void custom() {
         elementsLst.getItems().add(new Label("id"));
+        root.getStylesheets().add(R.getStyle("web_service.css"));
     }
 
     @Override
@@ -75,11 +82,16 @@ public class WebService extends Controller{
         //====================
         
         doneBtn.setOnAction( evt -> {
-            DoWebService.saveService(getClass().getResourceAsStream("/res/get.layout"),elementsLst.getItems(), stage, 
+            DoWebService.saveService(elementsLst.getItems(), stage, 
                 serverNameFld.getText(), userNameFld.getText(), password.getText(),
                 databaseFld.getText(),tableFld.getText());
         });
         
+        cancelBtn.setOnAction( evt -> {
+            StackPane sp = (StackPane) stage.getScene().getRoot();
+            sp.getChildren().clear();
+            sp.getChildren().add(indexPane);
+        }); 
     }
 
     public VBox getRoot() {

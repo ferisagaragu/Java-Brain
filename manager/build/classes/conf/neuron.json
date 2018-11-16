@@ -1,5 +1,5 @@
 {
-  "build": 2,
+  "build": 36,
   "drawable": "org.javabrain.drawable",
   "message": {
     "alert": true,
@@ -27,7 +27,8 @@
       ".xml",
       ".html",
       ".txt",
-      ".layout"
+      ".layout",
+      ".ico"
     ],
     "raw": [
       ".mp3",
