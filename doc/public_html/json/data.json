@@ -1,0 +1,64 @@
+{
+    "log": {
+        "static": {
+            ".message(Object)": {
+                "info": "Este metodo nos ayudara a imprimir en pantalla, resaltando el mensaje para no confundirlo.",
+                "code": ["import org.javabrain.util.alert.Log;",
+                    "public class Run {",
+                    "    public static void main(String[] args) {",
+                    "        Log.message(\"Hola soy un mensaje!\");",
+                    "    }",
+                    "}"],
+                "out": "<code style=\"color:blue;\">Info → Hola soy un mensaje!</code>"
+            },
+            ".alert(Object)": {
+                "code": ["import org.javabrain.util.alert.Log;",
+                    "public class Run {",
+                    "    public static void main(String[] args) {",
+                    "        Log.alert(\"Hola soy una alerta!\");",
+                    "    }",
+                    "}"],
+                "out": "<code style=\"color:yellow;\">Warning → Hola soy una alerta!</code>"
+            },".error(Object)": {
+                "code": ["import org.javabrain.util.alert.Log;",
+                    "public class Run {",
+                    "    public static void main(String[] args) {",
+                    "        Log.error(\"Hola soy un error :( !\");",
+                    "    }",
+                    "}"],
+                "out": "<code style=\"color:red;\">Error → Hola soy un error ☹ !</code>"
+            },".error(Object,Object)": {
+                "code": ["import org.javabrain.util.alert.Log;",
+                    "public class Run {",
+                    "    public static void main(String[] args) {",
+                    "        Log.error(\"Hola soy un error :( !\",\"Este es mi error detallado\");",
+                    "    }",
+                    "}"],
+                "out": "<code style=\"color:red;\">Error → Hola soy un error ☹ !\nDetail → Este es mi error detallado</code>"
+            }
+        },
+        "method":{
+            ".view(Object,Object)": {
+                "code": ["import org.javabrain.util.alert.Log;",
+                    "public class Run {",
+                    "    public static void main(String[] args) {",
+                    "        Log.error(\"Hola soy un error :( !\",\"Este es mi error detallado\");",
+                    "    }",
+                    "}"],
+                "out": "<code style=\"color:red;\">Error → Hola soy un error ☹ !\nDetail → Este es mi error detallado</code>"
+            }
+        },
+        "attribute": {
+            ".view(Object,Object)": {
+                "code": ["import org.javabrain.util.alert.Log;",
+                    "public class Run {",
+                    "    public static void main(String[] args) {",
+                    "        Log.error(\"Hola soy un error :( !\",\"Este es mi error detallado\");",
+                    "    }",
+                    "}"],
+                "out": "<code style=\"color:red;\">Error → Hola soy un error ☹ !\nDetail → Este es mi error detallado</code>"
+            }
+        }
+    }
+}
+

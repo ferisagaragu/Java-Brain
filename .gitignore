@@ -2,3 +2,16 @@
 /doc/nbproject/private/
 /library/build/
 /library/dist/
+/location-api/nbproject/private/
+/manager/Brain-Manager/nbproject/private/
+/manager/Brain-Manager/build/
+/manager/Brain-Test/nbproject/private/
+/manager/Brain-Test/build/
+/manager/Brain-Test/dist/
+/manager/test/build/
+/manager/test/dist/
+/manager/test/nbproject/private/
+/manager/dist/
+/manager/test-maven/target/
+/manager/ghostland/ghost-web/target/
+/manager/ghostland/ghost-logic/target/

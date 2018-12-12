@@ -1,0 +1,46 @@
+{
+  "build": 32,
+  "diccionary": {
+    "default": "es_ES",
+    "dics": [
+      "en_US",
+      "es_MX",
+      "es_ES"
+    ]
+  },
+  "drawable": "",
+  "message": {
+    "alert": true,
+    "error": true,
+    "info": true
+  },
+  "package": {
+    "company": "",
+    "modules": [
+      ""
+    ]
+  },
+  "param": "$(conf.{param.json})",
+  "res": {
+    "img": [
+      ".jpg",
+      ".png",
+      ".gif",
+      ".bcon"
+    ],
+    "layout": [
+      ".xml",
+      ".html",
+      ".txt"
+    ],
+    "raw": [
+      ".mp3",
+      ".mp4"
+    ],
+    "style": [
+      ".css"
+    ]
+  },
+  "script": "",
+  "version": "0.0.1"
+}

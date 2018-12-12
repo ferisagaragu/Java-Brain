@@ -23,7 +23,7 @@ public class Sql {
         switch (db) {
             case "1":
                 try {
-                    connection = Neuron.postgresConnection();
+                    connection = Neuron.sqlConnection();
                     Statement st = connection.createStatement();
                     ResultSet rs = st.executeQuery(sql);
                     return rs;
@@ -34,7 +34,7 @@ public class Sql {
             
             case "2":
                 try {
-                    connection = Neuron.postgresConnection();
+                    connection = Neuron.sqlConnection();
                     Statement st = connection.createStatement();
                     ResultSet rs = st.executeQuery(sql);
                     return rs;
@@ -45,7 +45,7 @@ public class Sql {
             
             case "3":
                 try {
-                    connection = Neuron.postgresConnection();
+                    connection = Neuron.sqlConnection();
                     Statement st = connection.createStatement();
                     ResultSet rs = st.executeQuery(sql);
                     return rs;

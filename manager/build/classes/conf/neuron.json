@@ -1,0 +1,37 @@
+{
+  "build": 59,
+  "drawable": "org.javabrain.drawable",
+  "message": {
+    "alert": true,
+    "error": true,
+    "info": true
+  },
+  "package": {
+    "company": "",
+    "modules": [
+      ""
+    ]
+  },
+  "param": "$(conf.{param.json})",
+  "res": {
+    "img": [
+      ".jpg",
+      ".png",
+      ".gif"
+    ],
+    "layout": [
+      ".xml",
+      ".html",
+      ".txt"
+    ],
+    "raw": [
+      ".mp3",
+      ".mp4"
+    ],
+    "style": [
+      ".css"
+    ]
+  },
+  "script": "",
+  "version": "0.0.3"
+}

@@ -43,7 +43,7 @@ public class Email {
             mensaje.setFrom(new InternetAddress("javabrain.email@gmail.com"));//quien enviara el mensaje
             mensaje.addRecipient(Message.RecipientType.TO, new InternetAddress(destination));//quien lo resive
             mensaje.setSubject(affair);
-            mensaje.setContent(multipart);
+            mensaje.setContent(multipart,"text/html");
 
             Transport transport = session.getTransport("smtp");
             transport.connect("javabrain.email@gmail.com", "qikbrvpecjtodqjp");//se valida el inicio
@@ -90,7 +90,7 @@ public class Email {
             mensaje.setFrom(new InternetAddress("javabrain.email@gmail.com"));//quien enviara el mensaje
             mensaje.addRecipient(Message.RecipientType.TO, new InternetAddress(destination));//quien lo resive
             mensaje.setSubject(affair);
-            mensaje.setContent(multipart);
+            mensaje.setContent(multipart,"text/html");
 
             Transport transport = session.getTransport("smtp");
             transport.connect("javabrain.email@gmail.com","qikbrvpecjtodqjp");//se valida el inicio
@@ -127,7 +127,7 @@ public class Email {
             mensaje.setFrom(new InternetAddress(account));//quien enviara el mensaje
             mensaje.addRecipient(Message.RecipientType.TO, new InternetAddress(destination));//quien lo resive
             mensaje.setSubject(affair);
-            mensaje.setContent(multipart);
+            mensaje.setContent(multipart,"text/html");
 
             Transport transport = session.getTransport("smtp");
             transport.connect(account,code);//se valida el inicio
@@ -174,7 +174,7 @@ public class Email {
             mensaje.setFrom(new InternetAddress(account));//quien enviara el mensaje
             mensaje.addRecipient(Message.RecipientType.TO, new InternetAddress(destination));//quien lo resive
             mensaje.setSubject(affair);
-            mensaje.setContent(multipart);
+            mensaje.setContent(multipart,"text/html");
 
             Transport transport = session.getTransport("smtp");
             transport.connect(account,code);//se valida el inicio

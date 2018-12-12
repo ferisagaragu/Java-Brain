@@ -39,6 +39,46 @@ public class Frame{
 
     }
 
+    public Frame(String fxml,String title,Image icon,String css)
+    {
+        try
+        {
+            loader = new FXMLLoader(getClass().getResource(fxml));
+            stage = new Stage();
+            Parent login = loader.load();
+            parent = login;
+            scene = new Scene(login);
+            stage.setScene(scene);
+            stage.setTitle(title);
+            stage.getIcons().add(icon);
+            scene.getRoot().getStylesheets().add(css);
+        }
+        catch (Exception e)
+        {
+            System.out.print(e.getMessage());
+        }
+
+    }
+
+    public Frame(String fxml,String title,String css)
+    {
+        try
+        {
+            loader = new FXMLLoader(getClass().getResource(fxml));
+            stage = new Stage();
+            Parent login = loader.load();
+            scene = new Scene(login);
+            stage.setScene(scene);
+            stage.setTitle(title);
+            scene.getRoot().getStylesheets().add(css);
+        }
+        catch (Exception e)
+        {
+            System.out.print(e.getMessage());
+        }
+
+    }
+
     public Frame(String fxml,String title)
     {
         try
@@ -73,7 +113,7 @@ public class Frame{
         }
 
     }
-    
+
     public void setStage(Stage sta)
     {
         

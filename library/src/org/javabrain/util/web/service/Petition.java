@@ -6,7 +6,9 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import java.io.BufferedReader;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.UnsupportedEncodingException;
@@ -22,7 +24,7 @@ import java.util.logging.Logger;
 
 /**
  * @author Fernando García
- * @version 0.0.2
+ * @version 0.0.3
  */
 public class Petition {
 
@@ -196,7 +198,7 @@ public class Petition {
         } catch (Exception ex) {
             System.out.println("Excepción al obtener el Status Code: " + ex.getMessage());
         }
-        return response.statusCode();
+        return response.statusCode() != 404 ? response.statusCode() : 404;
     }
 
     /**
@@ -213,5 +215,47 @@ public class Petition {
             System.out.println("Excepción al obtener el HTML de la página" + ex.getMessage());
         }
         return doc;
+    }
+    
+    public static void openURL(String url) {
+        String osName = System.getProperty("os.name");
+        try {
+            if (osName.startsWith("Windows")) {
+                Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + url);
+            } else if (osName.startsWith("Mac OS X")) {
+                // Runtime.getRuntime().exec("open -a safari " + url);
+                // Runtime.getRuntime().exec("open " + url + "/index.html");
+                Runtime.getRuntime().exec("open " + url);
+            } else {
+                System.out.println("Please open a browser and go to "+ url);
+            }
+        } catch (IOException e) {
+            System.out.println("Failed to start a browser to open the url " + url);
+            e.printStackTrace();
+        }
+    }
+    
+    public static void download(String url,String path) {
+        try {
+            String name = url;
+            String fileName[] = name.split("/");
+            name = fileName[fileName.length - 1];
+            URL urli = new URL(url);
+            URLConnection urlCon = urli.openConnection();
+            InputStream is = urlCon.getInputStream();
+            FileOutputStream fos = new FileOutputStream(path);
+
+            byte[] array = new byte[1000];
+            int leido = is.read(array);
+            while (leido > 0) {
+                fos.write(array, 0, leido);
+                leido = is.read(array);
+            }
+
+            is.close();
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

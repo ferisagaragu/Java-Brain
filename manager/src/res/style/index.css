@@ -1,0 +1,10 @@
+
+.root{
+    -fx-background-color: white;
+}
+
+.jfx-button{
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #3F51B5;
+    -jfx-button-type: RAISED;
+}

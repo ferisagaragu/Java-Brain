@@ -1,5 +1,8 @@
 package org.javabrain.util.data;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Type extends Object{
 
     public int INTEGER;
@@ -8,129 +11,116 @@ public class Type extends Object{
     public byte BYTE;
     public char CHARACTER;
     public boolean BOOLEAN;
+    public short SHORT;
+    private long LONG;
 
     public String STRING;
-    public Json JSON;
     public Object OBJECT;
-
+    
+    public Json JSON;
+    
     public Object STATUS;
+    
+    private Object out;
 
     public Type(Object value, Object status) {
-
-        try {
-            BOOLEAN = Boolean.parseBoolean(value.toString());
-        } catch (Exception e){
-            BOOLEAN = false;
-        }
-
-        try {
-            INTEGER = Integer.parseInt(value.toString());
-        } catch (Exception e){
-            INTEGER = 0;
-        }
-
-        try {
-            FLOAT = Float.parseFloat(value.toString());
-        } catch (Exception e){
-            FLOAT = 0;
-        }
-
-        try {
-            DOUBLE = Double.parseDouble(value.toString());
-        } catch (Exception e){
-            DOUBLE = 0;
-        }
-
-        try {
-            BYTE = Byte.parseByte(value.toString());
-        } catch (Exception e){
-            BYTE = 0;
-        }
-
-        try {
-            CHARACTER = value.toString().charAt(0);
-        } catch (Exception e){
-            CHARACTER = 0;
-        }
-
-        try {
-            STRING = value.toString();
-        } catch (Exception e){
-            STRING = "";
-        }
-
-        try {
-            JSON = new Json(value);
-        } catch (Exception e) {
-            JSON = null;
-        }
-
-        try {
-            OBJECT = value;
-        } catch (Exception e){
-            OBJECT = null;
-        }
-
+        getType(value);
         this.STATUS = status;
     }
 
     public Type(Object obj) {
+        getType(obj);
+    }
 
-        try {
-            BOOLEAN = Boolean.parseBoolean(obj.toString());
-        } catch (Exception e){
-            BOOLEAN = false;
-        }
-
-        try {
-            INTEGER = Integer.parseInt(obj.toString());
-        } catch (Exception e){
-            INTEGER = 0;
-        }
-
-        try {
-            FLOAT = Float.parseFloat(obj.toString());
-        } catch (Exception e){
-            FLOAT = 0;
-        }
-
-        try {
-            DOUBLE = Double.parseDouble(obj.toString());
-        } catch (Exception e){
-            DOUBLE = 0;
-        }
-
-        try {
-            BYTE = Byte.parseByte(obj.toString());
-        } catch (Exception e){
-            BYTE = 0;
-        }
-
-        try {
-            CHARACTER = obj.toString().charAt(0);
-        } catch (Exception e){
-            CHARACTER = 0;
-        }
-
-        try {
-            STRING = obj.toString();
-        } catch (Exception e){
-            STRING = "";
-        }
-
-        try {
-            JSON = new Json(obj);
-        } catch (Exception e) {
-            JSON = null;
-        }
-
-        try {
-            OBJECT = obj;
-        } catch (Exception e){
-            OBJECT = null;
+    private void getType(Object o) {
+        this.out = o;
+        switch (o.getClass().getTypeName()) {
+            case "java.lang.Integer": INTEGER = Integer.parseInt(o.toString()); break;
+            case "java.lang.Float": FLOAT = Float.parseFloat(o.toString()); break;
+            case "java.lang.Double": DOUBLE = Double.parseDouble(o.toString()); break;
+            case "java.lang.Byte": BYTE = Byte.parseByte(o.toString()); break;
+            case "java.lang.Character": CHARACTER = CHARACTER = (Character) o; break;
+            case "java.lang.Boolean": BOOLEAN = Boolean.parseBoolean(o.toString()); break;
+            case "java.lang.Short": SHORT = Short.parseShort(o.toString()); break;
+            case "java.lang.Long": LONG = Long.parseLong(o.toString()); break;
+            case "java.lang.String": 
+                if (Json.isJSON(o)) {
+                    JSON = Json.parseJson(o.toString());
+                } else {
+                    STRING = String.valueOf(o); 
+                }
+            break;
+            case "org.javabrain.util.data.Json": JSON = Json.parseJson(o.toString()); break;
+            default: OBJECT = o;
         }
     }
 
+    public static String convertType(String type) {
+
+        if (type == null) {
+            return "null";
+        }
+        
+        if (type.contains("$") || type.toLowerCase().contains("mnx") || type.toLowerCase().contains("usd")) {
+            return "Money";
+        }
+        
+        if (type.contains("/") && type.length() == 10) {
+            return "Date";
+        }
+        
+        try {
+            if (!type.contains(".")) {
+                Integer.parseInt(type);
+                return "Integer";
+            }
+        } catch (Exception e) {}
+        
+        try {
+            Double.parseDouble(type);
+            return "Double";
+        } catch (Exception e) {}
+
+        if (type.length() == 1) {
+            return "Character";
+        }
+        
+        if (Json.isJSONObject(type)) {
+            return "JSON Object";
+        }
+        
+        if (Json.isJSONArray(type)) {
+            return "JSON Array";
+        }
+        
+        if (type.contains("[") && type.contains("]") && !(type.contains("{\""))) {
+            return "Array";
+        }
+        
+        if (Type.isUrl(type)) {
+            return "Url";
+        }
+        
+        return "String";
+    }
+    
+    public static boolean isUrl(String s) {
+        String regex = "^(https?://)?(([\\w!~*'().&=+$%-]+: )?[\\w!~*'().&=+$%-]+@)?(([0-9]{1,3}\\.){3}[0-9]{1,3}|([\\w!~*'()-]+\\.)*([\\w^-][\\w-]{0,61})?[\\w]\\.[a-z]{2,6})(:[0-9]{1,4})?((/*)|(/+[\\w!~*'().;?:@&=+$,%#-]+)+/*)$";
+
+        try {
+            Pattern patt = Pattern.compile(regex);
+            Matcher matcher = patt.matcher(s);
+            return matcher.matches();
+        } catch (RuntimeException e) {
+            return false;
+        }
+    }
+    
+    @Override
+    public String toString() {
+        return out.toString();
+    }
+    
     public static Type parse(Object obj){
         return new Type(obj);
     }

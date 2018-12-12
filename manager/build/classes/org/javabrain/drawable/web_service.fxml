@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" spacing="30.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.javabrain.controller.WebService">
+   <children>
+      <JFXTextField fx:id="serverNameFld" labelFloat="true" promptText="Host del servidor">
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin>
+      </JFXTextField>
+      <JFXTextField fx:id="userNameFld" labelFloat="true" promptText="Nombre de usuario" />
+      <JFXPasswordField fx:id="password" labelFloat="true" promptText="Contraseña" />
+      <JFXTextField fx:id="databaseFld" labelFloat="true" promptText="Nombre de la base de datos" />
+      <HBox alignment="CENTER" prefHeight="19.0" prefWidth="500.0" spacing="10.0">
+         <children>
+            <JFXTextField fx:id="tableFld" labelFloat="true" prefHeight="25.0" prefWidth="544.0" promptText="Nombre de la tabla" />
+            <JFXCheckBox text="Funciones" />
+         </children>
+      </HBox>
+      <VBox prefHeight="67.0" prefWidth="500.0" spacing="5.0">
+         <children>
+            <HBox prefHeight="21.0" prefWidth="500.0" spacing="20.0">
+               <children>
+                  <JFXButton fx:id="addBtn" styleClass="add-btn" text="📄" prefHeight="30.0" prefWidth="30.0"/>
+                  <JFXButton fx:id="editBtn" styleClass="edit-btn" text="🖋" prefHeight="30.0" prefWidth="30.0"/>
+                  <JFXButton fx:id="dropBtn" styleClass="delete-btn" text="❌" prefHeight="30.0" prefWidth="30.0"/>
+               </children>
+            </HBox>
+            <JFXListView fx:id="elementsLst" orientation="HORIZONTAL" prefHeight="36.0" prefWidth="500.0" />
+         </children>
+      </VBox>
+      <HBox alignment="CENTER_RIGHT" prefHeight="14.0" prefWidth="500.0" spacing="20.0">
+         <children>
+            <JFXButton fx:id="cancelBtn" text="Cancelar" />
+            <JFXButton fx:id="doneBtn" text="Aceptar" />
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets left="50.0" right="50.0" />
+   </padding>
+</VBox>
