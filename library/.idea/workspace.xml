@@ -6,9 +6,358 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ebe1087-5d4b-4d3c-a66c-7eb6ed0ed5d4" name="Default" comment="" />
+    <list default="true" id="8ebe1087-5d4b-4d3c-a66c-7eb6ed0ed5d4" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/com_googlecode_json_simple_json_simple_1_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/built-jar.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/.netbeans_automatic_build" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/.netbeans_update_resources" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/Run.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/SwingTree$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/Neuron.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/NeuronConf$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/NeuronConf.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/annotation/ajax/Ajax.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/annotation/ajax/Always.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/annotation/ajax/Delete.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/annotation/ajax/Error.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/annotation/ajax/Get.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/annotation/ajax/Paramms.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/annotation/ajax/Post.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/annotation/ajax/Postconstruct.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/annotation/ajax/Process.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/annotation/ajax/Response.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/annotation/ajax/Success.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/annotation/ajax/Update.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/annotation/json/Create.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/annotation/json/Delete.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/annotation/json/Get.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/annotation/json/Identify.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/annotation/json/Json.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/annotation/json/Key.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/annotation/json/PetitionType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/annotation/json/Replace.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/fx/container/Modal.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/fx/control/Dialog.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/fx/control/Drawable.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/fx/control/Frame.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/fx/structure/Controller.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/fx/structure/Form.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/neuron.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/animation/ElevationEffect$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/animation/ElevationEffect$Circular.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/animation/ElevationEffect.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/animation/ElevationEffectCircle$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/animation/ElevationEffectCircle$Circular.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/animation/ElevationEffectCircle.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/animation/ElevationEffectRectangle$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/animation/ElevationEffectRectangle$Circular.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/animation/ElevationEffectRectangle.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/animation/RippleEffect$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/animation/RippleEffect.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/animation/SafePropertySetter$Property.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/animation/SafePropertySetter$Setter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/container/DropShadowBorder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/container/FXPanel$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/container/FXPanel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/container/Frame.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/container/JsonViewer$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/container/PanelImage.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/container/ScrollPaneBar$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/container/ScrollPaneBar$ModernScrollBarUI.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/container/Table.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/control/DropShadowBorder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/control/MaterialButtonUI.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/control/MaterialLookAndFeel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/control/SearchField.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/structure/Controller.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/tools/AutoSuggestor$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/tools/AutoSuggestor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/alert/Doc$1$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/alert/Doc$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/alert/Doc.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/alert/JsonViewer$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/alert/JsonViewer$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/alert/JsonViewer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/alert/Log.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/alert/SwingTree$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/code/JavaScript.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/codify/Security.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/commando/Console.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/data/Json$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/data/Json.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/data/Numeric.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/data/Security.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/data/Seeker.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/data/Spell.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/data/Sql.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/data/Text.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/data/Type.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/event/GeolocationListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/event/PetitionListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/event/SearchGeolocationListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/resource/Archive.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/resource/Layout.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/resource/R.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/web/service/Ajax$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/web/service/Ajax$10.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/web/service/Ajax$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/web/service/Ajax$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/web/service/Ajax$4.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/web/service/Ajax$5.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/web/service/Ajax$6.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/web/service/Ajax$7.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/web/service/Ajax$8.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/web/service/Ajax$9.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/web/service/Ajax.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/web/service/Email.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/web/service/Geolocation$1$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/web/service/Geolocation$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/web/service/Geolocation$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/web/service/Geolocation$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/web/service/Geolocation$4.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/web/service/Geolocation$5.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/web/service/Geolocation.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/web/service/Location.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/web/service/Petition.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/web/service/Translator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/web/service/res/Dottydots.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/web/service/res/RemoteIcon.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/res/component/notebook.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/res/style/viewer.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/Java-Brain.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/README.TXT" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/lib/MapsJava.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/lib/barcodes-7.1.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/lib/controlsfx-8.40.14.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/lib/font-asian-7.1.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/lib/forms-7.1.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/lib/guava-19.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/lib/html2pdf-1.0.5.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/lib/hyph-7.1.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/lib/io-7.1.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/lib/itextpdf-5.4.3.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/lib/jfoenix-8.0.7.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/lib/jmy-spell-master.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/lib/json-simple-1.1.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/lib/jsoup-1.11.2.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/lib/kernel-7.1.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/lib/layout-7.1.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/lib/log4j-slf4j-impl-2.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/lib/mail.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/lib/org-apache-commons-codec.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/lib/org.postgresql-9.1.901.jdbc4.1-rc9.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/lib/pdfa-7.1.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/lib/sign-7.1.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/lib/slf4j-api-1.7.13.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/lib/timingframework-core-5.0.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/lib/timingframework-swing-5.0.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/javabrain/annotation/Inyect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/javabrain/annotation/Json.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/javabrain/annotation/JsonDataType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/javabrain/annotation/JsonType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/javabrain/annotation/Key.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/javabrain/reflect/JsonEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/javabrain/test/JsonMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/javabrain/test/Santuaries.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/res/levels.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Java_Brain_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java-Brain.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Java-Brain.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/Run.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Java-Brain/Run.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/conf/neuron.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/Neuron.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/fx/control/Dialog.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/fx/control/Frame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/fx/structure/Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/animation/ElevationEffect$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/animation/ElevationEffect$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/animation/ElevationEffect$Circular.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/animation/ElevationEffect.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/animation/ElevationEffectCircle$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/animation/ElevationEffectCircle$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/animation/ElevationEffectCircle$Circular.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/animation/ElevationEffectCircle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/animation/ElevationEffectRectangle$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/animation/ElevationEffectRectangle$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/animation/ElevationEffectRectangle$Circular.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/animation/ElevationEffectRectangle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/animation/FastGaussianBlur.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/animation/FastGaussianBlur.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/animation/RippleEffect$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/animation/RippleEffect$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/animation/RippleEffect$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/animation/RippleEffect$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/animation/RippleEffect$RippleAnimation$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/animation/RippleEffect$RippleAnimation$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/animation/RippleEffect$RippleAnimation.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/animation/RippleEffect$RippleAnimation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/animation/RippleEffect.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/animation/SafePropertySetter$Getter.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/animation/SafePropertySetter$Getter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/animation/SafePropertySetter$GetterAndSetter.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/animation/SafePropertySetter$GetterAndSetter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/animation/SafePropertySetter$Property.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/animation/SafePropertySetter$Setter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/animation/SafePropertySetter.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/animation/SafePropertySetter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/animation/Shadow.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/animation/Shadow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/animation/ShadowCircle.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/animation/ShadowCircle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/animation/ShadowRectangle.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/animation/ShadowRectangle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/container/DropShadowBorder$Position.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/container/DropShadowBorder$Position.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/container/DropShadowBorder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/container/Frame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/container/FrameBeanInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/container/FrameBeanInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/container/Panel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/container/Panel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/container/PanelImage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/container/PanelImageBeanInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/container/PanelImageBeanInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/container/ScrollPaneBar$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/container/ScrollPaneBar$ModernScrollBarUI$InvisibleScrollBarButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/container/ScrollPaneBar$ModernScrollBarUI$InvisibleScrollBarButton.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/container/ScrollPaneBar$ModernScrollBarUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/container/ScrollPaneBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/container/ScrollPaneBar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/container/ScrollPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/container/ScrollPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/container/ScrollPanelBeanInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/container/ScrollPanelBeanInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/container/Table.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/control/Button.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/control/Button.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/control/DropShadowBorder$Position.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/control/DropShadowBorder$Position.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/control/DropShadowBorder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/control/GUITheme.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/control/GUITheme.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/control/MaterialButtonUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/control/MaterialLookAndFeel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/control/MaterialUIMovement$MaterialUITimer.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/control/MaterialUIMovement$MaterialUITimer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/control/MaterialUIMovement.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/control/MaterialUIMovement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/control/SearchField.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/structure/Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/tools/AutoSuggestor$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/tools/AutoSuggestor$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/tools/AutoSuggestor$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/tools/AutoSuggestor$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/tools/AutoSuggestor$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/tools/AutoSuggestor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/tools/SuggestionLabel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/tools/SuggestionLabel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/tools/SuggestionLabel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/tools/SuggestionLabel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/swing/tools/SuggestionLabel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/swing/tools/SuggestionLabel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/test/new.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/test/new2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/test/test.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/Log.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/alert/Console.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/alert/ImageViewer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/alert/JavaViewer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/alert/SwingTree$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/alert/SwingTree$Renderer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/alert/SwingTree.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/data/Archive.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/data/Date.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/data/Date.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/data/Json$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/data/Json.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/data/Seeker.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/data/Sql.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/data/Type.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/data/Xml.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/data/Xml.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/resource/Path.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/structure/DataPersist$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/structure/DataPersist$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/structure/DataPersist.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/web/service/Ajax$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/web/service/Ajax$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/web/service/Ajax$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/web/service/Ajax$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/web/service/Ajax.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/web/service/Email.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/web/service/Location.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/web/service/Petition.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/web/service/Scraping$ScrapingHolder.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/web/service/Scraping$ScrapingHolder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/web/service/Scraping.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/web/service/Scraping.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/web/service/ScrapingLoc.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/web/service/Translator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/web/service/Valuta.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/org/javabrain/util/web/service/Valuta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/org/javabrain/util/web/service/res/Dottydots.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/res/beaninfo/card16.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/res/beaninfo/card16.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/res/beaninfo/card32.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/res/beaninfo/card32.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/res/beaninfo/circle16.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/res/beaninfo/circle16.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/res/beaninfo/circle32.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/res/beaninfo/circle32.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/res/beaninfo/circlebutton16.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/res/beaninfo/circlebutton16.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/res/beaninfo/circlebutton32.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/res/beaninfo/circlebutton32.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/res/beaninfo/frame16.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/res/beaninfo/frame16.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/res/beaninfo/frame32.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/res/beaninfo/frame32.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/res/beaninfo/imageview16.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/res/beaninfo/imageview16.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/res/beaninfo/imageview32.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/res/beaninfo/imageview32.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/res/beaninfo/list16.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/res/beaninfo/list16.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/res/beaninfo/list32.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/res/beaninfo/list32.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/res/beaninfo/panelimage16.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/res/beaninfo/panelimage16.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/res/beaninfo/panelimage32.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/res/beaninfo/panelimage32.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/res/beaninfo/scrollpanel16.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/res/beaninfo/scrollpanel16.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/res/beaninfo/scrollpanel32.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/res/beaninfo/scrollpanel32.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/res/beaninfo/textfield16.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/res/beaninfo/textfield16.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/res/beaninfo/textfield32.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/res/beaninfo/textfield32.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/res/component/json.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/res/component/json.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/res/component/noimg.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/res/component/noimg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/res/dato.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-Brain/res/json/emojis.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Run.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/conf/neuron.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/Neuron.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/fx/control/Dialog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/fx/control/Frame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/fx/structure/Controller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/swing/animation/ElevationEffect.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/swing/animation/ElevationEffectCircle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/swing/animation/ElevationEffectRectangle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/swing/animation/FastGaussianBlur.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/swing/animation/RippleEffect.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/swing/animation/SafePropertySetter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/swing/animation/Shadow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/swing/animation/ShadowCircle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/swing/animation/ShadowRectangle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/swing/container/Frame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/swing/container/FrameBeanInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/swing/container/Panel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/swing/container/PanelImage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/swing/container/PanelImageBeanInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/swing/container/ScrollPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/swing/container/ScrollPanelBeanInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/swing/container/Table.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/swing/control/Button.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/swing/control/SearchField.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/swing/structure/Controller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/swing/tools/AutoSuggestor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/test/new.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/test/new2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/test/test.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/util/Log.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/util/alert/Console.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/util/data/Archive.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/util/data/Date.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/util/data/Json.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/util/data/Seeker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/util/data/Sql.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/util/data/Type.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/util/data/Xml.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/util/resource/Path.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/util/structure/DataPersist.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/util/web/service/Ajax.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/util/web/service/Email.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/util/web/service/Location.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/util/web/service/Petition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/util/web/service/Translator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/util/web/service/Valuta.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/javabrain/util/web/service/res/Dottydots.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/res/beaninfo/card16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/res/beaninfo/card32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/res/beaninfo/circle16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/res/beaninfo/circle32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/res/beaninfo/circlebutton16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/res/beaninfo/circlebutton32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/res/beaninfo/frame16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/res/beaninfo/frame32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/res/beaninfo/imageview16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/res/beaninfo/imageview32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/res/beaninfo/list16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/res/beaninfo/list32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/res/beaninfo/panelimage16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/res/beaninfo/panelimage32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/res/beaninfo/scrollpanel16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/res/beaninfo/scrollpanel32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/res/beaninfo/textfield16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/res/beaninfo/textfield32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/res/component/json.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/res/component/noimg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/res/dato.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/res/json/emojis.json" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,28 +365,63 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Ajax.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/web/service/Ajax.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Run.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="7" column="4" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+            <state relative-caret-position="270">
+              <caret line="14" column="48" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#ajax#0;class#Ajax#0" />
-                <element signature="method#get#0;class#Ajax#0" />
-                <element signature="method#post#0;class#Ajax#0" />
-                <element signature="method#put#0;class#Ajax#0" />
-                <element signature="method#delete#0;class#Ajax#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Run.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Run.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/javabrain/test/JsonMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="362">
+              <caret line="14" column="34" lean-forward="true" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/org/javabrain/annotation/Key.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/javabrain/annotation/JsonDataType.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/javabrain/test/Santuaries.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#282#283#0" expanded="true" />
+                <element signature="e#309#310#0" expanded="true" />
+                <element signature="e#349#350#0" expanded="true" />
+                <element signature="e#381#382#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -47,6 +431,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
+        <option value="AnnotationType" />
         <option value="Class" />
       </list>
     </option>
@@ -54,10 +440,11 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>petiti</find>
+      <find>i</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -80,27 +467,58 @@
         <option value="$PROJECT_DIR$/src/org/javabrain/swing/structure/Controller.java" />
         <option value="$PROJECT_DIR$/src/org/javabrain/util/structure/DataPersist.java" />
         <option value="$PROJECT_DIR$/src/org/javabrain/Llamados.java" />
-        <option value="$PROJECT_DIR$/src/Run.java" />
         <option value="$PROJECT_DIR$/src/org/javabrain/util/Petition/Ajax.java" />
         <option value="$PROJECT_DIR$/src/org/javabrain/fx/petition/Ajax.java" />
         <option value="$PROJECT_DIR$/src/org/javabrain/util/petition/Ajax.java" />
         <option value="$PROJECT_DIR$/src/org/javabrain/util/web/service/Ajax.java" />
+        <option value="$PROJECT_DIR$/src/org/javabrain/annotation/JsonType.java" />
+        <option value="$PROJECT_DIR$/src/org/javabrain/annotation/Json.java" />
+        <option value="$PROJECT_DIR$/src/org/javabrain/test/Santuaries.java" />
+        <option value="$PROJECT_DIR$/src/Run.java" />
+        <option value="$PROJECT_DIR$/src/org/javabrain/annotation/Inyect.java" />
+        <option value="$PROJECT_DIR$/src/org/javabrain/reflect/JsonEntity.java" />
+        <option value="$PROJECT_DIR$/src/org/javabrain/test/JsonMap.java" />
+        <option value="$PROJECT_DIR$/src/org/javabrain/annotation/JsonDataType.java" />
+        <option value="$PROJECT_DIR$/src/org/javabrain/annotation/Key.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="-8" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-1806" />
+    <option name="y" value="-332" />
     <option name="width" value="1386" />
-    <option name="height" value="735" />
+    <option name="height" value="678" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator currentView="PackagesPane" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="library" type="b2602c69:ProjectViewProjectNode" />
+              <item name="library" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="library" type="b2602c69:ProjectViewProjectNode" />
+              <item name="library" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="library" type="b2602c69:ProjectViewProjectNode" />
+              <item name="library" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="javabrain" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -108,45 +526,72 @@
               <item name="library" type="58d84e3e:PackageViewProjectNode" />
               <item name="Java-Brain" type="616d4139:PackageViewModuleNode" />
             </path>
+            <path>
+              <item name="library" type="58d84e3e:PackageViewProjectNode" />
+              <item name="Java-Brain" type="616d4139:PackageViewModuleNode" />
+              <item name="org.javabrain" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="library" type="58d84e3e:PackageViewProjectNode" />
+              <item name="Java-Brain" type="616d4139:PackageViewModuleNode" />
+              <item name="org.javabrain" type="1f31426a:PackageElementNode" />
+              <item name="annotation" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="library" type="58d84e3e:PackageViewProjectNode" />
+              <item name="Java-Brain" type="616d4139:PackageViewModuleNode" />
+              <item name="org.javabrain" type="1f31426a:PackageElementNode" />
+              <item name="test" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="library" type="58d84e3e:PackageViewProjectNode" />
+              <item name="Java-Brain" type="616d4139:PackageViewModuleNode" />
+              <item name="res" type="1f31426a:PackageElementNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane">
-        <subPane>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
             <path>
-              <item name="Java-Brain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Java-Brain" type="462c0819:PsiDirectoryNode" />
+              <item name="library" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="library" type="2674bda8:ScopeViewTreeModel$GroupNode" />
             </path>
             <path>
-              <item name="Java-Brain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Java-Brain" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="library" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="library" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
-              <item name="Java-Brain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Java-Brain" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Java-Brain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Java-Brain" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-              <item name="Java_Brain_jar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Java-Brain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Java-Brain" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Java-Brain" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Java-Brain" type="462c0819:PsiDirectoryNode" />
+              <item name="library" type="b2602c69:ProjectViewProjectNode" />
+              <item name="library" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="javabrain" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="library" type="b2602c69:ProjectViewProjectNode" />
+              <item name="library" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="javabrain" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="library" type="b2602c69:ProjectViewProjectNode" />
+              <item name="library" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="javabrain" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+              <item name="alert" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="library" type="b2602c69:ProjectViewProjectNode" />
+              <item name="library" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="javabrain" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -155,20 +600,28 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="Downloaded.Files.Path.Enabled" value="true" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544598574450" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\GitKraken\Java-Brain\library\src\res" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.javabrain.fx.petition" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\GitKraken\Java-Brain\library\src\org\javabrain\test" />
       <recent name="C:\Users\Fernando García\Desktop\Java-Brain\src\org\javabrain\swing\container" />
       <recent name="C:\Users\Fernando García\Desktop\Java-Brain\src\org\javabrain\swing\control" />
       <recent name="C:\Users\Fernando García\Desktop\Java-Brain\src" />
@@ -197,52 +650,37 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="Run" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Run" />
       <module name="Java-Brain" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
+    <configuration default="true" type="TestNG">
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
       <properties />
       <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <list>
       <item itemvalue="Application.Run" />
@@ -265,47 +703,96 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1535322507392</updated>
+      <workItem from="1544630072747" duration="167000" />
     </task>
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="8603000" />
+  </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1386" height="735" extended-state="0" />
+    <frame x="-1928" y="-319" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info id="DB Browser" order="2" />
-      <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info id="Image Layers" order="2" />
-      <window_info anchor="bottom" id="DB Execution Console" order="7" />
-      <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5007542" side_tool="true" weight="0.3283582" />
-      <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924585" weight="0.3283582" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3283582" />
-      <window_info id="Capture Tool" order="2" />
-      <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17420815" />
-      <window_info id="Project Explorer" order="2" />
-      <window_info id="Job Explorer" order="2" />
-      <window_info anchor="bottom" id="Console" order="7" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20095949" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.3283582" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="DB Browser" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Project Explorer" order="6" />
+      <window_info id="Favorites" order="7" side_tool="true" />
+      <window_info id="Capture Tool" order="8" />
+      <window_info id="Job Explorer" order="9" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924585" weight="0.32724252" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3986711" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="DB Execution Console" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3283582" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5007542" side_tool="true" weight="0.3283582" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Console" order="11" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32724252" />
+      <window_info anchor="right" id="Maven" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Maven Projects" order="5" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
     </layout>
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
@@ -314,247 +801,32 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="13" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/org/javabrain/reflect/JsonEntity.java</url>
+          <line>23</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Run.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/web/service/Ajax.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3930">
-          <caret line="131" column="74" selection-start-line="131" selection-start-column="74" selection-end-line="131" selection-end-column="74" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#ajax#0;class#Ajax#0" />
-            <element signature="method#get#0;class#Ajax#0" />
-            <element signature="method#post#0;class#Ajax#0" />
-            <element signature="method#put#0;class#Ajax#0" />
-            <element signature="method#delete#0;class#Ajax#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Run.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/web/service/Ajax.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#ajax#0;class#Ajax#0" />
-            <element signature="method#get#0;class#Ajax#0" />
-            <element signature="method#post#0;class#Ajax#0" />
-            <element signature="method#put#0;class#Ajax#0" />
-            <element signature="method#delete#0;class#Ajax#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Run.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/swing/container/Table.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7950">
-          <caret line="265" column="50" lean-forward="true" selection-start-line="265" selection-start-column="50" selection-end-line="265" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/swing/structure/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
-          <caret line="25" column="18" lean-forward="true" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/structure/DataPersist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1950">
-          <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/swing/container/Table.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7920">
-          <caret line="264" column="28" selection-start-line="264" selection-start-column="28" selection-end-line="264" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/fx/control/Frame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1890">
-          <caret line="69" column="19" selection-start-line="69" selection-start-column="19" selection-end-line="69" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/conf/neuron.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/web/service/Petition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1230">
-          <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/data/Type.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Run.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/fx/control/Frame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2070">
-          <caret line="69" column="19" selection-start-line="69" selection-start-column="19" selection-end-line="69" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/conf/neuron.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/web/service/Petition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1230">
-          <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/data/Type.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Run.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/fx/control/Frame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1920">
-          <caret line="70" column="9" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Run.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/conf/neuron.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/figtech/jaspterjson/Main.java" />
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/fx/control/Frame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2100">
-          <caret line="70" column="9" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Run.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/conf/neuron.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dataTable.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/db/acciones.json" />
     <entry file="file://$PROJECT_DIR$/db/muestrarios.json" />
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/data/Json.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="5" column="31" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/data/Json.java" />
     <entry file="file://$PROJECT_DIR$/src/Coffee.jrxml" />
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/data/Type.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/data/Type.java" />
     <entry file="file://$PROJECT_DIR$/src/org/figtech/jaspterjson/Main.java" />
-    <entry file="file://$PROJECT_DIR$/src/conf/neuron.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/conf/neuron.json" />
     <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/fx/structure/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="14" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/data/Seeker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/fx/structure/Controller.java" />
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/data/Seeker.java" />
     <entry file="file://$PROJECT_DIR$/src/org/javabrain/swing/control/SuggestionLabel.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/lang/Runnable.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -563,82 +835,117 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/swing/container/Panel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1110">
-          <caret line="26" column="34" lean-forward="true" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/Neuron.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="24" column="28" lean-forward="true" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/swing/tools/AutoSuggestor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="109" lean-forward="true" selection-start-line="109" selection-end-line="109" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/fx/control/Frame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="69" column="19" selection-start-line="69" selection-start-column="19" selection-end-line="69" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/swing/container/Table.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7260">
-          <caret line="265" column="50" selection-start-line="265" selection-start-column="50" selection-end-line="265" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/swing/structure/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/structure/DataPersist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="492">
-          <caret line="65" selection-start-line="65" selection-end-line="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/web/service/Petition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="605">
-          <caret line="94" column="23" selection-start-line="94" selection-start-column="23" selection-end-line="94" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/swing/container/Panel.java" />
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/Neuron.java" />
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/swing/tools/AutoSuggestor.java" />
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/fx/control/Frame.java" />
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/swing/container/Table.java" />
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/swing/structure/Controller.java" />
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/structure/DataPersist.java" />
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/web/service/Petition.java" />
     <entry file="file://$PROJECT_DIR$/src/org/javabrain/Llamados.java" />
     <entry file="file://$PROJECT_DIR$/src/org/javabrain/fx/petition/Ajax.java" />
-    <entry file="file://$PROJECT_DIR$/src/Run.java">
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/web/service/Ajax.java" />
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/test/data.json" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/io/InputStreamReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="125">
+          <caret line="96" selection-start-line="96" selection-end-line="96" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javabrain/util/web/service/Ajax.java">
+    <entry file="file://$PROJECT_DIR$/src/res/levels.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="7" column="4" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+        <state relative-caret-position="-150">
+          <caret line="70" column="16" selection-start-line="70" selection-start-column="16" selection-end-line="70" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/annotation/Inyect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#ajax#0;class#Ajax#0" />
-            <element signature="method#get#0;class#Ajax#0" />
-            <element signature="method#post#0;class#Ajax#0" />
-            <element signature="method#put#0;class#Ajax#0" />
-            <element signature="method#delete#0;class#Ajax#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/reflect/JsonEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1420">
+          <caret line="102" column="9" selection-start-line="102" selection-start-column="9" selection-end-line="102" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#nestedData#0;class#JsonEntity#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/annotation/JsonType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="2" column="11" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Run.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="14" column="48" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/test/Santuaries.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#282#283#0" expanded="true" />
+            <element signature="e#309#310#0" expanded="true" />
+            <element signature="e#349#350#0" expanded="true" />
+            <element signature="e#381#382#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/annotation/JsonDataType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/annotation/Json.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="11" column="19" lean-forward="true" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/test/JsonMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="14" column="34" lean-forward="true" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/javabrain/annotation/Key.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -654,7 +961,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -702,6 +1008,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -709,7 +1016,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>lib</last-edited>
+          <last-edited>com.googlecode.json-simple:json-simple:1.1.1</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
