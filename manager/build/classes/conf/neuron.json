@@ -1,5 +1,5 @@
 {
-  "build": 36,
+  "build": 59,
   "drawable": "org.javabrain.drawable",
   "message": {
     "alert": true,
@@ -7,13 +7,9 @@
     "info": true
   },
   "package": {
-    "company": "org.javabrain",
+    "company": "",
     "modules": [
-      "app",
-      "controller",
-      "drawable",
-      "model",
-      "view"
+      ""
     ]
   },
   "param": "$(conf.{param.json})",
@@ -26,9 +22,7 @@
     "layout": [
       ".xml",
       ".html",
-      ".txt",
-      ".layout",
-      ".ico"
+      ".txt"
     ],
     "raw": [
       ".mp3",
@@ -37,5 +31,7 @@
     "style": [
       ".css"
     ]
-  }
+  },
+  "script": "",
+  "version": "0.0.3"
 }

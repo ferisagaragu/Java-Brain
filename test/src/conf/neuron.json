@@ -1,15 +1,23 @@
 {
-  "build": 13,
-  "drawable": "org.javabrain.drawable",
+  "build": 32,
+  "diccionary": {
+    "default": "es_ES",
+    "dics": [
+      "en_US",
+      "es_MX",
+      "es_ES"
+    ]
+  },
+  "drawable": "",
   "message": {
     "alert": true,
     "error": true,
     "info": true
   },
   "package": {
-    "company": "org.javabrain.test",
+    "company": "",
     "modules": [
-      "data"
+      ""
     ]
   },
   "param": "$(conf.{param.json})",
@@ -17,7 +25,8 @@
     "img": [
       ".jpg",
       ".png",
-      ".gif"
+      ".gif",
+      ".bcon"
     ],
     "layout": [
       ".xml",
@@ -32,5 +41,6 @@
       ".css"
     ]
   },
-  "script": "org.javabrain.test.app"
+  "script": "",
+  "version": "0.0.1"
 }

@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import org.javabrain.Neuron;
 import org.javabrain.fx.structure.Controller;
 
 /**
@@ -24,6 +25,11 @@ public class Index extends Controller{
         webService.init(stage,indexPane);
         
         super.init(params); 
+    }
+
+    @Override
+    public void custom() {
+        stage.setTitle(stage.getTitle() + " " + "Build " + Neuron.build() + " version - " + Neuron.version());
     }
 
     @Override

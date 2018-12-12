@@ -5,7 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane fx:id="root" maxHeight="-Infinity" style="-fx-background-color: #FFF;" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.javabrain.controller.Index">
+<StackPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.javabrain.controller.Index">
    <children>
       <GridPane fx:id="indexPane" prefHeight="409.0" prefWidth="600.0">
         <columnConstraints>
@@ -20,7 +20,7 @@
          <children>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <JFXButton fx:id="phpServiceBtn" buttonType="RAISED" ripplerFill="WHITE" style="-fx-background-color: #353535;" text="Crear Web service Php" textFill="WHITE" />
+                  <JFXButton fx:id="phpServiceBtn" text="Crear Web service Php"/>
                </children>
             </StackPane>
          </children>

@@ -1,7 +1,7 @@
 package org.javabrain.model;
 
+import com.jfoenix.controls.JFXSnackbar;
 import java.io.File;
-import java.io.InputStream;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
 import javafx.stage.FileChooser;
@@ -16,7 +16,7 @@ import org.javabrain.util.resource.R;
  */
 public class DoWebService {
     
-    public static boolean saveService(ObservableList<Label> elements,Stage stage,String serverName,String userName,String password,String database,String table) {
+    public static boolean saveService(ObservableList<Label> elements,Stage stage,String serverName,String userName,String password,String database,String table,JFXSnackbar snackbar) {
         
         FileChooser chooser = new FileChooser();
         chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Php service(*.php)", "*.php"));
@@ -25,6 +25,7 @@ public class DoWebService {
         if (fil != null) {
             doGet(fil,elements,serverName, userName, password, database, table);
             add(fil, elements, serverName, userName, password, database, table);
+            snackbar.show("Los Web-Services se han creado correctamente.", 3000);
             return true;
         } else {
             return false;

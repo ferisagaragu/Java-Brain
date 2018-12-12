@@ -41,10 +41,10 @@ public class Log {
             System.out.println("\033[33m" + structur("Warning -> " + obj) + "\033[30m");
         } else {
             System.out.println("\033[33m" + structur("Warning -> " + obj) + "\033[30m");
-            if (errorControl) {
-                Doc.show("Neuron", "The configuration \"neuron.json\" can not be found. Do you want to see how to create it?");
-                errorControl = false;
-            }
+//            if (errorControl) {
+//                Doc.show("Neuron", "The configuration \"neuron.json\" can not be found. Do you want to see how to create it?");
+//                errorControl = false;
+//            }
         }
     }
 

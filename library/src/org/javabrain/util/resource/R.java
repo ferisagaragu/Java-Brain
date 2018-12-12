@@ -160,6 +160,11 @@ public class R {
         return clazz.getClass().getResource(img.get(key));
     }
 
+    public static String getImg(Object key) {
+        init();
+        return img.get(key);
+    }
+
     public static InputStream getRaw(Object key) {
         init();
         return raw.get(key);

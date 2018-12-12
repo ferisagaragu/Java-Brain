@@ -3,6 +3,7 @@ package org.javabrain.controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
 import java.util.Optional;
 import javafx.fxml.FXML;
@@ -11,8 +12,10 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import org.javabrain.fx.structure.Controller;
+import org.javabrain.fx.structure.Form;
 import org.javabrain.model.DoWebService;
 import org.javabrain.util.resource.R;
 import org.javabrain.view.Dialog;
@@ -37,11 +40,15 @@ public class WebService extends Controller{
     @FXML private JFXTextField tableFld;
     
     private GridPane indexPane;
+    private JFXSnackbar snackbar;
     
     @Override
     public void init(Object... params) {
         setStage((Stage) params[0]);
-        indexPane = (GridPane) params[1];
+        indexPane = (GridPane) params[1];  
+        
+        snackbar = new JFXSnackbar(getRoot());
+        
         super.init(params);
     }
 
@@ -49,6 +56,9 @@ public class WebService extends Controller{
     public void custom() {
         elementsLst.getItems().add(new Label("id"));
         root.getStylesheets().add(R.getStyle("web_service.css"));
+        addBtn.setShape(new Circle(10));
+        editBtn.setShape(new Circle(10));
+        dropBtn.setShape(new Circle(10));
     }
 
     @Override
@@ -82,9 +92,11 @@ public class WebService extends Controller{
         //====================
         
         doneBtn.setOnAction( evt -> {
-            DoWebService.saveService(elementsLst.getItems(), stage, 
+            if (DoWebService.saveService(elementsLst.getItems(), stage, 
                 serverNameFld.getText(), userNameFld.getText(), password.getText(),
-                databaseFld.getText(),tableFld.getText());
+                databaseFld.getText(),tableFld.getText(),snackbar)) {
+                Form.clear(serverNameFld,userNameFld,password,databaseFld,tableFld);
+            }
         });
         
         cancelBtn.setOnAction( evt -> {

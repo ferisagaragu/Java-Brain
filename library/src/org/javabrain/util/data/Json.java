@@ -263,13 +263,13 @@ public class Json extends Object{
         parser = new JSONParser();
         if(json.toString().charAt(0) == '['){
             try {
-                String out = Text.internalString(json.toString());
+                String out = Text.stringify(json.toString());
                 array = (org.json.simple.JSONArray) parser.parse(out);
                 return;
             } catch (ParseException e) {}
         }else {
             try {
-                String out = Text.internalString(json.toString());
+                String out = Text.stringify(json.toString());
                 obj = (org.json.simple.JSONObject) parser.parse(out);
                 return;
             } catch (ParseException e) {}

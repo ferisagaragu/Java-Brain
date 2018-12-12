@@ -12,3 +12,6 @@
 /manager/test/dist/
 /manager/test/nbproject/private/
 /manager/dist/
+/manager/test-maven/target/
+/manager/ghostland/ghost-web/target/
+/manager/ghostland/ghost-logic/target/

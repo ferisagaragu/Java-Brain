@@ -12,7 +12,10 @@
   },
   "raw": {
   },
+  "script": {
+  },
   "style": {
+    "index.css": "res/style/index.css",
     "web_service.css": "res/style/web_service.css"
   }
 }

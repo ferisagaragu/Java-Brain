@@ -8,6 +8,7 @@ import org.javabrain.controller.WebService;
 import org.javabrain.fx.control.Drawable;
 import org.javabrain.fx.control.Frame;
 import org.javabrain.util.resource.R;
+import org.javabrain.Neuron;
 
 /**
  *
@@ -15,17 +16,18 @@ import org.javabrain.util.resource.R;
  */
 public class BrainManager extends Application{
 
-    private final Frame index = new Frame(R.getDrawable("index.fxml"),"Brain - Manager",new Image("res/img/brain.png"));
+    private final Frame index = new Frame(R.getDrawable("index.fxml"),"Brain - Manager",new Image(R.getImg("brain.png")),R.getStyle("index.css"));
     private final Drawable webService = new Drawable(R.getDrawable("web_service.fxml"));
     
+    @Override
     public void start(Stage primaryStage) throws Exception {
-        //Neuron.init();
+        Neuron.init();
         WebService webServiceC = (WebService) webService.getFXML();
 
         Index indexC = (Index) index.getFXML();
         indexC.setStage(index.getStage());
         indexC.init(webServiceC);
-
+        
         index.showOnCenter();
     }
     

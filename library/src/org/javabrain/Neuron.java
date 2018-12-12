@@ -26,11 +26,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.*;
+import org.javabrain.util.alert.Log;
 import org.javabrain.util.resource.Archive;
+import org.javabrain.util.web.service.Petition;
 
 /***
  * @author Fernando García
- * @version 0.0.2
+ * @version 0.0.3
  */
 public class Neuron {
     
@@ -53,6 +55,24 @@ public class Neuron {
                 createModules(js);
                 makeRes(js);
                 coutBuilds(js);
+                
+                // https://javabrain2.webcindario.com/dics/
+                
+                if (js.getJSON("diccionary") != null) {
+                    if (js.getJSON("diccionary").getArray("dics") != null) {
+                        
+                        Object[] obj = js.getJSON("diccionary").getArray("dics");
+                        File fold = new File(Archive.PROYECT_PATH + "\\dic\\");
+                        fold.mkdirs();
+                        for (Object o:obj){
+                            
+                            if (!new File(fold.getPath() + "\\" + o.toString() + ".dic").exists()) {
+                                Petition.download("https://javabrain2.webcindario.com/dics/" + o.toString() + ".zip",fold.getPath() + "//" + o.toString() + ".dic");
+                                Log.message("Diccionary - " + o.toString() + " was dowloaded.");
+                            }
+                        }
+                    }
+                }
             } catch (Exception e) {}
         }
         
@@ -208,6 +228,18 @@ public class Neuron {
         map.remove(key);
     }
 
+    public static int build(){
+        return new Json("conf.{neuron.json}").getInteger("build");
+    }
+
+    public static String version(){
+        return new Json("conf.{neuron.json}").getString("version");
+    }
+    
+    public static String defaultDiccionary(){
+        return new Json("conf.{neuron.json}").getJSON("diccionary").getString("default");
+    }
+
     public static Connection sqlConnection() {
         try {
             Json json = new Json("conf.{neuron_example.json}");
@@ -325,8 +357,8 @@ class NeuronConf {
                 out = out.substring(0, out.length() - 1);
 
                 String data = "{'message':{'alert':" + finalAlertChk.isSelected() + ",'error':" + finalErrorChk.isSelected() + ",'info':" + finalInfoChk.isSelected() + "},"
-                        + "'package':{'company':'" + finalPackFld.getText() + "','modules':[" + out + "]},'param':'$(conf.{param.json})','res':{'img':['.jpg','.png','.gif'],'raw':['.mp3','.mp4'],'layout':['.xml','.html','.txt'],'style':['.css']},"
-                        + "'build': 0,'drawable':'','script':''}";
+                        + "'package':{'company':'" + finalPackFld.getText() + "','modules':[" + out + "]},'param':'$(conf.{param.json})','res':{'img':['.jpg','.png','.gif','.bcon'],'raw':['.mp3','.mp4'],'layout':['.xml','.html','.txt'],'style':['.css']},"
+                        + "'build': 0,'drawable':'','script':'','version':'0.0.1','diccionary':{'dics':['en_US','es_MX'],'default':'en_US'}}";
 
                 File file = new File(System.getProperty("user.dir") + "\\src\\conf\\neuron.json");
                 String str = Json.parseJson(data).toJSONString();
